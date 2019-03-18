@@ -3,4 +3,4 @@
 [quantopian](https://www.quantopian.com/tutorials/getting-started)
 rachel's [ML course](https://www.fast.ai/)
 [plant seedling competition](https://www.kaggle.com/c/plant-seedlings-classification) 
-
+[swift for tensorflow](https://www.tensorflow.org/swift)
