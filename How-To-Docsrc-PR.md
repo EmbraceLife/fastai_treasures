@@ -1,4 +1,7 @@
 
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#How-to-do-PR-for-Docs-Source" data-toc-modified-id="How-to-do-PR-for-Docs-Source-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>How to do PR for Docs Source</a></span><ul class="toc-item"><li><span><a href="#Step-1-Get-idea-support-from-the-forum" data-toc-modified-id="Step-1-Get-idea-support-from-the-forum-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Step 1 Get idea support from the forum</a></span></li><li><span><a href="#Step-2-Fork-and-download-repo" data-toc-modified-id="Step-2-Fork-and-download-repo-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Step 2 Fork and download repo</a></span></li><li><span><a href="#Step-3-Sync-your-fork-and-local-repo-with-official-repo" data-toc-modified-id="Step-3-Sync-your-fork-and-local-repo-with-official-repo-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Step 3 Sync your fork and local repo with official repo</a></span></li><li><span><a href="#Step-4-delete-and-create-branches" data-toc-modified-id="Step-4-delete-and-create-branches-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Step 4 delete and create branches</a></span></li><li><span><a href="#Step-5-Make-your-edits" data-toc-modified-id="Step-5-Make-your-edits-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Step 5 Make your edits</a></span></li><li><span><a href="#Step-6-Push-the-changes" data-toc-modified-id="Step-6-Push-the-changes-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Step 6 Push the changes</a></span></li><li><span><a href="#Step-7-Make-a-PR" data-toc-modified-id="Step-7-Make-a-PR-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Step 7 Make a PR</a></span></li><li><span><a href="#Step-8-Coming-back-to-Documentation-improvements" data-toc-modified-id="Step-8-Coming-back-to-Documentation-improvements-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Step 8 Coming back to Documentation improvements</a></span></li></ul></li></ul></div>
+
 # How to do PR for Docs Source
 
 This is a visual guide to do a pull request (PR) on fastai library document source files (ipybn), which will walk you through every step of pushing a PR.
@@ -29,7 +32,7 @@ Then you can go to your fork to see whether the sync is a success or not.
 
 PR03.5.png![image.png](PRimages/PR03.5.png)
 
-## step 4 delete and create branches
+## Step 4 delete and create branches
 
 If you have done PR before, you may want to delete your previous branch locally and on github. In this example, I have a branch called update-freeze-docsrc (see the blue box in the image below).
 
@@ -57,7 +60,7 @@ If you finally decided to make it a PR, then you can proceed to copy the changes
 
 PR08.png![image.png](PRimages/PR08.png)
 
-## Step 6 Push the PR
+## Step 6 Push the changes
 
 You can check the changes you made to the original doc source ipynb by running the two lines of codes below.
 
