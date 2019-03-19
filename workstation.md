@@ -1,10 +1,8 @@
 
 <h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#我的本地设置" data-toc-modified-id="我的本地设置-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>我的本地设置</a></span><ul class="toc-item"><li><span><a href="#最常用的terminal-commands" data-toc-modified-id="最常用的terminal-commands-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>最常用的terminal commands</a></span></li><li><span><a href="#如何安装常用软件" data-toc-modified-id="如何安装常用软件-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>如何安装常用软件</a></span></li><li><span><a href="#vim如何剪切，复制，粘贴，保存" data-toc-modified-id="vim如何剪切，复制，粘贴，保存-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>vim如何剪切，复制，粘贴，保存</a></span></li><li><span><a href="#如何做vim常规搜索" data-toc-modified-id="如何做vim常规搜索-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>如何做vim常规搜索</a></span></li><li><span><a href="#最常用的vim操作" data-toc-modified-id="最常用的vim操作-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>最常用的vim操作</a></span></li><li><span><a href="#如何安装vim,-使用ctags,-启用python-syntax" data-toc-modified-id="如何安装vim,-使用ctags,-启用python-syntax-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>如何安装vim, 使用ctags, 启用python syntax</a></span></li><li><span><a href="#构建.vimrc" data-toc-modified-id="构建.vimrc-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>构建.vimrc</a></span></li><li><span><a href="#Conda" data-toc-modified-id="Conda-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Conda</a></span></li><li><span><a href="#Jupyter-notebook" data-toc-modified-id="Jupyter-notebook-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Jupyter notebook</a></span></li><li><span><a href="#git" data-toc-modified-id="git-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>git</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#如何免去用户名和密码" data-toc-modified-id="如何免去用户名和密码-1.10.0.1"><span class="toc-item-num">1.10.0.1&nbsp;&nbsp;</span>如何免去用户名和密码</a></span></li><li><span><a href="#-如何快速git-push" data-toc-modified-id="-如何快速git-push-1.10.0.2"><span class="toc-item-num">1.10.0.2&nbsp;&nbsp;</span><a name="push"></a> 如何快速git push</a></span></li><li><span><a href="#-如何创建branch并将master更新给branch" data-toc-modified-id="-如何创建branch并将master更新给branch-1.10.0.3"><span class="toc-item-num">1.10.0.3&nbsp;&nbsp;</span><a name="branch"></a> 如何创建branch并将master更新给branch</a></span></li><li><span><a href="#-如何做版本内容修改和测试" data-toc-modified-id="-如何做版本内容修改和测试-1.10.0.4"><span class="toc-item-num">1.10.0.4&nbsp;&nbsp;</span><a name="test"></a> 如何做版本内容修改和测试</a></span></li><li><span><a href="#如何做PR" data-toc-modified-id="如何做PR-1.10.0.5"><span class="toc-item-num">1.10.0.5&nbsp;&nbsp;</span>如何做PR</a></span></li></ul></li></ul></li><li><span><a href="#ipdb" data-toc-modified-id="ipdb-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>ipdb</a></span></li><li><span><a href="#构建bash_profile" data-toc-modified-id="构建bash_profile-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>构建bash_profile</a></span></li><li><span><a href="#构建pdbrc" data-toc-modified-id="构建pdbrc-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>构建pdbrc</a></span></li><li><span><a href="#Jupyter-notebook-extensions" data-toc-modified-id="Jupyter-notebook-extensions-1.14"><span class="toc-item-num">1.14&nbsp;&nbsp;</span>Jupyter notebook extensions</a></span></li><li><span><a href="#jn-color-theme" data-toc-modified-id="jn-color-theme-1.15"><span class="toc-item-num">1.15&nbsp;&nbsp;</span>jn color theme</a></span></li><li><span><a href="#youtube-dl" data-toc-modified-id="youtube-dl-1.16"><span class="toc-item-num">1.16&nbsp;&nbsp;</span>youtube-dl</a></span><ul class="toc-item"><li><span><a href="#其他参考链接" data-toc-modified-id="其他参考链接-1.16.1"><span class="toc-item-num">1.16.1&nbsp;&nbsp;</span>其他参考链接</a></span></li><li><span><a href="#如何为视频做语音解说" data-toc-modified-id="如何为视频做语音解说-1.16.2"><span class="toc-item-num">1.16.2&nbsp;&nbsp;</span>如何为视频做语音解说</a></span></li></ul></li></ul></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#我的本地设置" data-toc-modified-id="我的本地设置-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>我的本地设置</a></span><ul class="toc-item"><li><span><a href="#最常用的terminal-commands" data-toc-modified-id="最常用的terminal-commands-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>最常用的terminal commands</a></span></li><li><span><a href="#如何安装常用软件" data-toc-modified-id="如何安装常用软件-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>如何安装常用软件</a></span></li><li><span><a href="#vim如何剪切，复制，粘贴，保存" data-toc-modified-id="vim如何剪切，复制，粘贴，保存-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>vim如何剪切，复制，粘贴，保存</a></span></li><li><span><a href="#如何做vim常规搜索" data-toc-modified-id="如何做vim常规搜索-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>如何做vim常规搜索</a></span></li><li><span><a href="#最常用的vim操作" data-toc-modified-id="最常用的vim操作-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>最常用的vim操作</a></span></li><li><span><a href="#如何安装vim,-使用ctags,-启用python-syntax" data-toc-modified-id="如何安装vim,-使用ctags,-启用python-syntax-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>如何安装vim, 使用ctags, 启用python syntax</a></span></li><li><span><a href="#构建.vimrc" data-toc-modified-id="构建.vimrc-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>构建.vimrc</a></span></li><li><span><a href="#Conda" data-toc-modified-id="Conda-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Conda</a></span></li><li><span><a href="#Jupyter-notebook" data-toc-modified-id="Jupyter-notebook-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Jupyter notebook</a></span></li><li><span><a href="#git" data-toc-modified-id="git-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>git</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#如何免去用户名和密码" data-toc-modified-id="如何免去用户名和密码-1.10.0.1"><span class="toc-item-num">1.10.0.1&nbsp;&nbsp;</span>如何免去用户名和密码</a></span></li><li><span><a href="#如何快速git-push" data-toc-modified-id="如何快速git-push-1.10.0.2"><span class="toc-item-num">1.10.0.2&nbsp;&nbsp;</span>如何快速git push</a></span></li><li><span><a href="#-如何在原fastai-repo和你的fork-repo之间更新？" data-toc-modified-id="-如何在原fastai-repo和你的fork-repo之间更新？-1.10.0.3"><span class="toc-item-num">1.10.0.3&nbsp;&nbsp;</span><a name="fork"></a> 如何在原fastai repo和你的fork repo之间更新？</a></span></li><li><span><a href="#如何创建branch并将master更新给branch" data-toc-modified-id="如何创建branch并将master更新给branch-1.10.0.4"><span class="toc-item-num">1.10.0.4&nbsp;&nbsp;</span>如何创建branch并将master更新给branch</a></span></li><li><span><a href="#如何做版本内容修改和测试" data-toc-modified-id="如何做版本内容修改和测试-1.10.0.5"><span class="toc-item-num">1.10.0.5&nbsp;&nbsp;</span>如何做版本内容修改和测试</a></span></li><li><span><a href="#如何做PR" data-toc-modified-id="如何做PR-1.10.0.6"><span class="toc-item-num">1.10.0.6&nbsp;&nbsp;</span>如何做PR</a></span></li></ul></li></ul></li><li><span><a href="#ipdb" data-toc-modified-id="ipdb-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>ipdb</a></span></li><li><span><a href="#构建bash_profile" data-toc-modified-id="构建bash_profile-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>构建bash_profile</a></span></li><li><span><a href="#构建pdbrc" data-toc-modified-id="构建pdbrc-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>构建pdbrc</a></span></li><li><span><a href="#Jupyter-notebook-extensions" data-toc-modified-id="Jupyter-notebook-extensions-1.14"><span class="toc-item-num">1.14&nbsp;&nbsp;</span>Jupyter notebook extensions</a></span></li><li><span><a href="#jn-color-theme" data-toc-modified-id="jn-color-theme-1.15"><span class="toc-item-num">1.15&nbsp;&nbsp;</span>jn color theme</a></span></li><li><span><a href="#youtube-dl" data-toc-modified-id="youtube-dl-1.16"><span class="toc-item-num">1.16&nbsp;&nbsp;</span>youtube-dl</a></span><ul class="toc-item"><li><span><a href="#其他参考链接" data-toc-modified-id="其他参考链接-1.16.1"><span class="toc-item-num">1.16.1&nbsp;&nbsp;</span>其他参考链接</a></span></li><li><span><a href="#如何为视频做语音解说" data-toc-modified-id="如何为视频做语音解说-1.16.2"><span class="toc-item-num">1.16.2&nbsp;&nbsp;</span>如何为视频做语音解说</a></span></li></ul></li></ul></li></ul></div>
 
 # 我的本地设置
-
-
 
 [details="最常用的terminal commands"]
 ## 最常用的terminal commands
@@ -45,9 +43,6 @@ esc + b = move backward by a word
 		- 更新  ` conda update conda -y `  outside env
 		- 更新 ` conda update -c fastai fastai ` inside env
 		- 检验 `conda list` `pip show`
-
-
-
 
 [/details]
 [details="vim如何剪切，复制，粘贴，保存"]
@@ -132,7 +127,6 @@ za
 command FileAddress echo expand('%:p')
 ```
 
-
 [/details]
 [details="如何安装vim, 使用ctags, 启用python syntax"]
 ## 如何安装vim, 使用ctags, 启用python syntax
@@ -164,6 +158,7 @@ set background=dark
 filetype indent plugin on
 
 ```
+
 [/details]
 [details="构建.vimrc"]
 ## 构建.vimrc
@@ -218,9 +213,6 @@ au VimEnter no_plugins.vim nnoremap ^b :BACK<CR>
 
 ```
 
-
-
-
 [/details]
 [details="Conda"]
 
@@ -268,7 +260,7 @@ Password for 'https://USERNAME@github.com': <PASSWORD>
 
 ```
 
-#### <a name='push'></a> 如何快速git push
+#### 如何快速git push
 ```bash
 
 # create a new repo on github
@@ -288,7 +280,7 @@ function lazygit() {
 }
 ```
 
-####<a name='fork'></a> 如何在原fastai repo和你的fork repo之间更新？
+#### <a name='fork'></a> 如何在原fastai repo和你的fork repo之间更新？
 
 ```bash
 # step1: fork from official
@@ -311,10 +303,8 @@ git push # update my-fork
 git pull # pull from my-fork
 ```
 
-#### <a name='branch'></a> 如何创建branch并将master更新给branch
+####  如何创建branch并将master更新给branch
 ```
-git push origin --delete a_remote_branch_name # to delete a branch remote in github
-svn checkout url-folder-replace-tree/master-with-trunk # only download part of a repo
 
 git branch # check all branches
 git branch new_branch_name # create a branch from where we are
@@ -322,10 +312,13 @@ git branch -m a_new_name # rename
 git branch -d branch_to_go # delete
 git checkout new_branch # switch to a new branch
 git merge master # inside new-branch, bring updated master into new-branch
+git push --set-upstream origin new-branch-name # 
+git push origin --delete new_branch_name # to delete a branch remote in github
+svn checkout url-folder-replace-tree/master-with-trunk # only download part of a repo
 
 ```
 
-#### <a name='test'></a> 如何做版本内容修改和测试
+#### 如何做版本内容修改和测试
 ```bash
 conda uninstall -y fastai
 cd fastai-fork
@@ -337,11 +330,10 @@ tools/run-after-git-clone
 make test
 pytest
 
-## 如果是docsrc 测试
+## 如果是docsrc 测试 (无需！！！）
 cd docs_src
 ./run_tests.sh
 ```
-
 
 #### 如何做PR
 [四步法](https://docs.fast.ai/gen_doc_main.html#process-for-contributing-to-the-docs)
@@ -350,8 +342,6 @@ cd docs_src
 第三步：进行修改，测试[指南](#test)      
 第四步：push修改版本到fork的branch中更新上传[指南](#push)      
 第五步：前往你的fork on github,选择branch，点击new pull request      
-
-
 
 [/details]
 [details="ipdb "]
