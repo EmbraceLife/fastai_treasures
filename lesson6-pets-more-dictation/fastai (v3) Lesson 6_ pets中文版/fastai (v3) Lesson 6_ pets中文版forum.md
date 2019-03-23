@@ -150,7 +150,7 @@ src
 
 
 
-![png](output_15_2.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_15_2.jpeg?raw=true)
 
 
 
@@ -208,7 +208,7 @@ data = get_data(224, bs, 'zeros') # 图片统一成224的尺寸
 
 
 
-![png](output_18_2.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_18_2.jpeg?raw=true)
 
 
 
@@ -246,7 +246,7 @@ plot_multi(_plot, 3, 3, figsize=(8,8)) # （3，3） 3行3列， 整体上8高8�
 ```
 
 
-![png](output_20_0.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_20_0.png?raw=true)
 
 [/details]
 [details="对比padding='zero' vs 'reflection'的区别"]
@@ -263,7 +263,7 @@ plot_multi(_plot, 3, 3, figsize=(8,8))
 ```
 
 
-![png](output_23_0.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_23_0.png?raw=true)
 
 [/details]
 [details="如何释放内存"]
@@ -302,219 +302,6 @@ learn = cnn_learner(data,
 ```python
 learn.summary()
 ```
-
-
-
-
-    ======================================================================
-    Layer (type)         Output Shape         Param #    Trainable 
-    ======================================================================
-    Conv2d               [1, 64, 112, 112]    9,408      False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 112, 112]    128        True      
-    ______________________________________________________________________
-    ReLU                 [1, 64, 112, 112]    0          False     
-    ______________________________________________________________________
-    MaxPool2d            [1, 64, 56, 56]      0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 64, 56, 56]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 56, 56]      128        True      
-    ______________________________________________________________________
-    ReLU                 [1, 64, 56, 56]      0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 64, 56, 56]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 56, 56]      128        True      
-    ______________________________________________________________________
-    Conv2d               [1, 64, 56, 56]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 56, 56]      128        True      
-    ______________________________________________________________________
-    ReLU                 [1, 64, 56, 56]      0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 64, 56, 56]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 56, 56]      128        True      
-    ______________________________________________________________________
-    Conv2d               [1, 64, 56, 56]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 56, 56]      128        True      
-    ______________________________________________________________________
-    ReLU                 [1, 64, 56, 56]      0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 64, 56, 56]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 56, 56]      128        True      
-    ______________________________________________________________________
-    Conv2d               [1, 128, 28, 28]     73,728     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 28, 28]     256        True      
-    ______________________________________________________________________
-    ReLU                 [1, 128, 28, 28]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 128, 28, 28]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 28, 28]     256        True      
-    ______________________________________________________________________
-    Conv2d               [1, 128, 28, 28]     8,192      False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 28, 28]     256        True      
-    ______________________________________________________________________
-    Conv2d               [1, 128, 28, 28]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 28, 28]     256        True      
-    ______________________________________________________________________
-    ReLU                 [1, 128, 28, 28]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 128, 28, 28]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 28, 28]     256        True      
-    ______________________________________________________________________
-    Conv2d               [1, 128, 28, 28]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 28, 28]     256        True      
-    ______________________________________________________________________
-    ReLU                 [1, 128, 28, 28]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 128, 28, 28]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 28, 28]     256        True      
-    ______________________________________________________________________
-    Conv2d               [1, 128, 28, 28]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 28, 28]     256        True      
-    ______________________________________________________________________
-    ReLU                 [1, 128, 28, 28]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 128, 28, 28]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 28, 28]     256        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     294,912    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 14, 14]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     32,768     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 14, 14]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 14, 14]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 14, 14]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 14, 14]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 14, 14]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 14, 14]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 14, 14]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 512, 7, 7]       1,179,648  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 7, 7]       1,024      True      
-    ______________________________________________________________________
-    ReLU                 [1, 512, 7, 7]       0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 512, 7, 7]       2,359,296  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 7, 7]       1,024      True      
-    ______________________________________________________________________
-    Conv2d               [1, 512, 7, 7]       131,072    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 7, 7]       1,024      True      
-    ______________________________________________________________________
-    Conv2d               [1, 512, 7, 7]       2,359,296  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 7, 7]       1,024      True      
-    ______________________________________________________________________
-    ReLU                 [1, 512, 7, 7]       0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 512, 7, 7]       2,359,296  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 7, 7]       1,024      True      
-    ______________________________________________________________________
-    Conv2d               [1, 512, 7, 7]       2,359,296  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 7, 7]       1,024      True      
-    ______________________________________________________________________
-    ReLU                 [1, 512, 7, 7]       0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 512, 7, 7]       2,359,296  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 7, 7]       1,024      True      
-    ______________________________________________________________________
-    AdaptiveAvgPool2d    [1, 512, 1, 1]       0          False     
-    ______________________________________________________________________
-    AdaptiveMaxPool2d    [1, 512, 1, 1]       0          False     
-    ______________________________________________________________________
-    Flatten              [1, 1024]            0          False     
-    ______________________________________________________________________
-    BatchNorm1d          [1, 1024]            2,048      True      
-    ______________________________________________________________________
-    Dropout              [1, 1024]            0          False     
-    ______________________________________________________________________
-    Linear               [1, 512]             524,800    True      
-    ______________________________________________________________________
-    ReLU                 [1, 512]             0          False     
-    ______________________________________________________________________
-    BatchNorm1d          [1, 512]             1,024      True      
-    ______________________________________________________________________
-    Dropout              [1, 512]             0          False     
-    ______________________________________________________________________
-    Linear               [1, 37]              18,981     True      
-    ______________________________________________________________________
-    BatchNorm1d          [1, 37]              74         True      
-    ______________________________________________________________________
-    
-    Total params: 21,831,599
-    Total trainable params: 563,951
-    Total non-trainable params: 21,267,648
 
 
 [/details]
@@ -568,285 +355,8 @@ learn.load(path_model12/'3_1e-2_0.8')
 
 
 
-    Learner(data=ImageDataBunch;
-    
-    Train: LabelList (5912 items)
-    x: ImageList
-    Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224)
-    y: CategoryList
-    shiba_inu,wheaten_terrier,staffordshire_bull_terrier,Maine_Coon,chihuahua
-    Path: /kaggle/input/the-oxfordiiit-pet-dataset/images/images;
-    
-    Valid: LabelList (1477 items)
-    x: ImageList
-    Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224)
-    y: CategoryList
-    Bengal,Sphynx,japanese_chin,Sphynx,Russian_Blue
-    Path: /kaggle/input/the-oxfordiiit-pet-dataset/images/images;
-    
-    Test: None, model=Sequential(
-      (0): Sequential(
-        (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
-        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (2): ReLU(inplace)
-        (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
-        (4): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-        (5): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (downsample): Sequential(
-              (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
-              (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            )
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (3): BasicBlock(
-            (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-        (6): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (downsample): Sequential(
-              (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
-              (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            )
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (3): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (4): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (5): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-        (7): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (downsample): Sequential(
-              (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
-              (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            )
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-      )
-      (1): Sequential(
-        (0): AdaptiveConcatPool2d(
-          (ap): AdaptiveAvgPool2d(output_size=1)
-          (mp): AdaptiveMaxPool2d(output_size=1)
-        )
-        (1): Flatten()
-        (2): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (3): Dropout(p=0.25)
-        (4): Linear(in_features=1024, out_features=512, bias=True)
-        (5): ReLU(inplace)
-        (6): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (7): Dropout(p=0.5)
-        (8): Linear(in_features=512, out_features=37, bias=True)
-        (9): BatchNorm1d(37, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
-      )
-    ), opt_func=functools.partial(<class 'torch.optim.adam.Adam'>, betas=(0.9, 0.99)), loss_func=FlattenedLoss of CrossEntropyLoss(), metrics=[<function error_rate at 0x7f8f73f06378>], true_wd=True, bn_wd=True, wd=0.01, train_bn=True, path=PosixPath('/kaggle/input/the-oxfordiiit-pet-dataset/images/images'), model_dir='/kaggle/working', callback_fns=[functools.partial(<class 'fastai.basic_train.Recorder'>, add_time=True)], callbacks=[], layer_groups=[Sequential(
-      (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
-      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (2): ReLU(inplace)
-      (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
-      (4): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (5): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (6): ReLU(inplace)
-      (7): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (8): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (9): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (11): ReLU(inplace)
-      (12): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (13): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (14): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (15): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (16): ReLU(inplace)
-      (17): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (18): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (19): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-      (20): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (21): ReLU(inplace)
-      (22): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (23): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (24): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
-      (25): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (26): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (27): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (28): ReLU(inplace)
-      (29): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (30): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (31): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (32): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (33): ReLU(inplace)
-      (34): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (35): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (36): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (37): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (38): ReLU(inplace)
-      (39): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (40): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    ), Sequential(
-      (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (2): ReLU(inplace)
-      (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (5): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
-      (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (7): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (9): ReLU(inplace)
-      (10): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (11): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (12): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (13): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (14): ReLU(inplace)
-      (15): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (16): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (17): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (18): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (19): ReLU(inplace)
-      (20): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (21): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (22): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (23): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (24): ReLU(inplace)
-      (25): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (26): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (27): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (28): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (29): ReLU(inplace)
-      (30): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (31): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (32): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-      (33): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (34): ReLU(inplace)
-      (35): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (36): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (37): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
-      (38): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (39): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (40): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (41): ReLU(inplace)
-      (42): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (43): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (44): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (45): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (46): ReLU(inplace)
-      (47): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (48): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    ), Sequential(
-      (0): AdaptiveAvgPool2d(output_size=1)
-      (1): AdaptiveMaxPool2d(output_size=1)
-      (2): Flatten()
-      (3): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (4): Dropout(p=0.25)
-      (5): Linear(in_features=1024, out_features=512, bias=True)
-      (6): ReLU(inplace)
-      (7): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (8): Dropout(p=0.5)
-      (9): Linear(in_features=512, out_features=37, bias=True)
-      (10): BatchNorm1d(37, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
-    )], add_time=True)
-
-
 [/details]
-[details=""]
+[details="pct_start的用意"]
 #### pct_start的用意
 
 ```python
@@ -868,283 +378,6 @@ learn.load(path_model12/'2_1e-6_1e-3_0.8')
 ```
 
 
-
-
-    Learner(data=ImageDataBunch;
-    
-    Train: LabelList (5912 items)
-    x: ImageList
-    Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224)
-    y: CategoryList
-    shiba_inu,wheaten_terrier,staffordshire_bull_terrier,Maine_Coon,chihuahua
-    Path: /kaggle/input/the-oxfordiiit-pet-dataset/images/images;
-    
-    Valid: LabelList (1477 items)
-    x: ImageList
-    Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224),Image (3, 224, 224)
-    y: CategoryList
-    Bengal,Sphynx,japanese_chin,Sphynx,Russian_Blue
-    Path: /kaggle/input/the-oxfordiiit-pet-dataset/images/images;
-    
-    Test: None, model=Sequential(
-      (0): Sequential(
-        (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
-        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (2): ReLU(inplace)
-        (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
-        (4): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-        (5): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (downsample): Sequential(
-              (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
-              (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            )
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (3): BasicBlock(
-            (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-        (6): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (downsample): Sequential(
-              (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
-              (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            )
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (3): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (4): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (5): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-        (7): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (downsample): Sequential(
-              (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
-              (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            )
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-      )
-      (1): Sequential(
-        (0): AdaptiveConcatPool2d(
-          (ap): AdaptiveAvgPool2d(output_size=1)
-          (mp): AdaptiveMaxPool2d(output_size=1)
-        )
-        (1): Flatten()
-        (2): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (3): Dropout(p=0.25)
-        (4): Linear(in_features=1024, out_features=512, bias=True)
-        (5): ReLU(inplace)
-        (6): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (7): Dropout(p=0.5)
-        (8): Linear(in_features=512, out_features=37, bias=True)
-        (9): BatchNorm1d(37, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
-      )
-    ), opt_func=functools.partial(<class 'torch.optim.adam.Adam'>, betas=(0.9, 0.99)), loss_func=FlattenedLoss of CrossEntropyLoss(), metrics=[<function error_rate at 0x7f8f73f06378>], true_wd=True, bn_wd=True, wd=0.01, train_bn=True, path=PosixPath('/kaggle/input/the-oxfordiiit-pet-dataset/images/images'), model_dir='/kaggle/working', callback_fns=[functools.partial(<class 'fastai.basic_train.Recorder'>, add_time=True)], callbacks=[], layer_groups=[Sequential(
-      (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
-      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (2): ReLU(inplace)
-      (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
-      (4): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (5): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (6): ReLU(inplace)
-      (7): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (8): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (9): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (11): ReLU(inplace)
-      (12): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (13): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (14): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (15): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (16): ReLU(inplace)
-      (17): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (18): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (19): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-      (20): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (21): ReLU(inplace)
-      (22): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (23): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (24): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
-      (25): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (26): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (27): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (28): ReLU(inplace)
-      (29): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (30): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (31): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (32): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (33): ReLU(inplace)
-      (34): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (35): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (36): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (37): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (38): ReLU(inplace)
-      (39): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (40): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    ), Sequential(
-      (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (2): ReLU(inplace)
-      (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (5): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
-      (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (7): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (9): ReLU(inplace)
-      (10): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (11): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (12): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (13): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (14): ReLU(inplace)
-      (15): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (16): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (17): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (18): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (19): ReLU(inplace)
-      (20): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (21): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (22): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (23): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (24): ReLU(inplace)
-      (25): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (26): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (27): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (28): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (29): ReLU(inplace)
-      (30): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (31): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (32): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-      (33): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (34): ReLU(inplace)
-      (35): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (36): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (37): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
-      (38): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (39): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (40): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (41): ReLU(inplace)
-      (42): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (43): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (44): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (45): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (46): ReLU(inplace)
-      (47): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (48): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    ), Sequential(
-      (0): AdaptiveAvgPool2d(output_size=1)
-      (1): AdaptiveMaxPool2d(output_size=1)
-      (2): Flatten()
-      (3): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (4): Dropout(p=0.25)
-      (5): Linear(in_features=1024, out_features=512, bias=True)
-      (6): ReLU(inplace)
-      (7): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (8): Dropout(p=0.5)
-      (9): Linear(in_features=512, out_features=37, bias=True)
-      (10): BatchNorm1d(37, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
-    )], add_time=True)
 
 
 [/details]
@@ -1276,7 +509,7 @@ x.show()
 
 
 
-![png](output_47_4.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_47_4.png?raw=true)
 
 [/details]
 [details="创造一个3x3的matrix作为kernel"]
@@ -1378,7 +611,7 @@ show_image(edge[0], figsize=(5,5)) # 展示被kernel处理过的图片的样子
 
 
 
-![png](output_58_1.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_58_1.png?raw=true)
 
 [/details]
 [details="查看类别和模型结构"]
@@ -1404,378 +637,11 @@ learn.model # 查看模型结构
 
 
 
-    Sequential(
-      (0): Sequential(
-        (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
-        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (2): ReLU(inplace)
-        (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
-        (4): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-        (5): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (downsample): Sequential(
-              (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
-              (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            )
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (3): BasicBlock(
-            (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-        (6): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (downsample): Sequential(
-              (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
-              (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            )
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (3): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (4): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (5): BasicBlock(
-            (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-        (7): Sequential(
-          (0): BasicBlock(
-            (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (downsample): Sequential(
-              (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
-              (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            )
-          )
-          (1): BasicBlock(
-            (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-          (2): BasicBlock(
-            (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-            (relu): ReLU(inplace)
-            (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-            (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          )
-        )
-      )
-      (1): Sequential(
-        (0): AdaptiveConcatPool2d(
-          (ap): AdaptiveAvgPool2d(output_size=1)
-          (mp): AdaptiveMaxPool2d(output_size=1)
-        )
-        (1): Flatten()
-        (2): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (3): Dropout(p=0.25)
-        (4): Linear(in_features=1024, out_features=512, bias=True)
-        (5): ReLU(inplace)
-        (6): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (7): Dropout(p=0.5)
-        (8): Linear(in_features=512, out_features=37, bias=True)
-        (9): BatchNorm1d(37, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
-      )
-    )
-
-
-
-
 ```python
 print(learn.summary()) # 查看layer tensor尺寸和训练参数数量
 ```
 
-    ======================================================================
-    Layer (type)         Output Shape         Param #    Trainable 
-    ======================================================================
-    Conv2d               [1, 64, 176, 176]    9,408      False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 176, 176]    128        True      
-    ______________________________________________________________________
-    ReLU                 [1, 64, 176, 176]    0          False     
-    ______________________________________________________________________
-    MaxPool2d            [1, 64, 88, 88]      0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 64, 88, 88]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 88, 88]      128        True      
-    ______________________________________________________________________
-    ReLU                 [1, 64, 88, 88]      0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 64, 88, 88]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 88, 88]      128        True      
-    ______________________________________________________________________
-    Conv2d               [1, 64, 88, 88]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 88, 88]      128        True      
-    ______________________________________________________________________
-    ReLU                 [1, 64, 88, 88]      0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 64, 88, 88]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 88, 88]      128        True      
-    ______________________________________________________________________
-    Conv2d               [1, 64, 88, 88]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 88, 88]      128        True      
-    ______________________________________________________________________
-    ReLU                 [1, 64, 88, 88]      0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 64, 88, 88]      36,864     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 64, 88, 88]      128        True      
-    ______________________________________________________________________
-    Conv2d               [1, 128, 44, 44]     73,728     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 44, 44]     256        True      
-    ______________________________________________________________________
-    ReLU                 [1, 128, 44, 44]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 128, 44, 44]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 44, 44]     256        True      
-    ______________________________________________________________________
-    Conv2d               [1, 128, 44, 44]     8,192      False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 44, 44]     256        True      
-    ______________________________________________________________________
-    Conv2d               [1, 128, 44, 44]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 44, 44]     256        True      
-    ______________________________________________________________________
-    ReLU                 [1, 128, 44, 44]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 128, 44, 44]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 44, 44]     256        True      
-    ______________________________________________________________________
-    Conv2d               [1, 128, 44, 44]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 44, 44]     256        True      
-    ______________________________________________________________________
-    ReLU                 [1, 128, 44, 44]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 128, 44, 44]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 44, 44]     256        True      
-    ______________________________________________________________________
-    Conv2d               [1, 128, 44, 44]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 44, 44]     256        True      
-    ______________________________________________________________________
-    ReLU                 [1, 128, 44, 44]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 128, 44, 44]     147,456    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 128, 44, 44]     256        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     294,912    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 22, 22]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     32,768     False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 22, 22]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 22, 22]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 22, 22]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 22, 22]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    ReLU                 [1, 256, 22, 22]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 256, 22, 22]     589,824    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 256, 22, 22]     512        True      
-    ______________________________________________________________________
-    Conv2d               [1, 512, 11, 11]     1,179,648  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 11, 11]     1,024      True      
-    ______________________________________________________________________
-    ReLU                 [1, 512, 11, 11]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 512, 11, 11]     2,359,296  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 11, 11]     1,024      True      
-    ______________________________________________________________________
-    Conv2d               [1, 512, 11, 11]     131,072    False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 11, 11]     1,024      True      
-    ______________________________________________________________________
-    Conv2d               [1, 512, 11, 11]     2,359,296  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 11, 11]     1,024      True      
-    ______________________________________________________________________
-    ReLU                 [1, 512, 11, 11]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 512, 11, 11]     2,359,296  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 11, 11]     1,024      True      
-    ______________________________________________________________________
-    Conv2d               [1, 512, 11, 11]     2,359,296  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 11, 11]     1,024      True      
-    ______________________________________________________________________
-    ReLU                 [1, 512, 11, 11]     0          False     
-    ______________________________________________________________________
-    Conv2d               [1, 512, 11, 11]     2,359,296  False     
-    ______________________________________________________________________
-    BatchNorm2d          [1, 512, 11, 11]     1,024      True      
-    ______________________________________________________________________
-    AdaptiveAvgPool2d    [1, 512, 1, 1]       0          False     
-    ______________________________________________________________________
-    AdaptiveMaxPool2d    [1, 512, 1, 1]       0          False     
-    ______________________________________________________________________
-    Flatten              [1, 1024]            0          False     
-    ______________________________________________________________________
-    BatchNorm1d          [1, 1024]            2,048      True      
-    ______________________________________________________________________
-    Dropout              [1, 1024]            0          False     
-    ______________________________________________________________________
-    Linear               [1, 512]             524,800    True      
-    ______________________________________________________________________
-    ReLU                 [1, 512]             0          False     
-    ______________________________________________________________________
-    BatchNorm1d          [1, 512]             1,024      True      
-    ______________________________________________________________________
-    Dropout              [1, 512]             0          False     
-    ______________________________________________________________________
-    Linear               [1, 37]              18,981     True      
-    ______________________________________________________________________
-    BatchNorm1d          [1, 37]              74         True      
-    ______________________________________________________________________
-    
-    Total params: 21,831,599
-    Total trainable params: 563,951
-    Total non-trainable params: 21,267,648
+
 
 
 [/details]
@@ -1898,7 +764,7 @@ xb = xb.cuda(); xb # tensor 后面带上了cuda
 
 
 
-![png](output_71_4.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_71_4.jpeg?raw=true)
 
 
 
@@ -2050,7 +916,7 @@ show_heatmap(avg_acts)
 ```
 
 
-![png](output_84_0.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_84_0.png?raw=true)
 
 [/details]
 
@@ -2107,7 +973,7 @@ show_heatmap(mult)
 ```
 
 
-![png](output_91_0.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_91_0.png?raw=true)
 
 [/details]
 [details="采用一张新图片"]
@@ -2135,7 +1001,7 @@ x = open_image(path_img/'catdogTogether.png'); x
 
 
 
-![png](output_94_0.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_94_0.jpeg?raw=true)
 
 
 [/details]
@@ -2153,7 +1019,7 @@ xb_im
 
 
 
-![png](output_96_0.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_96_0.jpeg?raw=true)
 
 
 [/details]
@@ -2204,7 +1070,7 @@ show_heatmap(mult)
 ```
 
 
-![png](output_102_0.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_102_0.png?raw=true)
 
 [/details]
 [details="将y改换成另一个猫类别，重复上述操作，热力图识别猫而不再是狗"]
@@ -2253,6 +1119,6 @@ show_heatmap(mult)
 ```
 
 
-![png](output_107_0.png)
+![png](https://github.com/EmbraceLife/fastai_treasures/blob/master/lesson6-pets-more-dictation/fastai%20(v3)%20Lesson%206_%20pets%E4%B8%AD%E6%96%87%E7%89%88/output_107_0.png?raw=true)
 
 [/details]
