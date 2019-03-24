@@ -24,6 +24,7 @@ esc + f = move forward by a word
 esc + b = move backward by a word
 ```
 [/details]
+
 [details="如何fastai本地安装"]
 ## 如何安装常用软件
 	- 下载安装conda 
@@ -57,8 +58,9 @@ esc + b = move backward by a word
 		```
 
 [/details]
+
 [details="vim如何剪切，复制，粘贴，保存"]
-## vim如何剪切，复制，粘贴，保存
+#### vim如何剪切，复制，粘贴，保存
 ```vim
 : how to cut, under normal mode
 : 1. put cursor to where you want to cut
@@ -71,8 +73,9 @@ esc + b = move backward by a word
 : 6. insert mode, press :w and enter
 ```
 [/details]
+
 [details="如何做vim常规搜索"]
-## 如何做vim常规搜索
+#### 文本内如何做vim常规搜索
 [Searching | Vim Tips Wiki | FANDOM powered by Wikia](http://vim.wikia.com/wiki/Searching)
 ```vim
 /ls   ;; 我们在搜索ls, 前面不要有space空格
@@ -83,10 +86,10 @@ set ignorecase
 ```
 
 [/details]
-[details="最常用的vim操作"]
-## 最常用的vim操作
 
-#### 如何退出
+[details="如何退出vim"]
+
+#### 如何退出vim
 ```vim
 
 :q  ; to quit without save
@@ -94,6 +97,8 @@ set ignorecase
 :wq ; save and quit 
 ```
 
+[/details]   
+[details="如何对文件夹做tag"]
 #### 如何对文件夹做tag
 ```vim
 ; terminal文件夹下输入 vim 
@@ -102,6 +107,9 @@ set ignorecase
 ; 尝试搜索untar_data
 :tag untar ;tab to complete
 ```
+
+[/details]
+[details="如何探索代码"]
 
 #### 如何探索代码
 ```vim
@@ -114,37 +122,58 @@ ctrl + \ ;= dive in from a new tab
 ctrl + a, ;left or right ;= switch between tabs
 ```
 
+[/details]
+[details="如何寻找文件和文件夹搜索"]
 
-#### 如何寻找函数所在文件
+#### 如何寻找文件和文件夹搜索
 ```vim
 :find pathlib ; 寻找pathlib所在文件
 
 :tag Path ; 进入文件后再搜索
 ```
 
+[/details]
+[details="如何展开和折叠"]
+
 #### 如何展开和折叠
 ```vim
 za ;将鼠标放在+-
 ```
+
+[/details]
+
+[details="如何知道当前所在文件地址"]
 
 #### 如何知道当前所在文件地址
 ```vim
 :F ; tab to complete and enter
 ```
 
-### 安装下载 vim
+[/details]
+
+[details="安装下载 vim"]
+
+#### 安装下载 vim
 ```bash
 brew install vim
 brew upgrade vim
 vim # to run vim
 ```
 
+[/details]
+
+[details="设置 vim source"]
+
 ### 设置 vim source
 ```bash
 nano ~/.vimrc
 ```
 
-### 安装 ctags
+[/details]
+
+[details="安装 ctags"]
+
+#### 安装 ctags
 ```bash
 brew install ctags
 
@@ -152,7 +181,7 @@ brew install ctags
 
 [/details]
 [details="查看 .vimrc"]
-## 查看.vimrc
+#### 查看.vimrc
 
 ```vim
 set tags=tags
@@ -207,7 +236,7 @@ au VimEnter no_plugins.vim nnoremap ^b :BACK<CR>
 [/details]
 [details="Conda"]
 
-## Conda
+#### Conda
 ```bash
 # download miniconda https://docs.conda.io/en/latest/miniconda.html
 conda --version # check version:
@@ -224,9 +253,9 @@ conda env create -f environment.yml # build env from yml
 ```
 
 [/details]
-[details="Jupyter notebook"]
+[details="Jupyter notebook install"]
 
-## Jupyter notebook
+#### Jupyter notebook
 ```
 # If you have Python 3 installed (which is recommended):
 
@@ -237,14 +266,18 @@ jupyter notebook # to start
 ```
 
 [/details]
-[details="git"]
-## git
+[details="如何撤回本地和推送的commit "]
+
 
 #### 如何撤回本地和推送的commit 
 ```bash
 git reset --hard HEAD~1
 git push origin +master
 ```
+
+[/details]
+
+[details="如何免去用户名和密码"]
 
 #### 如何免去用户名和密码
 ```bash
@@ -256,6 +289,10 @@ Username for 'https://github.com': <USERNAME>
 Password for 'https://USERNAME@github.com': <PASSWORD>
 
 ```
+
+[/details]
+
+[details="如何快速git push"]
 
 #### 如何快速git push
 ```bash
@@ -273,6 +310,10 @@ git push -u origin master
 git reset # to undo git add .
 
 ```
+
+[/details]
+
+[details="如何在原fastai repo和你的fork repo之间更新？"]
 
 #### 如何在原fastai repo和你的fork repo之间更新？
 
@@ -301,6 +342,10 @@ git push # update my-fork
 git pull # pull from my-fork
 ```
 
+[/details]
+
+[details="如何创建branch并将master更新给branch"]
+
 ####  如何创建branch并将master更新给branch
 ```
 
@@ -315,6 +360,10 @@ git push origin --delete new_branch_name # to delete a branch remote in github
 svn checkout url-folder-replace-tree/master-with-trunk # only download part of a repo
 
 ```
+
+[/details]
+
+[details="如何做版本内容修改和测试"]
 
 #### 如何做版本内容修改和测试
 ```bash
@@ -333,7 +382,6 @@ pytest
 cd docs_src
 ./run_tests.sh
 ```
-
 
 [/details]
 [details="ipdb "]
@@ -470,6 +518,7 @@ jupyter contrib nbextension install --user
 jupyter nbextension enable toc2/main  # in terminal or notebook cell, both are fine
 # edit/notebook_config (at bottom of the droplist)
 ```
+
 [/details]
 [details="jn color theme"]
 ## jn color theme 
@@ -512,10 +561,10 @@ youtube-dl -f 'best[ext=mp4]'  --write-auto-sub  --sub-lang en  --sub-format srt
 
 [/details]
 [details="如何为视频做语音解说"]
+
 ### 如何为视频做语音解说
 	- 使用ytcropper做视频截取，循环播放
 	- mac音量调到最低
 	- 用quicktime做屏幕录制，提供语音解读，音量调节适中
 
 [/details]
-
