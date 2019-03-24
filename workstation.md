@@ -1,6 +1,12 @@
 
 # 我的本地设置
 
+如何不commit下，对Kaggle kernel大型文件下载 [论坛分享 ](https://forums.fast.ai/t/platform-kaggle-kernels/32569/139?u=daniel)
+如何给你的code snippet做快捷键 [论坛分享](https://forums.fast.ai/t/jupyter-notebook-enhancements-tips-and-tricks/17064/27?u=daniel)
+如何做你的第一个文档改进PR [听写](https://forums.fast.ai/t/fast-ai-v3-2019/39325/88?u=daniel)
+如何创建你的第一个多行代码snippet [论坛分享](https://forums.fast.ai/t/jupyter-notebook-enhancements-tips-and-tricks/17064/28?u=daniel)
+我的[快捷键设置 ](https://github.com/EmbraceLife/fastai_treasures/tree/master/my_shortcut_src)
+
 [details="最常用的terminal commands"]
 ## 最常用的terminal commands
 ```bash
@@ -40,6 +46,15 @@ esc + b = move backward by a word
 		- 更新  ` conda update conda -y `  outside env
 		- 更新 ` conda update -c fastai fastai ` inside env
 		- 检验 `conda list` `pip show`
+		- 卸载 `conda uninstall fastai`
+	- developer install
+		- see https://github.com/fastai/fastai#developer-install
+	  ```bash 
+	  git clone fastai-fork
+	  cd fastai-fork
+	  tools/run-after-git-clone
+		pip install -e ".[dev]"
+		```
 
 [/details]
 [details="vim如何剪切，复制，粘贴，保存"]
@@ -70,95 +85,74 @@ set ignorecase
 [/details]
 [details="最常用的vim操作"]
 ## 最常用的vim操作
+
+#### 如何退出
 ```vim
-# 如何退出
-:q = to quit without save
-:q! = to quit without save
-:wq = save and quit 
 
-# 如何对文件夹做tag
-" select a directory you want to work in, and open vim
-:MakeTags " to create tags for the entire directory, or 
-" this is an alias in .vimrc by the following
-command! MakeTags !ctags -R .
-command MT MakeTags 
-
-" to find the function or class in the directory and open it
-:tag untar_data 
-
-# 如何探索代码
-" put cursor on a function you want to dive and press 
-ctrl + ] = dive in
-ctrl + t = pull back
-ctrl + w, ctrl + ] = dive in from another horizontal split
-ctrl + w, up or dn = switch between splits
-ctrl + \ = dive in from a new tab 
-ctrl + a, left or right = switch between tabs
-" made possible in .vimrc by 
-map <C-a><up> :tabr<cr>
-map <C-a><down> :tabl<cr>
-map <C-a><left> :tabp<cr>
-map <C-a><right> :tabn<cr>
-
-
-" ctrl + \ made automatic in .vimrc by the following
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-
-
-" when classes can't be find then trace its library file 
-:find pathlib
-" inside the library file you can find 
-:tag Path 
-
-" fold up all functions within a file
-:set foldmethod=indent
-" already made automatic in .vimrc by 
-set foldmethod=indent
-
-" move cursor to the + or - sign to open and close folding with 
-za 
-
-" to display the full file address
-:echo expand('%:p')
-" already made automatic in .vimrc by 
-command FileAddress echo expand('%:p')
+:q  ; to quit without save
+:q! ; to quit without save
+:wq ; save and quit 
 ```
 
-[/details]
-[details="如何安装vim, 使用ctags, 启用python syntax"]
-## 如何安装vim, 使用ctags, 启用python syntax
+#### 如何对文件夹做tag
+```vim
+; terminal文件夹下输入 vim 
+; 再输入 :MT
 
+; 尝试搜索untar_data
+:tag untar ;tab to complete
+```
+
+#### 如何探索代码
+```vim
+; 将鼠标放在要探索的code上
+ctrl + ] ;= dive in
+ctrl + t ;= pull back
+ctrl + w, ctrl + ] ;= dive in from another horizontal split
+ctrl + w, up or dn ;= switch between splits
+ctrl + \ ;= dive in from a new tab 
+ctrl + a, ;left or right ;= switch between tabs
+```
+
+
+#### 如何寻找函数所在文件
+```vim
+:find pathlib ; 寻找pathlib所在文件
+
+:tag Path ; 进入文件后再搜索
+```
+
+#### 如何展开和折叠
+```vim
+za ;将鼠标放在+-
+```
+
+#### 如何知道当前所在文件地址
+```vim
+:F ; tab to complete and enter
+```
+
+### 安装下载 vim
 ```bash
-### How to install vim
 brew install vim
 brew upgrade vim
 vim # to run vim
+```
 
-### How to configure vim
+### 设置 vim source
+```bash
 nano ~/.vimrc
+```
 
-### How to install and use ctags
+### 安装 ctags
+```bash
 brew install ctags
-nano .vimrc 
-# add 
-set tags=tags
-# at project directory
-ctags -R
-# go to definition 
-CTRL ]
-# go back 
-CTRL t
-
-### How to enable python syntax
-syntax on
-set background=dark
-filetype indent plugin on
 
 ```
 
 [/details]
-[details="构建.vimrc"]
-## 构建.vimrc
+[details="查看 .vimrc"]
+## 查看.vimrc
 
 ```vim
 set tags=tags
@@ -265,27 +259,28 @@ Password for 'https://USERNAME@github.com': <PASSWORD>
 
 #### 如何快速git push
 ```bash
+# 一步完成
+lazygit 'message'
 
+# 分步骤操作
 # create a new repo on github
 # go to your Mac directory 
 git init
 git add README.md
 git commit -m "first commit"
-git remote add origin https://github.com/EmbraceLife/NetLogo-Modeling.git
+git remote add origin official-repo.git
 git push -u origin master
 git reset # to undo git add .
 
-# go to .bash_profit to automate it
-function lazygit() {
-    git add .
-    git commit -a -m "$1"
-    git push
-}
 ```
 
 #### 如何在原fastai repo和你的fork repo之间更新？
 
 ```bash
+# 一步完成
+lazyupdate
+
+# 分步骤操作
 # step1: fork from official
 # step2: git clone from your fork
 git clone https://github.com/EmbraceLife/my-fork
@@ -325,8 +320,9 @@ svn checkout url-folder-replace-tree/master-with-trunk # only download part of a
 ```bash
 conda uninstall -y fastai
 cd fastai-fork
-pip install -e ".[dev]"
 tools/run-after-git-clone
+pip install -e ".[dev]"
+
 # 做版本内容修改，接下来做测试
 
 ## 如果是源代码测试
@@ -523,7 +519,3 @@ youtube-dl -f 'best[ext=mp4]'  --write-auto-sub  --sub-lang en  --sub-format srt
 
 [/details]
 
-
-```python
-
-```
