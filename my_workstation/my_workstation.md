@@ -7,6 +7,12 @@
 如何创建你的第一个多行代码snippet [论坛分享](https://forums.fast.ai/t/jupyter-notebook-enhancements-tips-and-tricks/17064/28?u=daniel)
 我的[快捷键设置 ](https://github.com/EmbraceLife/fastai_treasures/tree/master/my_shortcut_src)
 
+[/details]
+
+[details="如何在iterm2中分屏跳跃"]
+
+`opt` + `cmd` + `up/down arrow`
+
 [details="最常用的terminal commands"]
 ## 最常用的terminal commands
 ```bash
