@@ -6,6 +6,22 @@
 如何创建你的第一个多行代码snippet [论坛分享](https://forums.fast.ai/t/jupyter-notebook-enhancements-tips-and-tricks/17064/28?u=daniel)
 我的[快捷键设置 ](https://github.com/EmbraceLife/fastai_treasures/tree/master/my_shortcut_src)
 
+[details="翻译Youtube字幕常用快捷键"]
+- 将鼠标放置在主输入栏，翻译即可
+- `shift` + `space`  = 暂停/播放
+- `shift` + `arrow left/right` = 后退/前进
+- 如要修改，前往具体字幕栏修改
+
+[/details]
+
+[details="如何去除YouTube字幕翻译时的卡顿"]
+
+- 先下载空白的YouTube提供的sbv字幕
+- 删除所有时间设置
+- 再重新上传回去
+
+[/details]
+
 [details="如何在iterm2中切屏分屏跳跃"]       
 `shift` + `cmd` + `d` = 横切屏幕      
 `opt` + `cmd` + `up/down arrow` = 跳屏      
