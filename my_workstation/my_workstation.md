@@ -1,4 +1,3 @@
-
 # 我的本地设置
 
 如何不commit下，对Kaggle kernel大型文件下载 [论坛分享 ](https://forums.fast.ai/t/platform-kaggle-kernels/32569/139?u=daniel)
@@ -7,11 +6,10 @@
 如何创建你的第一个多行代码snippet [论坛分享](https://forums.fast.ai/t/jupyter-notebook-enhancements-tips-and-tricks/17064/28?u=daniel)
 我的[快捷键设置 ](https://github.com/EmbraceLife/fastai_treasures/tree/master/my_shortcut_src)
 
-[/details]
-
 [details="如何在iterm2中分屏跳跃"]
 
 `opt` + `cmd` + `up/down arrow`
+[/details]
 
 [details="最常用的terminal commands"]
 ## 最常用的terminal commands
@@ -134,7 +132,8 @@ ctrl + a, ;left or right ;= switch between tabs
 #### 如何寻找文件和文件夹搜索
 ```vim
 :find pathlib ; 寻找pathlib所在文件
-
+- ; 调入上一级文件夹路径
+:b# ; 从打开的文档中跳回上一次打开的路径
 :tag Path ; 进入文件后再搜索
 ```
 
