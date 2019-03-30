@@ -6,6 +6,13 @@
 如何创建你的第一个多行代码snippet [论坛分享](https://forums.fast.ai/t/jupyter-notebook-enhancements-tips-and-tricks/17064/28?u=daniel)
 我的[快捷键设置 ](https://github.com/EmbraceLife/fastai_treasures/tree/master/my_shortcut_src)
 
+[details="如何将youtube sbv字幕转化为srt"]
+- 在youtube翻译字幕页面下载你的翻译sbv文件
+- 前往https://captionsconverter.com/ 做转化
+- 前往B站字幕上传你的字幕
+
+[/details]
+
 [details="翻译Youtube字幕常用快捷键"]
 - 将鼠标放置在主输入栏，翻译即可
 - `shift` + `space`  = 暂停/播放
