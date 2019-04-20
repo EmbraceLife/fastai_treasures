@@ -2,6 +2,7 @@ set tags=tags
 set foldcolumn=3
 set foldmethod=indent
 set ignorecase
+set number
 
 command FileAddress echo expand('%:p')
 
@@ -32,6 +33,8 @@ map <C-a><up> :tabr<cr>
 map <C-a><down> :tabl<cr>
 map <C-a><left> :tabp<cr>
 map <C-a><right> :tabn<cr>
+noremap <Up> 5k
+noremap <Down> 5j
 
 """""""""""""""" make presentation with vim files
 au VimEnter no_plugins.vim setl window=66
