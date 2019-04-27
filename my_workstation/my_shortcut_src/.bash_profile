@@ -4,6 +4,7 @@ alias v3='cd /Users/Natsume/Documents/course-v3/nbs/dl1; conda activate fastai'
 alias fk='cd /Users/Natsume/Documents/fastai-fork; conda activate fastai'
 alias sfastai='cd /Users/Natsume/Documents/fastai-fork/fastai/; conda activate fastai'
 alias spython='cd ~/miniconda3/envs/fastai/lib/python3.7/; conda activate fastai'
+alias storch='cd /Users/Natsume/miniconda3/envs/fastai/lib/python3.7/site-packages/torch; conda activate fastai'
 alias pdbpp='python -m pdb'
 alias de='conda deactivate'
 alias xcode="open -a Xcode"
@@ -12,16 +13,16 @@ alias jn='jupyter notebook'
 
 
 function lazygit() {
-    git add .
-    git commit -a -m "$1"
-    git push
+git add .
+git commit -a -m "$1"
+git push
 }
 
 function lazyupdate() {
-    git fetch upstream
-    git checkout master
-    git merge --no-edit upstream/master
-    git push
+git fetch upstream
+git checkout master
+git merge --no-edit upstream/master
+git push
 
 }
 
@@ -46,14 +47,14 @@ export PATH="/anaconda3/bin:$PATH"
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/Natsume/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
+\eval "$__conda_setup"
 else
-    if [ -f "/Users/Natsume/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/Natsume/miniconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="/Users/Natsume/miniconda3/bin:$PATH"
-    fi
+if [ -f "/Users/Natsume/miniconda3/etc/profile.d/conda.sh" ]; then
+. "/Users/Natsume/miniconda3/etc/profile.d/conda.sh"
+CONDA_CHANGEPS1=false conda activate base
+else
+\export PATH="/Users/Natsume/miniconda3/bin:$PATH"
+fi
 fi
 unset __conda_setup
 # <<< conda init <<<
@@ -62,14 +63,14 @@ unset __conda_setup
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/Natsume/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
+\eval "$__conda_setup"
 else
-    if [ -f "/Users/Natsume/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/Natsume/miniconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="/Users/Natsume/miniconda3/bin:$PATH"
-    fi
+if [ -f "/Users/Natsume/miniconda3/etc/profile.d/conda.sh" ]; then
+. "/Users/Natsume/miniconda3/etc/profile.d/conda.sh"
+CONDA_CHANGEPS1=false conda activate base
+else
+\export PATH="/Users/Natsume/miniconda3/bin:$PATH"
+fi
 fi
 unset __conda_setup
 # <<< conda init <<<
