@@ -7,11 +7,11 @@
 # %%
 import fastai.vision as fv
 from fastai.vision import *
+
 # %% markdown
 # ### Data
 # %%
 path = untar_data(URLs.MNIST)
-# <function fastai.datasets.untar_data(url: str, fname: Union[pathlib.Path, str] = None, dest: Union[pathlib.Path, str] = None, data=True, force_download=False) -> pathlib.Path>
 
 # %%
 path.ls()
