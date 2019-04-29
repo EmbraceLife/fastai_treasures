@@ -17,7 +17,9 @@ path = untar_data(URLs.MNIST)
 path.ls()
 # %%
 il = ImageList.from_folder(path, convert_mode='L')
+il_train = ImageList.from_folder(path, convert_mode='L', include='training')
 ilb = ItemList.from_folder(path); ilb
+il_test = ImageList.from_folder(path, convert_mode='L', include='testing')
 # %%
 il.items[0]
 # %%
