@@ -1,0 +1,17 @@
+# My Contribution to Fastai documentations
+
+- 初学者可视化PR指南 [论坛版](https://forums.fast.ai/t/fast-ai-v3-2019/39325/88?u=daniel), [github版本](https://github.com/EmbraceLife/fastai_treasures/blob/master/How-To-Docsrc-PR.md#table-of-contents), [视频解读](https://www.bilibili.com/video/av46130852/?p=10)
+- 如何对源码内文档做更新 [讨论](https://forums.fast.ai/t/documentation-improvements/32550/171?u=daniel)
+- `freeze`文档解读 [学习探讨](https://forums.fast.ai/t/documentation-improvements/32550/125?u=daniel), [Notebook](https://www.kaggle.com/danielliao/understanding-learner-freeze), [成果](https://docs.fast.ai/basic_train.html#Learner.freeze), [视频解读](https://www.bilibili.com/video/av46130852/?p=11)
+- `freeze_to`文档解读 [学习探讨](https://forums.fast.ai/t/documentation-improvements/32550/137?u=daniel), [Kaggle kernel](https://www.kaggle.com/danielliao/understanding-learner-freeze-to), [听写](https://forums.fast.ai/t/fast-ai-v3-2019/39325/89?u=daniel), [成果](https://docs.fast.ai/basic_train.html#Learner.freeze_to), [视频解读](https://www.bilibili.com/video/av46130852/?p=12)
+- layer groups的由来 [学习探讨](https://forums.fast.ai/t/documentation-improvements/32550/146?u=daniel)
+- max_lr的设计和使用 [学习探讨](https://forums.fast.ai/t/why-do-we-need-to-unfreeze-the-learner-everytime-before-retarining-even-if-learn-fit-one-cycle-works-fine-without-learn-unfreeze/41614/6?u=daniel)
+- fit_one_cycle的最优实践 [学习探讨](https://forums.fast.ai/t/why-do-we-need-to-unfreeze-the-learner-everytime-before-retarining-even-if-learn-fit-one-cycle-works-fine-without-learn-unfreeze/41614/5?u=daniel)
+- cnn_learner是如何使用pretrained models [源码解说](https://forums.fast.ai/t/why-do-we-need-to-unfreeze-the-learner-everytime-before-retarining-even-if-learn-fit-one-cycle-works-fine-without-learn-unfreeze/41614/10?u=daniel)
+- `from fastai import *` 真有必要吗 [探讨](https://forums.fast.ai/t/documentation-improvements/32550/152?u=daniel), [kaggle kernel](https://www.kaggle.com/danielliao/why-from-fastai-import-is-not-necessary)
+- `data` 的链接错误？[探讨](https://forums.fast.ai/t/documentation-improvements/32550/155?u=daniel) [已更新](https://github.com/fastai/fastai/pull/1880)
+- `learn` 对应的modules? [探讨](https://forums.fast.ai/t/documentation-improvements/32550/156?u=daniel) [已更新](https://github.com/fastai/fastai/pull/1880)
+- `ImageList`的`items.create_func` set to `open_image` [开始探讨](https://forums.fast.ai/t/documentation-improvements/32550/165?u=daniel)       
+- improve on `untar_data` docs [探讨](https://forums.fast.ai/t/documentation-improvements/32550/167?u=daniel), [PR](https://github.com/fastai/fastai/pull/2009)     
+- improve docs of `ImageList` [探讨](https://forums.fast.ai/t/documentation-improvements/32550/166?u=daniel) [PR](https://github.com/fastai/fastai/pull/2012/files)
+- improve on docs of `get_files` and `_get_files` [探讨](https://forums.fast.ai/t/documentation-improvements/32550/173?u=daniel), [PR](https://github.com/fastai/fastai/pull/2014/files)

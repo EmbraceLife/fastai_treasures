@@ -23,7 +23,7 @@
 
 ## My contributions to Fast.ai
 - Translating Subtitles and Vocabularies 字幕与专业词汇翻译 [Here](https://forums.fast.ai/t/deep-learning-vocab-en-vs-cn/42297?u=daniel)
-- Improving Documentation 文档建设 [Here](https://forums.fast.ai/t/fast-ai-v3-2019/39325/92?u=daniel)
+- Improving Documentation 文档建设 [Here](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_docs_contrib.md)
 - Creating Code Examples 代码案例建设
    
 
