@@ -241,16 +241,18 @@ what kind of ItemList do you have?
 So in this case, it's an item list of images
 
 0:03:19.060,0:03:22.680
-[key8: from_folder ItemList vs ImageList] ]
+[key8: from_folder[ItemList vs ImageList](https://www.youtube.com/watch?v=ONx73Bgy6Wk) [more](https://www.youtube.com/watch?v=7laAMKoDcLE)]
 And then where are you getting the list of file names from
 
 0:03:22.680,0:03:26.160
+[key9: [how get_files work](https://www.youtube.com/watch?v=g6qx_CblEUY)]
 in this case by looking in a folder recursively,
 
 0:03:26.160,0:03:27.500
 and that's where it's coming from
 
 0:03:27.500,0:03:30.400
+[key10: convert_mode='L' in `open_image` used by `ImageList.open`]
 you can pass in arguments
 
 0:03:30.400,0:03:31.500
