@@ -478,11 +478,8 @@ git push # update my-fork
 git pull # pull from my-fork
 ```
 
-[/details]
 
-[details="如何创建branch并将master更新给branch"]
-
-####  如何创建branch, make changes and git push to cloud
+####  如何创建git branch, make changes and git push to cloud
 ```
 
 git branch # check all branches

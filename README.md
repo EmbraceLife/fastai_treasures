@@ -23,14 +23,17 @@
 
 ## My contributions to Fast.ai
 - Translating Subtitles and Vocabularies 字幕与专业词汇翻译 [Here](https://forums.fast.ai/t/deep-learning-vocab-en-vs-cn/42297?u=daniel)
-- Improving Documentation 文档建设 [Here](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_docs_contrib.md)
+- Improving Documentation 文档建设 [Here](https://forums.fast.ai/t/fast-ai-v3-2019/39325/92?u=daniel)
 - Creating Code Examples 代码案例建设
    
 
 ## My toolbox 我的工具箱
+
+- [How to PR docs](https://github.com/EmbraceLife/fastai_treasures/blob/master/How-To-Docsrc-PR.md)
+- my [tools](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my_workstation.ipynb)
 - my translation contribution on [youtube](https://www.youtube.com/timedtext_cs_panel?o=U&ar=2) 
 - my video manager on [youtube](https://www.youtube.com/my_videos?o=U&ar=2)   
-- my [tools](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_tools.md)
+
 
 ## 关于深度碎片
 
