@@ -30,7 +30,7 @@
 ## My toolbox 我的工具箱
 - my translation contribution on [youtube](https://www.youtube.com/timedtext_cs_panel?o=U&ar=2) 
 - my video manager on [youtube](https://www.youtube.com/my_videos?o=U&ar=2)   
-- my [tools](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my_workstation.ipynb)
+- my [tools](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_tools.md)
 
 ## 关于深度碎片
 
