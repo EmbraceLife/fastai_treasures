@@ -103,7 +103,7 @@ class Config(pdb.DefaultConfig):
 3. install autocompletion python
 3. atom beautify
 4. `source activate fastai`
-5. go to a folder and then atom 
+5. go to a folder and then `atom .`
 
 
 ## 如何将youtube sbv字幕转化为srt
