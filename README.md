@@ -22,16 +22,16 @@
 - Real python [plt tutorial](https://realpython.com/python-matplotlib-guide/#why-can-matplotlib-be-confusing)     
 
 ## My contributions to Fast.ai
-- Translating Subtitles and Vocabularies 字幕与专业词汇翻译 [Here](https://forums.fast.ai/t/deep-learning-vocab-en-vs-cn/42297?u=daniel)
-- Improving Documentation 文档建设 [Here](https://forums.fast.ai/t/fast-ai-v3-2019/39325/92?u=daniel)
-- Creating Code Examples 代码案例建设
-   
+- Translating Subtitles and Vocabularies 字幕与专业词汇翻译 [Here](https://github.com/EmbraceLife/fastai_courses_translation_EN2CN)
+- Improving Documentation 文档建设 [Here](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_docs_contrib.md)
+- Creating Code Examples 代码案例建设 [Here](https://github.com/EmbraceLife/fastai_treasures/tree/master/my_workstation/src_fastai_ex/code-examples)
+
 
 ## My toolbox 我的工具箱
 
 - [How to PR docs](https://github.com/EmbraceLife/fastai_treasures/blob/master/How-To-Docsrc-PR.md)
 - my [tools](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_tools.md)
-- my translation contribution on [youtube](https://www.youtube.com/timedtext_cs_panel?o=U&ar=2) 
+- my translation contribution on [youtube](https://www.youtube.com/timedtext_cs_panel?o=U&ar=2)
 - my video manager on [youtube](https://www.youtube.com/my_videos?o=U&ar=2)   
 
 

@@ -14,4 +14,7 @@
 - `ImageList`的`items.create_func` set to `open_image` [开始探讨](https://forums.fast.ai/t/documentation-improvements/32550/165?u=daniel)       
 - improve on `untar_data` docs [探讨](https://forums.fast.ai/t/documentation-improvements/32550/167?u=daniel), [PR](https://github.com/fastai/fastai/pull/2009)     
 - improve docs of `ImageList` [探讨](https://forums.fast.ai/t/documentation-improvements/32550/166?u=daniel) [PR](https://github.com/fastai/fastai/pull/2012/files)
-- improve on docs of `get_files` and `_get_files` [探讨](https://forums.fast.ai/t/documentation-improvements/32550/173?u=daniel), [PR](https://github.com/fastai/fastai/pull/2014/files)
+- Elaboration on the use of `get_files` and `_get_files` accepted [探讨](https://forums.fast.ai/t/documentation-improvements/32550/173?u=daniel), [PR](https://github.com/fastai/fastai/pull/2014/files)
+- Elaboration on the use of `untar_data` accepted [PR](https://github.com/fastai/fastai/pull/2009)
+- `get_files` demo accepted[PR](https://github.com/fastai/fastai/pull/2020)
+- 
