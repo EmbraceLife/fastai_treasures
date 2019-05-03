@@ -1,5 +1,5 @@
 # %% markdown
-# We can get a little glimpse of how `ItemList`'s basic attributes and methods behave with the following code examples.
+# We can get a little glimpse of how `ItemList.from_folder`behave with the following code examples.
 # %%
 from fastai.vision import *
 # %%
