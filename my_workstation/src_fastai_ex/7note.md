@@ -1,12 +1,12 @@
 
 
 
-# Breaking points 
+# Breaking points
 [my translation contribution](https://www.youtube.com/timedtext_cs_panel?o=U&ar=2)
 [my video manager](https://www.youtube.com/my_videos?o=U&ar=2)
 
 0:00:01.520,0:00:03.260
-[key1: intense lesson] 
+[key1: intense lesson]
 Welcome to lesson seven
 
 0:00:03.260,0:00:06.660
@@ -186,7 +186,7 @@ we already know how to implement
 but kind of use the pre-existing pytorch bits of those
 
 0:02:41.540,0:02:45.200
-[key4: URLs.MNIST, [untar_data](https://www.youtube.com/watch?v=MQYMRIBlsEc)]
+[key4: `URLs.MNIST`, `untar_data`]
 So we're going to use the MNIST dataset
 
 0:02:45.200,0:02:49.780
@@ -199,7 +199,7 @@ often we've done stuff
 with a subset of it
 
 0:02:52.000,0:02:53.120
-[key5: check inside folder, [path.ls()](https://www.youtube.com/watch?v=yHiuPVRqu5Y) ]
+[key5: check inside folder, `Path` and `path.ls`]
 So in there
 
 0:02:53.120,0:02:55.000
@@ -231,7 +231,7 @@ and done it all in one cell,
 but let's do them one cell at a time.
 
 0:03:12.000,0:03:12.885
-[key7: start with a kind of ItemList [1](https://www.youtube.com/watch?v=ONx73Bgy6Wk), then [ImageList](https://www.youtube.com/watch?v=ofonThCpH1c)]
+[key7: `ItemList`, `from_folder`]
 So, first thing you say is,
 
 0:03:12.885,0:03:14.000
@@ -241,11 +241,11 @@ what kind of ItemList do you have?
 So in this case, it's an item list of images
 
 0:03:19.060,0:03:22.680
-[key8: from_folder[ItemList vs ImageList](https://www.youtube.com/watch?v=ONx73Bgy6Wk) [more](https://www.youtube.com/watch?v=7laAMKoDcLE)]
+[key8: `ImageList`, `from_folder`]
 And then where are you getting the list of file names from
 
 0:03:22.680,0:03:26.160
-[key9: [how get_files work](https://www.youtube.com/watch?v=g6qx_CblEUY)]
+[key9: `get_files`]
 in this case by looking in a folder recursively,
 
 0:03:26.160,0:03:27.500
@@ -6082,7 +6082,7 @@ Then try and write English prose.
 Not English prose that you want to be read by Geoffrey Hinton and Yann LeCun,
 
 2:00:52.240,2:00:56.480
-but English prose you want to be read by 
+but English prose you want to be read by
 you as of six months ago.
 
 2:00:56.480,2:01:01.780
@@ -6218,7 +6218,7 @@ and find like here's some stuff going on that you might want to get involved in.
 Maybe there's stuff you want to exist you can add your own.
 
 2:04:04.780,2:04:10.560
-Create a study group you know Deena's already created a study group for San 
+Create a study group you know Deena's already created a study group for San
 Francisco starting in January.
 
 2:04:10.560,2:04:12.320
@@ -6430,6 +6430,3 @@ So that's maybe five years? Yeah, maybe longer.
 
 2:11:52.680,2:12:02.300
 All right. I hope to see you all back here for part 2. Thank you.
-
-
-
