@@ -24,7 +24,7 @@
 ## My contributions to Fast.ai
 - Translating Subtitles and Vocabularies 字幕与专业词汇翻译 [Here](https://github.com/EmbraceLife/fastai_courses_translation_EN2CN)
 - Improving Documentation 文档建设 [Here](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_docs_contrib.md)
-- Creating Code Examples 代码案例建设 [Here](https://github.com/EmbraceLife/fastai_treasures/tree/master/my_workstation/src_fastai_ex/code-examples)
+- Creating Code Examples 代码案例建设 [Here](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/src_fastai_ex/code-examples/)
 
 
 ## My toolbox 我的工具箱
