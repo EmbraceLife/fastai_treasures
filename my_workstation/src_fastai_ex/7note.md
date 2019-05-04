@@ -286,6 +286,7 @@ to see what their `convert_modes` are
 but this one is going to be a grayscale
 
 0:03:52.000,0:03:53.800
+[key11: What are `URLs.MNIST`, `ItemList.items`]
 Which is what MNIST is
 
 0:03:53.800,0:03:59.320
@@ -304,9 +305,11 @@ so in this case
 the thing you gave really is a list of filenames.
 
 0:04:08.320,0:04:11.300
+[key12: How to get files from folder `ItemList.from_folder`]
 That's what it got from the folder
 
 0:04:11.300,0:04:12.600
+[key13: see how `ImageList` overwrite on `ItemList`]
 Okay
 
 0:04:12.600,0:04:16.780
