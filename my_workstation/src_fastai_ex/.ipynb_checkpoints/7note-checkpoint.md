@@ -313,14 +313,12 @@ That's what it got from the folder
 Okay
 
 0:04:12.600,0:04:16.780
-[key14: `open_image` and `convert_mode`]
 When you show images normally it shows them in RGB
 
 0:04:16.780,0:04:18.720
 And so in this case,
 
 0:04:18.720,0:04:20.420
-[key15: `cmap` and `Image.show`and source code]
 we want to use a binary color map
 
 0:04:20.420,0:04:22.580
