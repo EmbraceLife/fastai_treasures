@@ -1,252 +1,319 @@
-
-
-
-# Breaking points
-[my translation contribution](https://www.youtube.com/timedtext_cs_panel?o=U&ar=2)
-[my video manager](https://www.youtube.com/my_videos?o=U&ar=2)
-
 0:00:01.520,0:00:03.260
-[key1: intense lesson]
 Welcome to lesson seven
+欢迎来到第七课
 
 0:00:03.260,0:00:06.660
 the last lesson of part one
+这是part1的最后一节课
 
 0:00:06.780,0:00:12.020
 This will be a pretty intense lesson,
+这节课内容非常多
 
 0:00:12.020,0:00:14.740
 and so don't let that bother you,
+但不要因此困扰
 
 0:00:14.740,0:00:18.380
 because partly what I want to do is to
+因为本课的目的之一
 
 0:00:18.380,0:00:20.160
 kind of give you enough things to think about
+是给大家足够多的内容去思考
 
 0:00:20.160,0:00:23.160
 to keep you busy until part2
+帮大家在part2之前都有事可干
 
 0:00:23.160,0:00:26.900
 so in fact some of the things we cover today
+因此今天要学的一些内容
 
 0:00:26.900,0:00:29.620
 I'm not going to tell you about some of the details
+我不会深入细节
 
 0:00:29.620,0:00:31.200
 I'll just point out a few things
+我会点到一些内容
 
 0:00:31.200,0:00:31.778
 where I'll say like
+比如，我会说
 
 0:00:31.778,0:00:32.480
 okay that we're not talking about yet
+这些内容暂时不深入
 
 0:00:32.480,0:00:34.060
 and that we're not talking about that
+这些也是
 
 0:00:34.060,0:00:35.980
 And so then come back in part 2
+回头在part2里
 
 0:00:35.980,0:00:39.760
 to get the details on some of these extra pieces
+我们会讲解对应细节
 
 0:00:39.760,0:00:45.340
 so well, you know today will be a lot of material, pretty quickly
+今天内容很多，且会讲得很快
 
 0:00:45.340,0:00:49.300
 might require a few viewings to fully understand it all,
+可能需要多看几遍才能全部理解
 
 0:00:49.300,0:00:51.080
 or a few experiments and so forth,
+以及做些代码实验等等
 
 0:00:51.080,0:00:52.540
 and that's kind of intentional
+这也是目的之一
 
 0:00:52.540,0:00:53.979
 I'm trying to give you stuff
+我希望给到大家多一些内容
 
 0:00:53.979,0:00:56.240
-to keep you amused for a couple of months
+to to keep you amused for a couple of months
+在未来几个月中来提升兴趣
 
 0:00:56.240,0:01:00.480
-[key2: food classifier app, community work]
 want to start by
+那么一开始
 
 0:01:00.480,0:01:02.500
 showing some cool work
+我要展示些很酷的作品
 
 0:01:02.500,0:01:04.640
 done by a couple of students
+来自我们的学员
 
 0:01:04.640,0:01:07.680
 @reshama and @npatta01
 
 0:01:07.680,0:01:11.240
 who have developed an Android and an iOS app
+写了一个安卓和苹果iOS应用
 
 0:01:11.240,0:01:16.740
 so check out Reshama's post on the forum about that
+大家可以去看看Reshama在论坛里的博客
 
 0:01:16.740,0:01:17.820
 because they have a demonstration
+因为他们做了一个展示
 
 0:01:17.820,0:01:21.880
 of how to create a both Android and iOS apps
+关于如何创建安卓和iOs应用
 
 0:01:21.880,0:01:24.680
 that are actually on the Play Store and on the Apple App Store
+他们的应用是真实存在于谷歌和苹果应用商店中
 
 0:01:24.700,0:01:27.420
 So that's pretty cool
+太酷了
 
 0:01:27.420,0:01:28.380
 first ones I know of
+而且这是我所知道的
 
 0:01:28.380,0:01:29.180
 that are on the App Stores
+在应用商店中
 
 0:01:29.180,0:01:30.120
 that are using fastai
+第一个使用fastai的应用
 
 0:01:30.200,0:01:34.480
 And let me also say a huge thank you to @reshama
+我还要向@reshama表示感谢
 
 0:01:34.480,0:01:35.840
 for all of the work she does
+对她所做的所有贡献
 
 0:01:35.840,0:01:40.160
 both for the fastai community and the machine learning community generally
+不仅是对fastai社区，也包括机器学习社区
 
 0:01:40.160,0:01:42.860
 and also the women in machine learning community in particular
+更是对女性机器学习社区
 
 0:01:42.860,0:01:45.680
 she does a lot of fantastic work
+她做了一系列很棒的工作
 
 0:01:45.680,0:01:50.240
 including providing lots of fantastic documentation and tutorials
+包括提供文档和辅导课
 
 0:01:50.240,0:01:53.260
 and community organizing and so many other things
+以及社区活动和其他
 
 0:01:53.260,0:01:54.540
 so thank you @reshama
+谢谢你 @reshama
 
 0:01:54.540,0:01:57.000
 and congrats on getting this app out there
+同时恭喜发布这个应用
 
 0:01:57.000,0:02:01.957
-[key3: first notebook objectives]
 We have lots of lessons,
+我们有很多内容要讲
 
 0:02:01.957,0:02:07.740
 7 notebooks today as you can see
+今天有7个notebooks, 如你所见
 
 0:02:07.740,0:02:10.080
 and we're going to start with the one
+我们首先要讲的
 
 0:02:10.080,0:02:16.120
 So the first notebook we're going to look at
+第一个要看的notebook是
 
 0:02:16.120,0:02:17.940
 is lesson 7 Resnet MNIST
+是第一课的 Resnet MNIST
 
 0:02:17.940,0:02:19.540
 And what I want to do
+我想做的
 
 0:02:19.540,0:02:21.920
 is to look at some of the stuff
+是一些
 
 0:02:21.920,0:02:23.460
 we started talking about last week
+我们上周开始涉及的内容
 
 0:02:23.460,0:02:25.680
 around convolutions and convolutional neural networks
+主要是关于卷积和卷积神经网络
 
 0:02:25.680,0:02:27.560
 and start building on top of them
+并在其基础上
 
 0:02:27.560,0:02:32.040
 to create a fairly modern deep learning architecture
+创建一些更先进的深度学习模型结构
 
 0:02:32.040,0:02:33.640
 largely from scratch
+大都从头开始写
 
 0:02:33.660,0:02:35.000
 when I say from scratch,
+当我说从头开始写
 
 0:02:35.000,0:02:36.540
 I'm not going to re-implement things
+我不是要重写
 
 0:02:36.540,0:02:37.740
 we already know how to implement
+我们已经会写的代码
 
 0:02:37.740,0:02:41.540
 but kind of use the pre-existing pytorch bits of those
+而是使用现成的pytorch内的工具（来写）
 
 0:02:41.540,0:02:45.200
 [key4: `URLs.MNIST`, `untar_data`]
 So we're going to use the MNIST dataset
+我们要用的MNIST数据集
 
 0:02:45.200,0:02:49.780
 So URLs.MNIST has the whole MNIST dataset,
+而且URLs.MNIST会给到我们完整的数据集
 
 0:02:49.780,0:02:50.620
 often we've done stuff
+通常我们使用这个数据集时
 
 0:02:50.620,0:02:51.900
 with a subset of it
+只用其中的一部分数据
 
 0:02:52.000,0:02:53.120
 [key5: check inside folder, `Path` and `path.ls`]
 So in there
+在数据集里
 
 0:02:53.120,0:02:55.000
 there's a training folder and a testing folder
+有一个“training”文件夹和”testing“文件夹
 
 0:02:55.000,0:02:59.000
 [key6: data block api piece by piece]
 And as I read this in
+在我读取数据时
 
 0:02:59.000,0:03:00.980
 I'm going to show some more details
+我会展示更多细节
 
 0:03:00.980,0:03:02.540
 about pieces of the data blocks API
+是关于data block API的各个部件
 
 0:03:02.540,0:03:05.220
 so that you kind of see what's going on
+从而让你知道背后工作原理
 
 0:03:05.220,0:03:06.900
 Normally with the data block API,
+通常使用data block API 时
 
 0:03:06.900,0:03:09.440
 we've kind of said bla dot bla dot bla dot bla
+我们采用bla.bla.bla 的代码模式
 
 0:03:09.440,0:03:10.420
 and done it all in one cell,
+一次性完成全部的操作
 
 0:03:10.560,0:03:12.000
 but let's do them one cell at a time.
+这次我们一步一步来操作
 
 0:03:12.000,0:03:12.885
-[key7: `ItemList`, `from_folder`]
+[key7: `ItemList`, `ImageList`, `from_folder`]
 So, first thing you say is,
+首先，你需要考虑的是
 
 0:03:12.885,0:03:14.000
 what kind of ItemList do you have?
+采用哪一种ItemList的子类
 
 0:03:14.000,0:03:19.060
 So in this case, it's an item list of images
+这里我们要用的是一系列的图片（因此是ImageList)
 
 0:03:19.060,0:03:22.680
 [key8: `ImageList`, `from_folder`]
 And then where are you getting the list of file names from
+然后要考虑的是你所需要的一系列文件的涞源
 
 0:03:22.680,0:03:26.160
 [key9: `get_files`]
 in this case by looking in a folder recursively,
+在这里我们通过层层深入文件夹来提取文件/数据
 
 0:03:26.160,0:03:27.500
 and that's where it's coming from
@@ -308,6 +375,7 @@ the thing you gave really is a list of filenames.
 [key12: How to get files from folder `ItemList.from_folder`]
 That's what it got from the folder
 
+
 0:04:11.300,0:04:12.600
 [key13: see how `ImageList` overwrite on `ItemList`]
 Okay
@@ -315,13 +383,16 @@ Okay
 0:04:12.600,0:04:16.780
 [key14: `open_image` and `convert_mode`]
 When you show images normally it shows them in RGB
+当我们打印图片时，通常采用的RGB
 
 0:04:16.780,0:04:18.720
 And so in this case,
+因此，在这里，
 
 0:04:18.720,0:04:20.420
 [key15: `cmap` and `Image.show`and source code]
 we want to use a binary color map
+我们要采用二元的色彩图
 
 0:04:20.420,0:04:22.580
 So in fastai you can set a default color map
@@ -366,6 +437,7 @@ So you want to include that unit axis at the start.
 And so fastai I will do that for you, even when it's reading one channel images
 
 0:05:11.140,0:05:14.560
+[key15.5: il[idx], il[idxs]]
 So the `.items` attribute contains the things
 
 0:05:14.560,0:05:17.260
@@ -390,6 +462,7 @@ and so there's the image
 So once you've got an ImageItemList (now ImageList)
 
 0:05:29.740,0:05:32.800
+[key16: split_by_folder, split_by_idxs, split_by_list]
 you then split it into training versus validation
 
 0:05:32.800,0:05:35.260
