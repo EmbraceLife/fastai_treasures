@@ -23,8 +23,7 @@
 
 # My toolbox 我的工具箱
 
-- [How to PR docs](https://github.com/EmbraceLife/fastai_treasures/blob/master/How-To-Docsrc-PR.md)
-- my [tools]((https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/my_workstation.ipynb?flush_cache=true/))
+- see [my toolbox](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/my_workstation.ipynb?flush_cache=true/) in [my workstation](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/?flush_cache=true/)
 - my translation contribution on [youtube](https://www.youtube.com/timedtext_cs_panel?o=U&ar=2) 
 - my video manager on [youtube](https://www.youtube.com/my_videos?o=U&ar=2)   
 
@@ -45,7 +44,7 @@ see the [videos and subtitles](https://course.fast.ai/videos/?lesson=3) from fas
 - lesson 7 EN
 
 ## Improving on fastai documents
-This work started on my forum page [Here](https://forums.fast.ai/t/fast-ai-v3-2019/39325/92?u=daniel), and carried out on in [this repo](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/my_docs_contrib.ipynb?flush_cache=true/). 
+This work started on my forum page [Here](https://forums.fast.ai/t/fast-ai-v3-2019/39325/92?u=daniel), and carried out on in [this repo](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/my_docs_contributions.ipynb?flush_cache=true/). 
 
 [Search](https://github.com/fastai/fastai/pulls?page=2&q=is%3Apr+author%3AEmbraceLife+is%3Aclosed) and view all my contributions with [ReviewNB](https://www.reviewnb.com/), through those commit reviewnb pages you can raise questions on specific lines of my contrib, and I will respond as soon as I can.
 
