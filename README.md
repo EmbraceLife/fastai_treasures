@@ -21,7 +21,7 @@
 - Kaggle [官网](https://www.kaggle.com/)       
 - Real python [plt tutorial](https://realpython.com/python-matplotlib-guide/#why-can-matplotlib-be-confusing)     
 
-# My toolbox 我的工具箱
+# My toolbox
 
 - see [my toolbox](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/my_workstation.ipynb?flush_cache=true/) in [my workstation](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/?flush_cache=true/)
 - my translation contribution on [youtube](https://www.youtube.com/timedtext_cs_panel?o=U&ar=2) 
