@@ -44,9 +44,11 @@ see the [videos and subtitles](https://course.fast.ai/videos/?lesson=3) from fas
 - lesson 7 EN
 
 ## Improving on fastai documents
-This work started on my forum page [Here](https://forums.fast.ai/t/fast-ai-v3-2019/39325/92?u=daniel), and carried out on in [this repo](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/my_docs_contributions.ipynb?flush_cache=true/). 
+See [official docs](https://nbviewer.jupyter.org/github/fastai/fastai/tree/master/docs_src/?flush_cache=true) in jupyter notebook
 
-[Search](https://github.com/fastai/fastai/pulls?page=2&q=is%3Apr+author%3AEmbraceLife+is%3Aclosed) and view all my contributions with [ReviewNB](https://www.reviewnb.com/), through those commit reviewnb pages you can raise questions on specific lines of my contrib, and I will respond as soon as I can.
+This work started on my forum page [Here](https://forums.fast.ai/t/fast-ai-v3-2019/39325/92?u=daniel), and carried out on here on this repo page. 
+
+[Search](https://github.com/fastai/fastai/pulls?page=1&q=is%3Apr+author%3AEmbraceLife+is%3Aclosed) and view all my contributions with [ReviewNB](https://www.reviewnb.com/), through those commit reviewnb pages you can raise questions on specific lines of my contrib, and I will respond as soon as I can.
 
 Many thanks to @sgugger and @stas00 for great help and kind support!
 

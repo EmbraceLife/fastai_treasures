@@ -128,6 +128,14 @@ unset __conda_setup
 
 # Vim basics
 
+### vim switching locations and commands
+```vim
+ctrl + o = jump to previous location
+ctrl + i = jump to forward location
+q: = command history 
+j or k = select commands
+```
+
 ### install kite for vim
 
 - install Kite 
@@ -691,6 +699,10 @@ pp variable_name # 友好打印 该变量
 # 完成当前loop: until
 plt.show() # print out images 
 ```
+
+# Math
+
+turn any snapshort of math in Latex https://mathpix.com/
 
 
 ## 其他参考链接

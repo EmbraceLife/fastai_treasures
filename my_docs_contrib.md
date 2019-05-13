@@ -1,20 +1,58 @@
-# My Contribution to Fastai documentations
 
-- 初学者可视化PR指南 [论坛版](https://forums.fast.ai/t/fast-ai-v3-2019/39325/88?u=daniel), [github版本](https://github.com/EmbraceLife/fastai_treasures/blob/master/How-To-Docsrc-PR.md#table-of-contents), [视频解读](https://www.bilibili.com/video/av46130852/?p=10)
-- 如何对源码内文档做更新 [讨论](https://forums.fast.ai/t/documentation-improvements/32550/171?u=daniel)
-- `freeze`文档解读 [学习探讨](https://forums.fast.ai/t/documentation-improvements/32550/125?u=daniel), [Notebook](https://www.kaggle.com/danielliao/understanding-learner-freeze), [成果](https://docs.fast.ai/basic_train.html#Learner.freeze), [视频解读](https://www.bilibili.com/video/av46130852/?p=11)
-- `freeze_to`文档解读 [学习探讨](https://forums.fast.ai/t/documentation-improvements/32550/137?u=daniel), [Kaggle kernel](https://www.kaggle.com/danielliao/understanding-learner-freeze-to), [听写](https://forums.fast.ai/t/fast-ai-v3-2019/39325/89?u=daniel), [成果](https://docs.fast.ai/basic_train.html#Learner.freeze_to), [视频解读](https://www.bilibili.com/video/av46130852/?p=12)
-- layer groups的由来 [学习探讨](https://forums.fast.ai/t/documentation-improvements/32550/146?u=daniel)
-- max_lr的设计和使用 [学习探讨](https://forums.fast.ai/t/why-do-we-need-to-unfreeze-the-learner-everytime-before-retarining-even-if-learn-fit-one-cycle-works-fine-without-learn-unfreeze/41614/6?u=daniel)
-- fit_one_cycle的最优实践 [学习探讨](https://forums.fast.ai/t/why-do-we-need-to-unfreeze-the-learner-everytime-before-retarining-even-if-learn-fit-one-cycle-works-fine-without-learn-unfreeze/41614/5?u=daniel)
-- cnn_learner是如何使用pretrained models [源码解说](https://forums.fast.ai/t/why-do-we-need-to-unfreeze-the-learner-everytime-before-retarining-even-if-learn-fit-one-cycle-works-fine-without-learn-unfreeze/41614/10?u=daniel)
-- `from fastai import *` 真有必要吗 [探讨](https://forums.fast.ai/t/documentation-improvements/32550/152?u=daniel), [kaggle kernel](https://www.kaggle.com/danielliao/why-from-fastai-import-is-not-necessary)
-- `data` 的链接错误？[探讨](https://forums.fast.ai/t/documentation-improvements/32550/155?u=daniel) [已更新](https://github.com/fastai/fastai/pull/1880)
-- `learn` 对应的modules? [探讨](https://forums.fast.ai/t/documentation-improvements/32550/156?u=daniel) [已更新](https://github.com/fastai/fastai/pull/1880)
-- `ImageList`的`items.create_func` set to `open_image` [开始探讨](https://forums.fast.ai/t/documentation-improvements/32550/165?u=daniel)       
-- improve on `untar_data` docs [探讨](https://forums.fast.ai/t/documentation-improvements/32550/167?u=daniel), [PR](https://github.com/fastai/fastai/pull/2009)     
-- improve docs of `ImageList` [探讨](https://forums.fast.ai/t/documentation-improvements/32550/166?u=daniel) [PR](https://github.com/fastai/fastai/pull/2012/files)
-- Elaboration on the use of `get_files` and `_get_files` accepted [探讨](https://forums.fast.ai/t/documentation-improvements/32550/173?u=daniel), [PR](https://github.com/fastai/fastai/pull/2014/files)
-- Elaboration on the use of `untar_data` accepted [PR](https://github.com/fastai/fastai/pull/2009)
-- `get_files` demo accepted[PR](https://github.com/fastai/fastai/pull/2020)
-- 
+<h1>Table of Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Improving-on-fastai-documents" data-toc-modified-id="Improving-on-fastai-documents-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Improving on fastai documents</a></span><ul class="toc-item"><li><span><a href="#The-big-picture" data-toc-modified-id="The-big-picture-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>The big picture</a></span></li><li><span><a href="#dataset-module" data-toc-modified-id="dataset-module-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>dataset module</a></span></li><li><span><a href="#data_block-module" data-toc-modified-id="data_block-module-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>data_block module</a></span></li><li><span><a href="#basic_train-module" data-toc-modified-id="basic_train-module-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>basic_train module</a></span></li><li><span><a href="#vision.data-module" data-toc-modified-id="vision.data-module-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>vision.data module</a></span></li></ul></li></ul></div>
+
+## Improving on fastai documents
+See [official docs](https://nbviewer.jupyter.org/github/fastai/fastai/tree/master/docs_src/?flush_cache=true) in jupyter notebook
+
+This work started on my forum page [Here](https://forums.fast.ai/t/fast-ai-v3-2019/39325/92?u=daniel), and carried out on here on this repo page. 
+
+[Search](https://github.com/fastai/fastai/pulls?page=1&q=is%3Apr+author%3AEmbraceLife+is%3Aclosed) and view all my contributions with [ReviewNB](https://www.reviewnb.com/), through those commit reviewnb pages you can raise questions on specific lines of my contrib, and I will respond as soon as I can.
+
+Many thanks to @sgugger and @stas00 for great help and kind support!
+
+### The big picture
+- fastai module structures [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/1880/files/)
+- how to use `import *` more sensibly [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/1870/files/)
+
+### dataset module
+- how does `untar_data` behave [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2009/files/)
+- what does `untar_data` in a single line [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2012/files/)
+
+### data_block module
+- official docs on [data_block module](https://docs.fast.ai/data_block.html)
+- how to `get_files` extract files from folders [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2017/files/)
+- code examples on `get_files` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2020/files/)
+- code examples on basic properites and `add` method of `ItemList` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2027/files/)
+- how `ItemList.get` and `ImageList.get` differ [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2028/files/)
+- how to create a new `ItemList` with `ItemList.new` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2031/files/)
+- how to open an image with `ImageList.open` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2035/files/)
+- how the outputs of `il` and `il[2]` are generated with `ImageList.__getitem__` and `ImageList.get` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2037/files/)
+- how `convert_mode` works with `ImageList.open` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2041/files/)
+- how `cmap` works with `ImageList.show` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2041/files/)
+- how do `split_by_folder`, `split_by_idxs`, `split_by_list` work [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2042/files/)
+- how to create an `ItemLists` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2048/files/)
+- how does `ItemList.label_from_folder` work with `LabelLists` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2050/files/)
+- how does `ItemList._label_from_list` work [reviewnb](https://github.com/fastai/fastai/pull/2055)
+- how does `ItemLists`, `split_none` and `label_from_folder` work together [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2056/files/)
+- how does `ItemList.label_from_func` work [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2063/files/)
+- how does `ItemList.get_label_cls` work [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2066/files/)
+- what should `a` in `index_row` be? [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2070/files/)
+- how to create a label list with `CategoryList` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2071/files/)
+- how to print out labels with `CategoryList.get` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2074/)
+- how to create a list of labels with `LabelList` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2075/files/)
+- what does `LabelList.process` do exactly [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2077/files/)
+- how to get processors for dataset with `LabelLists.get_processors` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2079/files/)
+
+### basic_train module
+- how does `freeze` work and what is 'layer_group' [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/1840/files/)
+- how does `freeze_to` work and how it constructs `freeze` and `unfreeze` [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/1842/files/)
+
+
+### vision.data module
+- how `ImageList` prints out itself [reviewnb](https://app.reviewnb.com/fastai/fastai/pull/2012/files/)
+
+
+```python
+
+```
