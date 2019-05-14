@@ -19,6 +19,11 @@
 
 # Terminal basics
 
+### How to copy a whole folder to another folder 
+```bash
+cp -a /source/. /dest/ 
+```
+
 ### remove a folder or a file
 
 ```bash
@@ -45,8 +50,11 @@ ctrl + k = clear the line after the cursor
 cmd + k = clear the terminal
 ctrl + f = move forward a character
 ctrl + b = backward
-esc + f = move forward by a word 
-esc + b = move backward by a word
+# go to preference, profile, keys, make right `option` key equivalent to `+ESC`
+option + f = move forward by a word 
+option + b = move backward by a word
+ctrl + w = remove a word before cursor
+option + d = remove a word after cursor
 ```
 
 
@@ -54,17 +62,20 @@ esc + b = move backward by a word
 
 ### 构建bash_profile
 ```bash
-cd # go to home directory
-nano .bash_profile # go inside .bash_profile:
-
-alias ex='cd /Users/Natsume/Documents/experiments; conda activate fastai'
-alias ft='cd /Users/Natsume/Documents/fastai_treasures/plantseedling/; conda activate fastai'
+alias ftrans='cd /Users/Natsume/Documents/fastai_courses_translation_EN2CN; conda activate fastai'
+alias fexp='cd /Users/Natsume/Documents/fastai_treasures/my_workstation/src_fastai_ex/code-examples; conda activate fastai'
+alias ft='cd /Users/Natsume/Documents/fastai_treasures/my_workstation/src_fastai_ex; conda activate fastai'
 alias v3='cd /Users/Natsume/Documents/course-v3/nbs/dl1; conda activate fastai'
-alias fastai='cd /Users/Natsume/Documents/fastai; conda activate fastai'
-alias sfastai='cd /Users/Natsume/miniconda3/envs/fastai/lib/python3.7/site-packages/fastai'
+alias fk='cd /Users/Natsume/Documents/fastai-contrib/; conda activate fastai'
+alias vk='cd /Users/Natsume/Documents/v3-fork/nbs; conda activate fastai'
+alias sfastai='cd /Users/Natsume/Documents/fastai-contrib/fastai/; conda activate fastai'
+alias spython='cd ~/miniconda3/envs/fastai/lib/python3.7/site-packages; conda activate fastai'
+alias storch='cd /Users/Natsume/miniconda3/envs/fastai/lib/python3.7/site-packages/torch; conda activate fastai'
 alias pdbpp='python -m pdb'
 alias de='conda deactivate'
 alias xcode="open -a Xcode"
+alias atom="open -a atom"
+alias typora="open -a typora"
 alias jn='jupyter notebook'
 
 
@@ -74,8 +85,31 @@ function lazygit() {
     git push
 }
 
-export PS1="\w "
+function lazyupdate() {
+    git checkout master
+    git fetch upstream
+    git checkout master
+    git merge --no-edit upstream/master
+    git push
 
+}
+
+function lazybranch() {
+    git checkout master
+    git branch "$1"
+    git checkout "$1"
+    git push --set-upstream origin "$1"
+}
+
+function lazydelete(){
+    git checkout master
+    git branch -D "$1"
+    git push origin --delete "$1"
+
+}
+
+export PS1="\w "
+#export PS1="untar_data "
 
 
 
@@ -122,7 +156,6 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
-
 
 ```
 
@@ -456,17 +489,23 @@ svn checkout url-folder-replace-tree/master-with-trunk # only download part of a
 
 ```python
 ## located at ~ directory, named .pdbrc, no need for source, just save it
+alias dr pp dir(%1)
+alias cls pp %1.__class__
+alias dt pp %1.__dict__
+alias pdt for k, v in %1.items(): print(k, ": ", v)
+alias dtkeys for k, _ in %1.items(): print(k)
+alias loc locals().keys()
+alias doc from inspect import getdoc; from pprint import pprint; pprint(getdoc(%1))
+alias sources from inspect import getsourcelines; from pprint import pprint; pprint(getsourcelines(%1))
+alias module from inspect import getmodule; from pprint import pprint; pprint(getmodule(%1))
+alias sig from inspect import signature; from pprint import pprint; pprint(signature(%1))
+alias member from inspect import getmembers; from pprint import pprint; pprint(getmembers(%1))
+alias members from inspect import getmembers; from pprint import pprint; pprint(dict(getmembers(%1))['%2'])
+alias clstree from inspect import getmro; from pprint import pprint; pprint(getmro(%1.__class__))
+alias opt_param optimizer.param_groups[0]['params'][%1]
 
-alias dr pp dir(%1) # 查看everything underneath the object
-alias dt pp %1.__dict__ # 查看object's dictionaries
-alias pdt for k, v in %1.items(): print(k, ": ", v) # 查看一个纯 python dictionary
-alias loc locals().keys() # local variables
-alias doc from inspect import getdoc; from pprint import pprint; pprint(getdoc(%1)) # documents
-alias sources from inspect import getsourcelines; from pprint import pprint; pprint(getsourcelines(%1)) # source code
-alias module from inspect import getmodule; from pprint import pprint; pprint(getmodule(%1)) # module name
-alias fullargs from inspect import getfullargspec; from pprint import pprint; pprint(getfullargspec(%1)) # all arguments names
-alias opt_param optimizer.param_groups[0]['params'][%1] # all parameters
-alias opt_grad optimizer.param_groups[0]['params'][%1].grad # all gradients of parameters
+alias opt_grad optimizer.param_groups[0]['params'][%1].grad
+
 ```
 
 ### .pdbrc.py
