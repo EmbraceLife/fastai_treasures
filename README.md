@@ -52,7 +52,7 @@ This work started on my forum page [Here](https://forums.fast.ai/t/fast-ai-v3-20
 
 Many thanks to @sgugger and @stas00 for great help and kind support!
 
-If you like to read docs embedded into source code, search from [here](https://github.com/EmbraceLife/fastai/commits/doc_source). 
+If you like to read docs embedded into source code, search from [here](https://nbviewer.jupyter.org/github/EmbraceLife/fastai/tree/doc_source/?flush_cache=true). 
 
 ## Run code examples for docs
 
