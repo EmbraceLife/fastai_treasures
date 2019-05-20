@@ -47,7 +47,7 @@ Many thanks to @sgugger and @stas00 for great help and kind support!
 See [official docs](https://nbviewer.jupyter.org/github/fastai/fastai/tree/master/docs_src/?flush_cache=true) in jupyter notebook
 
 ## Official Notebooks in Nbviewer
-[notebooks](https://github.com/fastai/course-v3/tree/master/nbs/?flush_cache=true)
+[notebooks](https://nbviewer.jupyter.org/github/fastai/course-v3/tree/master/nbs/?flush_cache=true/)
 
 ## My Doc_Source
 Search **my docs** and **py-examples** embedded into [source code](https://nbviewer.jupyter.org/github/EmbraceLife/fastai/tree/doc_source/?flush_cache=true)
