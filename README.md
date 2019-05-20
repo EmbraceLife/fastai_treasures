@@ -1,6 +1,6 @@
 
 <h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Fastai-Treasures" data-toc-modified-id="Fastai-Treasures-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Fastai Treasures</a></span></li><li><span><a href="#Fastai-中文版" data-toc-modified-id="Fastai-中文版-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Fastai 中文版</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#Fastai-Daily-Visits-每日观光地" data-toc-modified-id="Fastai-Daily-Visits-每日观光地-2.0.1"><span class="toc-item-num">2.0.1&nbsp;&nbsp;</span>Fastai Daily Visits 每日观光地</a></span></li></ul></li></ul></li><li><span><a href="#My-toolbox" data-toc-modified-id="My-toolbox-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>My toolbox</a></span></li><li><span><a href="#My-contributions-to-Fast.ai" data-toc-modified-id="My-contributions-to-Fast.ai-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>My contributions to Fast.ai</a></span><ul class="toc-item"><li><span><a href="#Course-video-subtitles" data-toc-modified-id="Course-video-subtitles-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Course video subtitles</a></span></li><li><span><a href="#Improving-on-fastai-documents" data-toc-modified-id="Improving-on-fastai-documents-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>Improving on fastai documents</a></span></li><li><span><a href="#Run-code-examples-for-docs" data-toc-modified-id="Run-code-examples-for-docs-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>Run code examples for docs</a></span></li></ul></li><li><span><a href="#关于深度碎片" data-toc-modified-id="关于深度碎片-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>关于深度碎片</a></span></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Fastai-Treasures" data-toc-modified-id="Fastai-Treasures-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Fastai Treasures</a></span></li><li><span><a href="#Fastai-中文版" data-toc-modified-id="Fastai-中文版-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Fastai 中文版</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#Fastai-Daily-Visits-每日观光地" data-toc-modified-id="Fastai-Daily-Visits-每日观光地-2.0.1"><span class="toc-item-num">2.0.1&nbsp;&nbsp;</span>Fastai Daily Visits 每日观光地</a></span></li></ul></li></ul></li><li><span><a href="#My-contributions-to-Fast.ai" data-toc-modified-id="My-contributions-to-Fast.ai-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>My contributions to Fast.ai</a></span><ul class="toc-item"><li><span><a href="#Course-video-subtitles" data-toc-modified-id="Course-video-subtitles-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Course video subtitles</a></span></li><li><span><a href="#My-contribution-to-Offical-docs" data-toc-modified-id="My-contribution-to-Offical-docs-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>My contribution to Offical docs</a></span></li><li><span><a href="#Official-Docs-in-Nbviewer" data-toc-modified-id="Official-Docs-in-Nbviewer-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Official Docs in Nbviewer</a></span></li><li><span><a href="#Official-Notebooks-in-Nbviewer" data-toc-modified-id="Official-Notebooks-in-Nbviewer-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Official Notebooks in Nbviewer</a></span></li><li><span><a href="#My-Doc_Source" data-toc-modified-id="My-Doc_Source-3.5"><span class="toc-item-num">3.5&nbsp;&nbsp;</span>My Doc_Source</a></span></li></ul></li><li><span><a href="#My-toolbox" data-toc-modified-id="My-toolbox-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>My toolbox</a></span></li><li><span><a href="#关于深度碎片" data-toc-modified-id="关于深度碎片-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>关于深度碎片</a></span></li></ul></div>
 
 # Fastai Treasures
 
@@ -21,13 +21,6 @@
 - Kaggle [官网](https://www.kaggle.com/)       
 - Real python [plt tutorial](https://realpython.com/python-matplotlib-guide/#why-can-matplotlib-be-confusing)     
 
-# My toolbox
-
-- see [my toolbox](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/my_workstation.ipynb?flush_cache=true/) in [my workstation](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/?flush_cache=true/)
-- my translation contribution on [youtube](https://www.youtube.com/timedtext_cs_panel?o=U&ar=2) 
-- my video manager on [youtube](https://www.youtube.com/my_videos?o=U&ar=2)   
-
-
 # My contributions to Fast.ai
 
 ## Course video subtitles
@@ -43,26 +36,29 @@ see the [videos and subtitles](https://course.fast.ai/videos/?lesson=3) from fas
 - lesson 6 EN+CN
 - lesson 7 EN
 
-## Improving on fastai documents
-See [official docs](https://nbviewer.jupyter.org/github/fastai/fastai/tree/master/docs_src/?flush_cache=true) in jupyter notebook
-
+## My contribution to Offical docs
 This work started on my forum page [Here](https://forums.fast.ai/t/fast-ai-v3-2019/39325/92?u=daniel), and carried out on here on this repo page. 
 
 [Search](https://github.com/fastai/fastai/pulls?page=1&q=is%3Apr+author%3AEmbraceLife+is%3Aclosed) and view all my contributions with [ReviewNB](https://www.reviewnb.com/), through those commit reviewnb pages you can raise questions on specific lines of my contrib, and I will respond as soon as I can.
 
 Many thanks to @sgugger and @stas00 for great help and kind support!
 
-If you like to read docs embedded into source code, search from [here](https://nbviewer.jupyter.org/github/EmbraceLife/fastai/tree/doc_source/?flush_cache=true). 
+## Official Docs in Nbviewer
+See [official docs](https://nbviewer.jupyter.org/github/fastai/fastai/tree/master/docs_src/?flush_cache=true) in jupyter notebook
 
-## Run code examples for docs
+## Official Notebooks in Nbviewer
+[notebooks](https://github.com/fastai/course-v3/tree/master/nbs/?flush_cache=true)
 
-See [my code example contributions](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/src_fastai_ex/code-examples/?flush_cache=true/) on this repo
+## My Doc_Source
+Search **my docs** and **py-examples** embedded into [source code](https://nbviewer.jupyter.org/github/EmbraceLife/fastai/tree/doc_source/?flush_cache=true)
+
+# My toolbox
+
+- see [my toolbox](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/my_workstation.ipynb?flush_cache=true/) in [my workstation](https://nbviewer.jupyter.org/github/EmbraceLife/fastai_treasures/tree/master/my_workstation/?flush_cache=true/)
+- my translation contribution on [youtube](https://www.youtube.com/timedtext_cs_panel?o=U&ar=2) 
+- my video manager on [youtube](https://www.youtube.com/my_videos?o=U&ar=2)   
+
 
 # 关于深度碎片
 
 更多我的机器学习和深度学习视频作品，见[已完成项目](https://github.com/EmbraceLife/shendusuipian#%E5%B7%B2%E5%AE%8C%E6%88%90%E9%A1%B9%E7%9B%AE)
-
-
-```python
-
-```
