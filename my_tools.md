@@ -759,7 +759,7 @@ jupyter notebook # to start
 - 下载安装conda 
     - [下载最新Conda, Mac选择pkg比较方便](https://conda.io/en/latest/miniconda.html) 
     - 双击安装
-    - 更新 `condo update conda` # outside condo env
+    - 更新 `conda update conda` # outside conda env
 - 创建独立工作环境
     - `conda create -n fastai python=3`  或者明确一个版本3.5
     - `conda activate fastai` 开启实验环境
