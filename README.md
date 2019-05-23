@@ -50,7 +50,8 @@ See [official docs](https://nbviewer.jupyter.org/github/fastai/fastai/tree/maste
 [notebooks](https://nbviewer.jupyter.org/github/fastai/course-v3/tree/master/nbs/?flush_cache=true/)
 
 ## My Doc_Source
-Search **my docs** and **py-examples** embedded into [source code](https://nbviewer.jupyter.org/github/EmbraceLife/fastai/tree/doc_source/?flush_cache=true)
+- Search **my docs** and **py-examples** on fastai [source code](https://github.com/EmbraceLife/fastai/tree/doc_source/)
+- Search **my docs** on Pytorch [source code](https://github.com/EmbraceLife/doc_torch)
 
 # My toolbox
 
