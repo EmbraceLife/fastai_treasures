@@ -920,6 +920,8 @@ plt.show() # print out images
 
 turn any snapshort of math in Latex https://mathpix.com/
 
+- ctrl + cmd + m = to crop
+
 
 ## 其他参考链接
 
