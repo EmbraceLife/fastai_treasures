@@ -1,3 +1,13 @@
+call plug#begin('~/.vim/plugged')
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+set rtp+=~/.fzf
 set tags=tags
 set foldcolumn=3
 set foldmethod=indent
@@ -28,11 +38,17 @@ command MT MakeTags
 """"" tag jump with new tab horizontally or vertically
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-"""" switch tabs in vim 
+""""" map bb to :cp and map ff to :cn in Ag or grep search
+map pp ::cp<cr>
+map nn ::cn<cr>
+map rr :@:<cr>
+
+"""" switch tabs in vim
 map <C-a><up> :tabr<cr>
 map <C-a><down> :tabl<cr>
 map <C-a><left> :tabp<cr>
 map <C-a><right> :tabn<cr>
+
 noremap <Up> 5k
 noremap <Down> 5j
 
@@ -47,3 +63,12 @@ au VimEnter no_plugins.vim command! RUN execute getline(".")
 " why dont these work :(
 au VimEnter no_plugins.vim nnoremap ^f :GO<CR>
 au VimEnter no_plugins.vim nnoremap ^b :BACK<CR>
+
+""""" export Grep_Path="~/.vim/plugin/grep"
+
+"""""" undo for a whole day
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000
+set undoreload=10000
+set runtimepath^=~/.vim/bundle/ag

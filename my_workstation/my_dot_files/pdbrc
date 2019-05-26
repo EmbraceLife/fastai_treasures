@@ -1,4 +1,5 @@
 alias dr pp dir(%1)
+alias clss pp %1.__class__
 alias dt pp %1.__dict__
 alias pdt for k, v in %1.items(): print(k, ": ", v)
 alias dtkeys for k, _ in %1.items(): print(k)
@@ -6,8 +7,12 @@ alias loc locals().keys()
 alias doc from inspect import getdoc; from pprint import pprint; pprint(getdoc(%1))
 alias sources from inspect import getsourcelines; from pprint import pprint; pprint(getsourcelines(%1))
 alias module from inspect import getmodule; from pprint import pprint; pprint(getmodule(%1))
-alias fullargs from inspect import getfullargspec; from pprint import pprint; pprint(getfullargspec(%1))
-
+alias sig from inspect import signature; from pprint import pprint; pprint(signature(%1))
+alias member from inspect import getmembers; from pprint import pprint; pprint(getmembers(%1))
+alias members from inspect import getmembers; from pprint import pprint; pprint(dict(getmembers(%1))['%2'])
+alias clstree from inspect import getmro; from pprint import pprint; pprint(getmro(%1.__class__))
 alias opt_param optimizer.param_groups[0]['params'][%1]
 
 alias opt_grad optimizer.param_groups[0]['params'][%1].grad
+
+

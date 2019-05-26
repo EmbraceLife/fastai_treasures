@@ -1,0 +1,107 @@
+alias ftol='open https://github.com/EmbraceLife/fastai_treasures#official-docs-in-nbviewer'
+alias ftrans='cd /Users/Natsume/Documents/fastai_courses_translation_EN2CN; conda activate fastai'
+alias exp='cd /Users/Natsume/Documents/doc-fastai/; git checkout doc_source; cd py-examples; conda activate fastai'
+alias ft='cd /Users/Natsume/Documents/fastai_treasures/my_workstation/; conda activate fastai'
+alias v3='cd /Users/Natsume/Documents/course-v3/; git checkout myv3; cd nbs/py-dl1; conda activate fastai; vim $(fzf)'
+alias fk='cd /Users/Natsume/Documents/fastai-contrib/; conda activate fastai'
+alias sfastai='cd /Users/Natsume/Documents/fastai-dev/fastai/; conda activate fastai; git checkout doc_source;'
+alias doc-fastai='cd /Users/Natsume/Documents/doc-fastai; git checkout doc_source; conda activate fastai;'
+alias doc-torch='cd /Users/Natsume/Documents/doc-torch; conda activate fastai;'
+alias storch='cd /Users/Natsume/miniconda3/envs/fastai/lib/python3.7/site-packages/torch; conda activate fastai;'
+alias check-fastai='rm -rf /Users/Natsume/Documents/fastai-dev; cp -rf /Users/Natsume/Documents/doc-fastai /Users/Natsume/Documents/fastai-dev; conda activate fastai'
+alias check-torch='rm -rf /Users/Natsume/miniconda3/envs/fastai/lib/python3.7/site-packages/torch; cp -rf /Users/Natsume/Documents/doc-torch /Users/Natsume/miniconda3/envs/fastai/lib/python3.7/site-packages/torch; conda activate fastai'
+alias check-dotfiles='cp ~/.bash_profile ~/Documents/fastai_treasures/my_workstation/my_dot_files/bash_profile; cp ~/.vimrc ~/Documents/fastai_treasures/my_workstation/my_dot_files/vimrc; cp ~/.pdbrc ~/Documents/fastai_treasures/my_workstation/my_dot_files/pdbrc'
+alias pdbpp='python -m pdb'
+alias de='conda deactivate'
+alias xcode="open -a Xcode"
+alias atom="open -a atom"
+alias typora="open -a typora"
+alias jn='jupyter notebook'
+alias branch='git checkout'
+alias fvim='vim $(fzf)'
+
+function lazygit() {
+    git add .
+    git commit -a -m "$1"
+    git push
+}
+
+function lazyupdate() {
+    git checkout master
+    git fetch upstream
+    git checkout master
+    git merge --no-edit upstream/master
+    git push
+
+}
+
+function lazybranch() {
+    git checkout master
+    git branch "$1"
+    git checkout "$1"
+    git push --set-upstream origin "$1"
+}
+
+function lazydelete(){
+    git checkout master
+    git branch -D "$1"
+    git push origin --delete "$1"
+
+}
+
+function lazymerge(){
+    git merge master
+    git add .
+    git commit -a -m "$1"
+    git push
+
+}
+
+export PS1="\w "
+#export PS1="untar_data "
+
+
+
+
+
+
+export LC_ALL=zh_CN.UTF-8
+export LANG=zh_CN.UTF-8
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# added by Anaconda3 5.2.0 installer
+export PATH="/anaconda3/bin:$PATH"
+# added by Miniconda3 4.5.12 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/Natsume/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/Users/Natsume/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/Natsume/miniconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/Users/Natsume/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+# added by Miniconda3 4.5.12 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/Natsume/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/Users/Natsume/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/Natsume/miniconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/Users/Natsume/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
