@@ -46,7 +46,9 @@ Many thanks to @sgugger and @stas00 for great help and kind support!
 ## Official Docs in Nbviewer
 - See [official docs on fastai v1](https://nbviewer.jupyter.org/github/fastai/fastai/tree/master/docs_src/?flush_cache=true) in jupyter notebook     
 - [official notebooks for v3 part1](https://nbviewer.jupyter.org/github/fastai/course-v3/tree/master/nbs/?flush_cache=true/)     
-- See [official src and docs on fastai v2](https://nbviewer.jupyter.org/github/fastai/fastai_docs/tree/master/dev/?flush_cache=true)      
+- See [official dev on fastai v2](https://nbviewer.jupyter.org/github/fastai/fastai_docs/tree/master/dev/?flush_cache=true)     
+- See [Official dev_course/dl2 on fastai v2](https://nbviewer.jupyter.org/github/fastai/fastai_docs/tree/master/dev_course/dl2/?flush_cache=true)
+- see [Official notebooks on fastai v2](https://nbviewer.jupyter.org/github/fastai/fastai_docs/tree/master/dev_nb/?flush_cache=true)
 
 ## Jupyter and Source code
 - [Learning Jupyter widgets on data science medium](https://towardsdatascience.com/search?q=jupyter%20widget)      
@@ -56,7 +58,7 @@ Many thanks to @sgugger and @stas00 for great help and kind support!
 
 
 ## My Doc_Source
-- Search [my version](https://github.com/EmbraceLife/fastai_docs/tree/doc_source/?flush_cache=true/) of [fastai-docs](https://github.com/fastai/fastai_docs/?flush_cache=true/) 
+- Search [my version](https://github.com/EmbraceLife/fastai_docs/tree/doc_source/?flush_cache=true/) of fastai-docs
 - Search **my docs** and **py-examples** on fastai [source code](https://github.com/EmbraceLife/fastai/tree/doc_source/)
 - Search **my docs** on Pytorch [source code](https://github.com/EmbraceLife/doc_torch)
 

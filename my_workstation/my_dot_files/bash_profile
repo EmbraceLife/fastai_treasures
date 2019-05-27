@@ -5,6 +5,7 @@ alias ft='cd /Users/Natsume/Documents/fastai_treasures/my_workstation/; conda ac
 alias v3='cd /Users/Natsume/Documents/course-v3/; git checkout myv3; cd nbs/py-dl1; conda activate fastai; vim $(fzf)'
 alias fk='cd /Users/Natsume/Documents/fastai-contrib/; conda activate fastai'
 alias sfastai='cd /Users/Natsume/Documents/fastai-dev/fastai/; conda activate fastai; git checkout doc_source;'
+alias v2fastai='cd /Users/Natsume/Documents/fastai-v2; git checkout doc_source; conda activate fastai;'
 alias doc-fastai='cd /Users/Natsume/Documents/doc-fastai; git checkout doc_source; conda activate fastai;'
 alias doc-torch='cd /Users/Natsume/Documents/doc-torch; conda activate fastai;'
 alias storch='cd /Users/Natsume/miniconda3/envs/fastai/lib/python3.7/site-packages/torch; conda activate fastai;'
