@@ -75,7 +75,8 @@ Many thanks to @sgugger and @stas00 for great help and kind support!
 
 
 ## My Inspirations from fastai
-[Sylvian's story](https://www.fast.ai/2019/01/02/one-year-of-deep-learning/) 
+- Sylvian's [story](https://www.fast.ai/2019/01/02/one-year-of-deep-learning/) 
+- Sylvian's [interview](https://github.com/EmbraceLife/fastai_treasures/issues/1#issuecomment-490877167)
 
 # 关于深度碎片
 
