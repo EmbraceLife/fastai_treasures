@@ -194,7 +194,28 @@ unset __conda_setup
 
 # Vim basics
 
-### comment out
+### clever ways of inserting
+https://vi.stackexchange.com/questions/5634/what-options-are-there-to-enter-insert-mode/5635#5635?newreg=832229f9e2ae41db99ed8afb864bb0da
+```bash
+c: Delete text (and yank to the buffer) and enter insert mode.
+cc: Delete the line and enter insert mode.
+C: Delete until the end of the line and enter insert mode.
+s: Delete a number of characters and enter insert mode.
+S: Delete a number of line and enter insert mode.
+```
+other ways of doing insert
+```bash
+i: Insert before the cursor.
+I: Insert before the first non-blank character of the line.
+a: Insert after the cursor.
+A: Insert at the end of the line.
+o: Begin a new line below the current line and insert.
+O: Begin a new line above the current and insert.
+gI: Insert at column 1 of the line.
+gi: Insert where insert mode was last stopped.
+```
+
+### comment out (not working)
 - `shift v`
 - `shift i`
 - `#`
