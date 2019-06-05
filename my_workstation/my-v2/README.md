@@ -2,6 +2,12 @@
 
 - [Fastai-v2 Docs on Each Item](#fastai-v2-docs-on-each-item)
   - [key terms to note](#key-terms-to-note)
+  - [workload plan](#workload-plan)
+  - [imports module](#imports-module)
+    - [`internals`](#internals)
+    - [`externals`](#externals)
+    - [`inspectors`](#inspectors)
+    - [`equals` and `all_equal`](#equals-and-all_equal)
   - [local.core module](#localcore-module)
     - [`newchk`](#newchk)
     - [`patch`](#patch)
@@ -17,8 +23,11 @@
     - [`_listify`](#_listify)
     - [`_mask2idxs`](#_mask2idxs)
     - [`L`](#l)
+    - [`defaults`](#defaults)
+    - [`ifnone`](#ifnone)
 
 <!-- /TOC -->
+
 # Fastai-v2 Docs on Each Item
 
 ## key terms to note
@@ -47,14 +56,20 @@
 
 ### `equals` and `all_equal`
 [imports.all_equal](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.all_equal.py)
-> `equals` can compare any type and `all_equal` can any type with same length and content
+> `equals` can compare any type and `all_equal` can compare any type with same length and content
 
 ## local.core module
 
 ### `newchk`
 [core.newchk](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.newchk.py)
 > enable a class to create a new instance (normal) or return the input if the input is already an instance (new feature)
+
+<details><summary>picsum</summary>
+<p>
 <img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk.png" alt="newchk" width="700"/>
+</p>
+</details>
+
 
 ### `patch`
 [core.patch](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.patch.py)
