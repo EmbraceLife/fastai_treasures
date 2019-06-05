@@ -231,7 +231,7 @@ def to_float(b):
     "Recursively map lists of int tensors in `b ` to float."
     return apply(lambda x: x.float() if x.dtype not in [torch.int64, torch.int32, torch.int16] else x, b)
 
-defaults.device = torch.device('cuda',0) if torch.cuda.is_available else torch.device('cpu')
+defaults.device = torch.device('cuda',0) if torch.cuda.is_available() else torch.device('cpu')
 
 def to_device(b, device=defaults.device):
     "Recursively put `b` on `device`."

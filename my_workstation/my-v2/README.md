@@ -26,6 +26,14 @@
 - search "made_uncool:" with vim Ag to see how clean and compact official source code is and how to make it uncool for debugging
 - search "not_finished": for official source but unfinished properly
 
+## workload plan
+- test module has 10+ classes/methods
+- local.core module has 31+ classes/methods
+- data.pipeline module has 8+ classes/methods
+- data.external module has 5+
+
+## imports module
+
 ## local.core module
 
 ### `newchk`
@@ -88,3 +96,13 @@
 ### `L`
 [core.L](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.L.py)
 > the most easy-to-use and powerful list class with all the utils needed
+
+### `defaults`
+[core.defaults](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.defaults.py)
+> create a simple namespace for storing nested values
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.defaults.png" alt="defaults" width="700"/>
+
+### `ifnone`
+[core.ifnone](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.ifnone.py)
+> refactor b if a is None else a into a function
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.ifnone.png" alt="defaults" width="700"/>
