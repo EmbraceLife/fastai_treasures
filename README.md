@@ -9,9 +9,8 @@
   - [My contribution to Offical docs](#my-contribution-to-offical-docs)
 - [Official Fastai Docs in Nbviewer](#official-fastai-docs-in-nbviewer)
 - [My Source Code Projects](#my-source-code-projects)
-- [Swift for tensorflow](#swift-for-tensorflow)
-- [My toolbox](#my-toolbox)
-- [关于深度碎片](#%E5%85%B3%E4%BA%8E%E6%B7%B1%E5%BA%A6%E7%A2%8E%E7%89%87)
+- [Other interests](#other-interests)
+- [About my previous works under 深度碎片](#about-my-previous-works-under-%E6%B7%B1%E5%BA%A6%E7%A2%8E%E7%89%87)
 
 <!-- /TOC -->
 
