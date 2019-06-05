@@ -29,61 +29,61 @@
 ## local.core module
 
 ### `newchk`
-[core.newchk](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk.png)
+[core.newchk](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.newchk.py)
 > enable a class to create a new instance (normal) or return the input if the input is already an instance (new feature)
-<img src="https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/images/core.newchk.png" alt="newchk" width="700"/>
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk.png" alt="newchk" width="700"/>
 
 ### `patch`
-[core.patch](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.patch.png)
+[core.patch](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.patch.py)
 > enable a function to add itself to the Class of its first parameter
-<img src="https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/images/core.patch.png" alt="patch" width="700"/>
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.patch.png" alt="patch" width="700"/>
 
 ### `chk`
-[core.chk](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.chk.py)
+[core.chk](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.chk.py)
 > enable a function to check on its parameters types
 
 ### `ls`
-[core.ls](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.ls.py)
+[core.ls](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.ls.py)
 > enable a Path object with a new method to check its contents on the immediate level
 
 ### `tensor`
-[core.tensor](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.tensor.py)
+[core.tensor](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.tensor.py)
 > put array-like, list, tuple, or just a few numbers into an tensor
 
 ### `tensor.ndim`
-[core.tensor.ndim](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.tensor.ndim.py)
+[core.tensor.ndim](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.tensor.ndim.py)
 > add `ndim` as a property to any tensor object to return num of dimensions
 
 ### `add_docs`
-[core.add_docs](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.add_docs.py)
+[core.add_docs](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.add_docs.py)
 > to add docs for Class and methods and report which has no docs yet
 
 ### `docs`
-[core.docs](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.docs.py)
+[core.docs](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.docs.py)
 > to enable a Class to set up its docs (unfinished by official source yet)
 
 
 ### `custom_dir`, `GetAttr`
-[core.custom_dir, core.GetAttr](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.getattr.py)
+[core.custom_dir, core.GetAttr](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.getattr.py)
 > 1. enable a subclass to take all its methods into its `__dir__` using `custom_dir`
 > 2. access additional methods from `_xtra` using `__getattr__`
 
 ### `is_iter`
-[core.is_iter](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.is_iter.py)
+[core.is_iter](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.is_iter.py)
 > to check anything is iterable or not, but Rank 0 tensors in PyTorch is not iterable
 
 ### `coll_repr`
-[core.coll_repr](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.coll_repr.py)
+[core.coll_repr](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.coll_repr.py)
 > to print out a collection under 10 items
 
 ### `_listify`
-[core._listify](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core._listify.py)
+[core._listify](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core._listify.py)
 > turn everything into a list
 
 ### `_mask2idxs`
-[core._mask2idxs](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core._mask2idxs.py)
+[core._mask2idxs](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core._mask2idxs.py)
 > make indexes or binary indexes
 
 ### `L`
-[core.L](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.L.py)
+[core.L](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.L.py)
 > the most easy-to-use and powerful list class with all the utils needed
