@@ -15,9 +15,44 @@
 
 # Atom editor
 
+### How to create snippets
+https://flight-manual.atom.io/using-atom/sections/snippets/
+```bash
+'.source.js':
+  'console.log':
+    'prefix': 'log'
+    'body': 'console.log(${1:"crash"});$2'
+
+'.source.js':
+  'if, else if, else':
+    'prefix': 'ieie'
+    'body': """
+      if (${1:true}) {
+        $2
+      } else if (${3:false}) {
+        $4
+      } else {
+        $5
+      }
+      """    
+
+'.source.gfm':
+  'Hello World':
+    'prefix': 'hewo'
+    'body': 'Hello World!'
+
+  'Github Hello':
+    'prefix': 'gihe'
+    'body': 'Octocat says Hi!'
+
+  'Octocat Image Link':
+    'prefix': 'octopic'
+    'body': '![GitHub Octocat](https://assets-cdn.github.com/images/modules/logos_page/Octocat.png)'
+```
+
 ### How to find and replace across files
 ```bash
-shift + cmd + F 
+shift + cmd + F
 ```
 
 # NVM basics

@@ -62,14 +62,18 @@
 
 ### `newchk`
 [core.newchk](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.newchk.py)
-> enable a class to create a new instance (normal) or return the input if the input is already an instance (new feature)
+
+<details><summary>sumpic</summary>
+<p>
+> enable a class to create a new instance (normal) or return the input if the input is already an instance (new feature)    
+</p>
+</details>
 
 <details><summary>picsum</summary>
 <p>
 <img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk.png" alt="newchk" width="700"/>
 </p>
 </details>
-
 
 ### `patch`
 [core.patch](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.patch.py)
