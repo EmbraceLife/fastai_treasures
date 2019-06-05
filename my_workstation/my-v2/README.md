@@ -23,7 +23,7 @@
 
 ## key terms to note
 - search "doc_improve:" with vim Ag to see my proposed source improvements in the source files below
-- search "make_uncool:" with vim Ag to see how clean and compact official source code is and how to make it uncool for debugging
+- search "made_uncool:" with vim Ag to see how clean and compact official source code is and how to make it uncool for debugging
 - search "not_finished": for official source but unfinished properly
 
 ## local.core module
@@ -36,6 +36,7 @@
 ### `patch`
 [core.patch](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.patch.py)
 > enable a function to add itself to the Class of its first parameter
+<img src="https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/images/core.patch.png" alt="patch" width="700"/>
 
 ### `chk`
 [core.chk](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.chk.py)

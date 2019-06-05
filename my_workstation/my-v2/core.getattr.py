@@ -26,7 +26,7 @@ class GetAttr:
     def __getattr__(self,k):
         assert self._xtra, "Inherited from `GetAttr` but no `_xtra` attrs listed"
         ###################
-        # make_uncool
+        # made_uncool
         if k in self._xtra:
             return getattr(self.default, k)
         raise AttributeError(k)

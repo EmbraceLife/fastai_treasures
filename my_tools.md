@@ -1,7 +1,4 @@
 
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#My-toolbox-我的本地设置" data-toc-modified-id="My-toolbox-我的本地设置-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>My toolbox 我的本地设置</a></span><ul class="toc-item"><li><span><a href="#Recent-found-resources" data-toc-modified-id="Recent-found-resources-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Recent found resources</a></span></li></ul></li><li><span><a href="#NVM-basics" data-toc-modified-id="NVM-basics-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>NVM basics</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#How-to-monitor-fastai-v2-source-code-changes" data-toc-modified-id="How-to-monitor-fastai-v2-source-code-changes-2.0.1"><span class="toc-item-num">2.0.1&nbsp;&nbsp;</span>How to monitor fastai-v2 source code changes</a></span></li></ul></li></ul></li><li><span><a href="#Terminal-basics" data-toc-modified-id="Terminal-basics-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Terminal basics</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#How-to-copy-a-whole-folder-to-another-folder" data-toc-modified-id="How-to-copy-a-whole-folder-to-another-folder-3.0.1"><span class="toc-item-num">3.0.1&nbsp;&nbsp;</span>How to copy a whole folder to another folder</a></span></li><li><span><a href="#remove-a-folder-or-a-file" data-toc-modified-id="remove-a-folder-or-a-file-3.0.2"><span class="toc-item-num">3.0.2&nbsp;&nbsp;</span>remove a folder or a file</a></span></li><li><span><a href="#如何在iterm2中切屏分屏跳跃" data-toc-modified-id="如何在iterm2中切屏分屏跳跃-3.0.3"><span class="toc-item-num">3.0.3&nbsp;&nbsp;</span>如何在iterm2中切屏分屏跳跃</a></span></li><li><span><a href="#最常用的terminal-commands" data-toc-modified-id="最常用的terminal-commands-3.0.4"><span class="toc-item-num">3.0.4&nbsp;&nbsp;</span>最常用的terminal commands</a></span></li><li><span><a href="#构建bash_profile" data-toc-modified-id="构建bash_profile-3.0.5"><span class="toc-item-num">3.0.5&nbsp;&nbsp;</span>构建bash_profile</a></span></li></ul></li></ul></li><li><span><a href="#Vim-basics" data-toc-modified-id="Vim-basics-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Vim basics</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#how-to-check-docs-for-Ag" data-toc-modified-id="how-to-check-docs-for-Ag-4.0.1"><span class="toc-item-num">4.0.1&nbsp;&nbsp;</span>how to check docs for Ag</a></span></li><li><span><a href="#how-to-install-ctag" data-toc-modified-id="how-to-install-ctag-4.0.2"><span class="toc-item-num">4.0.2&nbsp;&nbsp;</span>how to install ctag</a></span></li><li><span><a href="#clever-ways-of-inserting" data-toc-modified-id="clever-ways-of-inserting-4.0.3"><span class="toc-item-num">4.0.3&nbsp;&nbsp;</span>clever ways of inserting</a></span></li><li><span><a href="#comment-out-(not-working)" data-toc-modified-id="comment-out-(not-working)-4.0.4"><span class="toc-item-num">4.0.4&nbsp;&nbsp;</span>comment out (not working)</a></span></li><li><span><a href="#unlimited-undos" data-toc-modified-id="unlimited-undos-4.0.5"><span class="toc-item-num">4.0.5&nbsp;&nbsp;</span>unlimited undos</a></span></li><li><span><a href="#see-changes-recently-made-to-a-file" data-toc-modified-id="see-changes-recently-made-to-a-file-4.0.6"><span class="toc-item-num">4.0.6&nbsp;&nbsp;</span>see changes recently made to a file</a></span></li><li><span><a href="#to-copy-a-line-from-one-file-to-another" data-toc-modified-id="to-copy-a-line-from-one-file-to-another-4.0.7"><span class="toc-item-num">4.0.7&nbsp;&nbsp;</span>to copy a line from one file to another</a></span></li><li><span><a href="#to-delete-a-word" data-toc-modified-id="to-delete-a-word-4.0.8"><span class="toc-item-num">4.0.8&nbsp;&nbsp;</span>to delete a word</a></span></li><li><span><a href="#copy-or-replace-a-line" data-toc-modified-id="copy-or-replace-a-line-4.0.9"><span class="toc-item-num">4.0.9&nbsp;&nbsp;</span>copy or replace a line</a></span></li><li><span><a href="#copy-a-word" data-toc-modified-id="copy-a-word-4.0.10"><span class="toc-item-num">4.0.10&nbsp;&nbsp;</span>copy a word</a></span></li><li><span><a href="#repeat-commands" data-toc-modified-id="repeat-commands-4.0.11"><span class="toc-item-num">4.0.11&nbsp;&nbsp;</span>repeat commands</a></span></li><li><span><a href="#Search-multiple-files-with-fzf-and-ag" data-toc-modified-id="Search-multiple-files-with-fzf-and-ag-4.0.12"><span class="toc-item-num">4.0.12&nbsp;&nbsp;</span>Search multiple files with <code>fzf</code> and <code>ag</code></a></span></li><li><span><a href="#Search-multiple-files-with-grep" data-toc-modified-id="Search-multiple-files-with-grep-4.0.13"><span class="toc-item-num">4.0.13&nbsp;&nbsp;</span>Search multiple files with <code>grep</code></a></span></li><li><span><a href="#vim-switching-locations-and-commands" data-toc-modified-id="vim-switching-locations-and-commands-4.0.14"><span class="toc-item-num">4.0.14&nbsp;&nbsp;</span>vim switching locations and commands</a></span></li><li><span><a href="#install-kite-for-vim" data-toc-modified-id="install-kite-for-vim-4.0.15"><span class="toc-item-num">4.0.15&nbsp;&nbsp;</span>install kite for vim</a></span></li><li><span><a href="#vim-cursor-moving" data-toc-modified-id="vim-cursor-moving-4.0.16"><span class="toc-item-num">4.0.16&nbsp;&nbsp;</span>vim cursor moving</a></span></li><li><span><a href="#Vim-kick-start" data-toc-modified-id="Vim-kick-start-4.0.17"><span class="toc-item-num">4.0.17&nbsp;&nbsp;</span>Vim kick start</a></span></li><li><span><a href="#vim-如何用上下键跳跃5行代码" data-toc-modified-id="vim-如何用上下键跳跃5行代码-4.0.18"><span class="toc-item-num">4.0.18&nbsp;&nbsp;</span>vim 如何用上下键跳跃5行代码</a></span></li><li><span><a href="#用vim找pdbpp中运行的代码-vim-find-codelines-in-pdbpp" data-toc-modified-id="用vim找pdbpp中运行的代码-vim-find-codelines-in-pdbpp-4.0.19"><span class="toc-item-num">4.0.19&nbsp;&nbsp;</span>用vim找pdbpp中运行的代码 vim find codelines in pdbpp</a></span></li><li><span><a href="#vim如何剪切，复制，粘贴，保存" data-toc-modified-id="vim如何剪切，复制，粘贴，保存-4.0.20"><span class="toc-item-num">4.0.20&nbsp;&nbsp;</span>vim如何剪切，复制，粘贴，保存</a></span></li><li><span><a href="#如何做vim常规搜索" data-toc-modified-id="如何做vim常规搜索-4.0.21"><span class="toc-item-num">4.0.21&nbsp;&nbsp;</span>如何做vim常规搜索</a></span></li><li><span><a href="#vim如何对文件夹做tag" data-toc-modified-id="vim如何对文件夹做tag-4.0.22"><span class="toc-item-num">4.0.22&nbsp;&nbsp;</span>vim如何对文件夹做tag</a></span></li><li><span><a href="#Explore-source-code,-split-screen,-vim" data-toc-modified-id="Explore-source-code,-split-screen,-vim-4.0.23"><span class="toc-item-num">4.0.23&nbsp;&nbsp;</span>Explore source code, split screen, vim</a></span></li><li><span><a href="#vim-如何寻找文件和文件夹搜索" data-toc-modified-id="vim-如何寻找文件和文件夹搜索-4.0.24"><span class="toc-item-num">4.0.24&nbsp;&nbsp;</span>vim 如何寻找文件和文件夹搜索</a></span></li><li><span><a href="#vim-如何展开和折叠" data-toc-modified-id="vim-如何展开和折叠-4.0.25"><span class="toc-item-num">4.0.25&nbsp;&nbsp;</span>vim 如何展开和折叠</a></span></li><li><span><a href="#vim-如何知道当前所在文件地址" data-toc-modified-id="vim-如何知道当前所在文件地址-4.0.26"><span class="toc-item-num">4.0.26&nbsp;&nbsp;</span>vim 如何知道当前所在文件地址</a></span></li><li><span><a href="#安装下载-vim" data-toc-modified-id="安装下载-vim-4.0.27"><span class="toc-item-num">4.0.27&nbsp;&nbsp;</span>安装下载 vim</a></span></li><li><span><a href="#设置-vim-source" data-toc-modified-id="设置-vim-source-4.0.28"><span class="toc-item-num">4.0.28&nbsp;&nbsp;</span>设置 vim source</a></span></li><li><span><a href="#安装-ctags" data-toc-modified-id="安装-ctags-4.0.29"><span class="toc-item-num">4.0.29&nbsp;&nbsp;</span>安装 ctags</a></span></li><li><span><a href="#.vimrc-file" data-toc-modified-id=".vimrc-file-4.0.30"><span class="toc-item-num">4.0.30&nbsp;&nbsp;</span>.vimrc file</a></span></li></ul></li></ul></li><li><span><a href="#Git-basics" data-toc-modified-id="Git-basics-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Git basics</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#How-to-ignore-a-file-in-git-and-see-differences" data-toc-modified-id="How-to-ignore-a-file-in-git-and-see-differences-5.0.1"><span class="toc-item-num">5.0.1&nbsp;&nbsp;</span>How to ignore a file in git and see differences</a></span></li><li><span><a href="#How-to-push-a-local-folder-to-a-remote-git-repo" data-toc-modified-id="How-to-push-a-local-folder-to-a-remote-git-repo-5.0.2"><span class="toc-item-num">5.0.2&nbsp;&nbsp;</span>How to push a local folder to a remote git repo</a></span></li><li><span><a href="#How-to-resolve-conflict-in-git" data-toc-modified-id="How-to-resolve-conflict-in-git-5.0.3"><span class="toc-item-num">5.0.3&nbsp;&nbsp;</span>How to resolve conflict in git</a></span></li><li><span><a href="#check-out-the-difference" data-toc-modified-id="check-out-the-difference-5.0.4"><span class="toc-item-num">5.0.4&nbsp;&nbsp;</span>check out the difference</a></span></li><li><span><a href="#How-to-change-commit-messages" data-toc-modified-id="How-to-change-commit-messages-5.0.5"><span class="toc-item-num">5.0.5&nbsp;&nbsp;</span>How to change commit messages</a></span><ul class="toc-item"><li><span><a href="#before-push-it" data-toc-modified-id="before-push-it-5.0.5.1"><span class="toc-item-num">5.0.5.1&nbsp;&nbsp;</span>before push it</a></span></li><li><span><a href="#after-push-it" data-toc-modified-id="after-push-it-5.0.5.2"><span class="toc-item-num">5.0.5.2&nbsp;&nbsp;</span>after push it</a></span></li><li><span><a href="#older-commit" data-toc-modified-id="older-commit-5.0.5.3"><span class="toc-item-num">5.0.5.3&nbsp;&nbsp;</span>older commit</a></span></li></ul></li><li><span><a href="#Encountered-problems" data-toc-modified-id="Encountered-problems-5.0.6"><span class="toc-item-num">5.0.6&nbsp;&nbsp;</span>Encountered problems</a></span></li><li><span><a href="#如何使用git-merge" data-toc-modified-id="如何使用git-merge-5.0.7"><span class="toc-item-num">5.0.7&nbsp;&nbsp;</span>如何使用git merge</a></span></li><li><span><a href="#如何撤回本地和推送的commit" data-toc-modified-id="如何撤回本地和推送的commit-5.0.8"><span class="toc-item-num">5.0.8&nbsp;&nbsp;</span>如何撤回本地和推送的commit</a></span></li><li><span><a href="#如何免去用户名和密码" data-toc-modified-id="如何免去用户名和密码-5.0.9"><span class="toc-item-num">5.0.9&nbsp;&nbsp;</span>如何免去用户名和密码</a></span></li><li><span><a href="#如何快速git-push" data-toc-modified-id="如何快速git-push-5.0.10"><span class="toc-item-num">5.0.10&nbsp;&nbsp;</span>如何快速git push</a></span></li><li><span><a href="#如何在原fastai-repo和你的fork-repo之间更新？" data-toc-modified-id="如何在原fastai-repo和你的fork-repo之间更新？-5.0.11"><span class="toc-item-num">5.0.11&nbsp;&nbsp;</span>如何在原fastai repo和你的fork repo之间更新？</a></span></li><li><span><a href="#如何创建git-branch,-make-changes-and-git-push-to-cloud" data-toc-modified-id="如何创建git-branch,-make-changes-and-git-push-to-cloud-5.0.12"><span class="toc-item-num">5.0.12&nbsp;&nbsp;</span>如何创建git branch, make changes and git push to cloud</a></span></li></ul></li></ul></li><li><span><a href="#PDBPP-basics" data-toc-modified-id="PDBPP-basics-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>PDBPP basics</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#.pdbrc" data-toc-modified-id=".pdbrc-6.0.1"><span class="toc-item-num">6.0.1&nbsp;&nbsp;</span>.pdbrc</a></span></li><li><span><a href="#.pdbrc.py" data-toc-modified-id=".pdbrc.py-6.0.2"><span class="toc-item-num">6.0.2&nbsp;&nbsp;</span>.pdbrc.py</a></span></li></ul></li></ul></li><li><span><a href="#Video" data-toc-modified-id="Video-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Video</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#youtube-dl" data-toc-modified-id="youtube-dl-7.0.1"><span class="toc-item-num">7.0.1&nbsp;&nbsp;</span>youtube-dl</a></span></li><li><span><a href="#Monosnap-for-video" data-toc-modified-id="Monosnap-for-video-7.0.2"><span class="toc-item-num">7.0.2&nbsp;&nbsp;</span>Monosnap for video</a></span></li><li><span><a href="#如何将youtube-sbv字幕转化为srt" data-toc-modified-id="如何将youtube-sbv字幕转化为srt-7.0.3"><span class="toc-item-num">7.0.3&nbsp;&nbsp;</span>如何将youtube sbv字幕转化为srt</a></span></li><li><span><a href="#翻译Youtube字幕常用快捷键" data-toc-modified-id="翻译Youtube字幕常用快捷键-7.0.4"><span class="toc-item-num">7.0.4&nbsp;&nbsp;</span>翻译Youtube字幕常用快捷键</a></span></li><li><span><a href="#如何去除YouTube字幕翻译时的卡顿" data-toc-modified-id="如何去除YouTube字幕翻译时的卡顿-7.0.5"><span class="toc-item-num">7.0.5&nbsp;&nbsp;</span>如何去除YouTube字幕翻译时的卡顿</a></span></li><li><span><a href="#Looper-for-youtube" data-toc-modified-id="Looper-for-youtube-7.0.6"><span class="toc-item-num">7.0.6&nbsp;&nbsp;</span>Looper for youtube</a></span></li><li><span><a href="#如何为视频做语音解说" data-toc-modified-id="如何为视频做语音解说-7.0.7"><span class="toc-item-num">7.0.7&nbsp;&nbsp;</span>如何为视频做语音解说</a></span></li></ul></li></ul></li><li><span><a href="#Jupyter-Notebook-vs-atom" data-toc-modified-id="Jupyter-Notebook-vs-atom-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Jupyter Notebook vs atom</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#Update-nbviewer-right-away" data-toc-modified-id="Update-nbviewer-right-away-8.0.1"><span class="toc-item-num">8.0.1&nbsp;&nbsp;</span>Update nbviewer right away</a></span></li><li><span><a href="#Jupyter-notebook-extensions" data-toc-modified-id="Jupyter-notebook-extensions-8.0.2"><span class="toc-item-num">8.0.2&nbsp;&nbsp;</span>Jupyter notebook extensions</a></span></li><li><span><a href="#jn-color-theme" data-toc-modified-id="jn-color-theme-8.0.3"><span class="toc-item-num">8.0.3&nbsp;&nbsp;</span>jn color theme</a></span></li><li><span><a href="#use-atom-with-Hydrogen" data-toc-modified-id="use-atom-with-Hydrogen-8.0.4"><span class="toc-item-num">8.0.4&nbsp;&nbsp;</span>use atom with Hydrogen</a></span></li><li><span><a href="#Jupyter-notebook-install" data-toc-modified-id="Jupyter-notebook-install-8.0.5"><span class="toc-item-num">8.0.5&nbsp;&nbsp;</span>Jupyter notebook install</a></span></li></ul></li></ul></li><li><span><a href="#如何安装fastai-workstation" data-toc-modified-id="如何安装fastai-workstation-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>如何安装fastai workstation</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#如何启用-fastai-dev-version" data-toc-modified-id="如何启用-fastai-dev-version-9.0.1"><span class="toc-item-num">9.0.1&nbsp;&nbsp;</span>如何启用 fastai dev version</a></span></li><li><span><a href="#How-to-update-other-dependencies-for-dev-fastai" data-toc-modified-id="How-to-update-other-dependencies-for-dev-fastai-9.0.2"><span class="toc-item-num">9.0.2&nbsp;&nbsp;</span>How to update other dependencies for dev fastai</a></span></li><li><span><a href="#install-pytorch" data-toc-modified-id="install-pytorch-9.0.3"><span class="toc-item-num">9.0.3&nbsp;&nbsp;</span>install pytorch</a></span></li></ul></li></ul></li><li><span><a href="#Conda-Basics" data-toc-modified-id="Conda-Basics-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Conda Basics</a></span><ul class="toc-item"><li><ul class="toc-item"><li><span><a href="#如何使用-pdbpp" data-toc-modified-id="如何使用-pdbpp-10.0.1"><span class="toc-item-num">10.0.1&nbsp;&nbsp;</span>如何使用 pdbpp</a></span></li></ul></li></ul></li><li><span><a href="#Math" data-toc-modified-id="Math-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>Math</a></span><ul class="toc-item"><li><span><a href="#其他参考链接" data-toc-modified-id="其他参考链接-11.1"><span class="toc-item-num">11.1&nbsp;&nbsp;</span>其他参考链接</a></span></li></ul></li></ul></div>
-
 # My toolbox 我的本地设置
 
 - 如何不commit下，对Kaggle kernel大型文件下载 [论坛分享 ](https://forums.fast.ai/t/platform-kaggle-kernels/32569/139?u=daniel)
@@ -16,6 +13,12 @@
 - [how to use mac to snapshot screen](http://www.techadvisory.org/2014/09/4-screenshot-tips-for-mac/)     
 - [vim medium](https://medium.com/usevim/vim-101-quick-movement-c12889e759e0)     
 
+# Atom editor
+
+### How to find and replace across files
+```bash
+shift + cmd + F 
+```
 
 # NVM basics
 
@@ -44,9 +47,9 @@ nodemon -e ipynb --exec python notebook2script.py
 
 # Terminal basics
 
-### How to copy a whole folder to another folder 
+### How to copy a whole folder to another folder
 ```bash
-cp -a /source/. /dest/ 
+cp -a /source/. /dest/
 ```
 
 ### remove a folder or a file
@@ -76,7 +79,7 @@ cmd + k = clear the terminal
 ctrl + f = move forward a character
 ctrl + b = backward
 # go to preference, profile, keys, make right `option` key equivalent to `+ESC`
-option + f = move forward by a word 
+option + f = move forward by a word
 option + b = move backward by a word
 ctrl + w = remove a word before cursor
 option + d = remove a word after cursor
@@ -233,7 +236,7 @@ gi: Insert where insert mode was last stopped.
 ### unlimited undos
 see https://unix.stackexchange.com/questions/192212/vim-how-to-trace-back-all-changes-done-to-file-during-the-day
 
-### see changes recently made to a file 
+### see changes recently made to a file
 - `:changes` to see a list of changes
 - `g;` = go to previous changes
 - `g,` = go to next changes
@@ -256,8 +259,8 @@ see https://unix.stackexchange.com/questions/192212/vim-how-to-trace-back-all-ch
 
 ### copy a word
 - move cursor onto a word
-- type `yiw` to copy the word 
-- move cursor to where you want 
+- type `yiw` to copy the word
+- move cursor to where you want
 - type `ciw` `ctrl + r ` `esc` to paste
 
 
@@ -284,8 +287,8 @@ ctrl jk = move up down
 https://codeyarns.com/2017/09/13/grep-cheatsheet/
 use long string to narrow down
 ```vim
-:grep -R _make_subclass * # search for rare strings 
-:copen 
+:grep -R _make_subclass * # search for rare strings
+:copen
 :cclose
 :cn
 :cp
@@ -295,14 +298,14 @@ use long string to narrow down
 ```vim
 ctrl + o = jump to previous location
 ctrl + i = jump to forward location
-q: = command history 
+q: = command history
 j or k = select commands
 : + up-down-arrow = switch between commands
 ```
 
 ### install kite for vim
 
-- install Kite 
+- install Kite
 - select vim as editor during installation process
 - go to local setting and install vim and neovim plugins
 - then ready to use kite with vim
@@ -312,15 +315,15 @@ j or k = select commands
 ### vim cursor moving
 ```bash
 
-0 = go to start of a line 
-$ = go to end of a line 
+0 = go to start of a line
+$ = go to end of a line
 H = go to top of a window
 L = go to bottle of a window
 M = go to middle of a window
 G = go to the end of a file
 gg = go to the first line of a file
 20G = go to the 20th line of a file
-e = next word 
+e = next word
 b = previous word
 ( = previous sentence
 ) = next sentence
@@ -343,7 +346,7 @@ learnt from this [video](https://www.youtube.com/watch?v=ggSyF1SVFr4) by tutoria
 i = go into insert mode to write code
 ecs = go back to command mode
 dd = from command mode to delete a line
-3dd = delete 3 lines 
+3dd = delete 3 lines
 u = undo last action
 ctrl + r = redo action
 /search_word = to search a word inside a file
@@ -359,7 +362,7 @@ simple workflow
 
 
 ### vim 如何用上下键跳跃5行代码
-go to .vimrc, copy the following 
+go to .vimrc, copy the following
 ```vim
 noremap <Up> 5k
 noremap <Down> 5j
@@ -381,10 +384,10 @@ vim如何剪切，复制，粘贴，保存
 ```vim
 : how to cut, under normal mode
 : 1. put cursor to where you want to cut
-: 2. press v and move cursor to select characters 
+: 2. press v and move cursor to select characters
 : 2. press V and move cursor to select lines
 : 3. press d to cut, press y to copy
-: 4. move to where to paste, 
+: 4. move to where to paste,
 : 5; press P to paste before cursor
 : 5: press p to paset after cursor
 : 6. insert mode, press :w and enter
@@ -408,7 +411,7 @@ set ignorecase
 ### vim如何对文件夹做tag
 
 ```vim
-; terminal文件夹下输入 vim 
+; terminal文件夹下输入 vim
 ; 再输入 :MT
 
 ; 尝试搜索untar_data
@@ -425,7 +428,7 @@ ctrl + ] ;= dive in
 ctrl + t ;= pull back
 ctrl + w, ctrl + ] ;= dive in from another horizontal split
 ctrl + w, up or dn or lt or rt arrows;= switch between splits
-ctrl + \ ;= dive in from a new tab 
+ctrl + \ ;= dive in from a new tab
 ctrl + a, ;left or right ;= switch between tabs
 :q = to quit any split screen
 ```
@@ -588,9 +591,9 @@ the === seperate the two versions differences
 5 >>>>>>> master
 ```
 
-to resolve: 
+to resolve:
 1. you make the final changes to HEAD on line 2
-2. remove the following lines 
+2. remove the following lines
 ```py
 1 <<<<<<< HEAD
 3 =======
@@ -598,25 +601,25 @@ to resolve:
 5 >>>>>>> master
 ```
 
-### check out the difference 
+### check out the difference
 ```bash
-git diff @^ # previous and current difference 
+git diff @^ # previous and current difference
 git diff previous-commit-id # older commit and current difference
 git diff # unstaged difference
-git diff --cache # staged difference 
+git diff --cache # staged difference
 git diff HEAD # all changes unstaged and staged
 ```
 
 ### How to change commit messages
-#### before push it 
+#### before push it
 ```bash
 git commit --amend
 # then recommit and push
 ```
 
-#### after push it 
+#### after push it
 ```bash
-# after the previous steps 
+# after the previous steps
 git push --force doc_source
 ```
 
@@ -639,7 +642,7 @@ git merge master
 ```
 
 
-### 如何撤回本地和推送的commit 
+### 如何撤回本地和推送的commit
 ```bash
 git checkout -- filename # 撤回未commit的changes
 git reset --hard HEAD~1 # 撤回已经commit的changes
@@ -664,7 +667,7 @@ lazygit 'message'
 
 # 分步骤操作
 # create a new repo on github
-# go to your Mac directory 
+# go to your Mac directory
 git init
 git add README.md
 git commit -m "first commit"
@@ -689,7 +692,7 @@ tools/run-after-git-clone # fastai tools
 git remote add upstream official-url-git # link to official repo
 git remote -v # check all branches local and remote
 
-git pull upstream master # pull from official repo, or 
+git pull upstream master # pull from official repo, or
 ######## suggested by fastai is better I guess
 git fetch upstream
 git checkout master
@@ -697,7 +700,7 @@ git merge --no-edit upstream/master
 git push
 ######## suggested by fastai
 
-git push # update my-fork 
+git push # update my-fork
 git pull # pull from my-fork
 ```
 
@@ -711,7 +714,7 @@ git branch -m a_new_name # rename
 git branch -d branch_to_go # delete
 git checkout new_branch # switch to a new branch
 # make changes, do commit, then push with the following code, it won't affect master branch!!!
-git push --set-upstream origin new-branch-name # 
+git push --set-upstream origin new-branch-name #
 git push origin --delete new_branch_name # to delete a branch remote in github
 svn checkout url-folder-replace-tree/master-with-trunk # only download part of a repo
 
@@ -759,7 +762,7 @@ import pdb
 class Config(pdb.DefaultConfig):
 
     filename_color = pdb.Color.yellow
-    truncate_long_lines = False  # so you get all content insight 
+    truncate_long_lines = False  # so you get all content insight
     highlight = True
     sticky_by_default = True
     line_number_color = pdb.Color.red
@@ -797,7 +800,7 @@ youtube-dl -f 'best[ext=mp4]'  --write-auto-sub  --sub-lang en  --sub-format srt
 ### Monosnap for video
 
 1. set 5 frame/second
-2. high quality 
+2. high quality
 3. capture mouse cursor and clicks
 4. it will be small enough
 5. it can also create gif from movie too
@@ -859,10 +862,10 @@ jupyter nbextension enable toc2/main  # in terminal or notebook cell, both are f
 ```
 
 
-### jn color theme 
+### jn color theme
 ```
 conda install jupyterthemes
-jt -t onedork 
+jt -t onedork
 #| grade3 | oceans16 | chesterish | monokai | solarizedl | solarizedd
 ```
 
@@ -882,13 +885,13 @@ jt -t onedork
 python3 -m pip install --upgrade pip
 python3 -m pip install jupyter
 
-jupyter notebook # to start 
+jupyter notebook # to start
 ```
 
 # 如何安装fastai workstation
 
-- 下载安装conda 
-    - [下载最新Conda, Mac选择pkg比较方便](https://conda.io/en/latest/miniconda.html) 
+- 下载安装conda
+    - [下载最新Conda, Mac选择pkg比较方便](https://conda.io/en/latest/miniconda.html)
     - 双击安装
     - 更新 `conda update conda` # outside conda env
 - 创建独立工作环境
@@ -984,7 +987,7 @@ q # 终止
 hit return # 重复上一次操作
 pp variable_name # 友好打印 该变量
 # 完成当前loop: until
-plt.show() # print out images 
+plt.show() # print out images
 ```
 
 # Math

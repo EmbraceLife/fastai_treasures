@@ -56,7 +56,7 @@ t2.foo
 t1 = _T(1)
 t1 = _T(1)
 ################################
-# make_uncool
+# made_uncool
 # apply decorator to the class above
 _T = newchk(_T)
 

@@ -54,7 +54,7 @@ class L(GetAttr):
         ############### official and compact
         # res = [self.items[i] for i in _mask2idxs(idx)] if is_iter(idx) else self.items[idx]
 
-        ################## make_uncool
+        ################## made_uncool
         res = None
         if is_iter(idx):
             res = []
@@ -75,7 +75,7 @@ class L(GetAttr):
         # if not is_iter(o): o = [o]*len(idx)
         # for i,o_ in zip(idx,o): self.items[i] = o_
         #################
-        # make_uncool
+        # made_uncool
         if isinstance(idx,L):
             idx = idx
         else:
