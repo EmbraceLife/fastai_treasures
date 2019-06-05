@@ -73,24 +73,22 @@ Many thanks to @sgugger and @stas00 for great help and kind support!
 
 
 # My Source Code Projects
+- Search [my toolbox](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_tools.md)
+- Search [my dotfiles](https://github.com/EmbraceLife/fastai_treasures/tree/master/my_workstation/my_dot_files)
 - Search [my-fastai-v2](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/README.md)
 - Search [my-fastai-v1](https://github.com/EmbraceLife/fastai/tree/doc_source/)
 - Search [my-torch](https://github.com/EmbraceLife/doc_torch)
 
-# Swift for tensorflow
+# Other interests
 - swift [get started](https://swift.org/getting-started/#installing-swift)
 - swift [package manager](https://swift.org/package-manager/)
 - swift [lldb debugger](https://lldb.llvm.org/use/map.html)
-
-# My toolbox
-- see [my toolbox](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_tools.md)
 - [Learning Jupyter widgets on data science medium](https://towardsdatascience.com/search?q=jupyter%20widget)      
 - [pdb with jupyter notebook](https://www.blog.pythonlibrary.org/2018/10/17/jupyter-notebook-debugging/)     
 - [real python](https://realpython.com/) a great learning resource
 - [Jupyter magics](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cell-magics)
 
 
+# About my previous works under 深度碎片
 
-# 关于深度碎片
-
-更多我的机器学习和深度学习视频作品，见[已完成项目](https://github.com/EmbraceLife/shendusuipian#%E5%B7%B2%E5%AE%8C%E6%88%90%E9%A1%B9%E7%9B%AE)
+See my previous video works on ML/DL，see [my finished video projects in Chinese](https://github.com/EmbraceLife/shendusuipian#%E5%B7%B2%E5%AE%8C%E6%88%90%E9%A1%B9%E7%9B%AE)
