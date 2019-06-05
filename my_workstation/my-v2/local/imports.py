@@ -33,10 +33,27 @@ def all_equal(a,b):
 
 def equals(a,b):
     "Compares `a` and `b` for equality; supports sublists, tensors and arrays too"
-    cmp = (torch.equal    if isinstance(a, Tensor  ) and a.dim() else 
+    cmp = (torch.equal    if isinstance(a, Tensor  ) and a.dim() else
            np.array_equal if isinstance(a, ndarray ) else
            operator.eq    if isinstance(a, str     ) else
            all_equal      if isinstance(a, (list,tuple,Generator,Iterator)) else
            operator.eq)
     return cmp(a,b)
 
+# my own inspection helpers
+from inspect import getdoc as doc, getsourcelines as source, getmodule as module, signature as sig, getmembers as member, getmro as clstree
+
+def clstree(a):
+    return clstree(a.__class__)
+
+def dr(a):
+    return a.__dir__()
+
+def dt(a):
+    return a.__dict__
+
+doc(DataLoader)
+sig(DataLoader)
+source(DataLoader)
+module(DataLoader)
+member(DataLoader)

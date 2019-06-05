@@ -33,6 +33,21 @@
 - data.external module has 5+
 
 ## imports module
+### `internals`
+[imports.internals](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.internals.py)
+> see built-in python modules fully imported and partly imported for v2
+
+### `externals`
+[imports.externals](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.externals.py)
+> see external modules to be fully and partly imported for v2
+
+### `inspectors`
+[imports.inspectors](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.inspectors.py)
+> all the functions I used the most in pdb to inspect
+
+### `equals` and `all_equal`
+[imports.all_equal](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.all_equal.py)
+> `equals` can compare any type and `all_equal` can any type with same length and content
 
 ## local.core module
 
