@@ -29,12 +29,12 @@
 ## local.core module
 
 ### `newchk`
-[core.newchk](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.newchk.py)
+[core.newchk](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk.png)
 > enable a class to create a new instance (normal) or return the input if the input is already an instance (new feature)
 <img src="https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/images/core.newchk.png" alt="newchk" width="700"/>
 
 ### `patch`
-[core.patch](https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/core.patch.py)
+[core.patch](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.patch.png)
 > enable a function to add itself to the Class of its first parameter
 <img src="https://github.com/EmbraceLife/fastai_docs/blob/my-v2/my-docs/images/core.patch.png" alt="patch" width="700"/>
 
