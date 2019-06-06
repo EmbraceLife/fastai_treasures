@@ -194,10 +194,10 @@ get_function_source(func) = return the link to the func source online
 
 <details><summary>oneliner</summary>
 <p>
-# get_source_link(func, local=False, is_name=None) =
-# 1. return the link to notebook at specific section for the `func`
-# 2. `func` can be a string or object
-# 3. local = True, gives your local link to the notebook
+get_source_link(func, local=False, is_name=None) =     
+1. return the link to notebook at specific section for the `func`     
+2. `func` can be a string or object     
+3. local = True, gives your local link to the notebook     
 
 </p>
 </details>
