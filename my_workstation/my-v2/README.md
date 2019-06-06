@@ -12,12 +12,12 @@
 - data.pipeline module has 8+ classes/methods
 - data.external module has 5+
 
-## imports module (done)
+# imports module (done)
 
 <details><summary>level 1</summary>
 <p>
 
-### `internals`    
+### internals    
 [imports.internals](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.internals.py)  
 
   <details><summary>oneliner</summary>
@@ -26,7 +26,7 @@
   </p>
   </details>
 
-### `externals`
+### externals
 [imports.externals](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.externals.py)
 <details><summary>oneliner</summary>
 <p>
@@ -36,7 +36,7 @@ see external modules to be fully and partly imported for v2
 </details>
 
 
-### `inspectors`
+### inspectors
 [imports.inspectors](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.inspectors.py)
 <details><summary>oneliner</summary>
 <p>
@@ -59,13 +59,13 @@ all the functions I used the most in pdb to inspect
 </details>
 
 
-## test module (done)   
+# test module (done)   
 
 <details><summary>level 1</summary>
 <p>
 
-### test_fail    
-[test.test_fail](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_fail.py)
+### `test_fail`    
+[`test.test_fail`](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_fail.py)
 
 <details><summary>oneliner</summary>
 <p>
@@ -73,8 +73,8 @@ when an error/exception is unavoided, use test_fail to anticipate it
 </p>
 </details>
 
-### test
-[test.test](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test.py)
+### `test`
+[`test.test`](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test.py)
 
 <details><summary>oneliner</summary>
 <p>
@@ -82,15 +82,15 @@ test on the use of a function to compare a and b
 </p>
 </details>
 
-### test_eq
-[test.test_eq](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_eq.py)
+### `test_eq`
+[`test.test_eq`](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_eq.py)
 <details><summary>oneliner</summary>
 <p>
 test_eq = test with equals on a and b
 </p>
 </details>
 
-### test_ne
+### `test_ne`
 [test.test_ne](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_ne.py)
 
 <details><summary>oneliner</summary>
@@ -99,7 +99,7 @@ test_ne = test with nequals on a and b
 </p>
 </details>
 
-### is_close, test_close
+### `is_close`, `test_close`    
 [test.is_close, test.test_close](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.is_close.test_close.py)
 <details><summary>oneliner</summary>
 <p>
@@ -108,7 +108,7 @@ test_close = to test `is_close` with `a`, `b` and `eps`
 </p>
 </details>
 
-### test_is, test_stdout
+### `test_is`, `test_stdout`   
 [test.test_is, test.test_stdout](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_is.test_stdout.py)
 <details><summary>oneliner</summary>
 <p>
@@ -126,7 +126,7 @@ test_stdout = to test whether `f()` has expected output
 <details><summary>level 1</summary>
 <p>
 
-### is_enum
+### `is_enum`   
 [notebook.showdoc.is_enum](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.is_enum.py)
 
 <details><summary>oneliner</summary>
