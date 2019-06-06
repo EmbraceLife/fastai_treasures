@@ -79,6 +79,63 @@ all the functions I used the most in pdb to inspect
 </details>
 
 
+## test module
+
+### test_fail
+[test.test_fail](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_fail.py)
+
+<details><summary>oneliner</summary>
+<p>
+when an error/exception is unavoided, use test_fail to anticipate it
+</p>
+</details>
+
+### test
+[test.test](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test.py)
+
+<details><summary>oneliner</summary>
+<p>
+test on the use of a function to compare a and b
+</p>
+</details>
+
+### test_eq
+[test.test_eq](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_eq.py)
+<details><summary>oneliner</summary>
+<p>
+test_eq = test with equals on a and b
+</p>
+</details>
+
+### test_ne
+[test.test_ne](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_ne.py)
+
+<details><summary>oneliner</summary>
+<p>
+test_ne = test with nequals on a and b
+</p>
+</details>
+
+### is_close, test_close
+[test.is_close, test.test_close](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.is_close.test_close.py)
+<details><summary>oneliner</summary>
+<p>
+is_close = is `a` close enough to `b` within `eps`
+test_close = to test `is_close` with `a`, `b` and `eps`
+</p>
+</details>
+
+### test_is, test_stdout
+[test.test_is, test.test_stdout](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_is.test_stdout.py)
+<details><summary>oneliner</summary>
+<p>
+oneliner
+test_is = test whether `a` is exactly `b`
+test_stdout = to test whether `f()` has expected output
+</p>
+</details>
+
+
 ## local.core module
 
 ### `newchk`
