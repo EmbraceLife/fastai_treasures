@@ -4,36 +4,63 @@
   - [key terms to note](#key-terms-to-note)
   - [workload plan](#workload-plan)
   - [imports module](#imports-module)
-    - [`internals`](#internals)
-    - [`externals`](#externals)
-    - [`inspectors`](#inspectors)
-    - [`equals` and `all_equal`](#equals-and-all_equal)
+
+    <details><summary>details</summary>
+    <p>
+
+    - [`internals`](#internals)   
+    - [`externals`](#externals)   
+    - [`inspectors`](#inspectors)   
+    - [`equals` and `all_equal`](#equals-and-all_equal)   
+
+    </p>
+    </details>
+
   - [test module](#test-module)
-    - [test_fail](#test_fail)
-    - [test](#test)
-    - [test_eq](#test_eq)
-    - [test_ne](#test_ne)
-    - [is_close, test_close](#is_close-test_close)
-    - [test_is, test_stdout](#test_is-test_stdout)
+    <details><summary>details</summary>
+    <p>
+    - [`test_fail`](#test_fail)    
+    - [`test`](#test)    
+    - [`test_eq`](#test_eq)    
+    - [`test_ne`](#test_ne)    
+    - [`is_close`, `test_close`](#is_close-test_close)    
+    - [`test_is`, `test_stdout`](#test_is-test_stdout)    
+    </p>
+    </details>
+
+  - [notebook.showdoc module](#notebook.showdoc)
+    <details><summary>details</summary>
+    <p>
+    - [`is_enum`](#is_enum)    
+
+    </p>
+    </details>
+
   - [local.core module](#localcore-module)
-    - [`newchk`](#newchk)
-    - [`patch`](#patch)
-    - [`chk`](#chk)
-    - [`ls`](#ls)
-    - [`tensor`](#tensor)
-    - [`tensor.ndim`](#tensorndim)
-    - [`add_docs`](#add_docs)
-    - [`docs`](#docs)
-    - [`custom_dir`, `GetAttr`](#custom_dir-getattr)
-    - [`is_iter`](#is_iter)
-    - [`coll_repr`](#coll_repr)
-    - [`_listify`](#_listify)
-    - [`_mask2idxs`](#_mask2idxs)
-    - [`L`](#l)
-    - [`defaults`](#defaults)
-    - [`ifnone`](#ifnone)
+    <details><summary>details</summary>
+    <p>
+    - [`newchk`](#newchk)    
+    - [`patch`](#patch)    
+    - [`chk`](#chk)    
+    - [`ls`](#ls)    
+    - [`tensor`](#tensor)    
+    - [`tensor.ndim`](#tensorndim)    
+    - [`add_docs`](#add_docs)    
+    - [`docs`](#docs)    
+    - [`custom_dir`, `GetAttr`](#custom_dir-getattr)    
+    - [`is_iter`](#is_iter)    
+    - [`coll_repr`](#coll_repr)    
+    - [`_listify`](#_listify)    
+    - [`_mask2idxs`](#_mask2idxs)    
+    - [`L`](#l)    
+    - [`defaults`](#defaults)    
+    - [`ifnone`](#ifnone)    
+    </p>
+    </details>
 
 <!-- /TOC -->
+
+
 # Fastai-v2 Docs on Each Item
 
 ## key terms to note
@@ -48,6 +75,7 @@
 - data.external module has 5+
 
 ## imports module (done)
+
 ### `internals`
 [imports.internals](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.internals.py)
 <details><summary>oneliner</summary>
