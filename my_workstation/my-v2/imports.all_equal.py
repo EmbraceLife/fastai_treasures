@@ -15,8 +15,9 @@ def equals(a,b):
            operator.eq)
     return cmp(a,b)
 
-equals(range(3), range(3))
-equals([1],[1])
+def exercise1():
+    equals(range(3), range(3))
+    equals([1],[1])
 
 ######################
 # compare both length and values
@@ -24,9 +25,10 @@ def all_equal(a,b):
     "Compares whether `a` and `b` are the same length and have the same contents"
     return all(equals(a_,b_) for a_,b_ in itertools.zip_longest(a,b))
 
-a = [1,2,3]
-b = [1,2,3]
-all_equal(a, b)
-a = [1,2,3]
-b = [1,1,2,3]
-all_equal(a, b)
+def exercise2():
+    a = [1,2,3]
+    b = [1,2,3]
+    all_equal(a, b)
+    a = [1,2,3]
+    b = [1,1,2,3]
+    all_equal(a, b)

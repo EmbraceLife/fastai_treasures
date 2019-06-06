@@ -15,6 +15,28 @@
 
 # Atom editor
 
+### folding and unfolding code
+- `alt/option+cmd+shift+[` = fold all codes
+- `alt+cmd+[` = fold immediate
+- `ctrl+alt+cmd+F` = fold selection
+
+### Hydrogen keyboard shortcuts
+- `alt+cmd+backspace` = clear results
+- `ctrl+cmd+enter` = run all
+- run above = select and run
+- import notebook
+- export notebook
+
+### How to fold in markdown Writer
+https://github.com/zhuochun/md-writer/blob/master/package.json#L21
+- `shift+cmd+p`: search keymaps
+- `ctrl + 1` = folder header 1
+- `ctrl + 2` = folder header 2
+- `ctrl + 3` = folder header 3
+
+### most used atom keyboard shortcuts
+https://github.com/nwinkler/atom-keyboard-shortcuts
+
 ### How to create snippets
 https://flight-manual.atom.io/using-atom/sections/snippets/
 ```bash
