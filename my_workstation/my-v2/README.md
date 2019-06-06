@@ -8,6 +8,13 @@
     - [`externals`](#externals)
     - [`inspectors`](#inspectors)
     - [`equals` and `all_equal`](#equals-and-all_equal)
+  - [test module](#test-module)
+    - [test_fail](#test_fail)
+    - [test](#test)
+    - [test_eq](#test_eq)
+    - [test_ne](#test_ne)
+    - [is_close, test_close](#is_close-test_close)
+    - [test_is, test_stdout](#test_is-test_stdout)
   - [local.core module](#localcore-module)
     - [`newchk`](#newchk)
     - [`patch`](#patch)
@@ -27,7 +34,6 @@
     - [`ifnone`](#ifnone)
 
 <!-- /TOC -->
-
 # Fastai-v2 Docs on Each Item
 
 ## key terms to note
@@ -41,7 +47,7 @@
 - data.pipeline module has 8+ classes/methods
 - data.external module has 5+
 
-## imports module
+## imports module (done)
 ### `internals`
 [imports.internals](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.internals.py)
 <details><summary>oneliner</summary>
@@ -79,7 +85,7 @@ all the functions I used the most in pdb to inspect
 </details>
 
 
-## test module
+## test module (done)
 
 ### test_fail
 [test.test_fail](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_fail.py)
@@ -129,9 +135,20 @@ test_close = to test `is_close` with `a`, `b` and `eps`
 [test.test_is, test.test_stdout](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_is.test_stdout.py)
 <details><summary>oneliner</summary>
 <p>
-oneliner
 test_is = test whether `a` is exactly `b`
 test_stdout = to test whether `f()` has expected output
+</p>
+</details>
+
+
+## notebook.showdoc module
+
+### is_enum
+[notebook.showdoc.is_enum](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.is_enum.py)
+
+<details><summary>oneliner</summary>
+<p>
+is_enum = whether the cls is enum.Enum or enum.EnumMeta
 </p>
 </details>
 
@@ -322,3 +339,5 @@ refactor b if a is None else a into a function
 
 </p>
 </details>
+
+###

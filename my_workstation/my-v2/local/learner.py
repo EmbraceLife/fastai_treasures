@@ -18,7 +18,6 @@ from .optimizer import *
 @docs
 class Callback():
     "Basic class handling tweaks of the training loop by changing a `Learner` in various events"
-    order=0
     def __getattr__(self, k): return getattr(self.learn, k)
 
     @property
@@ -102,9 +101,10 @@ defaults.callbacks = [TrainEvalCallback]
 class Learner():
     "Group together a `model`, some `data` and a `loss_func` to handle training"
     def __init__(self, model, data, loss_func, opt_func=SGD, lr=1e-2, splitter=trainable_params,
-                 cbs=None, cb_funcs=None, metrics=None):
+                 cbs=None, cb_funcs=None, metrics=None, path=None):
         self.model,self.data,self.loss_func = model,data,loss_func
         self.opt_func,self.lr,self.splitter = opt_func,lr,splitter
+        self.path = path if path is not None else getattr(data, 'path', Path('.'))
 
         self.metrics = [m if isinstance(m, Metric) else AvgMetric(m) for m in L(metrics)]
         self.training,self.logger,self.opt = False,print,None
@@ -184,10 +184,11 @@ class Learner():
         except CancelValidException: self('after_cancel_validate')
         finally:                     self('after_validate')
 
-    def fit(self, n_epoch, cbs=None, reset_opt=False):
+    def fit(self, n_epoch, lr=None, cbs=None, reset_opt=False):
         "Fit `self.model` for `n_epoch` using `cbs`. Optionally `reset_opt`."
         with self.added_cbs(cbs):
-            if reset_opt or not self.opt: self.opt = self.opt_func(self.splitter(self.model), lr=self.lr)
+            if reset_opt or not self.opt:
+                self.opt = self.opt_func(self.splitter(self.model), lr=self.lr if lr is None else lr)
 
             try:
                 self.do_begin_fit(n_epoch)
@@ -229,7 +230,7 @@ class Learner():
 
     def _call_one(self, event_name):
         assert hasattr(event, event_name)
-        [cb(event_name) for cb in self.cbs.sorted("order")]
+        [cb(event_name) for cb in sort_by_run(self.cbs)]
 
     @contextmanager
     def no_logging(self):
@@ -319,8 +320,9 @@ def _maybe_item(t):
     return t.item() if t.numel()==1 else t
 
 class Recorder(Callback):
-    order = 20
     "Callback that registers statistics (lr, loss and metrics) during training"
+    run_after = TrainEvalCallback
+
     def __init__(self, add_time=True, train_metrics=False, beta=0.98):
         self.add_time,self.train_metrics = add_time,train_metrics
         self.loss,self.smooth_loss = AvgLoss(),AvgSmoothLoss(beta=beta)
