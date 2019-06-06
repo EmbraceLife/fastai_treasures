@@ -17,26 +17,32 @@
     </details>
 
   - [test module](#test-module)
+
     <details><summary>details</summary>
     <p>
+
     - [`test_fail`](#test_fail)    
     - [`test`](#test)    
     - [`test_eq`](#test_eq)    
     - [`test_ne`](#test_ne)    
     - [`is_close`, `test_close`](#is_close-test_close)    
-    - [`test_is`, `test_stdout`](#test_is-test_stdout)    
+    - [`test_is`, `test_stdout`](#test_is-test_stdout)  
+
     </p>
     </details>
 
   - [notebook.showdoc module](#notebook.showdoc)
+
     <details><summary>details</summary>
     <p>
+
     - [`is_enum`](#is_enum)    
 
     </p>
     </details>
 
   - [local.core module](#localcore-module)
+
     <details><summary>details</summary>
     <p>
     - [`newchk`](#newchk)    
