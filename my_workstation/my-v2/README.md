@@ -195,13 +195,29 @@ get_function_source(func) = return the link to the func source online
 <details><summary>oneliner</summary>
 <p>
 get_source_link(func, local=False, is_name=None) =     
+
 1. return the link to notebook at specific section for the `func`     
+
 2. `func` can be a string or object     
+
 3. local = True, gives your local link to the notebook     
 
 </p>
 </details>
 
+### `source_link`
+[notebook.showdoc.source_link](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.source_link.py)
+
+<details><summary>oneliner</summary>
+<p>
+source_link(func, is_name=None, disp=True) = generate local nb link to func
+
+func = a string or object
+
+disp = True for link and False for string
+
+</p>
+</details>
 
 
 
