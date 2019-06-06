@@ -121,7 +121,7 @@ test_stdout = to test whether `f()` has expected output
 </details>
 
 
-## notebook.showdoc module
+# notebook.showdoc module
 
 <details><summary>level 1</summary>
 <p>
@@ -135,10 +135,80 @@ is_enum = whether the cls is enum.Enum or enum.EnumMeta
 </p>
 </details>
 
+### `_get_pytorch_index` and `add_pytorch_index`
+[`notebook.showdoc._get_pytorch_index` and `add_pytorch_index`](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.index.py)
+
+<details><summary>oneliner</summary>
+<p>
+
+`_get_pytorch_index()` = show the indexes with all the pytorch functions/classes
+
+`add_pytorch_index(func_name, url)` = add pytorch function html address onto the indexes
+
 </p>
 </details>
 
-## local.core module
+### `is_fastai_module`
+[notebook.showdoc.is_fastai_module](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.is_fastai_module.py)
+
+<details><summary>oneliner</summary>
+<p>
+`is_fastai_module(name)` = Test if `name` is a fastai module.
+
+</p>
+</details>
+
+### `doc_link`    
+[notebook.showdoc.doc_link](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.doc_link.py)
+
+<details><summary>oneliner</summary>
+<p>
+`doc_link(name)` = Create link to documentation for `name`, but still strings only
+
+</p>
+</details>
+
+
+### `add_doc_links`    
+[notebook.showdoc.add_doc_links](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.add_doc_links.py)
+
+<details><summary>oneliner</summary>
+<p>
+add_doc_links(text) = add doc link to the text where a func/class appeared
+
+</p>
+</details>
+
+### `get_function_source`
+[notebook.showdoc.get_function_source](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.get_function_source.py)
+
+<details><summary>oneliner</summary>
+<p>
+get_function_source(func) = return the link to the func source online
+
+</p>
+</details>
+
+### `get_source_link`
+[notebook.showdoc.get_source_link](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.get_source_link.py)
+
+<details><summary>oneliner</summary>
+<p>
+# get_source_link(func, local=False, is_name=None) =
+# 1. return the link to notebook at specific section for the `func`
+# 2. `func` can be a string or object
+# 3. local = True, gives your local link to the notebook
+
+</p>
+</details>
+
+
+
+
+</p>
+</details>
+
+# local.core module
 
 <details><summary>level 1</summary>
 <p>
