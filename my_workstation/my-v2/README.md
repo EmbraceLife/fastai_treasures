@@ -210,16 +210,50 @@ get_source_link(func, local=False, is_name=None) =
 
 <details><summary>oneliner</summary>
 <p>
-source_link(func, is_name=None, disp=True) = generate local nb link to func
+source_link(func, is_name=None, disp=True) =
 
-func = a string or object
+1. generate local nb link to func
 
-disp = True for link and False for string
+2. func = a string or object
+
+3. disp = True for link and False for string
+
+</p>
+</details>
+
+### `type_repr`
+[notebook.showdoc.type_repr](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.type_repr.py)
+
+<details><summary>oneliner</summary>
+<p>
+type_repr(t) = represent type while add links to it
 
 </p>
 </details>
 
 
+### `show_doc`
+[notebook.showdoc.show_doc](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.show_doc.py)
+
+<details><summary>oneliner</summary>
+<p>
+return the nice representation of docs and source link to nbviewer
+
+</p>
+</details>
+
+### `doc`
+[notebook.showdoc.docs](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.doc.py)
+
+<details><summary>oneliner</summary>
+<p>
+doc(elt) = do `show_doc` and show detailed docs link in notebook
+
+</p>
+</details>
+
+### the remaining funcs
+The remaining ones seem not have widely usage yet. 
 
 </p>
 </details>
