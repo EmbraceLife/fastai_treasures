@@ -45,6 +45,7 @@
 
     <details><summary>details</summary>
     <p>
+
     - [`newchk`](#newchk)    
     - [`patch`](#patch)    
     - [`chk`](#chk)    
@@ -60,10 +61,12 @@
     - [`_mask2idxs`](#_mask2idxs)    
     - [`L`](#l)    
     - [`defaults`](#defaults)    
-    - [`ifnone`](#ifnone)    
+    - [`ifnone`](#ifnone)   
+
     </p>
     </details>
 
+  - 
 <!-- /TOC -->
 
 
