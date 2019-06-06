@@ -11,6 +11,7 @@
 
 <!-- /TOC -->
 
+
 <!-- TOC -->
 
 - [Fastai-v2 Docs on Each Item](#fastai-v2-docs-on-each-item)
@@ -98,13 +99,17 @@
 
 ## imports module (done)
 
-### `internals`
-[imports.internals](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.internals.py)
-<details><summary>oneliner</summary>
+<details><summary>level 1</summary>
 <p>
-see built-in python modules fully imported and partly imported for v2
-</p>
-</details>
+
+### `internals`    
+[imports.internals](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.internals.py)  
+
+  <details><summary>oneliner</summary>
+  <p>
+  see built-in python modules fully imported and partly imported for v2
+  </p>
+  </details>
 
 ### `externals`
 [imports.externals](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.externals.py)
@@ -135,9 +140,16 @@ all the functions I used the most in pdb to inspect
 </details>
 
 
-## test module (done)
+</p>
+</details>
 
-### test_fail
+
+## test module (done)   
+
+<details><summary>level 1</summary>
+<p>
+
+### test_fail    
 [test.test_fail](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_fail.py)
 
 <details><summary>oneliner</summary>
@@ -190,8 +202,14 @@ test_stdout = to test whether `f()` has expected output
 </p>
 </details>
 
+</p>
+</details>
+
 
 ## notebook.showdoc module
+
+<details><summary>level 1</summary>
+<p>
 
 ### is_enum
 [notebook.showdoc.is_enum](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/notebook.showdoc.is_enum.py)
@@ -202,10 +220,15 @@ is_enum = whether the cls is enum.Enum or enum.EnumMeta
 </p>
 </details>
 
+</p>
+</details>
 
 ## local.core module
 
-### `newchk`
+<details><summary>level 1</summary>
+<p>
+
+### `newchk`    
 [core.newchk](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.newchk.py)
 
 <details><summary>oneliner</summary>
@@ -391,3 +414,6 @@ refactor b if a is None else a into a function
 </details>
 
 ###
+
+</p>
+</details>
