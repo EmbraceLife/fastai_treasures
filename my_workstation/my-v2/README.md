@@ -3,6 +3,19 @@
 - [Fastai-v2 Docs on Each Item](#fastai-v2-docs-on-each-item)
   - [key terms to note](#key-terms-to-note)
   - [workload plan](#workload-plan)
+  - [imports module (done)](#imports-module-done)
+  - [test module (done)](#test-module-done)
+  - [notebook.showdoc module](#notebookshowdoc-module)
+  - [local.core module](#localcore-module)
+
+
+<!-- /TOC -->
+
+<!-- TOC -->
+
+- [Fastai-v2 Docs on Each Item](#fastai-v2-docs-on-each-item)
+  - [key terms to note](#key-terms-to-note)
+  - [workload plan](#workload-plan)
   - [imports module](#imports-module)
 
     <details><summary>details</summary>
@@ -66,7 +79,7 @@
     </p>
     </details>
 
-  - 
+  -
 <!-- /TOC -->
 
 
