@@ -7,7 +7,14 @@
 - search "not_finished": for official source but unfinished properly
 
 ## workload plan
+according to class/method [indexes](https://github.com/fastai/fastai_docs/blob/master/dev/local/notebook/index.txt), there are 230+ class/methods in total.
+
+- imports module has 2 funcs
 - test module has 10+ classes/methods
+- notebook.showdoc module has 19+ class/method
+- notebook.export module has 27+ class/method (source from nb to py, **no need yet**)
+- notebook.export2html module has 32+ class/method (nb to html, **no need yet**)
+- notebook.core module has 3 funcs (check code running in colab, ipython, nb, easy but **no need yet**)
 - local.core module has 31+ classes/methods
 - data.pipeline module has 8+ classes/methods
 - data.external module has 5+
@@ -121,7 +128,7 @@ test_stdout = to test whether `f()` has expected output
 </details>
 
 
-# notebook.showdoc module
+# notebook.showdoc module (done)  
 
 <details><summary>level 1</summary>
 <p>
@@ -218,6 +225,7 @@ source_link(func, is_name=None, disp=True) =
 
 3. disp = True for link and False for string
 
+without notebook, this is not useful.
 </p>
 </details>
 
@@ -237,7 +245,14 @@ type_repr(t) = represent type while add links to it
 
 <details><summary>oneliner</summary>
 <p>
-return the nice representation of docs and source link to nbviewer
+return the nice representation of docs and source link to nbview
+
+personally this is most useful:
+
+1. inline doc nice printed
+2. html link to latest source and doc in nbreview
+3. atom: shift+cmd+F => find the source code in my .py file to run and test
+
 
 </p>
 </details>
@@ -253,7 +268,7 @@ doc(elt) = do `show_doc` and show detailed docs link in notebook
 </details>
 
 ### the remaining funcs
-The remaining ones seem not have widely usage yet. 
+The remaining ones seem not have widely usage yet.
 
 </p>
 </details>
@@ -448,7 +463,21 @@ refactor b if a is None else a into a function
 </p>
 </details>
 
-###
+### `noop`, `noops`
+[core.noop, core.noops](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.noop.noops.py)
+
+<details><summary>oneliner</summary>
+<p>
+`noop(x=None, *args, **kwargs) => do nothing to `x`, just return it
+
+`noops(self, x, *args, **kwargs)` => do nothing
+    = to be a method of any class, since it uses `self`
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk.png" alt="codename" width="700"/>
+
+</p>
+</details>
+
 
 </p>
 </details>

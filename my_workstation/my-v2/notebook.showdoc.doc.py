@@ -28,7 +28,7 @@ def md2html(md):
     else: return HTMLExporter().markdown2html(defaultdict(lambda: defaultdict(dict)), md)
 
 ############################
-# show doc in html 
+# show detailed docs link in notebook 
 def doc(elt):
     "Show `show_doc` info in preview window"
     md = show_doc(elt, disp=False)
