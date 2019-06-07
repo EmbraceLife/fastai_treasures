@@ -495,8 +495,41 @@ the most easy-to-use and powerful list class with all the utils needed
 </p>
 </details>
 
-###
+### `replicate`
+[core.replicate](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.replicate.py)
 
+<details><summary>oneliner</summary>
+<p>
+
+`replicate(item,match)`
+
+> copy `item` `match` times into a tuple
+
+> `item` = single value, list or tuple
+
+</p>
+</details>
+
+### `uniqueify`
+[core.uniqueify](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.uniqueify.py)
+
+<details><summary>oneliner</summary>
+<p>
+
+`uniqueify(x, sort=False, bidir=False, start=None)`
+
+> = return a unique list
+
+> `x` = a list of values, duplicated, and not sorted
+
+> `sort = True` = sort the unique list
+
+> `bidir=True` = also return a dict where the unique list are the keys
+
+> `start=None` = if not None, then add `start` on to the unique list
+
+</p>
+</details>
 
 </p>
 </details>
