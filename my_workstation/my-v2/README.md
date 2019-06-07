@@ -461,11 +461,14 @@ refactor b if a is None else a into a function
 
 <details><summary>oneliner</summary>
 <p>
-`noop(x=None, *args, **kwargs) => do nothing to `x`, just return it
+`noop(x=None, *args, **kwargs)`
 
-`noops(self, x, *args, **kwargs**)` => do nothing
+> do nothing to `x`, just return it
 
-    = to be a method of any class, since it uses `self`
+`noops(self, x, *args, **kwargs**)`
+
+> do nothing to `x`, just return it
+> to be a method of any class, since it uses `self`
 
 </p>
 </details>
@@ -475,11 +478,11 @@ refactor b if a is None else a into a function
 
 <details><summary>oneliner</summary>
 <p>
-tuplify(o, use_list=False, match=None) =>
 
-    = turn a L object into a tuple
+`tuplify(o, use_list=False, match=None)`
 
-    = use_list to split a single tensor into a tuple of 3 tensors   
+> turn a `L` object into a tuple
+> `use_list` to split a single tensor into a tuple of 3 tensors   
 
 </p>
 </details>
