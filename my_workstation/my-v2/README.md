@@ -473,7 +473,8 @@ the most easy-to-use and powerful list class with all the utils needed
 
 `noops(self, x, *args, **kwargs)`
 
-> do nothing to `x`, just return it
+> do nothing to `x`, just return it.
+
 > to be a method of any class, since it uses `self`
 
 </p>
@@ -488,6 +489,7 @@ the most easy-to-use and powerful list class with all the utils needed
 `tuplify(o, use_list=False, match=None)`
 
 > turn a `L` object into a tuple
+
 > `use_list` to split a single tensor into a tuple of 3 tensors   
 
 </p>
