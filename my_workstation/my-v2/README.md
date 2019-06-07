@@ -313,7 +313,12 @@ enable a function to add itself to the Class of its first parameter
 [core.chk](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.chk.py)
 <details><summary>oneliner</summary>
 <p>
-enable a function to check on its parameters types
+
+`@chk`
+
+> enable a function to check on its parameters types automatically
+
+> important note: f() run inside `typechecked()`
 
 </p>
 </details>
@@ -719,6 +724,47 @@ make indexes or binary indexes
 > = Recursively search the device of `b`
 
 > and `idx` from `item_find` is default 0 and not changeable
+
+</p>
+</details>
+
+### `find_bs`
+[core.find_bs](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.find_bs.py)
+
+<details><summary>docs</summary>
+<p>
+
+`find_bs(b)`
+
+> = Recursively search the batch size of `b`
+
+> `b` = a batch of dataset
+
+> batch_size = the shape[0] of first item of b recursively
+
+</p>
+</details>
+
+### `compose`
+[core.compose](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.compose.py)
+
+<details><summary>docs</summary>
+<p>
+
+`compose(*funcs: Callable, order=None)`
+
+> = wrap func around func by their positional order or specified order
+
+> = arguments for `compose` and `funcs` can be properly passed onto
+
+> = `L.sorted` handles with order
+
+> = `compose()` itself run inside `@chk`, then `_inner()` will run after
+
+> Note: how `order` are passed to `compose`
+
+> Noet: and how `x`, `p` are passed onto `funcs`
+
 
 </p>
 </details>

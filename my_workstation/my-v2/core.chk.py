@@ -5,6 +5,9 @@ from local.notebook.showdoc import show_doc
 # ### Type checking
 # Runtime type checking is handy, so let's make it easy!
 
+############
+# important note: f() run inside `typechecked()`
+
 def chk(f): return typechecked(always=True)(f)
 
 #####################
