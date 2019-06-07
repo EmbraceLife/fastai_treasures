@@ -1,6 +1,10 @@
 
 # Fastai-v2 Docs on Each Item
 
+## project goal
+- know the library inside out
+- plot detail logic flow diagrams for nbs to show true understanding
+
 ## key terms to note
 - search "doc_improve:" with vim Ag to see my proposed source improvements in the source files below
 - search "made_uncool:" with vim Ag to see how clean and compact official source code is and how to make it uncool for debugging
@@ -769,6 +773,67 @@ make indexes or binary indexes
 </p>
 </details>
 
+### `mapper`
+
+[core.mapper](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.mapper.py)
+
+<details><summary>docs</summary>
+<p>
+
+`mapper(f)`
+
+> = map a func onto every input of an collection
+
+> mapper(f) is a lambda on its own
+
+> mapper(f)(data) is how we use it
+
+</p>
+</details>
+
+### `partialler`
+[core.partialler](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.partialler.py)
+
+<details><summary>docs</summary>
+<p>
+
+`partialler(f, *args, order=None, **kwargs)`
+
+> = Like `functools.partial` but also copies over docstring"
+
+> = also set `order` too
+
+> = returns a args-specified function of `f`
+
+</p>
+</details>
+
+### `sort_by_run`
+[core.sort_by_run](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.sort_by_run.py)
+
+
+<details><summary>docs</summary>
+<p>
+
+`sort_by_run(fs)`
+
+> = rank funcs into a list based on their execution order
+
+`_is_first(f, gs)`
+
+> > if `f.run_after` is an instance of any g in gs, or
+
+> > if `f` is an instance of any `g.run_before`,
+
+> > then `f` is not first to `gs`
+
+`_is_instance(f, gs)`
+
+> = check if `f` is an instance of any `g` from `gs`
+
+
+</p>
+</details>
 
 </p>
 </details>
