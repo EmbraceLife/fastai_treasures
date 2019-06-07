@@ -434,7 +434,9 @@ the most easy-to-use and powerful list class with all the utils needed
 [core.defaults](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.defaults.py)
 <details><summary>oneliner</summary>
 <p>
-create a simple namespace for storing nested values
+
+> create a simple namespace for storing nested values
+
 </p>
 </details>
 
@@ -450,7 +452,10 @@ create a simple namespace for storing nested values
 [core.ifnone](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.ifnone.py)
 <details><summary>oneliner</summary>
 <p>
-refactor b if a is None else a into a function
+
+`ifnone(a, b)`
+
+> refactor b if a is None else a into a function
 
 </p>
 </details>
@@ -461,11 +466,12 @@ refactor b if a is None else a into a function
 
 <details><summary>oneliner</summary>
 <p>
+
 `noop(x=None, *args, **kwargs)`
 
 > do nothing to `x`, just return it
 
-`noops(self, x, *args, **kwargs**)`
+`noops(self, x, *args, **kwargs)`
 
 > do nothing to `x`, just return it
 > to be a method of any class, since it uses `self`
