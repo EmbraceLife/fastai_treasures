@@ -2,6 +2,10 @@ from local.test import *
 from local.imports import *
 from local.notebook.showdoc import show_doc
 
+##################
+# `tensor(x, *rest)` = return a tensor from many different types below
+# `x` = scalar, tuple, list, array
+# `rest` = a few numbers like (1,2,3)
 
 def tensor(x, *rest):
     "Like `torch.as_tensor`, but handle lists too, and can pass multiple vector elements directly."
@@ -17,6 +21,9 @@ def tensor(x, *rest):
 # to pdb
 tensor(array([1,2,3]))
 tensor(1,2,3)
+x = array([1,2,3])
+x = 0
+rest = (1,2)
 
 # nb
 test_eq(tensor(array([1,2,3])), torch.tensor([1,2,3]))

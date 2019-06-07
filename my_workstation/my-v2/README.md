@@ -338,7 +338,15 @@ enable a Path object with a new method to check its contents on the immediate le
 [core.tensor](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.tensor.py)
 <details><summary>oneliner</summary>
 <p>
+
 put array-like, list, tuple, or just a few numbers into an tensor
+
+> `tensor(x, *rest)` = return a tensor from many different types below
+
+> `x` = scalar, tuple, list, array
+
+> `rest` = a few numbers like (1,2,3)
+
 </p>
 </details>
 
@@ -577,6 +585,88 @@ make indexes or binary indexes
 
 </p>
 </details>
+
+### `setify`
+[core.setify](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.setify.py)
+
+<details><summary>oneliner</summary>
+<p>
+
+> `setify(o)`
+
+> = return o if o is a set
+
+> = return a new set from `set(L(o))`
+
+</p>
+</details>
+
+### `is_listy`
+[core.is_listy](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.is_listy.py)
+
+<details><summary>oneliner</summary>
+<p>
+
+> `is_listy(x)` = whether `x` is instance of tuple, list, L or slice
+
+</p>
+</details>
+
+### `range_of`
+
+[core.range_of](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.range_of.py)
+
+<details><summary>oneliner</summary>
+<p>
+
+> `range_of(x)` = return a list of indexes for `x`
+
+</p>
+</details>
+
+### `mask2idxs`
+[core.mask2idxs](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.mask2idxs.py)
+
+<details><summary>onelinear</summary>
+<p>
+
+>`mask2idxs(mask)` = turn mask into a list of idx/values as L object
+
+>`mask` = tuple, list of values, strings, bools, even a tensor of list
+
+>`mask` = can't be single value like 3, or (3), but (3,) or [3] works
+
+</p>
+</details>
+
+### `apply`
+[core.apply](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.apply.py)
+
+<details><summary>oneliner</summary>
+<p>
+
+> `apply(func, x, *args, **kwargs)` = recursively apply func to `x`
+
+> `func` = any func
+
+> `x` = anything of a scalar, a list/tuple, or a dict
+
+</p>
+</details>
+
+### `to_detach`
+[core.to_detach](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.to_detach.py)
+
+<details><summary>onelinear</summary>
+<p>
+
+> `to_detach(b, cpu=True)`
+
+> = detach lists of tensors in `b `; put them on the CPU if `cpu=True`
+
+</p>
+</details>
+
 
 </p>
 </details>
