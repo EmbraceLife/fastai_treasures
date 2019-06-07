@@ -667,6 +667,62 @@ make indexes or binary indexes
 </p>
 </details>
 
+### `to_half`, `to_float`
+[core.to_half, core.to_float](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.to_half.to_float.py)
+
+<details><summary>docs</summary>
+<p>
+
+> `to_half(b)` = Recursively map lists of float tensors in `b` to FP16
+
+> `to_float(b)` = Recursively map lists of float tensors in `b` to float32
+
+</p>
+</details>
+
+### `to_device`, `to_cpu`
+[core.to_device, core.to_cpu](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.to_device.to_cpu.py)
+
+<details><summary>docs</summary>
+<p>
+
+`to_device(b, device=defaults.device)`
+
+> = Recursively put `b` on `device`, by default on gpu
+
+`to_cpu(b)`
+
+> = Recursively map lists of tensors in `b ` to the cpu
+
+</p>
+</details>
+
+### `item_find`, `find_device`
+[core.item_find, core.find_device](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.item_find.find_device.py)
+
+<details><summary>docs</summary>
+<p>
+
+`item_find(x, idx=0)`
+
+> = recursively dive deeper to get the idx-th item of x
+
+> `x` = list of list or dict of dict
+
+> `idx` = int as index working for list and dict, or not int for dict's key
+
+> `idx` = user defined int works for the first level, lower levels controlled by default value 0
+
+
+`find_device(b)`
+
+> = Recursively search the device of `b`
+
+> and `idx` from `item_find` is default 0 and not changeable
+
+</p>
+</details>
+
 
 </p>
 </details>

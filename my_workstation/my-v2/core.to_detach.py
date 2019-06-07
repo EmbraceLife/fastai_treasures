@@ -20,5 +20,5 @@ def to_detach(b, cpu=True):
 
 b = tensor(1,2)
 to_detach(b, cpu=True)
-b = torch.Tensor([1,2])
+b = [torch.Tensor([1,2]), tensor(3,4), tensor(5,7)]
 to_detach(b, cpu=True)
