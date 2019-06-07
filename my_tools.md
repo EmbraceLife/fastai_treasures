@@ -15,6 +15,18 @@
 
 # Atom editor
 
+### how to do multiple cursor editing
+```bash
+`shift + V, j, k` = to select
+`shift + I, j, k` = to activate multiple cursor and move around
+`a` or `i` = to insert
+`ecs`, `ecs` = to exist multiple cursor mode 
+```
+
+### how to search files in the directory
+- `shift+cmd+p` => `Fuzzy fider`
+- `toggle file finder` => `cmd+P`
+
 ### folding and unfolding code
 - `alt/option+cmd+shift+[` = fold all codes
 - `alt+cmd+[` = fold immediate
@@ -72,9 +84,10 @@ https://flight-manual.atom.io/using-atom/sections/snippets/
     'body': '![GitHub Octocat](https://assets-cdn.github.com/images/modules/logos_page/Octocat.png)'
 ```
 
-### How to find and replace across files
+### How to find and replace phrases across files
 ```bash
 shift + cmd + F
+# Note: use reg to narrow on files such as *.py on the third row
 ```
 
 # NVM basics

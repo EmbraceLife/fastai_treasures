@@ -424,7 +424,54 @@ make indexes or binary indexes
 [core.L](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.L.py)
 <details><summary>oneliner</summary>
 <p>
-the most easy-to-use and powerful list class with all the utils needed
+
+> @newchk` = to make sure L(instance_L) returns the same instance
+
+> `GetAttr` and `_xtra` = base class to steal methods of `list` to class `L`
+
+> = get items into a list and assigned to self.items and self.default
+
+> `use_list` = break a tensor into several
+
+> `match` = match the length of items
+
+> `__getitem__(self, idx)` = return individual values or L instance
+
+> `__setitem__(self, idx, o)` = Set `idx` (can be list of indices, or mask, or int) items to `o`
+
+> `sorted(self, key=None, reverse=False)` = return New `L` sorted by `key`. If key is str then use `attrgetter`. If key is int then use `itemgetter`."
+
+> `def __len__(self): return len(self.items)`
+
+> `def __delitem__(self, i): del(self.items[i])`
+
+> `def __repr__(self): return f'{coll_repr(self)}'`
+
+> `def __eq__(self,b): return all_equal(b,self)`
+
+> `def __iter__(self): return (self[i] for i in range(len(self)))`
+
+> `def __mul__ (a,b): return L(a.items*b)`
+
+> `def __add__ (a,b): return L(a.items+_listify(b))`
+
+> `def __radd__(a,b): return L(b)+a`
+
+> `def __addi__(a,b): a.items += list(b); return a`
+
+> `def mapped(self, f):    return L(map(f, self))`
+
+> `def zipped(self):       return L(zip(*self))`
+
+> `def itemgot(self, idx): return self.mapped(itemgetter(idx))`
+
+> `def attrgot(self, k):   return self.mapped(lambda o:getattr(o,k,0))`
+
+> `def tensored(self):     return self.mapped(tensor)`
+
+> `def stack(self, dim=0): return torch.stack(list(self.tensored()), dim=dim)`
+
+> `def cat  (self, dim=0): return torch.cat  (list(self.tensored()), dim=dim)`
 
 </p>
 </details>
