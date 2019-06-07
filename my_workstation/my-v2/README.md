@@ -455,13 +455,6 @@ refactor b if a is None else a into a function
 </p>
 </details>
 
-<details><summary>picusum</summary>
-<p>
-
-<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.ifnone.png" alt="defaults" width="700"/>
-
-</p>
-</details>
 
 ### `noop`, `noops`
 [core.noop, core.noops](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.noop.noops.py)
@@ -470,13 +463,28 @@ refactor b if a is None else a into a function
 <p>
 `noop(x=None, *args, **kwargs) => do nothing to `x`, just return it
 
-`noops(self, x, *args, **kwargs)` => do nothing
-    = to be a method of any class, since it uses `self`
+`noops(self, x, *args, **kwargs**)` => do nothing
 
-<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk.png" alt="codename" width="700"/>
+    = to be a method of any class, since it uses `self`
 
 </p>
 </details>
+
+### `tuplify`
+[core.tuplify](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.tuplify.py)
+
+<details><summary>oneliner</summary>
+<p>
+tuplify(o, use_list=False, match=None) =>
+
+    = turn a L object into a tuple
+
+    = use_list to split a single tensor into a tuple of 3 tensors   
+
+</p>
+</details>
+
+###
 
 
 </p>

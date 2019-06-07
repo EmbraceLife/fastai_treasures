@@ -349,6 +349,11 @@ t.tensored()
 t.stack()
 t.cat()
 
+t = L([[1,2],[3,4]])
+t.tensored()
+t.stack()
+t.cat()
+
 # nb
 # t = L(([1,2],[3,4]))
 # test_eq(t.tensored(), [tensor(1,2),tensor(3,4)])
