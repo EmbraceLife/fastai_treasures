@@ -4,7 +4,7 @@ from local.notebook.showdoc import show_doc
 from local.core import add_docs
 
 ################
-# not_finished: docs is not finished properly by official source yet
+# doc_doubts: docs is not finished properly by official source yet
 def docs(cls):
     "Decorator version of `add_docs"
     add_docs(cls, **cls._docs)

@@ -6,9 +6,10 @@
 - plot detail logic flow diagrams for nbs to show true understanding
 
 ## key terms to note
-- search "doc_improve:" with vim Ag to see my proposed source improvements in the source files below
+- search "doc_improve:" with vim Ag or Atom: shift+cmd+F to see my proposed source improvements on the official source
 - search "made_uncool:" with vim Ag to see how clean and compact official source code is and how to make it uncool for debugging
-- search "not_finished": for official source but unfinished properly
+- search "doc_doubts": maybe the official source is problematic
+
 
 ## workload plan
 according to class/method [indexes](https://github.com/fastai/fastai_docs/blob/master/dev/local/notebook/index.txt), there are 230+ class/methods in total.
@@ -815,21 +816,38 @@ make indexes or binary indexes
 <details><summary>docs</summary>
 <p>
 
+
 `sort_by_run(fs)`
 
 > = rank funcs into a list based on their execution order
 
+> logic:
+
+    > `end` = index of `gs` which has `toward_end` attribute
+
+    > `inp, res` = the full fs, and empty list
+
+    > loop through all funcs, test which is the first func
+
+    > get the first func into `res` the list
+
 `_is_first(f, gs)`
 
-> > if `f.run_after` is an instance of any g in gs, or
+> = whether `f` is the first func inside `gs`
 
-> > if `f` is an instance of any `g.run_before`,
+> return False if `f.run_after` is an instance of any func in `gs`
 
-> > then `f` is not first to `gs`
+> return False if `f` is an instance of the `g.run_before` from `gs`
+
+> except two conditions above, `f` is the first func of `gs`
 
 `_is_instance(f, gs)`
 
-> = check if `f` is an instance of any `g` from `gs`
+> = check if `f` is an instance of or exact the same to any `g` from `gs`
+
+> if `g` is a type or func, then `f` == `g` makes True returned
+
+> if `g` is a class, then `f` is an instance of `g` makes True returned
 
 
 </p>
