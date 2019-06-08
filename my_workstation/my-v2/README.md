@@ -288,7 +288,12 @@ The remaining ones seem not have widely usage yet.
 
 <details><summary>oneliner</summary>
 <p>
-enable a class to create a new instance (normal) or return the input if the input is already an instance (new feature)   
+
+`@newchk`
+
+> enable a class to create a new instance (normal)
+
+> or return the input if the input is already an instance (new feature)   
 
 </p>
 </details>
@@ -323,7 +328,7 @@ enable a function to add itself to the Class of its first parameter
 
 > enable a function to check on its parameters types automatically
 
-> important note: f() run inside `typechecked()`
+> important note: wrapped() run inside `typechecked()`
 
 </p>
 </details>
@@ -391,13 +396,30 @@ to enable a Class to set up its docs (unfinished by official source yet)
 [core.custom_dir, core.GetAttr](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.getattr.py)
 <details><summary>custom_dir</summary>
 <p>
-enable a subclass to take all its methods into its `__dir__` using `custom_dir`
+
+`custom_dir(c, add:List)`
+
+> = to allow a class to gather together all its methods from its `__dir__`, `__dict__`, and `add`
+
 </p>
 </details>
 
 <details><summary>GetAttr</summary>
 <p>
-access additional methods from `_xtra` using `__getattr__`
+
+`_xtra`
+
+> = a list of methods (user define or select)
+
+`__getattr__`
+
+> = allow `GetAttr` subclass to access additional methods from `_xtra`
+
+`__dir__`
+
+> = to print out everything in `__dir__`, `__dict__`, `__xtra__`
+
+
 </p>
 </details>
 
