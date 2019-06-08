@@ -937,9 +937,54 @@ make indexes or binary indexes
 </details>
 
 
-###
+### `opt_call`
+[data.pipeline.opt_call](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/data.pipeline.opt_call.py)
+
+<details><summary>docs</summary>
+<p>
+
+`opt_call(f, fname='__call__', *args, **kwargs)`
+
+> = call `f.{fname}(*args, **kwargs)` or call `noop()`,
+
+> = if `f.{fname}` is not defined
+
+</p>
+</details>
+
+### `show_title`
+[data.pipeline.show_title](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/data.pipeline.show_title.py)
+
+<details><summary>docs</summary>
+<p>
+
+`show_title(o, ax=None, ctx=None)`
+
+> = to set title `o` for ax plot
+
+> = or just print out the title `o` if `ax` is None
+
+</p>
+</details>
+
+### `Item`
+
+[data.pipeline.Item](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/data.pipeline.Item.py)
+
+<details><summary>docs</summary>
+<p>
+
+`Item()`
+
+> = a class with a single function `show(o, ctx=None, **kwargs)`
+
+> = which does the same job as `show_title`,
+
+> = finally returns `ctx` or the actual `ax`
 
 
+</p>
+</details>
 
 </p>
 </details>
