@@ -1,8 +1,8 @@
 # my own inspection helpers
 from inspect import getdoc as doc, getsourcelines as source, getmodule as module, signature as sig, getmembers as member, getmro as clstree
 
-def clstree(a):
-    return clstree(a.__class__)
+def clsstree(a):
+    return getmro(a.__class__)
 
 def dr(a):
     return a.__dir__()

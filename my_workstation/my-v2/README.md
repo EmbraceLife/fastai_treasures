@@ -2,7 +2,8 @@
 # Fastai-v2 Docs on Each Item
 
 ## project goal
-- know the library inside out
+- know the library inside out through tests on v2
+  - insights on tests: [@stas](https://forums.fast.ai/t/how-to-contribute-to-fastai-discussion/37829/15?u=daniel)
 - plot detail logic flow diagrams for nbs to show true understanding
 
 ## key terms to note

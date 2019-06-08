@@ -44,7 +44,7 @@ def equals(a,b):
 from inspect import getdoc as doc, getsourcelines as source, getmodule as module, signature as sig, getmembers as member, getmro as clstree
 
 def clstree(a):
-    return clstree(a.__class__)
+    return getmro(a)
 
 def dr(a):
     return a.__dir__()
