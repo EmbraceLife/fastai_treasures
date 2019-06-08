@@ -821,15 +821,13 @@ make indexes or binary indexes
 
 > = rank funcs into a list based on their execution order
 
-> logic:
+> `end` = index of `gs` which has `toward_end` attribut
 
-    > `end` = index of `gs` which has `toward_end` attribute
+> `inp, res` = the full fs, and empty lis
 
-    > `inp, res` = the full fs, and empty list
+> loop through all funcs, test which is the first fun
 
-    > loop through all funcs, test which is the first func
-
-    > get the first func into `res` the list
+> get the first func into `res` the list
 
 `_is_first(f, gs)`
 
@@ -852,6 +850,25 @@ make indexes or binary indexes
 
 </p>
 </details>
+
+### `add_props`
+[core.add_props](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.add_props.py)
+
+<details><summary>docs</summary>
+<p>
+
+`add_props(f, n=2)`
+
+> = add properties to a class, `n` set for number of properties
+
+> = properties difference are based on `i` from `i in range(n)`, and
+
+> = `partial(f, i)` => if `f` is lambda then must have two args `x` and `i`
+
+
+</p>
+</details>
+
 
 </p>
 </details>
