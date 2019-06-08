@@ -278,7 +278,7 @@ The remaining ones seem not have widely usage yet.
 </p>
 </details>
 
-# local.core module
+# local.core module (done)
 
 <details><summary>level 1</summary>
 <p>
@@ -868,6 +868,55 @@ make indexes or binary indexes
 
 </p>
 </details>
+
+### `make_cross_image`
+[core.make_cross_image](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.make_cross_image.py)
+
+<details><summary>docs</summary>
+<p>
+
+`make_cross_image(bw=True)`
+
+> `bw=True` = black and white cross image
+
+> `bw=False` = color cross image
+
+> Not sure of color image logic behind
+
+</p>
+</details>
+
+
+</p>
+</details>
+
+# data.pipeline module (start)
+
+<details><summary>level 1</summary>
+<p>
+
+## Low-level transform pipelines
+<details><summary>introduction</summary>
+<p>
+
+> The classes here provide functionality for creating *partially reversible functions*, which we call `Transform`s. By "partially reversible" we mean that a transform can be `decode`d, creating a form suitable for display. This is not necessarily identical to the original form (e.g. a transform that changes a byte tensor to a float tensor does not recreate a byte tensor when decoded, since that may lose precision, and a float tensor can be displayed already.)
+
+> Classes are also provided and for composing transforms, and mapping them over collections. The following functionality is provided:
+
+> - A `Transform` can be created with `is_tuple=True`, which causes a single transform to be mapped over an input collection
+
+> - `TfmOver` is a transform which applies multiple transforms over an input collection of the same length
+
+> - `Pipeline` is a transform which composes transforms
+
+> - `TfmdList` takes a collection and a transform, and provides an indexer (`__getitem__`) which dynamically applies the transform to the collection items.
+
+</p>
+</details>
+
+
+###
+
 
 
 </p>
