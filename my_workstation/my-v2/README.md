@@ -987,9 +987,9 @@ make indexes or binary indexes
 </p>
 </details>
 
-### `Transform`
+### `Transform`, `_set_tupled`
 
-[data.pipeline.Transform](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/data.pipeline.Transform.py)
+[data.pipeline.Transform, data.pipeline._set_tupled](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/data.pipeline.Transform.py)
 
 <details><summary>usage</summary>
 <p>
