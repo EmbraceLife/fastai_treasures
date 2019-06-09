@@ -32,6 +32,12 @@ class Transform():
         self._done_setup = True
 
     def _masked(self,b):
+        """
+        if `self.mask` is None but `self.is_tuple` is True,
+        then make `mask` = [True, False ....];
+        otherwise, `mask` = `self.mask`
+        then `zip(b, mask)`
+        """
         mask = [i==0 for i in range_of(b)] if self.mask is None and self.is_tuple else self.mask
         return zip(b,mask)
 
@@ -171,6 +177,36 @@ t2 = tfm2(t1); t2
 # negtfm.show(t2) => od1 = _apply(neg, t2) + floatfm.show(od1)=> ...
 # od2 = _apply(int, od1) + Item.show(od2)
 tfm2.show(t2)
+
+class _AddTfm(Transform): # Generally you'll subclass `Transform`
+    assoc=Item # and `assoc`
+    def encodes(self, x, a=1): return x+a # overwrite `encodes`
+    def decodes(self, x, a=1): return x-a # overwrite `decodes`
+
+addt  = _AddTfm()
+start = 4
+t = addt(start);t
+addt.decode(5)
+addt.show(t, filt=None)
+addt.filt=1 # specify `filt`
+addt(start,filt=1) # if `filt` matches or None, carry on `encode`
+addt(start,filt=0) # if `filt` no match, then return `start`
+
+addt  = _AddTfm(is_tuple=True)
+start = (1,2,3)
+addt.mask
+list(addt._masked(start))
+# _apply(encodes, start) => tuple(f(o, **kwargs) if p else o for o,p in self._masked(b))
+t = addt(start); t
+addt.decode(t)
+
+tfm = _AddTfm(is_tuple=True, mask=(True,True,True))
+start = (1,2,3)
+tfm.mask
+list(tfm._masked(start))
+t = tfm(start);t
+tfm.decode(t)
+tfm.show(t, filt=None)
 
 
 ####################
