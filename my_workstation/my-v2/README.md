@@ -6,6 +6,11 @@
   - insights on tests: [@stas](https://forums.fast.ai/t/how-to-contribute-to-fastai-discussion/37829/15?u=daniel)
 - plot detail logic flow diagrams for nbs to show true understanding
 
+## why possible
+- The library (every module, class, func) has a life and purpose of their own
+- studying them for their own sake, they all have a story to tell
+- If you know their stories, then you know the lib insideout.
+
 ## key terms to note
 - search "doc_improve:" with vim Ag or Atom: shift+cmd+F to see my proposed source improvements on the official source
 - search "made_uncool:" with vim Ag to see how clean and compact official source code is and how to make it uncool for debugging
@@ -1012,12 +1017,30 @@ make indexes or binary indexes
 
 > see image for details
 
-<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/data.pipeline.Pipeline.png" alt="data.pipeline.Pipeline" width="700"/>
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/data.pipeline.Pipeline1.png" alt="data.pipeline.Pipeline" width="700"/>
 
 </p>
 </details>
 
+### `make_tfm`, `TfmdList`
+[data.pipeline.make_tfm, data.pipeline.TfmdList](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/module.func.py)
 
+<details><summary>docs</summary>
+<p>
+
+`make_tfm(tfm)`
+
+> 1. if `tfm` is instance of `Pipeline`, return `tfm`
+
+> 2. if `tfm` is a list of things, return them as `Pipeline`
+
+> 3. otherwise return `tfm` as `Transform`
+
+`TfmdList`
+
+
+</p>
+</details>
 
 
 </p>
