@@ -1003,6 +1003,19 @@ make indexes or binary indexes
 </p>
 </details>
 
+### `Pipeline`
+
+[data.pipeline.Pipeline](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/data.pipeline.Pipeline.py)
+
+<details><summary>usage</summary>
+<p>
+
+> see image for details
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/data.pipeline.Pipeline.png" alt="data.pipeline.Pipeline" width="700"/>
+
+</p>
+</details>
 
 
 
