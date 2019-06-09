@@ -40,7 +40,7 @@ class Transform():
         to apply `f` onto `b` given `filt` and `kwargs`
         1. if `filt` does not match, just return `b`
         2. if `self.is_tuple` is False or None, apply `f` on `b` with `kwargs`
-        3. in other cases,
+        3. in other cases,....
         """
         if not self._filt_match(filt): return b
         if not self.is_tuple: return f(b, **kwargs)
@@ -142,51 +142,35 @@ add_docs(Transform,
 
 
 # wrap `Transform.__init__()` into a lambda func
-negtfm = lambda: Transform(operator.neg, decodes=operator.neg)
+negtfm = lambda: Transform(operator.neg, decodes=operator.neg, assoc=Item)
 floattfm = lambda: Transform(float,decodes=int,assoc=Item)
-
-# `Transform.__init__()`: `encode`, `decode`, `assoc` are used to instantiate
-tfm = negtfm()
-
-# apply Transform onto 4
+# call `Transform.__init__()`: `encode`, `decode`, `assoc` are used to instantiate; print out with __repr__
+tfm = negtfm(); tfm
 start = 4
-# `Transform.__call__` is called to execute `Transform.encodes()`
-t = tfm(start)
-test_eq(t, -4)
-
-# `Transform.__getitem__(idx)` is to call `Transform.__call__(idx)`
+# `Transform.__call__(start)` => `_apply(encodes, start)`
+t = tfm(start); t
+# `Transform.__getitem__(idx)` => `__call__(idx)` => `_apply(encodes,idx)`
 tfm[start]
-test_eq(t, tfm[start])
-
-# `Transform.decode()`
+# `Transform.decode(t)` => '_apply(decodes, t)'
 tfm.decode(t)
-test_eq(tfm.decode(t), start)
-
-# `Transform.show()` is to decode back
-floattfm().show(t)
-test_stdout(lambda:floattfm().show(t), '-4')
+# `Transform.show(t)` => `od = decode(t)` + `Item.show(od)`
+tfm.show(t)
 
 # If a `Transform` has a `prev` attr, it will be recursively searched to
 # find an `assoc`, e.g. for using with `show`.
-
-# to `Transform.__init__`
 tfm1 = floattfm()
 tfm2 = negtfm()
-
-# to `Transform.__call__` on `encodes` which `float` to apply on value 4
-t1 = tfm1(start)
-
-# add an instance of Transform to `tfm2.prev`
+# `Transform.__call__` => `_apply(float, 4)`
+t1 = tfm1(start); t1
+# add neg operator to be `tfm2.prev`
 tfm2.prev = tfm1
-
-# to `Transform.__call__` on `encodes` which `neg` to apply on outcome `t1`
-t2 = tfm2(t1)
-
-# `Transform.show` is to decode back, and with `tfm2.prev` defined
-# decode func is to be `tfm1`
-
+tfm2.assoc = None
+# `__call__(4.0)` => `_apply(neg, 4.0)`
+t2 = tfm2(t1); t2
+# tfm2 only has tfm2.prev, and tfm1 only has tfm1.assoc
+# negtfm.show(t2) => od1 = _apply(neg, t2) + floatfm.show(od1)=> ...
+# od2 = _apply(int, od1) + Item.show(od2)
 tfm2.show(t2)
-test_stdout(lambda:tfm2.show(t2), str(start))
 
 
 ####################

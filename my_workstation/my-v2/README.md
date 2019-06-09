@@ -986,6 +986,23 @@ make indexes or binary indexes
 
 </p>
 </details>
+### `Transform`
+
+[data.pipeline.Transform](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/data.pipeline.Transform.py)
+
+<details><summary>usage</summary>
+<p>
+
+> It is to create tfms, to encode and decode (while display it). Many methods have no docs and tests yet.
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/data.pipeline.Transform.png" alt="data.pipeline.Transform" width="700"/>
+
+</p>
+</details>
+
+
+
+
 
 </p>
 </details>
