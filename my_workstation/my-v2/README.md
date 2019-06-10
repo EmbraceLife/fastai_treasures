@@ -128,38 +128,55 @@ all the functions I used the most in pdb to inspect
 
 ### `test_eq`
 [`test.test_eq`](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_eq.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-test_eq = test with equals on a and b
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/test.test_eq.png" alt="" width="700"/>
+
 </p>
 </details>
+
 
 ### `test_ne`
 [test.test_ne](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_ne.py)
 
-<details><summary>oneliner</summary>
+<details><summary>details</summary>
 <p>
-test_ne = test with nequals on a and b
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/test.test_ne.png" alt="" width="700"/>
+
 </p>
 </details>
+
 
 ### `is_close`, `test_close`    
 [test.is_close, test.test_close](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.is_close.test_close.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-is_close = is `a` close enough to `b` within `eps`
-test_close = to test `is_close` with `a`, `b` and `eps`
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/test.test_close.png" alt="" width="700"/>
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/test.test_close1.png" alt="examples" width="700"/>
+
 </p>
 </details>
 
+
 ### `test_is`, `test_stdout`   
 [test.test_is, test.test_stdout](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_is.test_stdout.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-test_is = test whether `a` is exactly `b`
-test_stdout = to test whether `f()` has expected output
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/test.test_is.png" alt="" width="700"/>
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/test.test_stdout.png" alt="" width="700"/>
+
 </p>
 </details>
+
 
 </p>
 </details>
