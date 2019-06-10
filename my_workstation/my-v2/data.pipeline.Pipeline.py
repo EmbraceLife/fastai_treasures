@@ -23,6 +23,9 @@ class Pipeline(Transform):
 
     def setups(self, items=None):
         """
+        purpose:
+        -
+
         steps:
         1. assign `self._tfms` to `tfms`
         2. assign `None` to `self._tfms`
@@ -33,12 +36,18 @@ class Pipeline(Transform):
 
     def add(self, tfms, items=None):
         """
-        steps: see it in action help clear the mind
-        1. set `prev` None
+        purpose:
+        - `add` is part of `setups`, which
+        - need to put all the tfms in order
+        - then let each tfm does its own `setup`
+
+        steps:
+        1. set an empty variable `prev` as None
         2. loop through `tfms` based on their orders
             3. add each `tfm` onto `self.tfms`
-            4. if each `tfm` has attr `setup`, then call `setups(items)`
-            4. meaning add `items` onto each `tfm`
+            4. if each `tfm` has attr `Transform.setup`, then call `Transform.setups(items)`
+            4. meaning doing something to `items` onto each `tfm`
+            4. which is to be defined/customized by user
         """
         prev=None
         for t in sorted(L(tfms), key=lambda o: getattr(o, 'order', 0)):

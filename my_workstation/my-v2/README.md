@@ -1025,19 +1025,12 @@ make indexes or binary indexes
 ### `make_tfm`, `TfmdList`
 [data.pipeline.make_tfm, data.pipeline.TfmdList](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/module.func.py)
 
-<details><summary>docs</summary>
+<details><summary>usage</summary>
 <p>
 
-`make_tfm(tfm)`
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/data.pipeline.TfmdList1.png" alt="TfmdList1" width="700"/>
 
-> 1. if `tfm` is instance of `Pipeline`, return `tfm`
-
-> 2. if `tfm` is a list of things, return them as `Pipeline`
-
-> 3. otherwise return `tfm` as `Transform`
-
-`TfmdList`
-
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/data.pipeline.TfmdList2.png" alt="TfmdList2" width="700"/>
 
 </p>
 </details>

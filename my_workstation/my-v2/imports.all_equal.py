@@ -22,7 +22,11 @@ def exercise1():
 ######################
 # compare both length and values
 def all_equal(a,b):
-    "Compares whether `a` and `b` are the same length and have the same contents"
+    """
+    purpose:
+    - sometimes, we just want to be able to compare two items `a`, `b`
+    - not only on values, but also the length, in case they are plural
+    """
     return all(equals(a_,b_) for a_,b_ in itertools.zip_longest(a,b))
 
 def exercise2():
