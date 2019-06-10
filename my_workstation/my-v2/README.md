@@ -335,57 +335,53 @@ The remaining ones seem not have widely usage yet.
 ### `newchk`    
 [core.newchk](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.newchk.py)
 
-<details><summary>oneliner</summary>
+<details><summary>details</summary>
 <p>
 
-`@newchk`
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk0.png" alt="" width="700"/>
 
-> enable a class to create a new instance (normal)
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk1.png" alt="examples" width="700"/>
 
-> or return the input if the input is already an instance (new feature)   
 
 </p>
 </details>
 
-<details><summary>picsum</summary>
-<p>
-<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk.png" alt="newchk" width="700"/>
-</p>
-</details>
 
 ### `patch`
 [core.patch](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.patch.py)
-<details><summary>oneliner</summary>
-<p>
-enable a function to add itself to the Class of its first parameter
-</p>
-</details>
 
-<details><summary>picsum</summary>
+<details><summary>details</summary>
 <p>
-<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.patch.png" alt="patch" width="700"/>
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.patch0.png" alt="" width="700"/>
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.patch1.png" alt="examples" width="700"/>
+
 </p>
 </details>
 
 
 ### `chk`
 [core.chk](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.chk.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
 
-`@chk`
-
-> enable a function to check on its parameters types automatically
-
-> important note: wrapped() run inside `typechecked()`
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.chk.png" alt="patch" width="700"/>
 
 </p>
 </details>
 
-<details><summary>picsum</summary>
+
+### `working_directory`
+
+[core.working_directory](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.working_directory.py)
+
+<details><summary>details</summary>
 <p>
 
-<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.chk.png" alt="patch" width="700"/>
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.working_directory" alt="" width="700"/>
+
 </p>
 </details>
 

@@ -1,30 +1,21 @@
 from local.test import *
 from local.imports import *
 from local.notebook.showdoc import show_doc
-# from local.core import *
-# ### Type checking
-# Runtime type checking is handy, so let's make it easy!
 
-############
-# important note: f() run inside `typechecked()`
+def chk(f):
+    """
+    purpose:
+    1. In run time, how to make functions automatically check its input types?
+    2. with a simple decorator @chk, life is much easier!
+    """
+    return typechecked(always=True)(f)
 
-def chk(f): return typechecked(always=True)(f)
-
-#####################
-# a simple function
-def test_chk_int(a:int=1):
-    pass
-
-#####################
-# In run time, how to make functions automatically check its input types?
-# with a simple decorator @chk, life is much easier!
-
+# a simple func to add this feature
 @chk
 def test_chk_int(a:int=1): pass
 
 test_chk_int(1)
 test_chk_int()
-
 test_fail(lambda: test_chk_int('a'), contains='"a" must be int')
 
 #####################
