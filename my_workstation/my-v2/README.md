@@ -1035,6 +1035,17 @@ make indexes or binary indexes
 </p>
 </details>
 
+### `TfmOver`
+[data.pipeline.TfmOver](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/data.pipeline.TfmOver.py)
+
+<details><summary>docs</summary>
+<p>
+not done 
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk.png" alt="codename" width="700"/>
+
+</p>
+</details>
+
 
 </p>
 </details>
