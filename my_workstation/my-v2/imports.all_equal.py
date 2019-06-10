@@ -4,10 +4,46 @@ import torch, numpy as np, operator
 from numpy import array,ndarray
 from typing import Iterable,Iterator, Generator
 
-######################
-# ever think of using one function to compare all sorts of types?
+##### how to use all() #################
+# def all((True, True))
+
+def all_equal(a,b):
+    """
+    purpose:
+    0. often we compare whether scalar `a` and `b` for equality, but
+    1. sometimes, we have to compare every value between `a` and `b`
+        they are two lists, tuples, generators, or iterators!
+    2. therefore, we need `itertools` to help pair them for comparison
+    3. then `a_`, `b_` can be any type even still lists, ....
+    4. therefore, we need the almighty `equals` to compare them all
+
+    steps:
+    1. use `itertools.zip_longest` to pair every value between `a` and `b`
+        together
+    2. use almighty `equals` to compare `a_` and `b_`
+    3. use `all(...)` to find out whether any pair is not equal.
+    4. return True if every pair of values equal, otherwise False
+
+    """
+    return all(equals(a_,b_) for a_,b_ in itertools.zip_longest(a,b))
+
 def equals(a,b):
+    """
     "Compares `a` and `b` for equality; supports sublists, tensors and arrays too"
+
+    purpose:
+    1. equality is probably what we test/compare the most
+    2. we would like to be able to compare equality on all types including
+        `Tensor, ndarray, string, list, tuple, Generator, Iterator`
+    3. as output, True for equal, False for not
+
+    steps:
+    1. if `a` is a tensor with dim >= 1, `cmp = torch.equal`
+    2. if `a` is a `ndarray`, `cmp = np.array_equal`
+    3. if `a` is a `str`, `cmp = operator.eq`
+    4. if `a` is any of `(list, tuple, Generator, Iterator)`, `cmp = all_equal`
+    5. else `cmp = operator.eq`
+    """
     cmp = (torch.equal    if isinstance(a, Tensor  ) and a.dim() else
            np.array_equal if isinstance(a, ndarray ) else
            operator.eq    if isinstance(a, str     ) else
@@ -15,24 +51,12 @@ def equals(a,b):
            operator.eq)
     return cmp(a,b)
 
-def exercise1():
-    equals(range(3), range(3))
-    equals([1],[1])
 
-######################
-# compare both length and values
-def all_equal(a,b):
-    """
-    purpose:
-    - sometimes, we just want to be able to compare two items `a`, `b`
-    - not only on values, but also the length, in case they are plural
-    """
-    return all(equals(a_,b_) for a_,b_ in itertools.zip_longest(a,b))
-
-def exercise2():
-    a = [1,2,3]
-    b = [1,2,3]
-    all_equal(a, b)
-    a = [1,2,3]
-    b = [1,1,2,3]
-    all_equal(a, b)
+equals(range(3), range(3))
+equals([1],[1])
+a = [1,2,3]
+b = [1,2,3]
+all_equal(a, b)
+a = [1,2,3]
+b = [1,1,2,3]
+all_equal(a, b)

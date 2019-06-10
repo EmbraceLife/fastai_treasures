@@ -20,7 +20,7 @@
 `shift + V, j, k` = to select
 `shift + I, j, k` = to activate multiple cursor and move around
 `a` or `i` = to insert
-`ecs`, `ecs` = to exist multiple cursor mode 
+`ecs`, `ecs` = to exist multiple cursor mode
 ```
 
 ### how to search files in the directory
@@ -116,6 +116,9 @@ nodemon -e ipynb --exec python notebook2script.py
 ```
 
 # Terminal basics
+
+### change folder for mac snapshot
+- `defaults write com.apple.screencapture location ~/Documents/doc-v2/dev/images`
 
 ### How to copy a whole folder to another folder
 ```bash

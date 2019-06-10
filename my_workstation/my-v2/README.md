@@ -65,12 +65,19 @@ all the functions I used the most in pdb to inspect
 
 ### `equals` and `all_equal`
 [imports.all_equal](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/imports.all_equal.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-`equals` can compare any type and `all_equal` can compare any type with same length and content
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/imports.all_equal.png" alt="" width="700"/>
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/imports.equals.png" alt="" width="700"/>
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/imports.all_equal.equals.png" alt="" width="700"/>
 
 </p>
 </details>
+
 
 
 </p>
@@ -82,23 +89,42 @@ all the functions I used the most in pdb to inspect
 <details><summary>level 1</summary>
 <p>
 
+### `nequals`
+[test.nequals](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.nequals.py)
+
+<details><summary>details</summary>
+<p>
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/test.nequals.png" alt="" width="700"/>
+
+</p>
+</details>
+
+
 ### `test_fail`    
 [`test.test_fail`](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_fail.py)
 
-<details><summary>oneliner</summary>
+<details><summary>details</summary>
 <p>
-when an error/exception is unavoided, use test_fail to anticipate it
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/test.test_fail0.png" alt="test.test_fail0" width="700"/>
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/test.test_fail.png" alt="test.test_fail" width="700"/>
+
 </p>
 </details>
 
 ### `test`
 [`test.test`](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test.py)
 
-<details><summary>oneliner</summary>
+<details><summary>details</summary>
 <p>
-test on the use of a function to compare a and b
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/test.test.png" alt="" width="700"/>
+
 </p>
 </details>
+
 
 ### `test_eq`
 [`test.test_eq`](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/test.test_eq.py)
@@ -1040,7 +1066,7 @@ make indexes or binary indexes
 
 <details><summary>docs</summary>
 <p>
-not done 
+not done
 <img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.newchk.png" alt="codename" width="700"/>
 
 </p>
