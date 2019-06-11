@@ -3,48 +3,53 @@ from local.imports import *
 from local.notebook.showdoc import show_doc
 from local.core import newchk, GetAttr, add_docs, coll_repr, tensor
 from local.core import _listify, _mask2idxs, is_iter
-# from local.core import *
+
 
 Tensor.ndim = property(lambda x: x.dim())
 
-def _mask2idxs(mask):
-    mask = list(mask)
-    if isinstance(mask[0],bool): return [i for i,m in enumerate(mask) if m]
-    return [int(i) for i in mask]
-
-mask = (3,)
-mask = (3,5)
-_mask2idxs(mask)
-
-
-# > @newchk` = to make sure L(instance_L) returns the same instance
-# > `GetAttr` and `_xtra` = base class to steal methods of `list` to class `L`
-# > = get items into a list and assigned to self.items and self.default
-# > `use_list` = break a tensor into several
-# > `match` = match the length of items
-# > `__getitem__(self, idx)` = return individual values or L instance
-# > `__setitem__(self, idx, o)` = Set `idx` (can be list of indices, or mask, or int) items to `o`
-# > `sorted(self, key=None, reverse=False)` = return New `L` sorted by `key`. If key is str then use `attrgetter`. If key is int then use `itemgetter`."
-# > `def __len__(self): return len(self.items)`
-# > `def __delitem__(self, i): del(self.items[i])`
-# > `def __repr__(self): return f'{coll_repr(self)}'`
-# > `def __eq__(self,b): return all_equal(b,self)`
-# > `def __iter__(self): return (self[i] for i in range(len(self)))`
-# > `def __mul__ (a,b): return L(a.items*b)`
-# > `def __add__ (a,b): return L(a.items+_listify(b))`
-# > `def __radd__(a,b): return L(b)+a`
-# > `def __addi__(a,b): a.items += list(b); return a`
-# > `def mapped(self, f):    return L(map(f, self))`
-# > `def zipped(self):       return L(zip(*self))`
-# > `def itemgot(self, idx): return self.mapped(itemgetter(idx))`
-# > `def attrgot(self, k):   return self.mapped(lambda o:getattr(o,k,0))`
-# > `def tensored(self):     return self.mapped(tensor)`
-# > `def stack(self, dim=0): return torch.stack(list(self.tensored()), dim=dim)`
-# > `def cat  (self, dim=0): return torch.cat  (list(self.tensored()), dim=dim)`
-
 @newchk
 class L(GetAttr):
+    """
+    purpose:
+    1. although with `_listify`, we can make everything a list
+    2. but don't we always wish for more features for the **List** of things
+    3. why don't we add more flexibilities and functionalities beyond 'list'
+    -------------
+    at class level:
+    1. @newchk: to create a `L` object from non L instance
+    2. inherit from `GetAttr`, to borrow everything from `list` with `_xtra`
+    ------------------
+    at __init__(self, items=None, *rest, use_list=False, match=None):
+    1. input `items` is like user provided data, we have the flexibility to
+        a. wrap it into a list properly with `_listify`
+        b. or use `list()` to break it into pieces and then wrap with `[]` when `use_list` is True
+    2. like `tensor` more flexible than `torch.tensor`,
+        we can do `L.__init__(1,2,3)` in the similar fashion
+    3. `match` enables `self.items` to be equal length to `match`
+        or exception rise
+    -------------
+    __len__(self):
+    1. we have the tool to measure the length of items for L
+    2. we return `len(self.items)` here
+    -------------
+    __delitem__(self, i)
+    1. we can delete any item from `self.items`
+    2. this is the freedom to remove item from L
+    3. `self.default` changes along with `self.items`
+    -------------
+    __repr__(self):
+    1. we want a nice way to present the collection of data L
+    2. we want to see number of items inside, and the first 10 items
+    3. `coll_repr(class)` can directly work on `L` instance
+    -------------
+    __eq__(self, b):
+    1. we want to compare two collections of items on content and length
+    2. we can borrow from `all_equal` to compare two list-like objects
+
+
     "Behaves like a list of `items` but can also index with list of indices or masks"
+
+    """
     _xtra =  [o for o in dir(list) if not o.startswith('_')]
 
     # > = get items into a list and assigned to self.items and self.default
@@ -62,7 +67,7 @@ class L(GetAttr):
     def __delitem__(self, i): del(self.items[i])
     def __repr__(self): return f'{coll_repr(self)}'
     def __eq__(self,b): return all_equal(b,self)
-    def __iter__(self): return (self[i] for i in range(len(self)))
+    # def __iter__(self): return (self[i] for i in range(len(self)))
     def __mul__ (a,b): return L(a.items*b)
     def __add__ (a,b): return L(a.items+_listify(b))
     def __radd__(a,b): return L(b)+a
@@ -140,22 +145,38 @@ add_docs(L,
 # and access or modify it with an int list/tuple index, mask, int, or slice.
 # All `list` methods can also be used with `L`.
 
-####################
-# to pdb
-t = L(range(12))
-# run the wrapper class @newchk
-# and then run the old_init L.__init__
-t
-list(range(12))
+# learn the flexibility from tensor(1,2,3)
+L(1,2,3)
+# flexibility given by `@newchk`
+t = L(1,2,3); L(t)
+# borrowed list methods by `GetAttr`
+t._xtra
+[i in dir(t) for i in t._xtra]
+t.reverse();t
+# take advantage of `list()` strange behavior
+L(items=tensor(1,2,3), use_list=False, match=None)
+L(items=tensor(1,2,3), use_list=True, match=None)
+# match ensures equal length
+L(1,2,5, use_list=False, match=(1,100,3))
+L(5, use_list=False, match=(1,100,3))
+# length of L is length of items
+len(t)
+# freedom to remove item
+t=L(1,2,3)
+t.__delitem__(0); t
+t.default
+t[0]
+# how to use coll_repr to print out L
+t = L(1,2,3); t
+is_iter(map(str, t))
+list(map(str, t))
+list(map(str, t.items))
+# how to represent L with `coll_repr`
+L(1,2,3)
+# use all_equal for comparison
+t = L(1,2,3)
+t.__eq__(L(1,2,3))
 
-t.reverse()
-# 1. GetAttr.__getattr__:
-    # used t.__getattr__ inherited from GetAttr to extract the method `reverse`
-    # t.reverse == t.__getattr__('reverse')
-t.__getattr__('reverse')
-
-t.__dir__()
-# 1. GetAttr.__dir__: print out all dr, dt and _xtra together
 
 t[0]
 # L.__getitem__(idx) only return a single value

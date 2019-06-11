@@ -467,27 +467,37 @@ The remaining ones seem not have widely usage yet.
 
 ### `coll_repr`
 [core.coll_repr](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.coll_repr.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-to print out a collection under 10 items
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.coll_repr.png" alt="" width="700"/>
+
 </p>
 </details>
 
 
+
 ### `_listify`
 [core._listify](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core._listify.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-turn everything into a list
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core._listify.png" alt="" width="700"/>
+
 </p>
 </details>
 
 
 ### `_mask2idxs`
 [core._mask2idxs](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core._mask2idxs.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-make indexes or binary indexes
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core._mask2idxs.png" alt="" width="700"/>
+
 </p>
 </details>
 
