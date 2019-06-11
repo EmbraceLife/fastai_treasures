@@ -2,36 +2,48 @@ from local.test import *
 from local.imports import *
 from local.notebook.showdoc import show_doc
 
-##################
-# all dir, dt and additional together into a single list
+
 def custom_dir(c, add:List):
-    "Implement custom `__dir__`, adding `add` to `cls`"
+    """
+    purpose:
+    1. sometimes want to see both `dir(c)` and `dict(c)`
+    2. why don't we put them together and get them in one go?
+    3. what if we even add/borrow some methods to use too?
+        a. we put the additional/extrac methods into a list `add`
+        b. in one go, we output the `dir, dict, add` together
+    """
     return dir(type(c)) + list(c.__dict__.keys()) + add
 
-##################
-# providing any subclass with two Methods
-# 1. class attributes
-#       a. _xtra=[] is a class attribute
-#       b. defautl is a inexplicit class attribute (not specified)
-# 2. __getattr__(self, k)
-#       a. make sure _xtra is not empty;
-#       b. in fact `default` attribute must exist too
-#       c. if k is in _xtra, then return self.default.k
-#       d. otherwise, raise AttributeError on k
-# 3. __dir__(self) to bring dir(self), dt(self), and _xtra into a single list
-
+custom_dir(int, list())[-2:]
 class GetAttr:
-    "Inherit from this to have all attr accesses in `self._xtra` passed down to `self.default`"
+    """
+    purpose:
+    1. ever want to borrow attributes or methods of class
+        'b' for class 'a' to use
+    2. without rewrite those methods/attributes inside 'a'
+    3. subclass `GetAttr`, `a` can borrow `b`'s methods very easy
+        a. having `b` instance assigned to `a.default`
+        b. having `b` methods/attributes stored in `a._xtra`
+            as strings
+        c. then you can call `b.methods` as if it is `a.methods`
+        d. note: such borrowed methods are bound to `a.default`
+            !!!! need to see more actions !!!
+    4. also we want to see all methods/attributes of 'a':
+        dir, dict, and _xtra
+    """
     _xtra=[]
     def __getattr__(self,k):
+        """
+        steps:
+        1. make sure `_xtra` is not None
+        2. allow `a.k` to return `a.default.k`
+        3. if `k` is not in _xtra, raise AttributeError
+        """
         assert self._xtra, "Inherited from `GetAttr` but no `_xtra` attrs listed"
-        ###################
-        # made_uncool
         if k in self._xtra:
             return getattr(self.default, k)
         raise AttributeError(k)
 
-    # over write __dir__ to GetAttr.__dir__: print out all dr, dt and _xtra together
     def __dir__(self): return custom_dir(self, self._xtra)
 
 
@@ -40,27 +52,7 @@ class _C(GetAttr): default,_xtra = 'Hi',['lower']
 t = _C()
 t.default
 t._xtra
-
-############
-# the following two are exactly the same
 t.__getattr__('lower')
 t.lower
-
-# actually running the method
 t.lower()
-test_eq(t.lower(), 'hi')
-
-# test on dir() or __dir__()
-dir(t)
-assert 'lower' in dir(t)
-
-###################
-# test error or Exception
-test_fail(lambda: t.upper())
-t.__getattr__('upper')
-t.upper()
-
-###################
-# the actual practical usage of custom_dir and GetAttr
-# 1. enable a subclass to take all its methods into its __dir__ using custom_dir
-# 2. access additional methods from _xtra using __getattr__
+test_fail(lambda: t.upper(), contains='upper')

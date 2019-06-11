@@ -423,50 +423,32 @@ The remaining ones seem not have widely usage yet.
 
 
 
-### `add_docs`
+### `add_docs`, `docs`
 [core.add_docs](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.add_docs.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-to add docs for Class and methods and report which has no docs yet
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.add_docs.png" alt="" width="700"/>
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.docs.png" alt="" width="700"/>
+
 </p>
 </details>
 
 
-### `docs`
-[core.docs](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.docs.py)
-<details><summary>oneliner</summary>
-<p>
-to enable a Class to set up its docs (unfinished by official source yet)
-</p>
-</details>
 
 ### `custom_dir`, `GetAttr`
-[core.custom_dir, core.GetAttr](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.getattr.py)
-<details><summary>custom_dir</summary>
+[core.custom_dir, core.GetAttr](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.GetAttr.py)
+
+<details><summary>details</summary>
 <p>
 
-`custom_dir(c, add:List)`
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.custom_dir.png" alt="" width="700"/>
 
-> = to allow a class to gather together all its methods from its `__dir__`, `__dict__`, and `add`
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.GetAttr.png" alt="" width="700"/>
 
-</p>
-</details>
-
-<details><summary>GetAttr</summary>
-<p>
-
-`_xtra`
-
-> = a list of methods (user define or select)
-
-`__getattr__`
-
-> = allow `GetAttr` subclass to access additional methods from `_xtra`
-
-`__dir__`
-
-> = to print out everything in `__dir__`, `__dict__`, `__xtra__`
-
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.GetAttr1.png" alt="" width="700"/>
 
 </p>
 </details>
@@ -474,9 +456,11 @@ to enable a Class to set up its docs (unfinished by official source yet)
 
 ### `is_iter`
 [core.is_iter](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.is_iter.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-to check anything is iterable or not, but Rank 0 tensors in PyTorch is not iterable
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.is_iter.png" alt="" width="700"/>
 </p>
 </details>
 
