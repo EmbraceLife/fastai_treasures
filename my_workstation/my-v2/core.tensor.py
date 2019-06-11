@@ -2,13 +2,15 @@ from local.test import *
 from local.imports import *
 from local.notebook.showdoc import show_doc
 
-##################
-# `tensor(x, *rest)` = return a tensor from many different types below
-# `x` = scalar, tuple, list, array
-# `rest` = a few numbers like (1,2,3)
 
 def tensor(x, *rest):
-    "Like `torch.as_tensor`, but handle lists too, and can pass multiple vector elements directly."
+    """
+    purpose:
+    1. ever want to do `tensor(1,2,3)` and return tensor([1, 2, 3])
+    2. and use `torch.tensor` can deal with tuple and list (copies made)
+    3. use `as_tensor` for tensor, ndarray (can avoid copies)
+    4. also want tensor(0), tensor([]) both to return `tensor(0)`
+    """
     if len(rest): x = (x,)+rest
     # Pytorch bug in dataloader using num_workers>0
     if isinstance(x, (tuple,list)) and len(x)==0: return tensor(0)
@@ -18,13 +20,11 @@ def tensor(x, *rest):
         return res.long()
     return res
 
-# to pdb
-tensor(array([1,2,3]))
-tensor(1,2,3)
-x = array([1,2,3])
-x = 0
-rest = (1,2)
-
-# nb
-test_eq(tensor(array([1,2,3])), torch.tensor([1,2,3]))
-test_eq(tensor(1,2,3), torch.tensor([1,2,3]))
+tensor(1,2,3) # both torch.tensor and np.array can't do it!
+tensor(0)
+tensor([])
+tensor(array((1,2,3)))
+tensor((1,2,3))
+tensor([1,2,3])
+tensor([[1,2], [3,4], [5,6]])# nb
+tensor(range(5))

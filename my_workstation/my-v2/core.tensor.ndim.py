@@ -2,8 +2,10 @@ from local.test import *
 from local.imports import *
 from local.notebook.showdoc import show_doc
 from local.core import tensor
-# #### `Tensor.ndim`
 
+show_doc(property)
+
+# a quick way to add property to a class 
 Tensor.ndim = property(lambda x: x.dim())
 
 # We add an `ndim` property to `Tensor` with same semantics as
@@ -11,12 +13,9 @@ Tensor.ndim = property(lambda x: x.dim())
 # numpy.ndarray.ndim.html), which allows tensors to be used in matplotlib
 # and other places that assume this property exists.
 
-test_eq(torch.tensor([1,2]).ndim,1)
-test_eq(torch.tensor(1).ndim,0)
-test_eq(torch.tensor([[1]]).ndim,2)
-torch.tensor([1,2]).shape
-torch.tensor([1,2]).ndim
-torch.tensor([[1]]).shape
-torch.tensor([[1]]).ndim
-tensor([[1]]).shape
-tensor([[1]]).ndim
+tensor(0).ndim
+tensor(5).ndim
+tensor(1,2,3).shape
+tensor(1,2,3).ndim
+tensor([[1,4,4],[2,5,5]]).shape
+tensor([[1],[4]]).ndim

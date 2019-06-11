@@ -388,24 +388,23 @@ The remaining ones seem not have widely usage yet.
 
 ### `ls`
 [core.ls](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.ls.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-enable a Path object with a new method to check its contents on the immediate level
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.ls.png" alt="" width="700"/>
+
 </p>
 </details>
 
+
 ### `tensor`
 [core.tensor](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.tensor.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
 
-put array-like, list, tuple, or just a few numbers into an tensor
-
-> `tensor(x, *rest)` = return a tensor from many different types below
-
-> `x` = scalar, tuple, list, array
-
-> `rest` = a few numbers like (1,2,3)
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.tensor.png" alt="" width="700"/>
 
 </p>
 </details>
@@ -413,11 +412,15 @@ put array-like, list, tuple, or just a few numbers into an tensor
 
 ### `tensor.ndim`
 [core.tensor.ndim](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/core.tensor.ndim.py)
-<details><summary>oneliner</summary>
+
+<details><summary>details</summary>
 <p>
-add `ndim` as a property to any tensor object to return num of dimensions
+
+<img src="https://github.com/EmbraceLife/fastai_treasures/blob/master/my_workstation/my-v2/images/core.tensor.ndim.png" alt="" width="700"/>
 </p>
+
 </details>
+
 
 
 ### `add_docs`
