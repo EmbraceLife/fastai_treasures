@@ -10,12 +10,22 @@ from local.core import L, tensor
 
 
 def tuplify(o, use_list=False, match=None):
-    "Make `o` a tuple"
+    """
+    purpose:
+    1. sometimes, we want to turn everything into a tuple
+        so, we want to turn an object 'o' into L, and then a tuple
+    2. we can shorten it by refactor into `tuplify(o)`
+    3. the output is a tuple which has nothing to do with L any more
+    4. it seems before we turn an object to tuple,
+        we should always turn it to L first.
+    """
     return tuple(L(o, use_list=use_list, match=match))
 
-def examples():
-    test_eq(tuplify(None),())
-    test_eq(tuplify([1,2,3]),(1,2,3))
-    test_eq(tuplify(1,match=[1,2,3]),(1,1,1))
-
-    test_eq(tuplify(tensor(1,2,3), use_list=True, match=None), (tensor(1), tensor(2), tensor(3)))
+L(None)
+tuplify(None, use_list=False, match=None)
+L([1,2,3])
+t = tuplify([1,2,3], use_list=False, match=None);t
+isinstance(t, L)
+isinstance(t[0], L)
+hasattr(t, 'mapped')
+hasattr(t, 'tensored')

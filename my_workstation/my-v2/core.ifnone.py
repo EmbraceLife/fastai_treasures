@@ -12,7 +12,12 @@ else:
 ##########################
 # therefore it worths of refactoring it into
 def ifnone(a, b):
-    "`b` if `a` is None else `a`"
+    """
+    purpose:
+    1. we often meet this scenario: to choose between a and b, a is priority
+    2. refactor can shorten "`b` if `a` is None else `a`" to ifnone(a,b)
+    3. however, inside ifone(a,b), both a and b has to be valid
+    """
     return b if a is None else a
 
 test_eq(ifnone(None,1), 1)

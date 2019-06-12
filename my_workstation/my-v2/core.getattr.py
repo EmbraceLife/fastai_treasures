@@ -1,7 +1,7 @@
 from local.test import *
 from local.imports import *
 from local.notebook.showdoc import show_doc
-
+from local.core import L
 
 def custom_dir(c, add:List):
     """
@@ -46,7 +46,8 @@ class GetAttr:
 
     def __dir__(self): return custom_dir(self, self._xtra)
 
-
+############################################
+# how _C borrow str.lower to use
 class _C(GetAttr): default,_xtra = 'Hi',['lower']
 
 t = _C()
@@ -56,3 +57,10 @@ t.__getattr__('lower')
 t.lower
 t.lower()
 test_fail(lambda: t.upper(), contains='upper')
+
+##########################################
+# how L borrow list.sort to use
+x = [1,1,0,5,0,3]
+x = list(OrderedDict.fromkeys(x).keys()); x
+x = L(8,9) + x
+x.sort(); x

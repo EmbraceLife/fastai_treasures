@@ -4,6 +4,8 @@ from local.notebook.showdoc import show_doc
 
 ########################
 # why we need a simple namespace?
+# 1. we create a SimpleNamespace to hang sub-name attributes
+
 # how to create a nice namespace?
 
 defaults = SimpleNamespace()

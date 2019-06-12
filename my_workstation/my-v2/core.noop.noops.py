@@ -8,12 +8,16 @@ from local.core import patch
 # noop(x=None, *args, **kwargs) => do nothing to `x`, just return it
 
 def noop (x=None, *args, **kwargs):
-    "Do nothing"
+    """
+    purpose:
+    1. sometimes, we want the option of just doing nothing
+    2. as a stand alone function
+    3. no matter what kind of args you feed this func, it just return x
+    """
     return x
 
-def examples():
-    noop()
-    test_eq(noop(1),1)
+noop()
+test_eq(noop(1),1)
 
 
 ########################
@@ -21,9 +25,14 @@ def examples():
     # = to be a method of any class, since it uses `self`
 
 def noops(self, x, *args, **kwargs):
-    "Do nothing (method)"
+    """
+    purpose:
+    1. sometimes we want a class to have a method just doing nothing
+    2. but return the input x and ignore all other args
+    3. to readily use this method as the example shown below
+    """
     return x
 
-def examples():
-    class _t(): foo=noops
-    test_eq(_t().foo(1),1)
+
+class _t(): foo=noops
+test_eq(_t().foo(1),1)
