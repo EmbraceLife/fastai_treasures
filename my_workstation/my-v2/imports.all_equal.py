@@ -3,7 +3,8 @@ from torch import Tensor
 import torch, numpy as np, operator
 from numpy import array,ndarray
 from typing import Iterable,Iterator, Generator
-
+from local.test import *
+from local.notebook.showdoc import show_doc
 ##### how to use all() #################
 # def all((True, True))
 
@@ -24,6 +25,8 @@ def all_equal(a,b):
     3. use `all(...)` to find out whether any pair is not equal.
     4. return True if every pair of values equal, otherwise False
 
+    Notes:
+    1. a, b have to be iterable
     """
     return all(equals(a_,b_) for a_,b_ in itertools.zip_longest(a,b))
 
@@ -51,7 +54,10 @@ def equals(a,b):
            operator.eq)
     return cmp(a,b)
 
-
+# a, b must be iterable
+show_doc(itertools.zip_longest) # expect a, b to be iterable
+test_fail(lambda: all_equal(1, 2), msg='should fail', contains='iteration')
+# what are iterables
 equals(range(3), range(3))
 equals([1],[1])
 a = [1,2,3]
