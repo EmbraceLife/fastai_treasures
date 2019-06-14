@@ -10,6 +10,8 @@ def make_cross_image(bw=True):
     1. to create an image of bw or color cross, we need a tensor first;
     2. by change values in the tensor to add pattern or color
     3. permutate to change the dim position of channels is essential in creating images
+
+    Note: this is just for example usage I think
     """
     if bw:
         im = torch.zeros(5,5)
