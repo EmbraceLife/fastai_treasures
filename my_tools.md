@@ -88,6 +88,7 @@ https://flight-manual.atom.io/using-atom/sections/snippets/
 ```bash
 shift + cmd + F
 # Note: use reg to narrow on files such as *.py on the third row
+# open more project folders to allow cross projects search
 ```
 
 # NVM basics
