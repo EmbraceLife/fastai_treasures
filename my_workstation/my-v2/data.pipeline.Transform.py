@@ -6,16 +6,29 @@ from local.data.pipeline import Item
 
 ##############################################################################
 class Transform():
+    """
     "A function that `encodes` if `filt` matches, and optionally `decodes`, with an optional `setup`"
 
-    # every tfm.order default to 0
-    # assoc, is_tuple, prev default to None
-    # filt, mask, default to None
-    #_is_setup,_done_setup, default to None
+    1. every tfm's `order` default to 0
+    2. `assoc`, `is_tuple`, `prev` default to None
+    3. `filt`, `mask`, default to None
+    4. `_is_setup`,`_done_setup`, default to None
+    """
     order,assoc,filt,_is_setup,_done_setup,mask,is_tuple,prev = [0]+[None]*7
 
+    @classmethod
+    def create(cls, f, filt=None):
+        """
+        if `f` is already an instance of `Transform`, just return `f`;
+        if not, turn `f` into a `Transform`
+        """
+        if isinstance(f,Transform):
+            return f
+        else:
+            return cls(f)
 
-    def __init__(self, encodes=None, mask=None, is_tuple=None, **kwargs):
+
+    def __init__(self, encodes=None, mask=None, is_tuple=None):
         """
         purpose:
         1. what are needed to create a Tfm object?
@@ -25,27 +38,34 @@ class Transform():
         3. prepare some properties for later use
             3.1 self.mask = mask = None
             3.2 self.is_tuple = is_tuple = None
-        4. prepare other properties from **kwargs
-            4.1 self.k = v (`k, v in kwargs.items()`)
         """
-        if encodes is not None:
-            self.encodes=encodes
-            if hasattr(encodes,'order'): self.order=encodes.order
         self.mask,self.is_tuple = mask,is_tuple
-        for k,v in kwargs.items(): setattr(self, k, v)
+        if encodes:
+            self.encodes=encodes
+            self.order = getattr(encodes,'order',0)
+# Examples on the usage of `create()` for instantiate a new instance of Transform
+Transform.create(operator.neg)
+tfm = Transform(encodes=None, mask=None, is_tuple=None);tfm
+test_fail(lambda: tfm.encodes, contains="no attribute 'encodes'")
+tfm1 = tfm.create(operator.neg);tfm1
+tfm1.encodes
 
-# Examples
-# how to instantiate a Tfm object
-negtfm = lambda: Transform(operator.neg, # named arg 'encodes'
-                            decodes=operator.neg, # from **kwargs, backward tfm
-                            assoc=Item) # from **kwargs, hidden
-floattfm = lambda: Transform(float, # named arg 'encodes'
-                            decodes=int,# from **kwargs, hidden
-                            assoc=Item)# from **kwargs, hidden
-tfm = negtfm(); tfm # default __repr__, not yet overwritten, not informative
-tfm = negtfm(); tfm
-member(tfm) # to check on
+# Examples: mk_class makes creating tfm super easy and convenient
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+member(negtfm) # both class is type
+member(Transform) # both class is type
+issubclass(negtfm, Transform)
+# this is actually mk_class._init() executing,
+# no additional attributes to be added
 
+###################
+# Examples on instance of negtfm (as subclass of Transform) can't use create properly
+tfm = negtfm()
+isinstance(tfm, negtfm)
+isinstance(tfm, Transform)# show_doc(negtfm)
+hasattr(tfm, 'create')
+test_fail(lambda: tfm.create(float)) # intend `cls` => Transform, but mk_class
 ##############################################################################
 @patch
 def setup(cls:Transform, items=None):
@@ -63,7 +83,7 @@ def setup(cls:Transform, items=None):
     cls.setups(items)
     cls._done_setup = True
 
-##############################################################################
+
 @patch
 def setups(cls:Transform, items):
     """
@@ -73,11 +93,15 @@ def setups(cls:Transform, items):
     return noop(items)
 
 # Examples
-negtfm = lambda: Transform(operator.neg, # named arg 'encodes'
-                            decodes=operator.neg, # from **kwargs, backward tfm
-                            assoc=Item) # from **kwargs, hidden
-tfm = negtfm(); tfm
-member(tfm) # to check on
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+member(negtfm) # both class is type
+member(Transform) # both class is type
+issubclass(negtfm, Transform)
+# this is actually mk_class._init() executing,
+# no additional attributes to be added
+tfm = negtfm()
+# show_doc(negtfm)
 tfm.setup(1)
 tfm.setups(1)
 tfm._is_setup
@@ -104,12 +128,17 @@ def _masked(cls:Transform,b):
     return zip(b,mask)
 
 # Examples
-negtfm = lambda: Transform(operator.neg, # named arg 'encodes'
-                            decodes=operator.neg, # from **kwargs, backward tfm
-                            assoc=Item) # from **kwargs, hidden
-tfm = negtfm(); tfm
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+issubclass(negtfm, Transform)
+getattr(negtfm, '_masked', 0)
+# this is actually mk_class._init() executing,
+# no additional attributes to be added
+tfm = negtfm()
+tfm.is_tuple
+tfm = negtfm(is_tuple=True)# mk_class.__init__ makes add attributes super easy
 tfm.mask # to make sure it is None
-tfm.is_tuple = True # make sure this is True
+tfm.is_tuple
 b = [1,2,3]
 set(tfm._masked([1,2,3]))
 
@@ -141,10 +170,17 @@ def _filt_match(cls:Transform, filt):
     return cls.filt is None or cls.filt==filt
 
 # Examples
-negtfm = lambda: Transform(operator.neg, # named arg 'encodes'
-                            decodes=operator.neg, # from **kwargs, backward tfm
-                            assoc=Item) # from **kwargs, hidden
-tfm = negtfm(); tfm
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+issubclass(negtfm, Transform)
+getattr(negtfm, '_masked', 0)
+# this is actually mk_class._init() executing,
+# no additional attributes to be added
+tfm = negtfm()
+tfm.mask # to make sure it is None
+tfm.is_tuple = True # make sure this is True
+b = [1,2,3]
+set(tfm._masked([1,2,3]))
 tfm.filt
 tfm.is_tuple = True
 tfm._apply(float, [1,2,3], None)
@@ -165,10 +201,17 @@ def __call__(cls:Transform, b, filt=None, **kwargs):
     return cls._apply(cls.encodes, b, filt, **kwargs)
 
 # Examples
-negtfm = lambda: Transform(operator.neg, # named arg 'encodes'
-                            decodes=operator.neg, # from **kwargs, backward tfm
-                            assoc=Item) # from **kwargs, hidden
-tfm = negtfm(); tfm
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+issubclass(negtfm, Transform)
+getattr(negtfm, '_masked', 0)
+# this is actually mk_class._init() executing to create an instance
+# no additional attributes to be added
+tfm = negtfm()
+tfm.mask # to make sure it is None
+tfm.is_tuple = True # make sure this is True
+b = [1,2,3]
+set(tfm._masked([1,2,3]))
 tfm.filt
 tfm.is_tuple = True
 tfm(L(1,2,3))
@@ -177,7 +220,7 @@ tfm(3)
 
 ##############################################################################
 @patch
-def decode  (cls:Transform, b, filt=None, **kwargs):
+def decode(cls:Transform, b, filt=None, **kwargs):
     """
     purpose:
     1. after encoding, sometimes, we want the original state back
@@ -188,12 +231,18 @@ def decode  (cls:Transform, b, filt=None, **kwargs):
     return cls._apply(cls.decodes, b, filt, **kwargs)
 
 # Examples
-negtfm = lambda: Transform(operator.neg, # named arg 'encodes'
-                            decodes=operator.neg, # from **kwargs, backward tfm
-                            assoc=Item) # from **kwargs, hidden
-tfm = negtfm(); tfm
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+issubclass(negtfm, Transform)
+getattr(negtfm, '_masked', 0)
+# this is actually mk_class._init() executing,
+# no additional attributes to be added
+tfm = negtfm()
+tfm.mask # to make sure it is None
+tfm.is_tuple = True # make sure this is True
+b = [1,2,3]
+set(tfm._masked([1,2,3]))
 tfm.filt
-tfm.is_tuple = True
 t = tfm(L(1,2,3)); t
 tfm.decode(t)
 tfm.is_tuple = None
@@ -209,132 +258,162 @@ def show(cls:Transform, o, filt=None, **kwargs):
 
     od = cls.decode(o, filt=filt)
     if cls.assoc: return cls.assoc.show(od, **kwargs)
+    # this show is more flexible than the one below
     elif cls.prev: return cls.prev.show(od, filt=filt, **kwargs)
 
-@classmethod
-def create(cls, f, filt=None):
-    """
-    if `f` is already an instance of `Transform`, just return `f`;
-    if not, turn `f` into a `Transform`
-    """
-    if isinstance(f,Transform):
-        return f
-    else:
-        return cls(f)
+# Examples 1
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+tfm = floattfm()
+t = tfm(4); t # this is executing __call__(4)
+tfm.show(t) # run decode first, and Item.show()
+# Examples 2
+tfm = negtfm()
+t = tfm(4);t
+tfm.show(t) # no tfm.prev nor tfm.assoc available to display
+borrow = floattfm() # get floattfm which as assoc
+tfm.assoc = borrow.assoc # borrow it
+tfm.show(t) # now it can display with Item.show
+# Examples 3
+tfm1 = floattfm()
+tfm2 = negtfm()
+t = tfm2(tfm1(3)); t
+tfm2.decode(t)
+tfm2.show(t) # negtfm has no assoc, can't display
+tfm2.prev = tfm1
+# it decodes to 3.0, then move onto prev/floattfm to decode and display
+tfm2.show(t)
 
-def __getitem__(self, x):
+
+##############################################################################
+@patch
+def __getitem__(cls:Transform, x):
     """
-    `Transform.__getitem__(idx)` is to call `Transform.__call__(idx)`
+    purpose:
+    1. well, getitem is essentially __call__ at idx
     """
 
-    return self(x) # So it can be used as a `Dataset`
+    return cls(x) # So it can be used as a `Dataset`
 
-def decodes(self, o, *args, **kwargs):
+# Examples 1
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+tfm = floattfm()
+tfm(4)
+tfm[5]
+tfm.is_tuple = True
+tfm([1,2,3])
+tfm[4,4,5]
+member(tfm)
+
+##############################################################################
+@patch
+def decodes(cls:Transform, o, *args, **kwargs):
 
     "Override to implement custom decoding"
     return o
 
+# simple usage of decodes and overwrite
+tfm = Transform(encodes=None, mask=None, is_tuple=None)
+tfm.decodes(5) # Transform.decodes original state
+tfm.decodes = operator.neg
+tfm.decodes(5)
 
+# example to overwrite Transform.decodes with mk_class
+mk_class('negtfm', sup=Transform, encodes=operator.neg, decodes=operator.neg)
+tfm = negtfm() # created an instance of negtfm, a subclass of Transform
+tfm.decodes # overwrite Transform.decodes
+tfm.decodes(5)
 
-def __repr__(self):
+##############################################################################
+@patch
+def __repr__(cls:Transform):
     """
-    when printing out the `self` object,
-    if self is an object of `Transform`, it returns its `encodes` method;
-    if not, just return its class
+    purpose:
+    1. whenever print out an object, we want to see either
+        1.1 all the encodes methods if it is instance of Transform or subclass
+        1.2 just the class of the object
     """
-    if self.__class__==Transform:
-        return str(self.encodes)
-    else:
-        str(self.__class__)
 
-def set_tupled(self, tf=True):
+    return str(cls.encodes) if cls.__class__==Transform or issubclass(cls.__class__, Transform) else str(cls.__class__)
 
-    "Set `is_tuple` to `tf` if it was `None` (used internally by `TfmOver`)"
+# Examples
+mk_class('negtfm', sup=Transform, encodes=operator.neg, decodes=operator.neg)
+tfm = negtfm()
+negtfm.encodes
+tfm.__repr__()
+tfm
 
-    self.is_tuple = ifnone(self.is_tuple,tf)
-# %%
-add_docs(Transform,
-         "A function that `encodes` if `filt` matches, and optionally `decodes`, with an optional `setup`",
-         create="classmethod: Turn `f` into a `Transform` unless it already is one",
-         __call__="Call `self.encodes` unless `filt` is passed and it doesn't match `self.filt`",
-         decode="Call `self.decodes` unless `filt` is passed and it doesn't match `self.filt`",
-         decodes="Override to implement custom decoding",
-         show="Call `assoc.shows` with decoded `o`",
-         set_tupled="Set `is_tuple` to `tf` if it was `None` (used internally by `TfmOver`)",
-         setup="Override `setups` for setup behavior",
-         setups="Override to implement custom setup behavior")
-# %% markdown
-# In a transformation pipeline some steps need to be reversible - for instance,
-# if you turn a string (such as *dog*) into an int (such as *1*) for modeling,
-# then for display purposes you'll want to turn it back to a string again (e.g.
-# when you have a prediction). In addition, you may wish to only run the
-# transformation for a particular data subset, such as the training set.
+##############################################################################
+@patch
+def find_assoc(cls:Transform):
+    """
+    purpose:
+    1. because we rely on `assoc`, e.g., `Item` to `show`
+    2. but not always the case the current tfm has `assoc`
+    3. in this case we need to search `assoc` in the `prev` tfm
+    so, `find_assoc` search and return `assoc` or None from current or prev
+    """
+    return cls.assoc if cls.assoc else cls.prev.find_assoc() if cls.prev else None
 
-# `Transform` provides all this functionality. `filt` is some dataset index
-# (e.g. provided by `DataSource`), and you provide `encodes` and
-# optional `decodes` functions for your code. You can pass `encodes` and
-# `decodes` functions directly to the constructor
-# for quickly creating simple transforms.
+# Examples
+mk_class('negtfm', sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+tfm1 = negtfm()
+tfm2 = floattfm()
+tfm1.find_assoc()
+tfm2.find_assoc()
+tfm1.prev = tfm2
+tfm1.find_assoc()
 
-from local.data.pipeline import Transform
-# wrap `Transform.__init__()` into a lambda func
-negtfm = lambda: Transform(operator.neg, decodes=operator.neg, assoc=Item)
-floattfm = lambda: Transform(float,decodes=int,assoc=Item)
-# call `Transform.__init__()`: `encode`, `decode`, `assoc` are used to instantiate; print out with __repr__
-tfm = negtfm(); tfm
-start = [4,5,6]
-# `Transform.__call__(start)` => `_apply(encodes, start)`
-tfm.is_tuple = True
-t = tfm(start); t
-# `Transform.__getitem__(idx)` => `__call__(idx)` => `_apply(encodes,idx)`
-tfm[start]
-# `Transform.decode(t)` => '_apply(decodes, t)'
-tfm.decode(t)
-# `Transform.show(t)` => `od = decode(t)` + `Item.show(od)`
-tfm.show(t)
+##############################################################################
+@patch
+def set_tupled(cls:Transform, tf=True):
+    """
+    purpose:
+    1. `cls.is_tuple` is to control scalar or multiple computation
+    2. the default value is None,
+    3. if `cls.is_tuple` is None, it can be turned to True or False by `tf`
+    4. but once `cls.is_tuple` is no longer None, it won't be changed by
+        - this func `set_tupled` anymore
+    5. you have to directly do `cls.is_tuple = False/True` to change it
+    """
+    cls.is_tuple = ifnone(cls.is_tuple,tf)
 
-# If a `Transform` has a `prev` attr, it will be recursively searched to
-# find an `assoc`, e.g. for using with `show`.
-tfm1 = floattfm()
-tfm2 = negtfm()
-# `Transform.__call__` => `_apply(float, 4)`
-t1 = tfm1(start); t1
-# add neg operator to be `tfm2.prev`
-tfm2.prev = tfm1
-tfm2.assoc = None
-# `__call__(4.0)` => `_apply(neg, 4.0)`
-t2 = tfm2(t1); t2
-# tfm2 only has tfm2.prev, and tfm1 only has tfm1.assoc
-# negtfm.show(t2) => od1 = _apply(neg, t2) + floatfm.show(od1)=> ...
-# od2 = _apply(int, od1) + Item.show(od2)
-tfm2.show(t2)
+# Examples
+mk_class('negtfm', sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+tfm1 = negtfm()
+tfm2 = floattfm()
+tfm1.is_tuple
+tfm1.set_tupled()
+tfm1.is_tuple
+tfm1.set_tupled(tf=False)
+tfm1.is_tuple = False
 
-class _AddTfm(Transform): # Generally you'll subclass `Transform`
-    assoc=Item # and `assoc`
-    def encodes(self, x, a=1): return x+a # overwrite `encodes`
-    def decodes(self, x, a=1): return x-a # overwrite `decodes`
+##############################################################################
+class _AddTfm(Transform): # create a subclass to Transform
+    assoc=Item # assoc is class attribute, available to all objects
+    def encodes(self, x, a=1): return x+a
+    def decodes(self, x, a=1): return x-a
 
-addt  = _AddTfm()
-start = 4
-t = addt(start);t
-addt.decode(5)
-addt.show(t, filt=None)
-addt.filt=1 # specify `filt`
-addt(start,filt=1) # if `filt` matches or None, carry on `encode`
-addt(start,filt=0) # if `filt` no match, then return `start`
+addt  = _AddTfm(); addt.__dict__
+addt.assoc
+addt.encodes(3)
+addt(3)
+addt.decodes(4, a=1)
+addt.show(4)
+addt.filt=1
+addt(3,filt=1) # still not sure about the usage of `filt`
+addt(3,filt=0) # but maybe this is how we should use `filt`: 1 or 0
 
+###How to make sure of `mask`
+show_doc(Transform.__init__)
 addt  = _AddTfm(is_tuple=True)
 start = (1,2,3)
-addt.mask
-list(addt._masked(start))
-# _apply(encodes, start) => tuple(f(o, **kwargs) if p else o for o,p in self._masked(b))
-t = addt(start); t
+t = addt(start);t # only apply to the first item
 addt.decode(t)
-
-tfm = _AddTfm(is_tuple=True, mask=(True,True,True))
+tfm = _AddTfm(is_tuple=True, mask=(True,True,True)) # apply to all three items
 start = (1,2,3)
-tfm.mask
-list(tfm._masked(start))
 t = tfm(start);t
 tfm.decode(t)
-tfm.show(t, filt=None)

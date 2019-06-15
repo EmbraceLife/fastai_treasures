@@ -8,8 +8,28 @@ def mk_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
     "Dynamically add a class containing `fld_names` to the caller's module"
 
     purpose:
-    1. use a func to create class
-    2.
+    1. how do we use a func to create a class
+    2. prepare a class name as `nm`
+    3. prepare/add a list of names as `fld_names` to be `flds.keys()`,
+            - None to be these `flds.values()`
+    4. prepare/add a list of `funcs` whose names to be `flds.keys()`,
+            - `funcs` themselves as `flds.values()`
+    5. make super class a tuple of super class
+    6. get the module where this class should be defined
+    7. create _init method:
+        7.1 assign `*args` to `flds[fld_names[idx]]` by args' position/idx
+        7.2 assign `**kwargs` to `flds[key] = value`
+    8. create _repr method:
+        8.1 to print out all non-hidden and non-methods attributes with
+            their names and values
+    9. turn `_init` and `_repr` to `flds.__init__` and `flds.__repr__`
+    10. create a type/class:
+        10.1 its super class is `sup`
+        10.2 its class name is `nm`
+        10.3 its attribute content dict is `flds`
+        return `res`
+    11. add `docs` to the class `res`
+    12. add class `res` to the module `mod` under the name `nm`
     """
     # fill the dict `flds` with keys as `fld_names` and values as 'None'
     for f in fld_names: flds[f] = None
