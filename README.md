@@ -72,9 +72,10 @@ Many thanks to @sgugger and @stas00 for great help and kind support!
 
 
 # My Source Code Projects
+- see offical v2 [diff history](https://app.reviewnb.com/EmbraceLife/fastai_docs)
 - Search [my toolbox](https://github.com/EmbraceLife/fastai_treasures/blob/master/my_tools.md)
 - Search [my dotfiles](https://github.com/EmbraceLife/fastai_treasures/tree/master/my_workstation/my_dot_files)
-- Search [my-fastai-v2](https://github.com/EmbraceLife/fastai_docs/tree/my-v2)
+- Search [my-fastai-v2](https://github.com/EmbraceLife/fastai_docs/tree/my-v2) with blame revision history
 - Search [my-fastai-v1](https://github.com/EmbraceLife/fastai/tree/doc_source/)
 - Search [my-torch](https://github.com/EmbraceLife/doc_torch)
 
