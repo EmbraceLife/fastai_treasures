@@ -160,6 +160,11 @@ fltfm = Transform(float, decodes=int)
 tp = TfmOver(tfms=[[negtfm, fltfm], [negtfm]])
 tp.setups()
 tp.assoc
+##############################
+# important!
+# xt,yt = add_props(lambda i,x:x.tfms[i])
+tp.xt
+tp.yt
 
 ###############################################################
 # @classmethod
@@ -169,7 +174,7 @@ tp.assoc
 #     init_tfm = partial(replicate,match=tfms)
 #     return Pipeline([init_tfm,cls(tfms)] + _set_tupled(final_tfms))
 
-############## important example #####################
+############## important! example #####################
 mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
 class _TNorm(Transform):
     assoc=Item
@@ -184,10 +189,12 @@ items = [1,2,3,4]
 ps = TfmOver.piped([negtfm(), [negtfm(),_TNorm()]])
 ps._tfms
 tl = TfmdList(items, TfmOver.piped([negtfm(), [negtfm(),_TNorm()]]))
-tl
+tl.tfm
 # TfmdList: (#4) [1,2,3,4]
 # tfms - [functools.partial(<function replicate at 0x1221898c8>, match=(#2) [<class 'local.core.negtfm'>,(#2) [<class 'local.core.negtfm'>,<class '__main__._TNorm'>]]), TfmOver((#2) [[<class 'local.core.negtfm'>],[<class 'local.core.negtfm'>, <class '__main__._TNorm'>]])]
-
+tl.setup()
+tl[0]
+tl[3]
 x,y = zip(*tl)
 test_close(tensor(y).mean(), 0)
 test_close(tensor(y).std(), 1)
@@ -196,8 +203,8 @@ test_stdout(lambda:tl.show_at(1), 'tensor(-2.)')
 test_eq(tl.tfm.assoc, [None,Item])
 # %%
 # Create a "batch"
-b = list(zip(*tl))
-bd = tl.decode_batch(b)
+b = list(zip(*tl)); b
+bd = tl.decode_batch(b); bd
 
 test_eq(len(bd),2)
 test_eq(bd[0],items)
@@ -210,10 +217,3 @@ print('bd',bd)
 tp = TfmOver()
 tp.setup()
 test_eq(tp([1]), [1])
-# %% markdown
-# ## Export -
-# %%
-#hide
-from local.notebook.export import notebook2script
-notebook2script(all_fs=True)
-# %%
