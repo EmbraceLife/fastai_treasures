@@ -3,226 +3,337 @@ from local.test import *
 from local.core import *
 from local.notebook.showdoc import show_doc
 
-from local.data.pipeline import Transform, Item, Pipeline
-
+from local.data.pipeline import Transform, Item, Pipeline, _set_tupled
+######################################################################
 def make_tfm(tfm):
     """
-    steps
-    1. if `tfm` is instance of `Pipeline`, return `tfm`
-    2. if `tfm` is a list of things, return them as `Pipeline`
-    3. otherwise return `tfm` as `Transform`
+    purpose:
+    - why need `make_tfm`?
+    1. we have `Transform` to create and deal a single `tfm`
+    2. we have `Pipeline` to create and deal with a bunch of `tfms`
+    3. but they are essentially made by the same material
+    4. why not use a single func to create either of them?
 
+    steps
+    1. if `tfm` is already `Pipeline`, just return itself
+    2. if `tfm` is a list of things, convert them to a `Pipeline`
+    3. if `tfm` is a singular thing, just convert it to a `Transform`
     """
     if isinstance(tfm,Pipeline): return tfm
     return Pipeline(tfm) if is_listy(tfm) else Transform.create(tfm)
 
+tfm = Pipeline(tfms=[operator.neg, float])
+make_tfm(tfm)._tfms
+tfm = [operator.neg, float]
+make_tfm(tfm)._tfms
+tfm = float
+make_tfm(tfm)
+
+######################################################################
 @docs
 class TfmdList(GetAttr):
     """
-    purpose: A transform applied to a collection of `items`"
+    purpose:
+    - why need `TfmdList` given `Pipeline` also handling multiple tfms?
+    1. `Pipeline` primarily creates and deals with `tfms`
+    2. `TfmdList` primarily does application to `items`
+
+    oneliner:
+    - A transform applied to a collection of `items`"
+
+    steps:
+    - `@docs`
+        1. to integrate docs into the class as dict
+    - `GetAttr`
+        1. super class to `TfmdList`
+        2. borrow 3 methods `decode`, `__call__`, `show`
     """
 
     # need some extra methods from elsewhere (not defined in this class)
     _xtra = 'decode __call__ show'.split()
+    # @docs, cls._docs together make `add_docs` automatic
+    # _docs = dict(setup="Transform setup with self",
+    #              decode_at="Decoded item at `idx`",
+    #              show_at="Show item at `idx`",
+    #              subset="New `TfmdList` that only includes items at `idxs`")
+    _docs = {}
 
     # prepare for the create of such an instance, what are needed?
     def __init__(self, items, tfm, do_setup=True):
-        # a list of `items`
+        """
+        purpose:
+        - what to construct?
+            1. differ from Pipeline, we need to deal with `items`, so put them under management of `L`
+            2. to tranform, we need either `Transform` or `Pipeline` instances
+            3. why don't we do the other `setup` here too, instead of another separate step?
+        """
         self.items = L(items)
-        # a number of tfms (either are Pipeline or Transform)
         self.default = self.tfm = make_tfm(tfm)
-        # do some setup
         if do_setup: self.setup()
-
-    def __getitem__(self, i):
-        """
-        Transformed item(s) at `i`
-
-        purpose:
-        - often we need to access an item from TfmdList, like any list,
-        - when we got it/them, we have to transform it/them as well.
-
-        steps
-        - get the items[i]
-        - such item accessed may be more a scalar, then apply tfm to all of them
-        - if just a scalar, just apply to it alone
-        """
-        its = self.items[i]
-        if is_iter(i):
-            return its.mapped(self.tfm)
-        else:
-            return self.tfm(its)
-
-    def decode_batch(self, b, **kwargs):
-        """"
-        Decode `b`, a list of lists of pipeline outputs (i.e. output of a `DataLoader`)
-
-        purpose:
-        - we have done decoding tfms on a single value,
-        - but what about a whole bunch of data samples
-
-        steps:
-        - put the bunch inot multiple L objects, and zip it, and wrap a L again
-        - apply decode onto them with kwargs
-        - finally zip them up again
-        """
-        transp = L(zip(*L(b)))
-        return transp.mapped(partial(self.decode, **kwargs)).zipped()
 
     def setup(self):
         """
         purpose:
-        - when doing __init__, some setup work are needed
-        - when we say `setup`, we mean setup for `Transform`
-        - not `Pipeline`
-
-        steps:
-        - check if `self.tfm` has attr `setup`
-        - if yes, run it
-        - if no, run `noop()`
+        - it is asked to do `setup` on `Pipeline` and `Transform` level
+        - first, `pipeline.setup` will sort `tfms` `order` and `prev`
+        - second `transform.setup` will make `_is_setup`, `_done_setup` true, and nothing else
+        - the full process:
+            `TfmdList.setup()`=> `Pipeline.setup(tfmdlist as item)` inherit without overwritten from `Transform` => `Pipeline.setups(items)` inherit and overwritten => `Pipeline.add(tfms, items)` => `Transform.setup(items)` (turn `_is_setup` and `_done_setup` True) => `Transform.setups(items)` (pass)
         """
         getattr(self.tfm,'setup',noop)(self)
 
-    def subset(self, idxs):
-        """
-        purpose:
-        - when create a subset of TfmdList,
-        - it is to create another but smaller TfmdList
+tfm = Pipeline(tfms=[operator.neg, float])
+make_tfm(tfm)._tfms
+t = TfmdList([1,2,3], tfm, do_setup=True)
 
-        steps:
-        - use __init__ method of course,
-        - use `items[idxs]` so it is smaller, but `self.tfm` are the same
-        - but no need to run setup again
-        """
-        return self.__class__(self.items[idxs], self.tfm, do_setup=False)
+tfm = [operator.neg, float]
+make_tfm(tfm)._tfms
+t = TfmdList([1,2,3], tfm, do_setup=True)
 
-    def decode_at(self, idx):
-        """
-        purpose:
-        - sometimes we want to access a particular value/subset of values
-        - and then decode them to original state
+tfm = float
+make_tfm(tfm)
+t = TfmdList([1,2,3], tfm, do_setup=True)
 
-        steps:
-        - get self[idx]
-        - encode them with tfms
-        - decode them back
-        """
-        return self.decode(self[idx])
+######################################################################
+@patch
+def __getitem__(cls:TfmdList, i):
+    """
+    Transformed item(s) at `i`
 
-    def show_at(self, idx):
-        """
-        purpose:
-        - sometimes we want to get access to partcular item/s in the list
-        - and to show them in original state
+    purpose:
+    - What exactly `TfmdList.__getitem__(i)` differ from that of `Pipeline` and `Transform`?
+        1. `__getitem__` from both `Pipeline` and `Transform`
+            1.1 apply `tfms` to `i`
+            1.2 `i` is `items` themselves which can be a scalar or multiple
+            1.3 `i` is not `idx` in fact
+        2. whereas in `TfmdList`, `i` is really `idx`
+            2.1 `TfmdList` already has `items` embedded
+            2.2 `TfmdList.items[i]`, `L.mapped`, `TfmdList.tfm` onto themselves, if `i` `is_iter`
+            2.3. if `i` is scalar, just let `TfmdList.tfm` apply onto `TfmdList.items[i]`
+    """
+    its = cls.items[i]
+    if is_iter(i):
+        return its.mapped(cls.tfm)
+    else:
+        return cls.tfm(its)
 
-        steps:
-        - get the item/s with `self[idx]` which will be encoded
-        - use `Transform.show` or `Pipeline.show` to show them
-            - which is to decode through all the `prev` tfm
-            - and then use `assoc.show` to display
-        """
-        return self.show(self[idx])
-
-    def __eq__(self, b):
-        """
-        purpose:
-        - sometimes, we want to compare `TfmdList` with each other
-        - on their contents and length since they can be plural
-        """
-        return all_equal(self, b)
-
-    def __len__(self):
-        """
-        purpose:
-        - when we think of the length of the `TfmdList`
-        - it should be the number of `items` we are dealing with, not `tfm`
-        """
-        return len(self.items)
-
-    def __iter__(self):
-        """
-        purpose:
-        - to make `TfmdList` object an iterator
-        """
-        return (self[i] for i in range_of(self))
-
-    def __repr__(self):
-        """
-        purpose:
-        - what should we look at when print out the `TfmdList` object?
-        - we need to print out class name, `self.items`, `self.tfm`
-        """
-        return f"{self.__class__.__name__}: {self.items}\ntfms - {self.tfm}"
-
-    # @docs, cls._docs together make `add_docs` automatic
-    _docs = dict(setup="Transform setup with self",
-                 decode_at="Decoded item at `idx`",
-                 show_at="Show item at `idx`",
-                 subset="New `TfmdList` that only includes items at `idxs`")
-
-#####################
-# How do we make use of `Transform`, `Pipeline`, `TfmdList` altogether
-# first, we can create two tfms
-negtfm = lambda: Transform(operator.neg, decodes=operator.neg)
-floattfm = lambda: Transform(float,decodes=int,assoc=Item)
-# second, put tfms together with a certain order to create a pipeline
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
 pipe = Pipeline([negtfm(),floattfm()])
-# third, pipe is really just a list of Transform,
-# so make tfm setup for themselves, get them prepared
-# but Transform.setups has to be customized for actual use
-pipe.setup()
-# now we can create a TfmdList by combining items with tfm
+pipe.setup() # inherit from `Transform.setup()`
 tl = TfmdList([1,2,3], pipe)
-# now let's test it by accessing the second item of TfmdList
-t = tl[1]; t
-# try to decode it back
-tl.decode(t)
-# try decode_at(1) with access tl[1] and then decode it
-test_eq(tl.decode_at(1), tl.decode(tl[1]))
-# try show_at(2) with access tl[2], and show it
-tl.show_at(2) == tl.show(tl[2])
-# test the `__repr__` for print out content
-tl
-# we can create a new TfmdList with subset
-p2 = tl.subset([0,2]); p2
-# if you wonder whether test_eq actually do encoding,
-# simple answer is test_eq => __iter__ => self[idx] => encoding
-test_eq(p2, [-1.,-3.])
+tl[1]
+tl[2]
 
-# Here's how we can use `TfmdList.setup` to implement a simple category list, getting labels from a mock file list:
-# let's create a Tranform with customized setups
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+pipe = Pipeline([negtfm(),floattfm()])
+pipe.set_tupled()
+pipe.setup() # inherit from `Transform.setup()`
+pipe.tfms[0].is_tuple
+pipe.tfms[0].mask = [True]*3
+pipe.tfms[1].mask = [True]*3
+tl = TfmdList([1,2,3], pipe)
+tl[:]
+
+######################################################################
+@patch
+def decode_batch(cls:TfmdList, b, **kwargs):
+    """"
+    Decode `b`, a list of lists of pipeline outputs (i.e. output of a `DataLoader`)
+
+    purpose:
+    - previously with `Pipeline.decode` we can do decode on multiple values
+    - but what about a batch of datasamples with x and y?
+        1. we'd like our func to eat a batch of encoded (x, y) in one piece `(L(zip(*L(b))))` ==> `L(b).zipped()`
+        2. so that we may decode them in one piece
+        3. and output them in one piece
+    """
+    transp = L(zip(*L(b)))
+    return transp.mapped(partial(cls.decode, **kwargs)).zipped()
+
+from local.data.pipeline import TfmOver #, TfmdList
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+items = [1,2,3,4]
+tl = TfmdList(items, TfmOver.piped([negtfm(), floattfm()])); tl
+# Create a "batch"
+b = list(zip(*tl));b
+transp = L(zip(*L(b))); transp
+res = transp.mapped(partial(tl.decode)); res
+res.zipped()
+bd = tl.decode_batch(b); bd
+
+######################################################################
+@patch
+def subset(cls:TfmdList, idxs):
+    """
+    purpose:
+    - sometimes, we may want to cut a portion from a `TfmdList`
+        - and make it a separate but smaller `TfmdList`
+    - Therefore, we actually run `__init__` again here
+        - only a subset of `self.items`
+        - same `self.tfm`
+        - but `do_setup` set False
+    - The reason why `do_setup` False, is usually it is already setted up by running `__init__` in earlier codes
+    """
+    return cls.__class__(cls.items[idxs], cls.tfm, do_setup=False)
+
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int, assoc=Item)
+pipe = Pipeline([negtfm(),floattfm()])
+tl = TfmdList([1,2,3], pipe, do_setup=True)
+tl[1]
+tl[2]
+tl.tfm.tfms[1].prev
+tls=tl.subset([0,1])
+tls.tfm.tfms[1].prev
+tls.items
+
+######################################################################
+@patch
+def decode_at(cls:TfmdList, idx):
+    """
+    purpose:
+    - `Pipeline.decode_at(idx)` is to encode and decode on the value `idx` through many tfms
+    - but `TfmdList.decode_at(idx)` is to encode and decode on `items[idx]` through many tfms
+    - `self.decode` can either be `Pipeline.decode` or `Transform.decode`
+    """
+    return cls.decode(cls[idx])
+
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg, assoc=Item)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int)
+pipe = Pipeline([negtfm(),floattfm()])
+tl = TfmdList([1,2,3], pipe, do_setup=True)
+tl.decode_at(0)
+tl.decode_at(2)
+
+######################################################################
+@patch
+def show_at(cls:TfmdList, idx):
+    """
+    purpose:
+    - maybe sometimes we just want to see `items[idx]` in its original state without transformation
+    - differ from `decode_at`, `show_at` uses `assoc.show` to display
+        - it could be more flexible in displaying different types
+    - through `GetAttr` and `_xtra`, `TfmdList` inherited `show` from `Transform`
+
+    steps:
+    1. `self[idx]` get `items[idx]` encoded
+    2. `Transform.show` allows the encoded `items[idx]` to be decoded all the way back with `prev`
+    3. and get displayed by `assoc.show`
+    """
+    return cls.show(cls[idx])
+
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg, assoc=Item)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int)
+pipe = Pipeline([negtfm(),floattfm()])
+tl = TfmdList([1,2,3], pipe, do_setup=True)
+tl[0]
+tl.show_at(0)
+tl.show_at(2)
+
+######################################################################
+@patch
+def __eq__(cls:TfmdList, b):
+    """
+    purpose:
+    - sometimes, we want to compare `TfmdList` with each other
+    - on their contents and length since they can be plural
+    """
+    return all_equal(cls, b)
+
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg, assoc=Item)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int)
+pipe = Pipeline([negtfm(),floattfm()])
+tl1 = TfmdList([1,2,3], pipe, do_setup=True)
+tl2 = TfmdList(L(1,2,3), pipe, do_setup=True)
+tl1 == tl2
+tl1.__eq__(tl2) # note: all iteration actions require __getitem__
+
+######################################################################
+@patch
+def __len__(cls:TfmdList):
+    """
+    purpose:
+    - when we think of the length of the `TfmdList`
+    - it should be the number of `items` we are dealing with, not `tfm`
+    """
+    return len(cls.items)
+
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg, assoc=Item)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int)
+pipe = Pipeline([negtfm(),floattfm()])
+tl1 = TfmdList([1,2,3], pipe, do_setup=True)
+len(tl1)
+tl1.__len__()
+
+######################################################################
+@patch
+def __iter__(cls:TfmdList):
+    """
+    purpose:
+    - to make `TfmdList` object an iterator
+    """
+    return (cls[i] for i in range_of(cls))
+
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg, assoc=Item)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int)
+pipe = Pipeline([negtfm(),floattfm()])
+tl = TfmdList([1,2,3], pipe, do_setup=True)
+tl[0]
+g = tl.__iter__()
+next(g)
+
+######################################################################
+@patch
+def __repr__(cls:TfmdList):
+    """
+    purpose:
+    - what should we look at when print out the `TfmdList` object?
+    - to know everything, we could print out:
+        1. class name,
+        2. `cls.items`,
+        3. `cls.tfm`
+    """
+    return f"{cls.__class__.__name__}: {cls.items}\ntfms - {cls.tfm}"
+
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg, assoc=Item)
+mk_class('floattfm', sup=Transform, encodes=float, decodes=int)
+pipe = Pipeline([negtfm(),floattfm()])
+tl = TfmdList([1,2,3], pipe, do_setup=True)
+tl
+
 class _Cat(Transform):
     assoc,order=Item,1
     def encodes(self, o): return self.o2i[o] if self._done_setup else o
     def decodes(self, o): return self.vocab[o]
-    # customize Transform.setups with uniqueify which works on TfmdList
-    # since uniqueify makes TfmdList do __iter__,
-    # so all tfm applied to items quietly
     def setups(self, items): self.vocab,self.o2i = uniqueify(items, sort=True, bidir=True)
-# create another tfm as a pure func
+
 def _lbl(o): return o.split('_')[0]
 
 test_fns = ['dog_0.jpg','cat_0.jpg','cat_2.jpg','cat_1.jpg','dog_1.jpg']
-tcat = _Cat() # instantiate the _Cat Tfm
-tl = TfmdList(test_fns, [tcat,_lbl])
+tcat = _Cat()
+
+# important!
+tl = TfmdList(test_fns, [tcat,_lbl]) # TfmdList.setup() is done
 tcat.vocab
+tl
+
+# important! on __iter__, __getitem__
+test_eq([1,0,0,0,1], tl) # require tl.__iter__ and require tl[idx]
 list(tl.__iter__())
-tl[-1] # get tl.items[-1], and then apply tfm to it. see below to confirm
-tl.tfm(tl.items[-1])
-tl[0,1] # get tl.items[0,1], and then apply tfm to it. see below to confirm
-tl.items[0,1].mapped(tl.tfm)
-t = list(tl); t # __iter__ is intriggered
-list(map(tl.decode,t))
-tl.show_at(1) # first tl[1], then tl.show on it
-tl.show(tl[1])
-tl.decode_at(1)
-tl.decode(tl[1])
+tl[-1]
+t = list(tl);t # require tl.__iter__ and require tl[idx]
 
+# important! on __iter__, __getitem__
+list(map(tl.decode,[1, 0, 0, 0, 1]))
+list(map(tl.decode,t)) # require tl.__iter__ and require tl[idx] return [1, 0, 0, 0, 1]
 
-test_eq(tcat.vocab, ['cat','dog'])
-test_eq([1,0,0,0,1], tl)
-test_eq(1, tl[-1])
-test_eq([1,0], tl[0,1])
-test_eq([1,0,0,0,1], t)
-test_eq(['dog','cat','cat','cat','dog'], map(tl.decode,t))
+# important! why not get back to the very original state
+tl.show_at(0) # split by "_" have no decode
 test_stdout(lambda:tl.show_at(0), "dog")
+tl.decode(tl[1])
+tl.decode_at(1)
+test_eq(tl.decode_at(1),'cat')
+tl.show_at(1)

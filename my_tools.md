@@ -15,6 +15,14 @@
 
 # Atom editor
 
+### how to see blame git in Atom
+- add `better git blame`
+- but to view the history we have to go to github instead
+
+### how to use vim in Atom
+- add `vim mode plus`
+- it should incorporate with your current vim usage ok
+
 ### how to do multiple cursor editing
 ```bash
 `shift + V, j, k` = to select

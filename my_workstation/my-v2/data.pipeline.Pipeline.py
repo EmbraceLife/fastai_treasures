@@ -29,8 +29,19 @@ tfms[1].is_tuple
 
 @newchk
 class Pipeline(Transform):
+    """
+    purpose:
+    - why need `Pipeline`?
+    1. `Transform` is create and deal with single tfm
+    2. `Pipeline` is to create and deal with a bunch
+    """
+
     def __init__(self, tfms=None):
         """
+        purpose:
+        - construct what exactly?
+        1. not a single Tranform instance but a bunch of
+
         steps:
         0. @newchk ensure `Pipeline(p)` return `p` if `p` is a pipeline
         0. what are needed to become a Pipeline instance?
@@ -42,6 +53,9 @@ class Pipeline(Transform):
         """
         self.tfms,self._tfms = [],L(tfms).mapped(Transform.create)
 
+    @property
+    def assoc(self): return self.tfms[-1].find_assoc()
+
 p = Pipeline(tfms=[operator.neg, float])
 p.tfms
 p._tfms
@@ -51,6 +65,13 @@ p._tfms
 def setups(cls:Pipeline, items=None):
     """
     purpose:
+    - why need `setups`?
+    1. `__init__` does basic construction
+    2. `__init__` may not be enough for further processing
+    3. more importantly, `Pipeline` inherit `setups` from `Transform.setups`, and overwrite!!
+    4. through overwriting `setups`, `Pipeline.add` is created
+
+    steps:
     1. after a pipeline is constructed, we still need basic setups
         1.1 transfer `cls._tfms` to `tfms`, not `self.tfms`
         1.2 assign None to `cls._tfms`
@@ -95,15 +116,15 @@ def composed(cls:Pipeline, x, rev=False, fname='__call__', **kwargs):
     - `composed` is to apply all `tfms` on `x` and return `x`
 
     purpose:
-    0. how do we do `composed` step by step?
-    1. make sure `cls.setups()` run first before this func
-        1.1 to keep `cls._tfms` empty
-        1.2 to have `cls.tfms` sorted by `order`
-    2. use `rev` to control whether keep the order or reverse the order
-        2.1 `rev=False`, to keep the sorted order of `tfms`
-        2.2 `rev=True`, to reverse the sorted order of `tfms`
-    3. loop each `tfm`,
-        3.1 apply `tfm.fname` on `x` and assign back to `x`
+    0. we have `Transform._apply` to apply a tfm on a scalar or multiples
+    0. how do we apply many tfms to a scalar or multiple?
+        1. loop through all tfms is a must
+        2. before looping, we better have all tfms sorted out with `cls.setups()`
+            a. to keep `cls._tfms` empty
+            b. to have `cls.tfms` sorted by `order`
+            c. it is nicer with option to reverse tfms order
+        3. loop each `tfm`,
+            a. apply `tfm.fname` on `x` and assign back to `x`
     """
     assert not cls._tfms, "Run `setup` before calling `Pipeline`"
     tfms = reversed(cls.tfms) if rev else cls.tfms

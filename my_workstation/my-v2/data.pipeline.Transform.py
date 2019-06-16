@@ -19,6 +19,10 @@ class Transform():
     @classmethod
     def create(cls, f, filt=None):
         """
+        purpose:
+        - why `Transform.create`?
+            1. we need a slight revised version of __init__
+            2. `@classmethod` help to create another __init__ without __init__
         if `f` is already an instance of `Transform`, just return `f`;
         if not, turn `f` into a `Transform`
         """
