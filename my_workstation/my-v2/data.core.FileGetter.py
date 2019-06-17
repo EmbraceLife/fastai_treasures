@@ -11,7 +11,16 @@ from local.data.core import get_files
 # %%
 #export
 def FileGetter(suf='', extensions=None, recurse=True, include=None):
+    """
     "Create `get_files` partial function that searches path suffix `suf` and passes along args"
+
+    Purupose:
+    - `get_files` has too many args to set in order to work
+    - How can we make it easier to use by adjusting one arg instead?
+    - use `FileGetter(...)` to set default for most args
+    - use its instance func to easily do `get_files` by adjusting a single arg
+    - in this case only adjust the directory to extract files from
+    """
     def _inner(o, extensions=extensions, recurse=recurse, include=include): return get_files(o/suf, extensions, recurse, include)
     return _inner
 
