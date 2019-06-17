@@ -1047,7 +1047,7 @@ conda env create -f environment.yml # build env from yml
 ```
 
 
-### 如何使用 pdbpp
+### 如何使用 pdbpp basics
 ```python
 python -m pdb file-name.py
 # 原来进入代码，输入insert import pdb; pdb.set_trace() 来debug已经不需要了
