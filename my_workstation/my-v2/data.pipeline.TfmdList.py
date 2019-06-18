@@ -46,7 +46,7 @@ class TfmdList(GetAttr):
         1. to integrate docs into the class as dict
     - `GetAttr`
         1. super class to `TfmdList`
-        2. borrow 3 methods `decode`, `__call__`, `show`
+        2. borrow 3 methods `decode`, `__call__`, `show` from Pipeline or Transform
     """
 
     # need some extra methods from elsewhere (not defined in this class)
@@ -78,7 +78,7 @@ class TfmdList(GetAttr):
         - first, `pipeline.setup` will sort `tfms` `order` and `prev`
         - second `transform.setup` will make `_is_setup`, `_done_setup` true, and nothing else
         - the full process:
-            `TfmdList.setup()`=> `Pipeline.setup(tfmdlist as item)` inherit without overwritten from `Transform` => `Pipeline.setups(items)` inherit and overwritten => `Pipeline.add(tfms, items)` => `Transform.setup(items)` (turn `_is_setup` and `_done_setup` True) => `Transform.setups(items)` (pass)
+            `TfmdList.setup()`=> `Pipeline.setup(tfmdlist as item)` inherit without overwritten from `Transform` => `Pipeline.setups(items)` inherit and overwritten => `Pipeline.add(tfms, items)` to order all tfms and loop through them for each tfm setup => `Transform.setup(items)` (turn `_is_setup` and `_done_setup` True) => `Transform.setups(items)` (pass)
         """
         getattr(self.tfm,'setup',noop)(self)
 

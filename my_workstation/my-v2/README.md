@@ -1,34 +1,23 @@
 
 # Fastai-v2 Docs on Each Item
 
-## project goal
+## Projects
 - know the library inside out through tests on v2
-  - insights on tests: [@stas](https://forums.fast.ai/t/how-to-contribute-to-fastai-discussion/37829/15?u=daniel)
-- plot detail logic flow diagrams for nbs to show true understanding
+- write notebooks from scratch
 
-## why possible
-- The library (every module, class, func) has a life and purpose of their own
-- studying them for their own sake, they all have a story to tell
-- If you know their stories, then you know the lib insideout.
+## Why
+- Jeremy's 30+ years of coding experience!
+- Study each class/method as if we are reading their life stories
+- Not just ML/DL library but a library of doing everything
 
-## key terms to note
+## Search terms
+- search 'important!' for things deserving constant attention
 - search "doc_improve:" with vim Ag or Atom: shift+cmd+F to see my proposed source improvements on the official source
 - search "made_uncool:" with vim Ag to see how clean and compact official source code is and how to make it uncool for debugging
 - search "doc_doubts": maybe the official source is problematic
 
-
-## workload plan
-according to class/method [indexes](https://github.com/fastai/fastai_docs/blob/master/dev/local/notebook/index.txt), there are 230+ class/methods in total.
-
-- imports module has 2 funcs
-- test module has 10+ classes/methods
-- notebook.showdoc module has 19+ class/method
-- notebook.export module has 27+ class/method (source from nb to py, **no need yet**)
-- notebook.export2html module has 32+ class/method (nb to html, **no need yet**)
-- notebook.core module has 3 funcs (check code running in colab, ipython, nb, easy but **no need yet**)
-- local.core module has 31+ classes/methods
-- data.pipeline module has 8+ classes/methods
-- data.external module has 5+
+## later digestion
+- insights on tests: [@stas](https://forums.fast.ai/t/how-to-contribute-to-fastai-discussion/37829/15?u=daniel)
 
 # imports module (done)
 
