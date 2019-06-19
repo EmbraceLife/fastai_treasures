@@ -58,3 +58,12 @@ test_eq(splitter(items),[[0,3,4,6],[1,2,5,7]])
 train_idx, valid_idx = splitter(items)
 L(items)[train_idx]
 L(items)[valid_idx]
+
+########### complex example
+path = untar_data(URLs.MNIST_TINY)
+(path/'train').ls()
+items = get_image_files(path);items
+splitter = GrandparentSplitter()
+splits = splitter(items)
+train,valid = (items[i] for i in splits)
+train,valid

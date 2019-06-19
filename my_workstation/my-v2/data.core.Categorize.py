@@ -46,11 +46,26 @@ class Categorize(Transform):
 # ### End-to-end dataset example with MNIST
 path = untar_data(URLs.MNIST_TINY)
 (path/'train').ls()
-items = get_image_files(path)
+items = get_image_files(path);items
+sub = items[1,2,3, -3,-2,-1].mapped(parent_label); sub[0]
+labeltfm = Categorize(subset_idx=[0,1,2,3,4])
+tfmlist = TfmdList(sub, Pipeline([labeltfm]));tfmlist
+# use TfmOver.piped([]) is a must here
+tfmlist = TfmdList(sub, TfmOver.piped([labeltfm]));
+tfmlist
+tfmlist[0] # this is encoding from 3, 7 to 0 and 1
+tfmlist.decode_at(1)
+tfmlist.show_at(0)
+labeltfm.vocab
+labeltfm.o2i
+
+########### complex example
+# split data
 splitter = GrandparentSplitter()
 splits = splitter(items)
 train,valid = (items[i] for i in splits)
 train,valid
+# prepare tfms
 timg = Transform(Image.open, # encodes
         assoc=ImageItem(cmap="Greys", figsize=(1,1)))# assoc=Item no more
 timg2tensor = Transform(compose(array,tensor))# this tfm is array+tensor
@@ -72,7 +87,11 @@ tfm = TfmOver.piped(tfms)
 # 2. start to set up b => set up b[0] => TfmOver.setup to Transform.setup to Pipeline.setups to Pipeline.add to loop through and set up each tfm inside b[0], at the end, `items[0]` can do transforms from image to tensor =>  set up b[1] => TfmOver.setup to Transform.setup to Pipeline.setups to Pipeline.add to loop through and set up each tfm inside b[1], at the end, `items[1]` can do transforms from image to label, meanwhile, `Categorize.setups` get `self.vocab` and `self.o2i` ready based on `items` and `subset_idx`
 # 3. apply each pipeline to each copy
 datasets = TfmdList(items, tfm)
+# both methods above just to get tfms ready, no application of tfms yet
 
+datasets
+
+# only in the following method
 # it will zip two copies of items[0] with two pipelines from b
 # TfmOver.__call__ will do this zip work
 datasets[0]
