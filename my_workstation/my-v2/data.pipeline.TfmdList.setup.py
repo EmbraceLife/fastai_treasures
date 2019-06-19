@@ -5,6 +5,7 @@ from local.notebook.showdoc import show_doc
 
 from local.data.pipeline import *
 
+
 @patch
 def setup(cls:TfmdList):
       """
