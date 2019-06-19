@@ -12,7 +12,7 @@ class TfmOver(Transform):
 
     purpose:
     - why do we need `TfmOver` after `Pipeline`, `TfmdList`?
-    0. sometimes, we want multiple pipelines to work together
+    0. sometimes, we want to apply different pipelines to x and y
     1. therefore, we want to store multiple pipelines together
     2. we want to present the effect of different pipelines
     """

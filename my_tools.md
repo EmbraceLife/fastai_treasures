@@ -636,6 +636,15 @@ set runtimepath^=~/.vim/bundle/ag
 
 # Git basics
 
+### How to move back to old commit permanently?
+https://stackoverflow.com/questions/3293531/how-to-permanently-remove-few-commits-from-remote-branch
+```bash
+git reset --hard <last_working_commit_id>
+git push --force
+
+```
+
+
 ### How to ignore a file in git and see differences
 https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 
