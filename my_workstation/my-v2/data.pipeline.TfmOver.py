@@ -12,7 +12,7 @@ class TfmOver(Transform):
 
     purpose:
     - why do we need `TfmOver` after `Pipeline`, `TfmdList`?
-    0. sometimes, we want to apply different pipelines to x and y
+    0. sometimes, we want multiple pipelines to work together
     1. therefore, we want to store multiple pipelines together
     2. we want to present the effect of different pipelines
     """
@@ -72,6 +72,17 @@ tp.tfms
 isinstance(tp.tfms[0], Pipeline)
 tp.tfms[0]
 tp.tfms[0].tfms[1].prev
+tp.assoc
+######### more complex examples
+mk_class('negtfm',   sup=Transform, encodes=operator.neg, decodes=operator.neg, assoc=Item)
+mk_class('flttfm',   sup=Transform, encodes=float, decodes=int)
+tp = TfmOver(tfms=[[negtfm(), flttfm()],[negtfm()]])
+tp.tfms
+tp.setups()
+tp.tfms
+tp.assoc
+tp.xt
+tp.yt
 ###############################################################
 @patch
 def __call__(cls:TfmOver, o, *args, **kwargs):
@@ -85,8 +96,16 @@ def __call__(cls:TfmOver, o, *args, **kwargs):
         1. Note: we have two pipelines, and two elements in `o`, for x, and y
         2. when `cls.active` is 0 for example, we apply the first pipeline to the first itme of `o`
     """
-    if cls.activ is not None: return cls.tfms[cls.activ](o[cls.activ], *args, **kwargs)
-    return [t(p, *args, **kwargs) for p,t in zip(o,cls.tfms)]
+    # if cls.activ is not None: return cls.tfms[cls.activ](o[cls.activ], *args, **kwargs)
+    # return [t(p, *args, **kwargs) for p,t in zip(o,cls.tfms)]
+
+    if cls.activ is not None:
+        return cls.tfms[cls.activ](o[cls.activ], *args, **kwargs)
+
+    res = []
+    for p,t in zip(o,cls.tfms):
+        res.append(t(p, *args, **kwargs))
+    return res
 
 tp = TfmOver(tfms=[[operator.neg, float], [operator.neg]])
 tp.setups()

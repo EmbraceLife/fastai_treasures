@@ -75,10 +75,13 @@ class TfmdList(GetAttr):
         """
         purpose:
         - it is asked to do `setup` on `Pipeline` and `Transform` level
-        - first, `pipeline.setup` will sort `tfms` `order` and `prev`
+        - first, `pipeline.setup` will sort `tfms` by `order`
+        - and set `prev` based on the order of Transforms, also
+        - get Transforms from `self._tfms` to `self.tfms`
         - second `transform.setup` will make `_is_setup`, `_done_setup` true, and nothing else
+        - Note: on Pipeline and Transform level, see args `setup(TfmdList)`
         - the full process:
-            `TfmdList.setup()`=> `Pipeline.setup(tfmdlist as item)` inherit without overwritten from `Transform` => `Pipeline.setups(items)` inherit and overwritten => `Pipeline.add(tfms, items)` to order all tfms and loop through them for each tfm setup => `Transform.setup(items)` (turn `_is_setup` and `_done_setup` True) => `Transform.setups(items)` (pass)
+            `TfmdList.setup()`=> `Pipeline.setup(tfmdlist as item)` inherit without overwritten from `Transform.setup(items)` => `Pipeline.setups(items)` inherit and overwritten => `Pipeline.add(tfms, items)` to order all tfms and loop through them for each tfm setup => `Transform.setup(items)` (turn `_is_setup` and `_done_setup` True) => `Transform.setups(items)` (pass) or other overwritten funcs
         """
         getattr(self.tfm,'setup',noop)(self)
 
@@ -304,6 +307,7 @@ pipe = Pipeline([negtfm(),floattfm()])
 tl = TfmdList([1,2,3], pipe, do_setup=True)
 tl
 
+################### more complex example
 class _Cat(Transform):
     assoc,order=Item,1
     def encodes(self, o): return self.o2i[o] if self._done_setup else o
