@@ -22,10 +22,10 @@ class Categorize(Transform):
         1.1 `self.vocab`, `self.train_attr`, `self.subset_idx`
         1.2 `self.o2i` is derived from `self.vocab`
     2. setups(self, dsrc):
-        2.1 prepare self.vocab, self.o2i from datasource or self.train_attr
+        2.1 during the setup period, prepare self.vocab, self.o2i from `dsrc` with `self.train_attr` or `self.subset_idx`
     3. encodes(self, o):
-        3.1 from unique cateory/item to idx, return idx
-        3.2 or just return the category/item
+        3.1 from unique cateory to idx, return idx
+        3.2 or just return the category
     4. decodes(self, o):
         4.1 return self.vocab[o]
     """
@@ -54,10 +54,28 @@ train,valid
 timg = Transform(Image.open, # encodes
         assoc=ImageItem(cmap="Greys", figsize=(1,1)))# assoc=Item no more
 timg2tensor = Transform(compose(array,tensor))# this tfm is array+tensor
-tfms = [[timg,timg2tensor,partial(torch.unsqueeze,dim=0)],# group tfms 1
-        [parent_label, Categorize(subset_idx=splits[0])]] # group tfms 2
-tfm = TfmOver.piped(tfms) # put two groups of tfms together for x and y
-datasets = TfmdList(items, tfm) # apply all tfms to items
+tfms = [[timg,timg2tensor,partial(torch.unsqueeze,dim=0)],# group tfms 1 for x
+        [parent_label, Categorize(subset_idx=splits[0])]] # group tfms 2 for y
+
+
+# important! how to understand TfmOver.piped and TfmdList(items, tfm)
+tfm = TfmOver.piped(tfms)
+# this func created `a`, the duplicate Transform, so that when an item go through this tfm, it returns two copies
+# a = [functools.partial(<function replicate at 0x1258e4bf8>, match=(#2) [(#3) [<function open at 0x122cf8048>,<function compose.<locals>._inner at 0x125820378>,functools.partial(<built-in method unsqueeze of type object at 0x113876950>, dim=0)], (#2) [<function parent_label at 0x1259180d0>,<class '__main__.Categorize'>]]),
+# then this func turn `tfms` into `TfmOver`, i.e., make 2 pipelines from `tfms`
+# b = TfmOver((#2) [[],[]])]}
+# finally wrap a, b into a single pipeline, so that they linked in order
+
+# so that when `TfmdList(items, tfm)`, it is to bind items to tfm and set up tfm ready to use, so that datasets[0] can actually apply tfm to items[0]
+# 0. to setup all pipelines and Transforms, will do the following
+# 1. set up a, so when `items[0]` it outputs two copies of items[0]
+# 2. start to set up b => set up b[0] => TfmOver.setup to Transform.setup to Pipeline.setups to Pipeline.add to loop through and set up each tfm inside b[0], at the end, `items[0]` can do transforms from image to tensor =>  set up b[1] => TfmOver.setup to Transform.setup to Pipeline.setups to Pipeline.add to loop through and set up each tfm inside b[1], at the end, `items[1]` can do transforms from image to label, meanwhile, `Categorize.setups` get `self.vocab` and `self.o2i` ready based on `items` and `subset_idx`
+# 3. apply each pipeline to each copy
+datasets = TfmdList(items, tfm)
+
+# it will zip two copies of items[0] with two pipelines from b
+# TfmOver.__call__ will do this zip work
+datasets[0]
 # NB: `DataSource` is an easier way to handle this common case
 train_ds,valid_ds = map(datasets.subset, splits)
 

@@ -82,6 +82,7 @@ def __call__(cls:TfmOver, o, *args, **kwargs):
     purpose:
     - we do __call__ to create the effect of each pipeline on data `o`
         1. when `cls.active` is None, we apply each pipeline to each item of `o`
+        1. Note: we have two pipelines, and two elements in `o`, for x, and y
         2. when `cls.active` is 0 for example, we apply the first pipeline to the first itme of `o`
     """
     if cls.activ is not None: return cls.tfms[cls.activ](o[cls.activ], *args, **kwargs)

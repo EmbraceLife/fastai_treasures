@@ -37,5 +37,12 @@ x.sort(); x
 
 t = [1,1,0,5,0,3]
 start = [8,9]
+uniqueify(t, sort=False, bidir=True, start=start)
 uniqueify(t, sort=True, bidir=True, start=start)
-uniqueify(t, sort=True, bidir=True, start=start)
+
+##########################
+# important! : not used for the following situation
+t = ['dir/8/abc01.png', 'dir/4/abc02.png']
+t1 = list(map(Path, t))
+uniqueify(t1, sort=False, bidir=True)
+OrderedDict.fromkeys(t1)
