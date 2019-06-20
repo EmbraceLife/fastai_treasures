@@ -8,7 +8,7 @@ from local.core import _listify, _mask2idxs, is_iter, patch
 Tensor.ndim = property(lambda x: x.dim())
 
 @newchk
-class L(GetAttr):
+class L(GetAttr, metaclass=NewChkMeta):
     """
     purpose:
     1. although with `_listify`, we can make everything a list

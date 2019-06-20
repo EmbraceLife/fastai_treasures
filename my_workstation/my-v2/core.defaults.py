@@ -10,6 +10,8 @@ from local.notebook.showdoc import show_doc
 
 defaults = SimpleNamespace()
 
+defaults.cpus = min(16, num_cpus())
+
 defaults.device = torch.device('cuda',0) if torch.cuda.is_available() else torch.device('cpu')
 
 defaults.device.type

@@ -28,7 +28,7 @@ tfms[1].is_tuple
 ############################################################################
 
 @newchk
-class Pipeline(Transform):
+class Pipeline(Transform, metaclass=PrePostInitMeta):
     """
     purpose:
     - why need `Pipeline`?

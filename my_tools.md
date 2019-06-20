@@ -15,6 +15,9 @@
 
 # Atom editor
 
+### how to view git diff of each commit
+- Atom git extension is great to view the difference of each commit
+
 ### how to see blame git in Atom
 - add `better git blame`
 - but to view the history we have to go to github instead
@@ -635,6 +638,11 @@ set runtimepath^=~/.vim/bundle/ag
 ```
 
 # Git basics
+
+### Change git config editor
+```bash
+git config core.editor vim
+```
 
 ### How to move back to old commit permanently?
 https://stackoverflow.com/questions/3293531/how-to-permanently-remove-few-commits-from-remote-branch

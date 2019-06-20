@@ -11,7 +11,7 @@ def setup(cls:TfmdList):
       """
       purpose:
       - it is asked to do `setup` on `Pipeline` and `Transform` level
-      - first, `pipeline.setup` will sort `tfms` by `order`
+        - if it is a Pipeline, `pipeline.setup` will sort `tfms` by `order`
       - and set `prev` based on the order of Transforms, also
       - get Transforms from `self._tfms` to `self.tfms`
       - second `transform.setup` will make `_is_setup`, `_done_setup` true, and nothing else

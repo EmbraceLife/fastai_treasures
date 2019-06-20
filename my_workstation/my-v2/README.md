@@ -2,7 +2,7 @@
 # Fastai-v2 Docs on Each Item
 
 ## Projects
-- know the library inside out through tests on v2
+- Experiment every class/method on their own
 - write notebooks from scratch
 
 ## Why
