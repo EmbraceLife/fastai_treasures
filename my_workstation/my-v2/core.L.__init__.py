@@ -4,6 +4,13 @@ from local.notebook.showdoc import show_doc
 from local.core import *
 from local.core import _listify
 
+####################
+#### run this block to rewrite class L from scratch
+# class L(GetAttr, metaclass=NewChkMeta):
+#     "Behaves like a list of `items` but can also index with list of indices or masks"
+#     _xtra =  [o for o in dir(list) if not o.startswith('_')]
+####################
+
 show_doc(L)
 
 @patch
@@ -83,3 +90,6 @@ L(tensor(1,2,3))
 L(range(5, 10))
 L(4, match=[1,2,3])
 L(tensor(1,2,3), use_list=True)
+map(str, L(1,2,3))
+map(str, L(1,2,3).items)
+L(1,2,3).__dir__()
