@@ -65,3 +65,12 @@ c = C()
 c.__doc__
 c.func1.__doc__
 c.func2.__doc__
+
+add_docs(L,
+         mapped="Create new `L` with `f` applied to all `items`",
+         zipped="Create new `L` with `zip(*items)`",
+         itemgot="Create new `L` with item `idx` of all `items`",
+         attrgot="Create new `L` with attr `k` of all `items`",
+         tensored="`mapped(tensor)`",
+         stack="Same as `torch.stack`",
+         cat="Same as `torch.cat`")
