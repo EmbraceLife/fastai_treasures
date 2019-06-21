@@ -3,63 +3,6 @@ from local.imports import *
 from local.notebook.showdoc import show_doc
 from local.core import *
 
-###############################################################################
-###############################################################################
-# python default `sorted` is good
-t = [1,2,3]
-hasattr(t, 'sorted')
-sorted(t, reverse=True)
-t = L(1,2,3)
-hasattr(t, 'sorted')
-sorted(t, reverse=True)
-t = L('1','2','3')
-sorted(t, reverse=True)
-t = L('a','b','c')
-sorted(t, reverse=True)
-###############################################################################
-
-@patch
-def sortedL(cls:L, key=None, reverse=False):
-    """
-    "New `L` sorted by `key`. If key is str then use `attrgetter`. If key is int then use `itemgetter`."
-    purpose:
-    1. we want to sort more complex L such as a L of transforms
-    2. different transforms have different values for property `order`
-    3. we want to use the values of `order` to sort L of transforms
-    """
-    if isinstance(key,str):   k=lambda o:getattr(o,key,0)
-    elif isinstance(key,int): k=itemgetter(key)
-    else: k=key
-    return L(sorted(cls.items, key=k, reverse=reverse))
-###############################################################################
-class _Tfm():
-    def __init__(self, order=None, items=None):
-        self.order = order
-t1=_Tfm(1)
-t1.order
-t2=_Tfm(2)
-t2.order
-L(t2,t1)
-sortedL(L(t1,t2), key='order', reverse=False)
-
-###############################################################################
-###############################################################################
-list(map(str, [1,2,3]))
-list(map(str, L(1,2,3)))
-L(map(str, L(1,2,3))).items
-###############################################################################
-@patch
-def mapped(cls:L, f):
-    """
-    purpose:
-    1. we want to create a `map(f, x)` for `L`
-    2. we can just call `t.mapped(f)` to transform every item of `t` by `f`
-    3. in the end, we wrap a L instance onto the transformations of the `f`
-    """
-    return L(map(f, cls))
-###############################################################################
-t = L(1,2,3)
-t.mapped(str)
 
 ###############################################################################
 ###############################################################################

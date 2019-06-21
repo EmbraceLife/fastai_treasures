@@ -85,6 +85,7 @@ show_doc(L.__init__)
 L(None)
 L(1,2,3)
 L((1,2,3))
+L([1,2,3], ['a', 'b', 'c']) # watch out!
 L(array([1,2,3]))
 L(tensor(1,2,3))
 L(range(5, 10))

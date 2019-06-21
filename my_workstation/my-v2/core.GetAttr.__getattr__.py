@@ -17,6 +17,10 @@ class GetAttr:
     - then you can call `a_instance.b_method()`
     - `a_instance.__dir__` list all methods including b's
 
+    Note:
+    - class a's methods will be tried first,
+    - then the borrowed b's methods will be tried,
+    - if not found, then the AttributeError is raised
     """
     _xtra=[]
     def __getattr__(self,k):
