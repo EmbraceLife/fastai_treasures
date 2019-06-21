@@ -11,6 +11,7 @@
 - Not just ML/DL library but a library of doing everything
 
 ## Search terms
+- index.txt has all the funcs/class listed
 - search 'important!' for things deserving constant attention
 - search "doc_improve:" with vim Ag or Atom: shift+cmd+F to see my proposed source improvements on the official source
 - search "made_uncool:" with vim Ag to see how clean and compact official source code is and how to make it uncool for debugging
