@@ -51,13 +51,13 @@ def get_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
         for i,v in enumerate(args): setattr(self, fld_names[i], v)
         for k,v in kwargs.items(): setattr(self,k,v)
 
-    def _repr(self):
-        return '\n'.join(f'{o}: {getattr(self,o)}' for o in set(dir(self))
-                         if not o.startswith('_') and not isinstance(getattr(self,o), types.MethodType))
-
     # def _repr(self):
     #     return '\n'.join(f'{o}: {getattr(self,o)}' for o in set(dir(self))
-    #                      if not o.startswith('_')) #and not isinstance(getattr(self,o), types.MethodType))
+    #                      if not o.startswith('_') and not isinstance(getattr(self,o), types.MethodType))
+
+    def _repr(self):
+        return '\n'.join(f'{o}: {getattr(self,o)}' for o in set(dir(self))
+                         if not o.startswith('_')) #and not isinstance(getattr(self,o), types.MethodType))
 
     if not sup: flds['__repr__'] = _repr
     flds['__init__'] = _init
@@ -66,8 +66,9 @@ def get_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
     return res
 
 ###########
-_t = get_class('_t', 'a'); _t
-t = _t();t
-module(t)
-module(_t)
-module(mk_class)
+del bar
+def bar(self): return "yes"
+_t = get_class('_t', 'a', funcs=bar); _t
+t = _t(b='10');t
+t.bar()
+_t.__module__
