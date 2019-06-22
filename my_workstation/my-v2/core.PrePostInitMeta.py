@@ -3,6 +3,9 @@ from local.imports import *
 from local.notebook.showdoc import show_doc
 from local.core import *
 
+# check the official source
+show_doc(PrePostInitMeta, title_level=3)
+
 class PrePostInitMeta(type):
     """
     "A metaclass that calls optional `__pre_init__` and `__post_init__` methods"
@@ -40,10 +43,6 @@ class PrePostInitMeta(type):
         return x
 
 
-
-# check the official source
-show_doc(PrePostInitMeta, title_level=3)
-
 # simple but standard example
 class _T(metaclass=PrePostInitMeta):
     def __pre_init__(self):  self.a  = 0; assert self.a==0
@@ -55,8 +54,9 @@ t.a
 
 # what would happen when lacking __pre_init__
 class _T(metaclass=PrePostInitMeta):
-    # def __pre_init__(self):  self.a  = 0; assert self.a==0
-    def __init__(self):      self.a = 1; assert self.a==1
-    def __post_init__(self): self.a += 1; assert self.a==2
+    def __pre_init__(self):  self.a  = 0; assert self.a==0
+    def __init__(self):      self.a += 1; assert self.a==1
+    # def __post_init__(self): self.a += 1; assert self.a==2
 
 t = _T()#pdb
+t.a

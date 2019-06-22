@@ -29,7 +29,7 @@ def wrap_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
 @wrap_class('_t', a=2) # say you want a class called '_t' with attr 'a=2'
 def bar(self,x): return x+1 # say you want this class has a method `bar`
 
-t = _t()
-t.a
-t.bar(3)
+t = _t(b='new attr', c=int) # yeah, __init__ can add additional attrs too
 t
+t.bar
+t.bar(3)

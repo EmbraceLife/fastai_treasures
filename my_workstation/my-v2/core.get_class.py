@@ -3,6 +3,11 @@ from local.imports import *
 from local.notebook.showdoc import show_doc
 from local.core import *
 
+
+get_class
+mk_class
+wrap_class
+
 #export
 def get_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
     """
@@ -54,6 +59,10 @@ def get_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
         return '\n'.join(f'{o}: {getattr(self,o)}' for o in set(dir(self))
                          if not o.startswith('_') and not isinstance(getattr(self,o), types.MethodType))
 
+    # def _repr(self):
+    #     return '\n'.join(f'{o}: {getattr(self,o)}' for o in set(dir(self))
+    #                      if not o.startswith('_')) #and not isinstance(getattr(self,o), types.MethodType))
+
     if not sup: flds['__repr__'] = _repr
     flds['__init__'] = _init
     res = type(nm, sup, flds)
@@ -65,6 +74,9 @@ _t = get_class('_t', 'a'); _t
 t = _t();t
 test_eq(t.a, None)
 
-# Most often you'll want to call `mk_class`, since it adds the class to your module. See `mk_class` for more details and examples of use (which also apply to `get_class`).
+###########
+@wrap_class('T', a=2)
+def bar(self,x): return x+1
 
-#export
+t = T(b='new attr', c=int)
+t
