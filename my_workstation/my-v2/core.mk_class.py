@@ -30,11 +30,14 @@ def mk_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
 
 ############################################
 # Any kwargs will be added as class attributes, and sup is an optional (tuple of) base classes.
-mk_class('_t', a=1, sup=GetAttr)
-t = _t() # __init__ without any *args or **kwargs
-test_eq(t.a, 1)
-assert(isinstance(t,GetAttr))
-
+mk_class('_T', a=10, sup=GetAttr)
+_T
+t1 = _T() # __init__ without any *args or **kwargs
+t1
+t1.a
+assert(isinstance(t1,GetAttr))
+module(t1)
+module(_T)
 ################ reminder of `get_class()` content
 # A __init__ is provided that sets attrs for any kwargs,
 # and for any args (matching by position to fields),

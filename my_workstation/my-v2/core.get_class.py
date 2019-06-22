@@ -1,12 +1,8 @@
-from local.test import *
+
 from local.imports import *
+from local.test import *
 from local.notebook.showdoc import show_doc
 from local.core import *
-
-
-get_class
-mk_class
-wrap_class
 
 #export
 def get_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
@@ -72,11 +68,6 @@ def get_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
 ###########
 _t = get_class('_t', 'a'); _t
 t = _t();t
-test_eq(t.a, None)
-
-###########
-@wrap_class('T', a=2)
-def bar(self,x): return x+1
-
-t = T(b='new attr', c=int)
-t
+module(t)
+module(_t)
+module(mk_class)
