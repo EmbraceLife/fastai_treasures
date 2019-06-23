@@ -26,11 +26,11 @@ def wrap_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
     return _inner
 
 # how to create a class and a method in two lines of code
-@wrap_class('_P', a=2) # say you want a class called '_t' with attr 'a=2'
+# def bar1(x): return x+1
+@wrap_class('_P', a=2,) # say you want a class called '_t' with attr 'a=2'
 def bar(self,x): return x+1 # say you want this class has a method `bar`
 
 t = _P(b='new attr', c=int); t # yeah, __init__ can add additional attrs too
 _P
-module(_P)
-module(t)
-locals()
+isinstance(t.bar, types.MethodType)
+# isinstance(t.bar1, types.MethodType)

@@ -47,9 +47,10 @@ module(_T)
 
 def foo(self): return 1
 mk_class('_t', 'a', sup=GetAttr, doc='test doc', funcs=foo)
-t = _t(3, b=2, _xtra=['lower'], default="GDP") # __init__ with args and kwargs
+t = _t(3, b=2, _xtra=['lower'], default="GDP");t # __init__ with args and kwargs
 t.a
 t.b
 t.lower()
 t.foo()
 t.__doc__
+t

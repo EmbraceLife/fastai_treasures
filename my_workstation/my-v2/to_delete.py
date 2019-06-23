@@ -13,3 +13,5 @@ wrap_class
 def bar(self,x): return x+1
 
 t = T(b='new attr', c=int)
+T
+module(T)
