@@ -29,7 +29,7 @@ test_eq(noop(1),1)
 
 def noops(self, x, *args, **kwargs):
     """
-    purpose:
+    why noops(self, ...)
     1. sometimes we want a class to have a method just doing nothing
     2. but return the input x and ignore all other args
     3. to readily use this method as the example shown below

@@ -11,7 +11,7 @@ from local.core import L, tensor
 
 def tuplify(o, use_list=False, match=None):
     """
-    purpose:
+    why tuplify(...):
     1. sometimes, we want to turn everything into a tuple
         so, we want to turn an object 'o' into L, and then a tuple
     2. we can shorten it by refactor into `tuplify(o)`
@@ -23,9 +23,7 @@ def tuplify(o, use_list=False, match=None):
 
 L(None)
 tuplify(None, use_list=False, match=None)
-L([1,2,3])
-t = tuplify([1,2,3], use_list=False, match=None);t
-isinstance(t, L)
-isinstance(t[0], L)
-hasattr(t, 'mapped')
-hasattr(t, 'tensored')
+t = L([1,2,3]); t
+t = tuplify(t, use_list=False, match=None);t
+t = tuplify(t, use_list=True, match=None);t
+t = tuplify([1], use_list=True, match=[1,2,3]);t
