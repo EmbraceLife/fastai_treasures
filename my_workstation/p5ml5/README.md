@@ -36,6 +36,86 @@ https://youtu.be/NSiPeoDpwuI?t=1775
 notebook + py integration
 https://youtu.be/Gzun8PpyBCo?t=359
 
+mirror view of nb side by side, drag+move cells, within and cross nbs
+- right click to open a new view of the notebook
+https://youtu.be/Gzun8PpyBCo?t=849
+
+nbs + real-time kernel experiment (without messing nbs)
+- right-click: create a new console for this nb
+https://youtu.be/Gzun8PpyBCo?t=906
+
+widget output stand alone (like stand alone app)
+- right-click: create a new output
+https://youtu.be/Gzun8PpyBCo?t=938
+
+close all files, running panel to shutdown
+https://youtu.be/Gzun8PpyBCo?t=989
+
+workflow: md + preview + console + single doc mode
+- shift+cmd+c = to search: single doc mode
+- shift+cmd+d = single doc toggle
+- ctrl+q = close tab
+https://youtu.be/Gzun8PpyBCo?t=1022
+
+file viewers: image, geojson, vega, pdf, csv...
+- rotate the images
+- double click geojson file to see it visually
+- csv: 800MB files is no problem
+- write your own file viewer extensions
+https://youtu.be/Gzun8PpyBCo?t=1558
+
+draw.io + python plugin
+https://youtu.be/Gzun8PpyBCo?t=1690
+
+jupyterlab extensions (your software projects)
+https://youtu.be/Gzun8PpyBCo?t=1784
+resources:
+- jupyterlab docs https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html
+
+switching between jupter notebook and lab
+- just change https: ...tree -> lab and vice versa
+https://youtu.be/Gzun8PpyBCo?t=2069
+
+basics operations:
+https://youtu.be/Gzun8PpyBCo?t=2278
+- open a notebook
+- hide sidebar
+- drag panels/windows to rearrange them
+- command palatte for shortcut
+- y: code, m: markdown
+- shift + enter | ctrl + enter
+- a | b
+- tab completion
+- ? | ??
+
+markdown with math
+- inline and display mode
+https://youtu.be/Gzun8PpyBCo?t=2494
+
+open inspection: to auto open docs in separate panel view
+- cmd + i
+https://youtu.be/Gzun8PpyBCo?t=2788
+
+display vs print
+- to show rich info than print texts
+https://youtu.be/Gzun8PpyBCo?t=2845
+
+magics inline
+- %matplotlib inline
+https://youtu.be/Gzun8PpyBCo?t=2906
+
+drag: select inputs and outputs to move elsewhere
+- also drag between mirror views
+https://youtu.be/Gzun8PpyBCo?t=3059
+
+undo and undo cell operations
+https://youtu.be/Gzun8PpyBCo?t=3236
+
+
+
+# customizing jupyter lab
+https://www.youtube.com/watch?v=a9P7qv4P5LE&loop=0
+
 # ipython in depth 2019 pycon
 https://youtu.be/hgiNlxUN2V0?t=96
 

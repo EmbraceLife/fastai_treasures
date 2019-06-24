@@ -9,10 +9,13 @@ from local.core import patch
 
 def noop (x=None, *args, **kwargs):
     """
-    purpose:
-    1. sometimes, we want the option of just doing nothing
-    2. as a stand alone function
-    3. no matter what kind of args you feed this func, it just return x
+    why need `noop(...)`
+    - sometimes, we want the option of just doing nothing
+    - as a stand alone function
+    - no matter what kind of args you feed this func, it just return x
+
+    how to use noop(...)
+    - noop(x, *args, **kwargs)
     """
     return x
 
