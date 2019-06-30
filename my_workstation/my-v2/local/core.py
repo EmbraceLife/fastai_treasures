@@ -5,7 +5,7 @@ __all__ = ['defaults', 'PrePostInitMeta', 'PrePostInit', 'NewChkMeta', 'patch_to
            'wrap_class', 'noop', 'noops', 'tuplify', 'replicate', 'uniqueify', 'setify', 'is_listy', 'range_of',
            'mask2idxs', 'apply', 'to_detach', 'to_half', 'to_float', 'to_device', 'to_cpu', 'item_find', 'find_device',
            'find_bs', 'compose', 'mapper', 'partialler', 'sort_by_run', 'num_cpus', 'add_props', 'make_cross_image',
-           'opt_call', 'all_union', 'all_disjoint', 'camel2snake', 'trainable_params', 'PrettyString']
+           'all_union', 'all_disjoint', 'camel2snake', 'trainable_params', 'PrettyString']
 
 from .test import *
 from .imports import *
@@ -82,12 +82,12 @@ def ls(self:Path):
     "Contents of path as a list"
     return list(self.iterdir())
 
-def tensor(x, *rest):
+def tensor(x, *rest, **kwargs):
     "Like `torch.as_tensor`, but handle lists too, and can pass multiple vector elements directly."
     if len(rest): x = (x,)+rest
     # Pytorch bug in dataloader using num_workers>0
     if isinstance(x, (tuple,list)) and len(x)==0: return tensor(0)
-    res = torch.tensor(x) if isinstance(x, (tuple,list)) else as_tensor(x)
+    res = torch.tensor(x, **kwargs) if isinstance(x, (tuple,list)) else as_tensor(x, **kwargs)
     if res.dtype is torch.int32:
         warn('Tensor is int32: upgrading to int64; for better performance use int64 input')
         return res.long()
@@ -128,15 +128,81 @@ def coll_repr(c, max=1000):
             if len(c)>10 else '') + ']'
 
 class GetAttr:
+    """
+    why need `GetAttr`
+    - want class `a` to use class `b` methods
+    - but don't want you copy those methods into 'a'
+
+    how to use `GetAttr`?
+    - make class `a` a subclass of `GetAttr`
+    - having `b` instance assigned to `a.default`
+    - having `b` methods stored in `a._xtra` as strings
+    - then you can call `a_instance.b_method()`
+    - `a_instance.__dir__` list all methods including b's
+
+    Note:
+    - class a's methods will be tried first,
+    - then the borrowed b's methods will be tried,
+    - if not found, then the AttributeError is raised
     "Inherit from this to have all attr accesses in `self._xtra` passed down to `self.default`"
     _xtra=[]
+
+    ############################################
+    # how _C borrow str.lower to use
+    class _C(GetAttr): default,_xtra = 'Hi',['lower']
+
+    t = _C()
+    t.default
+    t._xtra
+    t.__getattr__('lower')
+    t.__getattr__('lower')()
+    t.lower()
+    test_fail(lambda: t.upper(), contains='upper')
+
+    ##########################################
+    # how L borrow list.sort to use
+    x = [1,1,0,5,0,3]
+    x = list(OrderedDict.fromkeys(x).keys()); x
+    x = L(8,9) + x
+    x.sort(); x
+    """
     def __getattr__(self,k):
+        """
+        why `__getattr__`?
+        - class a instance can get a method 'k' from class b
+
+        how does `__getattr__` work?
+        0. when calling `a_instance.b_method()`, it runs below
+        1. make sure `_xtra` is not None
+        2. allow `a.k` to return `a.default.k`
+        3. if `k` is not in _xtra, raise AttributeError
+        """
         assert self._xtra, "Inherited from `GetAttr` but no `_xtra` attrs listed"
         if k in self._xtra: return getattr(self.default, k)
         raise AttributeError(k)
     def __dir__(self): return custom_dir(self, self._xtra)
 
 def _mask2idxs(mask):
+    """
+    why _mask2idxs(mask):
+    1. we like `data[index]` where `index` can be [8, 4, 2]
+    2. but can't avoid `data[mask]`, where `mask` can be:
+        a. [True, False, True] or
+        b. ['8', '4', '3']
+    3. we would love to have a lazy func to convert mask to proper index
+        a. [0,2]
+        b. [8,4,3]
+
+    how to make it happen:
+    1. turn `mask` to a list
+    2. if the first item of `mask` is `bool`, then
+        a. enumerate the mask to spit out (index, value) one at a time
+        b. if a value is True, then put the index into a list
+        c. return the list
+    3. if not `bool`,
+        a. loop through the mask item and make them a list of integer
+        b. return the list
+    """
     mask = list(mask)
     if len(mask)==0: return []
     if isinstance(mask[0],bool): return [i for i,m in enumerate(mask) if m]
@@ -150,10 +216,51 @@ def _listify(o):
     return [o]
 
 class L(GetAttr, metaclass=NewChkMeta):
+    """
     "Behaves like a list of `items` but can also index with list of indices or masks"
+
+    why need `L`?
+    - although with `_listify`, we can make everything a list
+    - but don't we always wish for more features to work on a list of things?
+    - why don't we add more flexibilities and functionalities beyond 'list'
+
+    What new features `NewChkMeta` offer us with `L`?
+    - create a new L object from values `items`
+    - if `items` is instance of `L`, return the instance
+
+    What new features `GetAttr` offer to `L`?
+    - inherit from `GetAttr`, `L` can borrow others' methods
+    - it actually can borrow all methods from `list` with `_xtra`
+    """    
     _xtra =  [o for o in dir(list) if not o.startswith('_')]
 
     def __init__(self, items=None, *rest, use_list=False, match=None):
+        """
+        why need __init__?
+        - obviously, we need a way to create such a L thing
+
+        how to use __init__?
+        - `L(None)`
+        - `L(1,2,3)`
+        - `L((1,2,3))`
+        - `L(array(1,2,3))`
+        - `L(tensor(1,2,3))`
+        - `L(range(5, 10))`
+        - `L(4, match=[1,2,3])`
+        - `L(tensor(1,2,3), use_list=True)`
+        - `L(...)` does not return anything, only manages items
+
+        how does __init__ work?
+        - first, we deal with `items` as None, turn it `[]`
+        - then, we make `items` a list by `_listify(items)`
+        - we can make `items` a strange list by `list(items)`
+            - toggled by `use_list = True`
+            - a single array or tensor break down into pieces
+        - then we add flexibility to do `L.__init__(1,2,3)`
+            - using `cls.items += list(rest)`,
+            - just like we did in `core.tensor`
+        - we can duplicate `items` `len(match)` times
+        """        
         items = [] if items is None else items
         self.items = self.default = list(items) if use_list else _listify(items)
         self.items += list(rest)
@@ -161,52 +268,385 @@ class L(GetAttr, metaclass=NewChkMeta):
             if len(self.items)==1: self.items = self.items*len(match)
             else: assert len(self.items)==len(match), 'Match length mismatch'
 
-    def __len__(self): return len(self.items)
-    def __delitem__(self, i): del(self.items[i])
-    def __repr__(self): return f'{coll_repr(self)}'
-    def __eq__(self,b): return all_equal(b,self)
-    def __iter__(self): return (self[i] for i in range(len(self)))
+    def __len__(self): 
+        """
+        why __len__?
+        - we want `len(L(...))` to tell us the total number of items
+
+        how to use __len__?
+        - `len(L(1,2,3))`
+        """    
+        return len(self.items)
+    def __delitem__(self, i): 
+        """
+        why need __delitem__:
+        - we want to delete an element by its idx
+
+        How to use __delitem__?
+        - `L(1,2,3).__delitem__(idx)`
+
+        Watch out:
+        - `self.default` and `self.items` share the same reference
+        - their values change together
+        """
+        del(self.items[i])
+    def __repr__(self): 
+        """
+        why L.__repr__? because
+        - we want to print out L nicely
+
+        how to use L.__repr__?
+        - just cmd+enter the L instance, like `L(1,2,3)`
+
+        how L.__repr__ work?
+        - we use `coll_repr` to print out L
+        - the key step is `','.join(itertools.islice(map(str,c), max))`
+        - `L.items` can get through `itertools.islice(map(str,c), max)`
+        - `L.__getitem__` help get through `','.join(....)` 
+        """
+        return f'{coll_repr(self)}'
+    def __eq__(self,b): 
+        """
+        why L.__eq__
+        - L should at least have `L.__eq__` just like `list.__eq__` above
+        - but more flexible and powerful, should be able to compare list of any type
+        - so we combine `equals` and `all_equal` to compare list of all types
+
+        how to use `L.__eq__`
+        - `t1.__eq__(t2)`
+
+        how to create L.__eq__
+        - use `all_equal` to compare all types of items in L
+
+        examples
+        t1 = L(tensor(1,2,3))
+        t2 = L(tensor(1,2,3))
+        t1.__eq__(t2)
+        """
+        return all_equal(b,self)
+    def __iter__(self): 
+        """
+        why L.__iter__?
+        - with L.__getitem__ we can actually use loop-alike in L
+        - but sometimes it is useful to turn L into a generator
+        - but we can't use builtin `iter` everywhere,
+        - we have to write a custom `__iter__` for L
+
+        how to use it?
+        - `g = t.__iter__()`
+        - `next(g)`
+
+        how to create __iter__
+        - `(self[i] for i in range(len(self)))` is typical way of making generator
+
+        Note:
+        - L.__getitem__ is responsible for looping related
+        - L.__iter__ is responsible for creating a generator
+        
+        from local.test import *
+        from local.imports import *
+        from local.notebook.showdoc import show_doc
+        from local.core import *
+
+        cls = L([1,2,3])
+        g = cls.__iter__();g
+        next(g)
+        """
+        return (self[i] for i in range(len(self)))
     def __invert__(self): return L(not i for i in self)
-    def __mul__ (a,b): return L(a.items*b)
-    def __add__ (a,b): return L(a.items+_listify(b))
-    def __radd__(a,b): return L(b)+a
+    def __mul__ (a,b): 
+        """
+        why L.__mul__
+        - what list.__mul__ can do, so should L.__mul__
+        - to copy L(...) multiple times
+
+        how to use L.__mul__
+        - t1.__mul__(int)
+        - t1*int
+
+        how to create L.__mul__
+        - do list.__mul__ as done in `a.items*b`
+        - make it a L instance
+
+        t = L(1,2,3)
+        t.__mul__(3)
+        t*3
+        t1 = L(tensor(1,2,3))
+        t1*3
+        """
+        return L(a.items*b)
+    def __add__ (a,b): 
+        """
+        why L.__add__?
+        - list can add list into a longer list
+        - we want it for L, and much more flexible
+        - we want L can be added with not just list but anything else
+
+        How to use L.__add__?
+        - t.__add__([9])
+        - t.__add__(9)
+        - t.__add__(tensor(9))
+        - t.__add__([tensor(9)])
+        - t.__add__(range(9))
+        - t + 10
+
+        How to create L.__add__
+        - turn `b` into a list or [] by `_listify(b)`
+        - do list.__add__ with a.items
+        - turn it into L
+
+        t=L(1,2,3)
+        hasattr(t, "__add__")
+        t.__add__([9])
+        t.__add__(9)
+        t.__add__(tensor(9))
+        t.__add__([tensor(9)])
+        t.__add__(range(9))
+        t + 10
+        """
+        return L(a.items+_listify(b))
+    def __radd__(a,b): 
+        """
+        why L.__radd__
+        - we can add b to the end of a, using `L(a)+b`
+        - but can we do `b + L(a)` and add `b` to the front of `a`?
+
+        how to use L.__radd__
+        - just do `b + L(a)`
+
+        t = L(1,2,3)
+        hasattr(t, "__radd__")
+        t.__radd__(4)
+        5 + t
+        t
+        """
+        return L(b)+a
     def __addi__(a,b):
+        """
+        why L.__addi__
+        - so that we can do a += b with L objects
+        """
         a.items += list(b)
         return a
 
     def __getitem__(self, idx):
+        """
         "Retrieve `idx` (can be list of indices, or mask, or int) items"
+
+        why need __getitem__?
+        - We'd like to access any elements of L by its idx
+        - even better, if idx is multiple, create a new L instance
+
+        How to use __getitem__?
+        - `L(1,2,3)[idx]`
+        - `L(1,2,3)[0]`
+        - `L(1,2,3)[1,2]`
+        - if `idx` is scalar, return a scalar;
+        - if `idx` is multiple, return a L object
+
+        How does it work?
+        - if `idx` is scalar, assign `cls.items[idx]` to `res`
+        - if `idx` is multiple, make sure all masks turned to idxs
+            - and put all selected elements into a list
+            - assign the list to `res`
+        - if `res` is tuple or list but not L, turn it into L
+        - return `res`
+
+        Note:
+        - without __getitem__
+        - L is still iterable, but
+        - can't do anything related with looping
+        - nor can access elements with idx
+        """
         res = [self.items[i] for i in _mask2idxs(idx)] if is_iter(idx) else self.items[idx]
         if isinstance(res,(tuple,list)) and not isinstance(res,L): res = L(res)
         return res
 
     def __setitem__(self, idx, o):
+        """
         "Set `idx` (can be list of indices, or mask, or int) items to `o` (which is broadcast if not iterable)"
+
+        why L.__setitem__
+        - we must be able to do `t[idx] = value`
+        - to be more flexible than list, we need to do
+            - t[idx1, idx2] = value
+            - t[idx1, idx2] = value1, value2
+
+        how to create L.__setitem__
+        - make sure `idx` is a L or [...]
+        - make sure `o` is iterable or [o, o, o, ...] matching `len(idx)`
+        - use `list.__setitem__` to set the value for each item
+        """
         idx = idx if isinstance(idx,L) else _listify(idx)
         if not is_iter(o): o = [o]*len(idx)
         for i,o_ in zip(idx,o): self.items[i] = o_
 
     def sorted(self, key=None, reverse=False):
+        """
         "New `L` sorted by `key`. If key is str then use `attrgetter`. If key is int then use `itemgetter`."
+
+        why L.sorted?
+        - we want `L.sorted()` to do the same as the builtin `sorted()`
+        1. we want to sort more complex L such as a L of transforms
+        2. different transforms have different values for property `order`
+        3. we want to use the values of `order` to sort L of transforms
+        """
         if isinstance(key,str):   k=lambda o:getattr(o,key,0)
         elif isinstance(key,int): k=itemgetter(key)
         else: k=key
         return L(sorted(self.items, key=k, reverse=reverse))
 
-    def mapped(self, f, *args, **kwargs): return L(map(partial(f,*args,**kwargs), self))
-    def zipped(self):       return L(zip(*self))
-    def itemgot(self, idx): return self.mapped(itemgetter(idx))
-    def attrgot(self, k):   return self.mapped(lambda o:getattr(o,k,0))
-    def tensored(self):     return self.mapped(tensor)
-    def stack(self, dim=0): return torch.stack(list(self.tensored()), dim=dim)
-    def cat  (self, dim=0): return torch.cat  (list(self.tensored()), dim=dim)
+    def mapped(self, f, *args, **kwargs): 
+        """
+        why L.mapped(f)?
+        - although we can do `list(map(str, L(1,2,3)))` alike
+        - we want something equally simple but more powerful
+        - we want to freely define `f` with *args, **kwargs
+        - we want `t.mapped(f)` to every element of L 
+        - we want it return a new L
+
+        how to use L.mapped(f)
+        - `t.mapped(str)`
+        """
+        return L(map(partial(f,*args,**kwargs), self))
+    def zipped(self):       
+        """
+        why L.zipped()?
+        - we want to zip to work directly on L just like zip on list
+        - but zip does not work on L directly
+        - so why not zip two lists first and then make it a L
+
+        how to use L.zipped()
+        - watch out for what is inside `t`
+        - `t = L([[1,2,3], ['a', 'b', 'c']])`
+        - `t.zipped()`
+
+        t = L([[1,2,3],'abc']); t
+        t.zipped()
+        t = L([[1,2,3], ['a', 'b', 'c']]); t
+        t.zipped()
+        """
+        return L(zip(*self))
+    def itemgot(self, idx): 
+        """
+        why L.itemgot(idx)
+        - if L object `t` contains multiple lists and we want to access the third item of all the lists
+        - we want `t.itemgot(2)` to get the result we wanted
+        - list has no such method
+
+        how to create L.itemgot(idx)
+        - `itemgetter(2)` is to get the third value
+        - `L.mapped()` apply to every item in `t`
+
+        Note:
+        - t must have mutiple iterable objects inside, which share the same length
+        """
+        return self.mapped(itemgetter(idx))
+    def attrgot(self, k):   
+        """
+        why need L.attrgot(k)
+        - if we a complex L which contains
+            - multiple instances of a class
+            - those instances share same attributes with different values
+        - what if we want to access values of an attribute of all instances?
+        - we want `t.attrgot('order')` do it for us
+
+        how to use L.attrgot(k)
+        - `t.attrgot(k)`
+        - `t` is L instance with many instances of a class, e.g., '_Tfm'
+        - `k` is an attribute name, e.g., 'order'
+        """
+        return self.mapped(lambda o:getattr(o,k,0))
+    def tensored(self):     
+        """
+        why need L.tensored()
+        - because we want to turn everything inside L into a tensor
+
+        how to use L.tensored()
+        - `t.tensored()`
+
+        how to create L.tensored()
+        - the key function is `tensor(element)`
+        - we use `L.mapped(f)` to apply to every element
+
+        # NOTE:
+        - returns L, not pure tensor
+        """
+        return self.mapped(tensor)
+    def stack(self, dim=0): 
+        """
+        why L.stack(dim)
+        - when we have a `t` containing multiple equal length of list or tensors
+        - we want to stack them up
+        - Can we simply just run `t.stack(dim)`?
+
+        how to use L.stack(dim)
+        - `t`: a L contains e.g.,
+            - (#3) [tensor([1, 2, 8]),tensor([3, 4, 9]),tensor([ 5,  6, 10])]
+        - `dim = 0`: stack row by row
+        - `dim = 1`: stack col by col
+        - returns tensor, but L
+
+        Note:
+        - `t` does not have to contain tensors first
+        - returns tensor, but L 
+        """
+        return torch.stack(list(self.tensored()), dim=dim)
+    def cat  (self, dim=0): 
+        """
+        why L.cat(dim)
+        - we have a L with multiple lists or tensors inside
+        - we want to concate them into a single tensor
+        - we want `t.cat(dim=0)` to do it
+
+        how to use `t.cat(dim)`?
+        - `t`: a L with multiple lists or tensors inside
+        - `dim`: either -1 or 0, but no real effect it seems
+        """
+        return torch.cat  (list(self.tensored()), dim=dim)
 
 def ifnone(a, b):
     "`b` if `a` is None else `a`"
     return b if a is None else a
 
 def get_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
+    """
     "Dynamically create a class containing `fld_names`"
+
+    why get_class(...)
+    - because we want to easily create a class with specific attributes
+    - we want super class, attributes, methods easily added
+
+    how to use get_class(...)
+    - `nm`: the class name you want to create
+    - `*fld_names`: multiple attribute names you want to add
+    - `sup`: the super class you want to add
+    - `doc`: the class doc you want to add
+    - `funcs`: the methods you want to add to your class
+    - `**flds`: a dict of attribute names and contents you want to add
+
+    how to create get_class(...)
+    - make `fld_names` to be keys of `flds` and None as their values
+    - make `funcs` names as keys of `flds` and `funcs` as their values
+    - make `sup` a tuple, even when `sup` is empty `()`
+    - create an `_init` method of `get_class(...)`
+        - to provide two ways of creating attributes with values
+        - 1. `*args` are to provide values for `*fld_names`
+        - 2. `**kwargs` are provided as attribute names and values
+    - create `_repr` to print out the class
+        - to print out the class attribute names and values
+        - make sure the attributes are not hidden with '_'
+        - make sure the attributes are not MethodType
+    - if no super class available, make `_repr` the new class `__repr__`
+    - make `_init` the new class `__init__`
+    - put the new class onto your module
+    - add the `doc` onto the new class if available
+    - return the new class
+
+    Note:
+    - often you will use `mk_class` instead, as it adds class to your module
+    - although `t` won't display any method, but in ipython `t.` + tab will show all methods
+    """
     for f in fld_names: flds[f] = None
     for f in L(funcs): flds[f.__name__] = f
     sup = ifnone(sup, ())
@@ -227,17 +667,53 @@ def get_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
     return res
 
 def mk_class(nm, *fld_names, sup=None, doc=None, funcs=None, mod=None, **flds):
+    """
     "Create a class using `get_class` and add to the caller's module"
+
+    why mk_class(...)
+    - `get_class(...)` can create a new class with specified attrs for us
+    - but what if we want to add this class onto the caller's module
+    - we use `mk_class` to create and add onto module altogether
+
+    how to use mk_class(...)
+    - the same as get_class(...)
+    - but does not return anything
+
+    Note:
+    - get_class(...) returns a new class
+    - new class is added onto local.core
+    - for some reason, `t.__repr__` won't work  
+    - so, just use `wrap_class` or `get_class`, not `mk_class`
+
+    Examples:
+    def foo(self): return 1
+    mk_class('_t', 'a', sup=GetAttr, doc='test doc', funcs=foo)
+    t = _t(3, b=2, _xtra=['lower'], default="GDP");t # __init__ 
+    """
     if mod is None: mod = inspect.currentframe().f_back.f_locals
     res = get_class(nm, *fld_names, sup=sup, doc=doc, funcs=funcs, **flds)
     mod[nm] = res
 
 def wrap_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
+    """
     "Decorator: makes function a method of a new class `nm` passing parameters to `mk_class`"
+
+    why wrap_class(...):
+    - we have `get_class(...)` to create a new class with specified attrs
+    - we have `mk_class(...)` to create and add new class onto caller's module
+    - we have `@patch` to add a new method to a class anywhere in an experiment
+    - why not have @wrap_class to create a class, add onto module
+        - and create a method whenever and wherever we like, very fast?
+
+    how to use wrap_class(...)?
+    - `@wrap_class(...)`: as if we are using `mk_class(...)`
+    - immediately create a method as if we were writing a class and its methods
+
+    how to create wrap_class(...)?
+    - making a decorator to wrap a method with `mk_class(...)`
+    """
     def _inner(f):
-#         mod = inspect.currentframe().f_back.f_locals
-        mod = f.__globals__
-        mk_class(nm, *fld_names, sup=sup, doc=doc, funcs=L(funcs)+f, mod=mod, **flds)
+        mk_class(nm, *fld_names, sup=sup, doc=doc, funcs=L(funcs)+f, mod=f.__globals__, **flds)
         return f
     return _inner
 
@@ -250,29 +726,83 @@ def noops(self, x, *args, **kwargs):
     return x
 
 def tuplify(o, use_list=False, match=None):
+    """
     "Make `o` a tuple"
+
+    why tuplify(...):
+    1. sometimes, we want to turn everything into a tuple
+        so, we want to turn an object 'o' into L, and then a tuple
+    2. we can shorten it by refactor into `tuplify(o)`
+    3. the output is a tuple which has nothing to do with L any more
+    4. it seems before we turn an object to tuple,
+        we should always turn it to L first.
+    """
     return tuple(L(o, use_list=use_list, match=match))
 
 def replicate(item,match):
+    """
     "Create tuple of `item` copied `len(match)` times"
+
+    why replcate(...)
+    1. sometimes, we just want to make copies of an object,
+        scalar, tuple, list, whatever;
+    2. we want to control how many times to copy
+    3. the number of copies == len(match)
+    4. all copies are put into a tuple
+    """
     return (item,)*len(match)
 
 def uniqueify(x, sort=False, bidir=False, start=None):
+    """
     "Return the unique elements in `x`, optionally `sort`-ed, optionally return the reverse correspondance."
+
+    why uniquefy(...):
+    1. of course, we want to be able to get unique values from a long list with duplicated values
+    2. also we want the freedom to add extra values to the front of the unique list
+    3. also we want the flexibility for the list to be sorted
+    4. even better, we want the flexibility to output the unique list with index as well.
+    
+    how to achieve it?
+    1. `(OrderedDict.fromkeys(x).keys())` achieve step 1
+    2. L.__add__ achieves step 2
+    3. L.sort() -> step 3
+    4. enumerate(res) -> step 4
+    
+    Note:
+    1. x has a list-like, but values have to be numeric, Path won't do here.
+    """
     res = list(OrderedDict.fromkeys(x).keys())
     if start is not None: res = L(start)+res
     if sort: res.sort()
     if bidir: return res, {v:k for k,v in enumerate(res)}
     return res
 
-def setify(o): return o if isinstance(o,set) else set(L(o))
+def setify(o): 
+    """
+    why setify(..):
+    1. you may want to turn everything into a set
+    2. if it is already a set, just return it
+    3. if not, make it a L, then turn it to set
+    """
+    return o if isinstance(o,set) else set(L(o))
 
 def is_listy(x):
+    """
+    why is_listy(x):
+    1. because tuple, list, L, slice have similar list-like properties we use
+    """
     "`isinstance(x, (tuple,list,L))`"
     return isinstance(x, (tuple,list,L,slice))
 
 def range_of(x):
+    """
     "All indices of collection `x` (i.e. `list(range(len(x)))`)"
+
+    why range_of(x):
+    1. sometimes, we want to create a list of idxs for a collection of objects
+    1. range(len(x)) gives us a generator, but we may want a list
+    2. `range_of(x)` does exactly that
+    """
     return list(range(len(x)))
 
 def mask2idxs(mask):
@@ -280,13 +810,34 @@ def mask2idxs(mask):
     return L(_mask2idxs(mask))
 
 def apply(func, x, *args, **kwargs):
+    """
     "Apply `func` recursively to `x`, passing on args"
+
+    why apply(func, x, ...):
+    1. although `map(f, x)` can apply f to every element of x on one level
+    2. but `map` can't dive deep recursively when element itself is iterable
+    3. also we want to `func` to be flexible with *args, **kwargs
+    4. no matter `x` is list-like or dict-like and deep, we can apply `func` recursively
+    """
     if is_listy(x): return [apply(func, o, *args, **kwargs) for o in x]
     if isinstance(x,dict):  return {k: apply(func, v, *args, **kwargs) for k,v in x.items()}
     return func(x, *args, **kwargs)
 
 def to_detach(b, cpu=True):
+    """
     "Recursively detach lists of tensors in `b `; put them on the CPU if `cpu=True`."
+
+    why to_detach:
+    1. often we need to detach data from graph, we use `tensor.detach`
+    2. but we want to detach tensors at all levels in a complex data object
+        2.1 so we use `apply(_inner, x)` to do it recursively
+        2.2 `_inner` is to detach everything
+    3. so we want _inner to `detach` anything:
+        3.1 non-tensor: just return x
+        3.2 tensor: run x.detach()
+            a. if cpu == True, return x.cpu()
+            b. if not, return x
+    """
     def _inner(x, cpu=True):
         if not isinstance(x,Tensor): return x
         x = x.detach()
@@ -294,11 +845,31 @@ def to_detach(b, cpu=True):
     return apply(_inner, b, cpu=cpu)
 
 def to_half(b):
-    "Recursively map lists of tensors in `b ` to FP16."
+    """
+    "Recursively map lists of tensors in `b ` to FP16/float16."
+
+    why to_half(b):
+    1. we sometimes want to convert x to float16 dtype through all levels
+    2. apply(lambda: , x) make sure recursively deep
+    3. we only consider two kinds of x/cases for converting
+        3.1 group int: torch.int64, ...32, ...16 => do nothing
+        3.2 everything else: torch.int8, torch.float... => convert by `x.half()`
+        3.3 `x.half()` is to convert to float16
+    """
     return apply(lambda x: x.half() if x.dtype not in [torch.int64, torch.int32, torch.int16] else x, b)
 
 def to_float(b):
+    """
     "Recursively map lists of int tensors in `b ` to float."
+    
+    purpose:
+    1. we sometimes want to convert x to float32 dtype through all levels
+    2. apply(lambda: , x) make sure recursively deep
+    3. we only consider two kinds of x/cases for converting
+        3.1 group int: torch.int64, ...32, ...16 => do nothing
+        3.2 everything else: torch.int8, torch.float... => convert by `x.float()`
+        3.3 `x.float()` is to convert to float32
+    """
     return apply(lambda x: x.float() if x.dtype not in [torch.int64, torch.int32, torch.int16] else x, b)
 
 defaults.device = torch.cuda.current_device() if torch.cuda.is_available() else torch.device('cpu')
@@ -396,11 +967,6 @@ def make_cross_image(bw=True):
         im[0,2,:] = 1.
         im[1,:,2] = 1.
     return im
-
-#Comes from 02_data_pipeline.ipynb.
-def opt_call(f, fname='__call__', *args, **kwargs):
-    "Call `f.{fname}(*args, **kwargs)`, or `noop` if not defined"
-    return getattr(f,fname,noop)(*args, **kwargs)
 
 #Comes from 05_data_source.ipynb.
 def all_union(sets):

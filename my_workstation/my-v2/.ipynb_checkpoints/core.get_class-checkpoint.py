@@ -62,13 +62,15 @@ def get_class(nm, *fld_names, sup=None, doc=None, funcs=None, **flds):
     return res
 
 
-
-# make bar func as a property to the instance
+# bar_attr is not a method, but an attr to the object
 _t = get_class('_t', 'a'); _t
-t = _t(b='yes', bar=lambda x: x+1);t 
-t.bar(5)
+t = _t(b='yes', bar_attr=lambda x: x+1);t 
+t.bar_attr(5)
 
-# make bar func as a method not property to the class
-_t = get_class('_t', 'a', bar=lambda self, x: x+self.a); _t
+
+# bar_method is taken as a named argument, 
+# it becomes a real method to the class, 
+_t = get_class('_t', 'a', bar_method=lambda self, x: x+self.a); _t
 t1 = _t(5, b='yes');t1 
-t1.bar(5)
+t1.bar_method(5)
+
