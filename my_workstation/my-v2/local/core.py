@@ -861,7 +861,7 @@ def to_half(b):
 def to_float(b):
     """
     "Recursively map lists of int tensors in `b ` to float."
-    
+
     purpose:
     1. we sometimes want to convert x to float32 dtype through all levels
     2. apply(lambda: , x) make sure recursively deep
@@ -875,7 +875,13 @@ def to_float(b):
 defaults.device = torch.cuda.current_device() if torch.cuda.is_available() else torch.device('cpu')
 
 def to_device(b, device=defaults.device):
+    """
     "Recursively put `b` on `device`."
+
+    purpose:
+    0. what if we want to put everything on the default 
+    1. Recursively put `b` on defaults.device
+    """
     def _inner(o): return o.to(device, non_blocking=True) if isinstance(o,Tensor) else o
     return apply(_inner, b)
 
@@ -884,7 +890,19 @@ def to_cpu(b):
     return to_device(b,'cpu')
 
 def item_find(x, idx=0):
+    """
     "Recursively takes the `idx`-th element of `x`"
+
+    purpose:
+    1. with `apply` we can dive deep to transform every item in all levels
+    2. but what if we just want to access an item
+        from the lowest/final leaf of data
+    3. `idx` allows us to pick which branch/top_level of the data tree, and
+    4. after top_level, `idx` remains 0, so `item_find(x, idx=0)` gives us
+        the lowest/final_level leaf/item of the tree/data
+        note: it is like `x[idx][0]...[0]`
+    5. also, `x` can be listy(tuple, list, slice, L) or dict
+    """
     if is_listy(x): return item_find(x[idx])
     if isinstance(x,dict):
         key = list(x.keys())[idx] if isinstance(idx, int) else idx
@@ -892,16 +910,44 @@ def item_find(x, idx=0):
     return x
 
 def find_device(b):
+    """
     "Recursively search the device of `b`."
+
+    purpose:
+    1. sometimes you may want to checkout the device which the lowest/final_level tensor is on
+    2. this func can give us the device of the first branch's lowest leaf of data `x`
+    """    
     return item_find(b).device
 
 def find_bs(b):
+    """
     "Recursively search the batch size of `b`."
+
+    purpose:
+    1. when dealing with ML/DL the actual data sample is at the lowest level
+    2. it is the shape of the lowest level data sample matters
+    3. the batch_size of data sample is the first value of `shape`
+    4. `item_find(b).shape[0]` gets us the batch_size value
+    """
     return item_find(b).shape[0]
 
 @chk
 def compose(*funcs: Callable, order=None):
-    "Create a function that composes all functions in `funcs`, passing along remaining `*args` and `**kwargs` to all"
+    """
+    "Create a function that composes all functions in `funcs`, 
+    passing along remaining `*args` and `**kwargs` to all"
+
+    purpose:
+    1. sometimes, we got a number functions to run in series, and
+    2. these funcs are even taking same args
+    3. so, we will refactor the code and make life easier with `compose`
+        3.1 all functions are organized into a L
+        3.2 all functions are sorted by `order` using `L.sorted`
+    4. then we create a `_inner()`:
+        4.1 we loop through every function
+        4.2 run the function with *args, **kwargs
+        Note: *args, **kwargs are given by user from outside, see examples below
+    """
     funcs = L(funcs)
     if order is not None: funcs = funcs.sorted(order)
     def _inner(x, *args, **kwargs):
@@ -910,11 +956,44 @@ def compose(*funcs: Callable, order=None):
     return _inner
 
 def mapper(f):
+    """
     "Create a function that maps `f` over an input collection"
+
+    purpose:
+    1. outside L, it would be nice to have sth similar to `L.mapped`
+    2. it would be nice if we can do `mapper(f)(data)`
+        2.1 `f` is the func we want to apply to every item of 'data'
+        2.2 `data` is the data including many items
+    3. `mapper(f)` return a lambda func, inside the func, it can
+        3.1 loop through every item `o_` from `o` (or `data`)
+        3.2 apply `f` on each `o_`
+        3.3 put each output into a single list
+    4. the lambda func returned from `mapper(f)` will take `(data)` to run
+    So, this above is the logic of `mapper(f)(data)`
+    """
     return lambda o: [f(o_) for o_ in o]
 
 def partialler(f, *args, order=None, **kwargs):
+    """
     "Like `functools.partial` but also copies over docstring"
+
+    purpose:
+    1. we know `partial(f, *args, **kwargs)` already made our life easier
+    2. however, we want refactor more actions into this `partialler(f, ...)`
+        2.1 of course, first we do the standard `partial(f, *args, **kwargs)`
+                assigned to `fnew`
+        2.2 we add `f.__doc__` to be the `fnew` func
+        2.3 we add order attribute onto the `fnew` func if applicable
+            a. order info can come from input arg `order`
+            b. or from `f.order`
+    3. return the `fnew`, which does a lot more than standard `partial`
+
+    arguments:
+    1. `f`: the function to be refactored
+    2. `*args`: all positional args of `f`
+    3. `order`: to add attribute info on `f.order`
+    4. `**kwargs` : all named arguments from `f`
+    """
     fnew = partial(f,*args,**kwargs)
     fnew.__doc__ = f.__doc__
     if order is not None: fnew.order=order
@@ -922,12 +1001,46 @@ def partialler(f, *args, order=None, **kwargs):
     return fnew
 
 def _is_instance(f, gs):
+    """
+    oneliner:
+    whether `f` is an instance to or the same to any of `gs`.
+
+    purpose:
+    1. yes, we have `isinstance(o, cls)` to check on class and instance
+        1.1 but it requies both instance and class available to work
+        1.2 what if we only have a list of objects and funcs instead `cls`
+    2. also it leaves out the case `test_eq(o, p)`,
+        2.1 sometimes we need to check whether `o` and `p` are same type
+        2.2 or the same func,
+    3. why not have both above dealt with a single func?
+        3.1 loop through the list of objects/funcs
+        3.2 and distinguish them to be either (type, 'function') or class
+        3.3 put them into a list and loop through the list
+        3.4 check whether `f` is instance of or just equal to `g`, each item in the list `tst`
+    4. return: T or F
+        4.1 as long as one `g` match with (instance or equal) `f`, return True
+        4.2 otherwise, False
+    """
     tst = [g if type(g) in [type, 'function'] else g.__class__ for g in gs]
     for g in tst:
         if isinstance(f, g) or f==g: return True
     return False
 
 def _is_first(f, gs):
+    """
+    oneliner:
+    1. whether `f` is the first func to run among `gs` (a list of funcs)
+    2. based on `run_after` and `run_before` of `gs`
+
+    purpose:
+    1. among many tranform funcs, it is important to figure out which run first
+    2. each func may have attributes like `run_after`, `run_before` to order
+    3. how can we figure out which func is first with their attributes above?
+        3.1 if `f` run_after `o`, and `o` is among `gs`, then `f` can't be first
+        3.2 say `g` run before `o`, and `f` _is_instance to `o`,
+                then `f` can't be first.
+        3.3 otherwise, yes, `f` is first
+    """
     for o in L(getattr(f, 'run_after', None)):
         if _is_instance(o, gs): return False
     for g in gs:
@@ -935,6 +1048,20 @@ def _is_first(f, gs):
     return True
 
 def sort_by_run(fs):
+    """
+    oneliner:
+    1. sort `fs` from first to last to run
+    2. based on their attrs such as `toward_end`, `run_after`, `run_before`
+
+    purpose:
+    1. `_is_instance`, `_is_first` help us figure out whether `f` is first among `fs`
+    2. but in the end we want `fs` to be sorted by execution order
+    3. `sort_by_run` does it for us
+        3.1 'toward_end' help us find the last func in `fs`, put it at the end of `inp`, keep the rest funcs before it.
+        3.2 loop through the rest funcs `inp`, use `_is_first` to find the actual first func to run, and pop it out of `inp`, and into `res`
+        3.3 again loop through the remaining funcs `inp`, and do the previous step, until `inp` is empty
+    4. return res
+    """
     end = L(getattr(f, 'toward_end', False) for f in fs)
     inp,res = L(fs)[~end] + L(fs)[end], []
     while len(inp) > 0:
@@ -953,11 +1080,31 @@ def num_cpus():
 defaults.cpus = min(16, num_cpus())
 
 def add_props(f, n=2):
+    """
     "Create properties passing each of `range(n)` to f"
+
+    purpose:
+    1. sometimes properties of a class are very similar in nature
+    2. i.e., they follow the same structure but in different values
+    3. to be specific, they are constructed by the same `f` but with different `i` values
+    4. the `i` value difference can be described as `for i in range(n)`,
+    5. where `n` refers to the number of properties, default to 2.
+    """    
     return (property(partial(f,i)) for i in range(n))
 
 def make_cross_image(bw=True):
+    """
     "Create a tensor containing a cross image, either `bw` (True) or color"
+    
+    oneliner: how to create a tensor for black-white cross image or color make_cross_image
+
+    purpose:
+    1. to create an image of bw or color cross, we need a tensor first;
+    2. by change values in the tensor to add pattern or color
+    3. permutate to change the dim position of channels is essential in creating images
+
+    Note: this is just for example usage I think
+    """
     if bw:
         im = torch.zeros(5,5)
         im[2,:] = 1.

@@ -10,22 +10,82 @@ from ..core import *
 from ..notebook.showdoc import show_doc
 
 def get_func(t, name, *args, **kwargs):
+    """
     "Get the `t.name` (potentially partial-ized with `args` and `kwargs`) or `noop` if not defined"
+
+    why get_func(...)
+    1. sometimes getting the plain method, t.name is not enough, 
+    1. we want t.name with specified args, kwargs
+    2. why not allow get_func(...) to do both
+    """
     f = getattr(t, name, noop)
     return f if not (args or kwargs) else partial(f, *args, **kwargs)
 
 def show_title(o, ax=None, ctx=None):
+    """
     "Set title of `ax` to `o`, or print `o` if `ax` is `None`"
+
+    why show_title(...)
+    1. if we really got an image, we can set `o` as the image's title
+    1. if no image, then just print out `o`
+    2. `ax` and `ctx` seem used interchangeably
+    """
     ax = ifnone(ax,ctx)
     if ax is None: print(o)
     else: ax.set_title(o)
 
 class Func():
-    "Basic wrapper around a `name` with `args` and `kwargs` to call on a given type"
-    def __init__(self, name, *args, **kwargs): self.name,self.args,self.kwargs = name,args,kwargs
-    def __repr__(self): return f'sig: {self.name}({self.args}, {self.kwargs})'
-    def _get(self, t): return get_func(t, self.name, *self.args, **self.kwargs)
-    def __call__(self,t): return L(t).mapped(self._get) if is_listy(t) else self._get(t)
+    """
+    "Basic wrapper around a `name` with `args` and `kwargs` 
+    to call on a given type"
+
+    why Func():
+    1. we can get a method easily like `math.pow`
+    2. but what if we want the method to be `math.pow(x, 2)`
+    3. what if we want to get a list [math.pow(x,2), torch.pow(x, 2)]
+    4. how cool if we can get it by Func('pow', a=2)([math, torch])
+
+    why __init__(self, name, *args, **kwargs)
+    1. we get method name and its args, kwargs ready
+
+    why __repr__(self)
+    1. we just want to see method name and its args, kwargs
+
+    why _get(self, t)
+    1. we want to use get_func(...) to get method flexibly with args and kwargs
+
+    why __call__(self, t)
+    1. we want Func('pow', args, kwargs)(t) to get us:
+        a. either t.pow with args, and kwargs
+        b. or t1.pow(x, args, kwargs), t2.pow(x, args, kwargs)...
+
+    """
+    def __init__(self, name, *args, **kwargs): 
+        """
+        why __init__(...)
+        1. we get method name and its args, kwargs ready
+        """
+        self.name,self.args,self.kwargs = name,args,kwargs
+    def __repr__(self): 
+        """
+        why __repr__(self)
+        1. we just want to see method name and its args, kwargs
+        """
+        return f'sig: {self.name}({self.args}, {self.kwargs})'
+    def _get(self, t): 
+        """
+        why _get(self, t)
+        1. we want to use get_func(...) to get method flexibly with args and kwargs
+        """
+        return get_func(t, self.name, *self.args, **self.kwargs)
+    def __call__(self,t): 
+        """
+        why __call__(self, t)
+        1. we want Func('pow', args, kwargs)(t) to get us:
+            a. either t.pow with args, and kwargs
+            b. or t1.pow(x, args, kwargs), t2.pow(x, args, kwargs)...
+        """
+        return L(t).mapped(self._get) if is_listy(t) else self._get(t)
 
 class _Sig():
     def __getattr__(self,k):
@@ -236,11 +296,7 @@ class TfmdList(GetAttr):
                  show_at="Show item at `idx`",
                  subset="New `TfmdList` that only includes items at `idxs`")
 
-<<<<<<< HEAD
-def _maybe_flat(t): return t[0] if len(t) == 1 else t
-=======
 def _maybe_flat(t): return t[0] if len(t) == 1 else tuple(t)
->>>>>>> master
 
 class TfmdDS(TfmdList):
     def __init__(self, items, tfms=None, tuple_tfms=None, do_setup=True):
@@ -255,20 +311,12 @@ class TfmdDS(TfmdList):
         self.tuple_tfms = Pipeline(tuple_tfms, t=[it.tfms.final_t for it in self.tfmd_its])
         if do_setup: self.setup()
 
-<<<<<<< HEAD
-    def __getitem__(self, i, filt=None):  #TODO add filt
-        its = _maybe_flat([it.__getitem__(i, filt=filt) for it in self.tfmd_its])
-        if is_iter(i):
-            if len(self.tfmd_its) > 1: its = zip(*L(its))
-            return L(its).mapped(self.tuple_tfms, filt=filt)
-=======
     def __getitem__(self, i, filt=None):
         its = _maybe_flat([it.__getitem__(i, filt=filt) for it in self.tfmd_its])
         if is_iter(i):
             if len(self.tfmd_its) > 1: its = zip(*L(its))
             if not is_iter(filt): filt = L(filt for _ in i)
             return L(self.tuple_tfms(it, filt=f) for it,f in zip(its,filt))
->>>>>>> master
         return self.tuple_tfms(its, filt=filt)
 
     def __getattr__(self,k):
@@ -281,10 +329,7 @@ class TfmdDS(TfmdList):
 
     def decode(self, o, filt=None):
         o = self.tuple_tfms.decode(o, filt=filt)
-<<<<<<< HEAD
-=======
         if not is_iter(o): o = [o]
->>>>>>> master
         return _maybe_flat([it.decode(o_, filt=filt) for o_,it in zip(o,self.tfmd_its)])
 
     def decode_batch(self, b, filt=None): return [self.decode(b_, filt=filt) for b_ in get_samples(b)]
