@@ -14,7 +14,25 @@ from .notebook.showdoc import show_doc
 defaults = SimpleNamespace()
 
 class PrePostInitMeta(type):
+    """
     "A metaclass that calls optional `__pre_init__` and `__post_init__` methods"
+
+    Why need `PrePostInitMeta`?
+    - not only run `__init__`, but also
+    - automatically run `__pre_init__`, `__post_init__`
+
+    How to use `PrePostInitMeta`?
+    - create a subclass to `PrePostInitMeta`
+    - you can add `__pre_init__` and `__post_init__` to `__init__`
+    - program will run them in the order of `__pre_init__`, `__init__` and `__post_init__`
+    - if any of them is missing, a `_pass()` method will run instead
+
+    How to create `PrePostInitMeta`?
+    - how to lay out the logic flow?
+    - use pdb break at the first line of `__new__`
+    - basically `__new__` run before running `t=_T()`
+    - to prepare all the additional methods of `x` or `_T`
+    """
     def __new__(cls, name, bases, dct):
         x = super().__new__(cls, name, bases, dct)
         def _pass(self, *args,**kwargs): pass

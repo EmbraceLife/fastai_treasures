@@ -17,6 +17,9 @@ def get_func(t, name, *args, **kwargs):
     1. sometimes getting the plain method, t.name is not enough, 
     1. we want t.name with specified args, kwargs
     2. why not allow get_func(...) to do both
+
+    Note: 
+    1. it just get methods, not do calculation
     """
     f = getattr(t, name, noop)
     return f if not (args or kwargs) else partial(f, *args, **kwargs)
@@ -58,7 +61,6 @@ class Func():
     1. we want Func('pow', args, kwargs)(t) to get us:
         a. either t.pow with args, and kwargs
         b. or t1.pow(x, args, kwargs), t2.pow(x, args, kwargs)...
-
     """
     def __init__(self, name, *args, **kwargs): 
         """
@@ -84,10 +86,35 @@ class Func():
         1. we want Func('pow', args, kwargs)(t) to get us:
             a. either t.pow with args, and kwargs
             b. or t1.pow(x, args, kwargs), t2.pow(x, args, kwargs)...
+        
+        Note: 
+        1. returns methods with args, kwargs, not calculations by the methods
         """
         return L(t).mapped(self._get) if is_listy(t) else self._get(t)
 
 class _Sig():
+    """
+    Sig = _Sig()
+    `Sig` is just sugar-syntax to create a `Func` object more easily with the syntax `Sig.name(*args, **kwargs)`.
+
+    why _Sig():
+    1. because we want the use of Func(...) much easier
+    1. how about use it in the following way:
+        a. Sig.sqrt()(math)(4)
+        b. Sig.pow()(math)(4,2)
+        c. use , to allow vscode to display signiture
+
+    Note:
+    1. differ from SelfFunc, Sig considers args and kwargs in the end
+
+    Example
+    from local.imports import *
+    from local.core import *
+    from local.data.pipeline import *
+    Sig.sqrt()(math)(4)
+    Sig.pow()(math)(4,2)
+    Sig.pow()([math, torch]) # return two methods, can't do calc easily here
+    """
     def __getattr__(self,k):
         def _inner(*args, **kwargs): return Func(k, *args, **kwargs)
         return _inner
@@ -95,22 +122,83 @@ class _Sig():
 Sig = _Sig()
 
 class SelfFunc():
+    """
     "Search for `name` attribute and call it with `args` and `kwargs` on any object it's passed."
-    def __init__(self, nm, *args, **kwargs): self.nm,self.args,self.kwargs = nm,args,kwargs
-    def __repr__(self): return f'self: {self.nm}({self.args}, {self.kwargs})'
+
+    why SelfFunc()
+    1. given Sig, SelfFunc is very identical, but maybe one step shorter
+    2. more important, Sig and Func can't return method/s, not designed to deliver calculations primarily
+    3. why don't we design SelfFunc to deliver calculations (even multiple) as returns
+
+    Note:
+    1. differ from Sig, SelfFunc considers args and kwargs from __init__
+
+    from local.imports import *
+    from local.core import *
+    from local.data.pipeline import *
+    SelfFunc('sqrt')(tensor(4.0))
+    SelfFunc('pow', 2)(tensor(4.0))
+    SelfFunc('pow', 2)([tensor(4), tensor(5.0)])
+    """
+    def __init__(self, nm, *args, **kwargs): 
+        "get method name and args, kwargs ready"
+        self.nm,self.args,self.kwargs = nm,args,kwargs
+    def __repr__(self): 
+        "print out method names, args, kwargs"
+        return f'self: {self.nm}({self.args}, {self.kwargs})'
     def __call__(self, o):
-        if not is_listy(o): return getattr(o,self.nm)(*self.args, **self.kwargs)
-        else: return [getattr(o_,self.nm)(*self.args, **self.kwargs) for o_ in o]
+        "use o.method calculate as o has data inside, args, and kwargs are given by __init__ "
+        if not is_listy(o): 
+            return getattr(o,self.nm)(*self.args, **self.kwargs)
+        else: 
+            return [getattr(o_,self.nm)(*self.args, **self.kwargs) for o_ in o]
 
 class _SelfFunc():
+    """
+    why SelfFunc() and Self?
+    1. because we are crazy about typing the least codes
+    2. previously we have, still too long?
+        - SelfFunc('pow', 2)([tensor(4), tensor(5.0)])
+    3. why not 
+        - Self.pow(3)([tensor(4), tensor(7.0)])
+
+    Examples:
+    from local.imports import *
+    from local.core import *
+    from local.data.pipeline import *
+    Self.sqrt()(tensor(4.0))
+    Self.pow(3)([tensor(4.0), tensor(7.0)])
+    """
     def __getattr__(self,k):
         def _inner(*args, **kwargs): return SelfFunc(k, *args, **kwargs)
         return _inner
 
 Self = _SelfFunc()
 
+
 def positional_annotations(f):
+    """
     "Get list of annotated types for all positional params, or None if no annotation"
+
+    Why positional_annotations(f):
+    1. just want to know all the positional arguments types (not keyword argument)
+
+    Note: 
+    1. the source code has two if on the same line, very confusing
+    2. my guess is the second if run first and then the first if else 
+    3. check it out when having time!!
+
+    Examples:
+    from local.imports import *
+    from local.core import *
+    from local.data.pipeline import *
+    def f1(x, y:float): return x+y
+    def f2(a, b=2): return a
+    def f3(a:int, b:float=2): return a
+    positional_annotations(f1)# [None, float]
+    positional_annotations(f2)# [None]
+    positional_annotations(f3)# [int]
+    """
     sig = inspect.signature(f)
     return [p.annotation if p.annotation != inspect._empty else None
             for p in sig.parameters.values() if p.default == inspect._empty and p.kind != inspect._VAR_KEYWORD]
@@ -118,16 +206,49 @@ def positional_annotations(f):
 from multimethod import multimeta,DispatchError
 
 def _get_ret(func):
-    "Get the return annotation of `func`"
+    """
+    "Get the return annotation or type of `func`"
+
+    Example:
+    from local.imports import *
+    from local.core import *
+    from local.data.pipeline import *
+    from local.data.pipeline import _get_ret
+    def f1(x) -> float: return x
+    _get_ret(f1) # float
+    def f2(x) -> Tuple[float,float]: return x
+    _get_ret(f2) # [float,float]
+    """
     ann = getattr(func,'__annotations__', None)
     if not ann: return None
     typ = ann.get('return')
     return list(typ.__args__) if getattr(typ, '_name', '')=='Tuple' else typ
 
-def noop_tfm(x,*args,**kwargs): return (x,*args) if len(args) > 0 else x
+def noop_tfm(x,*args,**kwargs): 
+    """
+    why noop_tfm(x,*args,**kwargs)?
+    1. sometimes, we need to a tfm which does nothing
+    2. but to be useful, it can return data and all the positional args 
+
+    Examples:
+    from local.imports import *
+    from local.core import *
+    from local.data.pipeline import *
+    noop_tfm(1) # 1
+    noop_tfm(1,2,3) # (1,2,3)
+    """
+    return (x,*args) if len(args) > 0 else x
 
 class PrePostInitMultiMeta(multimeta):
+    """
     "Like `PrePostInit` but inherits `multimeta`"
+
+    why PrePostInitMultiMeta(multimeta)?
+    1. the source code is exactly the same as PrePostInitMeta
+    2. only difference is super class is not type but multimedia
+    3. so, we want the same functionalities but for multimedia
+    4. we want to Transform to inherit from multimedia than type
+    """
     def __new__(cls, name, bases, dct):
         x = super().__new__(cls, name, bases, dct)
         def _pass(self, *args,**kwargs): pass
@@ -144,18 +265,74 @@ class PrePostInitMultiMeta(multimeta):
         return x
 
 class Transform(metaclass=PrePostInitMultiMeta):
-    "A function that `encodes` if `filt` matches, and optionally `decodes`"
+    """
+    "A function that `encodes` if `filt` matches, and optionally `decodes`, with an optional `setup`"
+
+    Why Transform(metaclass=PrePostInitMultiMeta)?
+    1. Transform is crucial in data augmentation, deserve a class
+    2. we want a few class attributes to make sure every tfm has all those attributes and the default values
+
+    What are the class attributes and default values
+    1. `order`: 0
+    2. add_before_setup: False 
+    3. filt, t, state_args : None
+
+    Examples
+    tfm = Transform()
+    tfm.order, tfm.add_before_setup, tfm.t, tfm.filt, tfm.state_args
+    """
     order,add_before_setup,filt,t,state_args = 0,False,None,None,None
+
     def __init__(self,encodes=None,decodes=None):
+        """
+        why __init__(self,encodes=None,decodes=None)?
+        1. you want an object of Transform, you need __init__
+        2. the essence of a tfm is basically encodes and decodes 
+        3. we need a way to get encodes ready
+            a. either from args `encodes` to create a brand new
+            b. or from an existing tfm object (self) who is running this __init__ here
+            c. if the existing tfm has no encodes, do noop_tfm 
+        4. the way to get decodes is the same
+        5. set self.t = None (default is None too)
+
+        Note: 
+        1. both Transform.__init__ and __post_init__ get run 
+        2. through multimethod.__call__
+            a. self[tuple(map(type, args))](*args, **kwargs)
+        3. is this to ensure type get checked???
+
+        Examples
+        tfm = Transform()
+        tfm.encodes, tfm.decodes, tfm.t
+        tfm.encodes(3), tfm.decodes(4)
+        """
         self.encodes = getattr(self, 'encodes', noop_tfm) if encodes is None else encodes
         self.decodes = getattr(self, 'decodes', noop_tfm) if decodes is None else decodes
         self.t = None
 
     def __post_init__(self):
+        """
+        why __post_init__(self)?
+        1. further make sure noop_tfm loaded if no encodes nor decodes
+        """
         self.encodes = getattr(self, 'encodes', noop_tfm)
         self.decodes = getattr(self, 'decodes', noop_tfm)
 
     def _apply(self, fs, x, filt):
+        """
+        why _apply(self, fs, x, filt)?
+        1. simply to have the ability to apply encodes and decodes to data x
+            a. so `fs` here refers to encodes, decodes naturally
+        2. of course, we want extra flexibility and power
+        3. first, we must be able to handle single or grouped encodes|decodes and x
+        4. special case 1: when self.t (indx purpose?) is available 
+            a. with the tool _get_func, we can be more specific on `fs` -> `gs`
+            b. extend gs inot a list of gs, if self.t is list_like and gs positional args not enough?
+        5. special case 2: self.filt can force _apply do nothing
+            a. `filt` is some dataset index (e.g. provided by `DataSource`)
+            a. if self.filt is strange, do nothing and return x
+            a. strange => if self.filt is not None and not match with input filt
+        """
         if self.filt is not None and self.filt!=filt: return x
         if self.t:
             gs = self._get_func(fs, self.t)
@@ -167,25 +344,50 @@ class Transform(metaclass=PrePostInitMultiMeta):
         return gs(*L(x)) if is_listy(self.t) else gs(x)
 
     def _get_func(self,f,t,ret_partial=True):
+        """
+        why _get_func(self,f,t,ret_partial=True)?
+        1. basically, we want to extract the method/func from object `f`
+        2. but we want it to be more flexible and powerful to handle different cases
+            a. what if => `f` to have no func => so just use `f` 
+            b. what if => `self.t` or `t` (type) can't idx the __func__ from `f`, => use noop_tfm
+        3. so we intend to get specific __func__ from `f` using `self.t` as idx 
+            c. add more flexibity => toggle ret_partial to use partial(f, self)
+            d. just return f
+        """
         if not hasattr(f,'__func__'): return f
         idx = (object,) + tuple(t) if is_listy(t) else (object,t)
         try: f = f.__func__[idx]
         except DispatchError: return noop_tfm
         return partial(f,self) if ret_partial else f
 
-    def accept_types(self, t): self.t = t
+    def accept_types(self, t): 
+        """
         # We can't create encodes/decodes here since patching might change things later
         # So we call _get_func in _apply instead
 
+        it seems to suggest `t` is type of encodes and decodes
+        so, this is to set the type
+        """
+        self.t = t
+
     def return_type(self):
+        """
+        Why return_type(self)?
+        1. because we want to be sure the return type of encodes
+        2. to be sure about func of encodes, we need _get_func
+        3. then use _get_ret to find out return type 
+        """
         g = self._get_func(self.encodes, self.t, False)
         if is_listy(self.t) and len(positional_annotations(g))-1 != len(self.t):
             return [_get_ret(self._get_func(self.encodes,t_,False)) or t_ for t_ in self.t]
         return _get_ret(g) or self.t
 
-    def __call__(self, x, filt=None): return self._apply(self.encodes, x, filt)
-    def decode  (self, x, filt=None): return self._apply(self.decodes, x, filt)
-    def __getitem__(self, x): return self(x) # So it can be used as a `Dataset`
+    def __call__(self, x, filt=None): 
+        return self._apply(self.encodes, x, filt)
+    def decode  (self, x, filt=None): 
+        return self._apply(self.decodes, x, filt)
+    def __getitem__(self, x): 
+        return self(x) # So it can be used as a `Dataset`
 
 add_docs(Transform,
          __call__="Dispatch and apply the proper encodes to `x` if `filt` matches",
@@ -206,13 +408,6 @@ def compose_tfms(x, tfms, func_nm='__call__', reverse=False, **kwargs):
     if reverse: tfms = reversed(tfms)
     for tfm in tfms: x = getattr(tfm,func_nm,noop)(x, **kwargs)
     return x
-
-def _get_ret(func):
-    "Get the return annotation of `func`"
-    ann = getattr(func,'__annotations__', None)
-    if not ann: return None
-    typ = ann.get('return')
-    return list(typ.__args__) if getattr(typ, '_name', '')=='Tuple' else typ
 
 class Pipeline():
     "A pipeline of composed (for encode/decode) transforms, setup with types"
