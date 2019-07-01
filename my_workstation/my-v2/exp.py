@@ -3,9 +3,7 @@ from local.core import *
 from local.data.pipeline import *
 from multimethod import multimeta,DispatchError
 
-tfm = Transform(operator.neg, decodes=operator.neg)
-start = 4
-t = tfm(start)
-test_eq(t, -4)
-test_eq(t, tfm[start]) #You can use a transform as a dataset
-test_eq(tfm.decode(t), start)
+def dummy_tfm(x:float, y:float): return x**y
+tfm = Transform([dummy_tfm, operator.neg])
+tfm(((2,3),4)) # __call__, _apply(..t,filt)
+
