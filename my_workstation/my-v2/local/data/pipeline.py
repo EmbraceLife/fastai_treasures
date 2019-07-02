@@ -320,6 +320,14 @@ class Transform(metaclass=PrePostInitMultiMeta):
         """
         why __post_init__(self)?
         1. further make sure noop_tfm loaded if no encodes nor decodes
+
+        Example: use of __post_init__
+        class _DummyTfm(Transform):
+            def __init__(self): pass #Pass init so that decodes isn't defined
+            def encodes(self, x): return x+1
+        dt = _DummyTfm()
+        t = dt(4)
+        dt.decode(t) # Decodes was still set at post init as noop_tfm
         """
         self.encodes = getattr(self, 'encodes', noop_tfm)
         self.decodes = getattr(self, 'decodes', noop_tfm)
@@ -327,16 +335,20 @@ class Transform(metaclass=PrePostInitMultiMeta):
     def _apply(self, fs, x, filt):
         """
         why _apply(self, fs, x, filt)?
-        1. simply to have the ability to apply encodes and decodes to data x
-            a. so `fs` here refers to encodes, decodes naturally
-        2. of course, we want extra flexibility and power
-        3. first, we must be able to handle single or grouped encodes|decodes and x
-            a. fs is a single func but can take multiple args, so x is list-like, see example 1
-            b. fs is a group of funcs but with single arg, and x has to be multiple too, see example 2
-            c. but multiple funcs in fs, and multiple args for each func, is not working yet
-        4. special case 1: when self.t (indx purpose?) is available 
-            a. with the tool _get_func, we can be more specific on `fs` -> `gs`
-            b. extend gs inot a list of gs, if self.t is list_like and gs positional args not enough?
+        1. because we want to see what each single func (encodes or decodes) do to a data sample
+        2. we want extra flexibility and power
+        3. we want to see a single func with multiple args can do to a data sample
+            - fs is a single func but can take multiple args, so x has to be list-like (arg1, arg2, ...), see example 1
+            - self.t is to descript fs args
+        4. we want to see multiple funcs with single args can do to data samples
+            - fs is a group of funcs but with single arg, and x has to be multiple (arg_f1, arg_f2), see example 2
+        4. How about multiple funcs in fs, and multiple args for either func, 
+            - it is not working yet or not considered???
+            - problem: due to `positional_annotations(gs)`
+        5. ??? 
+            if is_listy(self.t) and len(positional_annotations(gs)) != len(self.t):
+                gs = [self._get_func(fs,t_) for t_ in self.t]
+                if len(gs) == 1: gs = gs[0]
         5. special case 2: self.filt can force _apply do nothing
             a. `filt` is some dataset index (e.g. provided by `DataSource`)
             a. if self.filt is strange, do nothing and return x
@@ -347,13 +359,13 @@ class Transform(metaclass=PrePostInitMultiMeta):
         from local.data.pipeline import *
         from multimethod import multimeta,DispatchError
         example 1 ============>
-        def dummy_tfm(x:float,y:float): return [x+y,y]
+        def dummy_tfm(x:float,y:float): return [x+y,y] # x**y
         tfm = Transform(dummy_tfm)
         t = positional_annotations(dummy_tfm) # types of positional args 
         tfm.accept_types(t)
         tfm((2,3)) # __call__, _apply(..t,filt)
         example 2 ============>
-        # def dummy_tfm(x:float): return x**2
+        def dummy_tfm(x:float): return x**2
         tfm = Transform([dummy_tfm, operator.neg])
         tfm((2,3)) # __call__, _apply(..t,filt)
         """
@@ -364,19 +376,25 @@ class Transform(metaclass=PrePostInitMultiMeta):
                 gs = [self._get_func(fs,t_) for t_ in self.t]
                 if len(gs) == 1: gs = gs[0]
         else: gs=fs
-        if is_listy(gs): return tuple(f(x_) for f,x_ in zip(gs,x))
+        if is_listy(gs): 
+            return tuple(f(x_) for f,x_ in zip(gs,x))
         return gs(*L(x)) if is_listy(self.t) else gs(x)
 
     def _get_func(self,f,t,ret_partial=True):
         """
         why _get_func(self,f,t,ret_partial=True)?
         1. basically, we want to extract the method/func from object `f`
-        2. but we want it to be more flexible and powerful to handle different cases
-            a. what if => `f` to have no __func__ => so just use `f` (usually, a normal func has no __func__)
-            b. what if => `self.t` or `t` (type) can't idx the __func__ from `f`, => use noop_tfm
-        3. so we intend to get specific __func__ from `f` using `self.t` as idx 
+        1. but we want it to be more flexible and powerful to handle different cases
+        2. what if => `f` to have no __func__ => so just use `f` (usually, a normal func has no __func__)
+        3. what if => `self.t` or `t` (type) can't idx the __func__ from `f`, => use noop_tfm
+        4. so we intend to get specific __func__ from `f` using `self.t` as idx 
             c. add more flexibity => toggle ret_partial to use partial(f, self)
             d. just return f
+
+        Note:
+        cases 3, 4 not yet met
+
+        Examples: see _apply
         """
         if not hasattr(f,'__func__'): return f
         idx = (object,) + tuple(t) if is_listy(t) else (object,t)
@@ -393,11 +411,14 @@ class Transform(metaclass=PrePostInitMultiMeta):
         so, this is to set the type
 
         Examples:
-        def dummy_tfm(x:float,y:float): return [x+y,y]
-        tfm = Transform(dummy_tfm)
-        t = positional_annotations(dummy_tfm) # types of positional args 
-        tfm.accept_types(t)
-        tfm((2,3)) # __call__, _apply(..t,filt)
+        class _Add(Transform):
+            def encodes(self, x, y): return (x+y,y)
+            def decodes(self, x, y): return (x-y,y)
+        addt = _Add()
+        addt.t
+        addt.accept_types([float,float])
+        t = addt((1,2))
+        addt.decode(t) # (1,2))
         #tfm.accept_types([int,float]) Fails for now and needs a class with encodes
         """
         self.t = t
@@ -409,7 +430,36 @@ class Transform(metaclass=PrePostInitMultiMeta):
         2. to be sure about func of encodes, we need _get_func
         3. then use _get_ret to find out return type 
 
-        
+        Note: 
+        - not used in other methods of Transform
+
+        Examples 
+        from local.imports import *
+        from local.core import *
+        from local.data.pipeline import *
+        from multimethod import multimeta,DispatchError
+
+        #Check type is properly changed at dispatch
+        class _AddOne(Transform):
+            def encodes(self, x:int)->str: return x+1 # priority 3
+            def encodes(self, x:float):       return x*2 # floatArg
+            def encodes(self, x:int)->float:  return x**2 # priority 2
+            def encodes(self, x:int)->int: return x+10 # priority 1
+            def encodes(self, x:int, y:float)->int: return x+y # twoArgs
+            def decodes(self, x:int):   return x-1
+            def decodes(self, x:float): return x/2
+
+        tfm = _AddOne()
+        tfm.accept_types(float)
+        tfm.return_type()# float
+        tfm.accept_types(int)
+        tfm.return_type() 
+        tfm.accept_types([int,float])# run encodes twoArgs
+        tfm.return_type() 
+        tfm((5, 5.0))
+        tfm.accept_types([float, int]) # run floatArg and run priority 1
+        tfm.return_type() 
+        tfm((5, 5.0)) # run encode priority 1, and floatArg
         """
         g = self._get_func(self.encodes, self.t, False)
         if is_listy(self.t) and len(positional_annotations(g))-1 != len(self.t):
@@ -420,12 +470,63 @@ class Transform(metaclass=PrePostInitMultiMeta):
         """
         why __call__(self, x, filt=None)
         1. when we call a tfm object, we want to apply encodes onto data x
+
+        Examples: see effect on filt
+        class _FiltAddOne(Transform):
+            filt=1
+            def encodes(self, x): return x+1
+            def decodes(self, x): return x-1
+        addt = _FiltAddOne()
+        addt(4,filt=1)# 5, just normal apply since filt == self.filt
+        addt(4,filt=0)# 4, special case, filt != self.filt, just return x 
+
+        Examples:
+        # we can have multiple encodes (one func each), self.t (type) help to choose each encodes to use
+        class _AddOne(Transform):
+            def encodes(self, x:numbers.Integral): return x+1
+            def encodes(self, x:float): return x*2
+            def decodes(self, x:numbers.Integral): return x-1
+        addt = _AddOne()
+        addt.encodes
+        addt.accept_types(float)
+        start = 1
+        t = addt(start)
+        addt.decode(t) # if no match just use noop_tfm
+        # we can use multiple values in self.t to make multiple use of encodes and decodes 
+        addt.accept_types([float, int, float])
+        start = (1,2,3)
+        t = addt(start)
+        addt.decode(t) # (2,2,6))
         """
         return self._apply(self.encodes, x, filt)
     def decode  (self, x, filt=None): 
         """
         why decode  (self, x, filt=None): 
         1. when we do tfm.decode(), we actually apply decodes to data x
+
+        Examples:
+        from local.imports import *
+        from local.core import *
+        from local.data.pipeline import *
+        from multimethod import multimeta,DispatchError
+
+        #Using supertype encodes/decodes, we have a hacky way, might want to simplify it.
+        class _AddOne(Transform):
+            def encodes(self, x:numbers.Integral): return x+1
+            def encodes(self, x:int): return self._get_func(self.encodes, numbers.Integral)(x)*2
+            def decodes(self, x:numbers.Integral): return x-1
+            def decodes(self, x:int): return self._get_func(self.decodes, numbers.Integral)(x/2)
+            
+        tfm = _AddOne()
+        start = 2
+        tfm.accept_types(numbers.Integral)
+        tfm.return_type()
+        t = tfm(start)
+        tfm.decode(t)
+        tfm.accept_types(int)
+        tfm.return_type()
+        t = tfm(start)
+        tfm.decode(t) # why this returns a float
         """
         return self._apply(self.decodes, x, filt)
     def __getitem__(self, x): 
@@ -454,7 +555,28 @@ add_docs(Transform,
          return_type="Indicate the type of output the tranform returns, depending on `self.t`")
 
 def transform(cls):
+    """
     "Decorator for registering a new `encodes` or `decodes` function in a tranform `cls`"
+
+    why transform(cls)?
+    1. why not have a very easy way to add additional encodes and decodes?
+
+    Examples 
+    from local.imports import *
+    from local.core import *
+    from local.data.pipeline import *
+    from multimethod import multimeta,DispatchError
+    class _AddOne(Transform):
+        def encodes(self, x:numbers.Integral): return x+1
+        def encodes(self, x:float): return x*2
+        def decodes(self, x:numbers.Integral): return x-1
+    @transform(_AddOne)
+    def decodes(self, x:float): return x/2
+
+    addt.accept_types([float, int, float])
+    t = addt((1,2,3))
+    addt.decode(t)
+    """
     def _inner(f):
         if   f.__name__=='encodes': cls.encodes.register(f)
         elif f.__name__=='decodes': cls.decodes.register(f)
