@@ -3,20 +3,21 @@ from local.core import *
 from local.data.pipeline import *
 from multimethod import multimeta,DispatchError
 
-#Using supertype encodes/decodes, we have a hacky way, might want to simplify it.
-class _AddOne(Transform):
-    def encodes(self, x:numbers.Integral): return x+1
-    def encodes(self, x:int): return self._get_func(self.encodes, numbers.Integral)(x)*2
-    def decodes(self, x:numbers.Integral): return x-1
-    def decodes(self, x:int): return self._get_func(self.decodes, numbers.Integral)(x/2)
-    
-tfm = _AddOne()
-start = 2
-tfm.accept_types(numbers.Integral)
-tfm.return_type()
-t = tfm(start)
-tfm.decode(t)
-tfm.accept_types(int)
-tfm.return_type()
-t = tfm(start)
-tfm.decode(t) # why this returns a float
+# Empty pipeline is noop
+class String():
+    @staticmethod
+    def show(o, ctx=None, **kwargs): return show_title(str(o), ctx=ctx)
+class floatTfm(Transform):
+    def encodes(self, x): return float(x)
+    def decodes(self, x): return int(x)
+float_tfm=floatTfm()
+def neg(x) -> String: return -x
+neg_tfm = Transform(neg, neg) 
+# decodes is the same to encodes, as -x
+pipe = Pipeline([neg_tfm, float_tfm]) # stack two tfms inside
+t = pipe(2)
+type(t)
+pipe.decode(t)
+pipe.show(t)
+#show decodes up to the point of the first transform that introduced the type that shows, not included
+test_stdout(lambda:pipe.show(t), '-2')
