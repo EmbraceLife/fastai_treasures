@@ -614,25 +614,35 @@ class Pipeline():
     Why Pipeline()?
     1. given compose_tfms can order and stack tfms together and apply onto x, 
     2. what else can Pipeline(funcs, t) do for us?
+        - although compose_tfms stack tfms funcs with order for execution
+        - we want the power and flexibility to do the same and more for Tranform objects
+    3. compose_tfms help us to encode and decode across a line of tfms, 
+        - but we want to show the origin data in appropriate state
+        - self.t, self.t_show are introduced to solve this problem
     """
     def __init__(self, funcs=None, t=None):
         """
-        Why __init__(self, funcs=None, t=None)?
-
         What does __init__ do?
         - basically to construct a Pipeline object
             - provide funcs for transformation
             - provide `t` for tfms selection?
 
         How exactly we build a Pipeline object?
-        - if we build an empty pipeline object with `Pipeline()`, 
+        - if we gives no inputs to `Pipeline()`, 
             - then the object has the following attributes
             - `self.fs` as [], and `self.t_show`, `self.final_t` as None
-        - if we have a few funcs (Transform objects or just funcs), we enumerate through the funcs:
+        - if we give Pipeline() a few funcs (Transform objects or just funcs), we enumerate through the funcs:
             - we will sort funcs by pushing into `self.fs` by their `order` value
             - make sure all funcs are Transform objects
-            - trace `self.t`, `self.t_idx`, `self.t_show` with each func along the execution order line
+            - trace each func's inputs types t, and t_show method, along the execution order line
             - finally trace the `self.final_t` type
+        - Question: if type is for display or show, why not in the reserve order?
+            - maybe, show is done through decode, which need to trace back
+            - if __init__ can trace from start to end for type with show, then
+            - decode can trace back to the first type with show from the end
+        
+        Note: 
+        - Pipeline() can take in a pipeline instance to use its funcs
 
         Examples ====>
         from local.imports import *
@@ -661,15 +671,35 @@ class Pipeline():
                 if not isinstance(f,Transform): f = Transform(f)
                 f.accept_types(t)
                 self.fs.append(f)
-                if self.t_show is None and hasattr(t, 'show'): self.t_idx,self.t_show = i,t
                 t = f.return_type()
-            if self.t_show is None and hasattr(t, 'show'): self.t_idx,self.t_show = i+1,t # to be deleted I think
+                if self.t_show is None and hasattr(t, 'show'): self.t_idx,self.t_show = i,t
             self.final_t = t
 
-    def new(self, t=None): return Pipeline(self, t)
-    def __repr__(self): return f"Pipeline over {self.fs}"
+    def new(self, t=None): 
+        """
+        why new(self, t=None)?
+        - when you already got a pipeline object, how to create a new Pipeline object with new info on `t`?
+        """
+        return Pipeline(self, t)
+
+    def __repr__(self): 
+        """
+        why __repr__(self)
+        - when we print out a pipeline object, we want to see its funcs
+        - funcs can be Transform objects or even pipelines
+        """
+        return f"Pipeline over {self.fs}"
 
     def setup(self, items=None):
+        """
+        what does it do?
+        - whether to add self.fs to tfms
+        - whether to ask other classes' setup to apply to items
+        
+        # During the setup, the `Pipeline` starts with no transform and adds them one at a time, so that during its setup, each transfrom get the items processed up to its point and not after. 
+        
+        # Depending on the attribute `add_before_setup`, the transform is added after the setup (default behaivor) so it's not called on the items used for the setup, or before (in which case it's called on the values used for setup).
+        """
         tfms,self.fs = self.fs,[]
         for t in tfms:
             if t.add_before_setup:     self.fs.append(t)
@@ -685,6 +715,32 @@ class Pipeline():
         Examples ==> continue from __init__ examples
         t1=pipe1(1)
         t2=pipe2(2)
+
+        Example on filt =====>
+        from local.imports import *
+        from local.core import *
+        from local.data.pipeline import *
+        from multimethod import multimeta,DispatchError
+        class _FiltAddOne(Transform):
+            filt=1
+            def encodes(self, x): return x+1
+            def decodes(self, x): return x-1
+        class String():
+            @staticmethod
+            def show(o, ctx=None, **kwargs): return show_title(str(o), ctx=ctx)
+        class floatTfm(Transform):
+            def encodes(self, x): return float(x)
+            def decodes(self, x): return int(x)
+        float_tfm=floatTfm()
+        def neg(x) -> String: return -x
+        neg_tfm = Transform(neg, neg) 
+        #Check filtering is properly applied
+        pipe = Pipeline([neg_tfm, float_tfm, _FiltAddOne()])
+        start = 2
+        pipe(start) # default filt = None, but _FillAddOne.filt = 1, so _FiltAddOne() is disenabled when _apply()
+        pipe(start, filt=1) # not both filt is 1, _FiltAddOne() enabled
+        pipe(start, filt=0) # disabled
+        [pipe.decode(pipe(start, filt=t), filt=t) for t in [None, 0, 1]]
         """
         return compose_tfms(o, self.fs, filt=filt)
     def decode  (self, i, filt=None): 
@@ -713,7 +769,17 @@ class Pipeline():
         - display the decoded data
 
         Examples: ===> built from above examples
-        pipe2.show(t2)
+        pipe2 = Pipeline([neg_tfm, float_tfm]) # stack two tfms inside
+        t = pipe2(2)
+        type(t)
+        pipe2.decode(t)
+        #show decodes up to the point of the first transform that introduced the type that shows, not included
+        pipe2.show(t)
+        # Check opposite order
+        pipe3 = Pipeline([float_tfm,neg_tfm])
+        t = pipe3(2)
+        # `show` comes from String on the last transform so only this one is decoded
+        pipe3.show(t)#  '2.0')
         """
         if self.t_show is None: return self.decode(o, filt=filt)
         o = compose_tfms(o, self.fs[self.t_idx:], func_nm='decode', reverse=True, filt=filt)
