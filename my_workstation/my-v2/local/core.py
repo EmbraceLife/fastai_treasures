@@ -3,9 +3,10 @@
 __all__ = ['defaults', 'PrePostInitMeta', 'PrePostInit', 'NewChkMeta', 'patch_to', 'patch', 'chk', 'tensor', 'add_docs',
            'docs', 'custom_dir', 'is_iter', 'coll_repr', 'GetAttr', 'L', 'ifnone', 'get_class', 'mk_class',
            'wrap_class', 'noop', 'noops', 'tuplify', 'replicate', 'uniqueify', 'setify', 'is_listy', 'range_of',
-           'mask2idxs', 'apply', 'to_detach', 'to_half', 'to_float', 'to_device', 'to_cpu', 'item_find', 'find_device',
-           'find_bs', 'compose', 'mapper', 'partialler', 'sort_by_run', 'num_cpus', 'add_props', 'make_cross_image',
-           'all_union', 'all_disjoint', 'camel2snake', 'trainable_params', 'PrettyString']
+           'mask2idxs', 'apply', 'to_detach', 'to_half', 'to_float', 'default_device', 'to_device', 'to_cpu',
+           'item_find', 'find_device', 'find_bs', 'compose', 'mapper', 'partialler', 'sort_by_run', 'num_cpus',
+           'add_props', 'make_cross_image', 'one_hot', 'all_union', 'all_disjoint', 'camel2snake', 'trainable_params',
+           'PrettyString']
 
 from .test import *
 from .imports import *
@@ -890,9 +891,17 @@ def to_float(b):
     """
     return apply(lambda x: x.float() if x.dtype not in [torch.int64, torch.int32, torch.int16] else x, b)
 
-defaults.device = torch.cuda.current_device() if torch.cuda.is_available() else torch.device('cpu')
+# None: True if available; True: error if not availabe; False: use CPU
+defaults.use_cuda = None
 
-def to_device(b, device=defaults.device):
+def default_device(use_cuda=-1):
+    "Return or set default device; `use_cuda`: None - CUDA if available; True - error if not availabe; False - CPU"
+    if use_cuda != -1: defaults.use_cuda=use_cuda
+    use = defaults.use_cuda or (torch.cuda.is_available() and defaults.use_cuda is None)
+    assert torch.cuda.is_available() or not use
+    return torch.device(torch.cuda.current_device()) if use else torch.device('cpu')
+
+def to_device(b, device=None):
     """
     "Recursively put `b` on `device`."
 
@@ -900,6 +909,7 @@ def to_device(b, device=defaults.device):
     0. what if we want to put everything on the default 
     1. Recursively put `b` on defaults.device
     """
+    if device is None: device=default_device()
     def _inner(o): return o.to(device, non_blocking=True) if isinstance(o,Tensor) else o
     return apply(_inner, b)
 
@@ -1132,6 +1142,13 @@ def make_cross_image(bw=True):
         im[0,2,:] = 1.
         im[1,:,2] = 1.
     return im
+
+#Comes from 04_data_core.ipynb.
+def one_hot(x, c):
+    "One-hot encode `x` with `c` classes."
+    res = torch.zeros(c, dtype=torch.uint8)
+    res[L(x)] = 1.
+    return res
 
 #Comes from 05_data_source.ipynb.
 def all_union(sets):
