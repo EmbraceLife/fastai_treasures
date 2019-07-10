@@ -7,6 +7,8 @@
 - 如何创建你的第一个多行代码snippet [论坛分享](https://forums.fast.ai/t/jupyter-notebook-enhancements-tips-and-tricks/17064/28?u=daniel)
 - 我的[快捷键设置](https://github.com/EmbraceLife/fastai_treasures/tree/master/my_shortcut_src)
 
+
+
 ## Recent found resources
 
 - [10 basic vim command](http://www.oualline.com/vim/10/top_10.html)      
@@ -1105,6 +1107,5 @@ turn any snapshort of math in Latex https://mathpix.com/
 [如何修改谷歌浏览器语言设置for colab](chrome://settings/?search=language)
 
 
-```python
-
-```
+## JS
+- [thoughts](https://github.com/EmbraceLife/learn-svelte/issues/1)
