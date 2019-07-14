@@ -15,6 +15,29 @@
 - [how to use mac to snapshot screen](http://www.techadvisory.org/2014/09/4-screenshot-tips-for-mac/)     
 - [vim medium](https://medium.com/usevim/vim-101-quick-movement-c12889e759e0)     
 
+# vscode editor
+
+### how to add html snippet
+- shift+cmd+p : Preferences: configure user snippet
+- open html.json
+- add the following codes into the most outward `{}`
+```json
+"html simple": {
+    "prefix": "html simple",
+    "body": [ 
+        "<!DOCTYPE html>",
+        "<html>",
+        "<head>",
+            "<title>$1</title>",
+        "</head>",
+        "<body>",
+            "  $2",
+        "</body>",
+        "</html>"
+    ]
+}
+```
+
 # Atom editor
 
 ### how to view git diff of each commit
