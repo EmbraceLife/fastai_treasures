@@ -13,6 +13,7 @@
 
 - [10 basic vim command](http://www.oualline.com/vim/10/top_10.html)      
 - [how to use mac to snapshot screen](http://www.techadvisory.org/2014/09/4-screenshot-tips-for-mac/)     
+- [how to get apps side by side](https://support.apple.com/en-us/HT204948)
 - [vim medium](https://medium.com/usevim/vim-101-quick-movement-c12889e759e0)     
 
 # vscode editor
