@@ -200,6 +200,8 @@ option + d = remove a word after cursor
 
 
 ### 构建bash_profile
+reload bash_profile with `source ~/.bash_profile`
+
 ```bash
 alias ftrans='cd /Users/Natsume/Documents/fastai_courses_translation_EN2CN; conda activate fastai'
 alias exp='cd /Users/Natsume/Documents/fastai-contrib/; git checkout doc_source; cd py-examples; conda activate fastai'
